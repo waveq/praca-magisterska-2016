@@ -1,0 +1,381 @@
+\documentclass[document]{xmgr}
+% Jeśli nowe rozdziały mają się zaczynać na stronach
+% nieparzystych:
+%\documentclass[openright]{xmgr}
+
+%\defaultfontfeatures{Scale=MatchLowercase}
+%\setmainfont[Numbers=OldStyle,Ligatures=TeX]{Minion Pro}
+%\setsansfont[Numbers=OldStyle,Ligatures=TeX]{Myriad Pro}
+% for fontspec version < 2.0
+\setmainfont[Numbers=OldStyle,Mapping=tex-text]{Arial}
+\setsansfont[Numbers=OldStyle,Mapping=tex-text]{Times New Roman}
+
+\setmonofont[Scale=0.75]{Monaco}
+
+% Opcjonalnie identyfikator dokumentu
+% drukowany tylko z włączoną opcją 'brudnopis':
+\wersja   {wersja wstępna [\ymdtoday]}
+
+\author   {Szymon Rękawek}
+\nralbumu {206288}
+\email    {rekawekszymon@gmail.com}
+
+\title    {Gra Thuego}
+\date     {01.01.2016}
+\miejsce  {Gdańsk}
+
+\opiekun  {prof. dr hab. T. Dzido}
+
+% dodatkowe polecenia
+%\renewcommand{\filename}[1]{\texttt{#1}}
+\definecolor{stress}{cmyk}{0,1,0.13,0} % RubineRed
+\definecolor{topic}{cmyk}{0.98,0.13,0,0.43} % MidnightBlue
+
+\begin{document}
+
+% streszczenie
+\begin{abstract}
+
+\end{abstract}
+
+% słowa kluczowe
+\keywords{Thue}
+
+% tytuł i spis treści
+\maketitle
+
+% wstęp
+\introduction
+
+Tematem niniejszej pracy jest Gra Thuego. Axel Thue był norweskim matematykiem żyjącym w latach 1863 - 1922, znanym z prac z zakresu kombinatoryki.
+
+Thue pracował nad problemami, powstałymi w wyniku badań nad sekwencjami symboli. Praca Thue [1] opisywała problem, który autor nazwał 'nieredukowalne słowa' ('irreducible words'). Poświęca w niej szczególną uwagę dwu i trzy literowym przypadkom. W skrócie wprowadza pojęcie znane obecnie jako Thue-Morse sequence i pokazuje, że nieskończone słowa Overlap-Free są pochodnymi tej sekwencji. W swoich pracach definiuje kolejną strukturę, a mianowicie infinite Square-Free word, oraz przedstawia sposoby generowania nieskończenie długich słów wolnych zarówno od kwadratów jak i nasunięć.
+
+Gra która powstała na podstawie teorii Thuego w skrócie polegała będzie na utworzeniu jak najdłuższego ciągu znaków nad określonym z góry alfabetem. Zależnie od trybu gry, kończyć się ona będzie w momencie gdy pojawi się zdefiniowany na początku rodzaj powtórzenia w tworzonym przez nas, bądź algorytm ciągu. Jednym z trybów gry jest walka komputera przeciwko niemu samemu, po takiej rozgrywce przedstawione zostaną złożoności czasowe oraz wnioski wynikające z obranej przez oponentów taktyki. 
+
+Ostatnia część pracy poświęcona jest analizie algorytmów zarówno pod względem czasu ich wykonywania jak i zdolności do przewidywania ruchów przeciwnika.
+
+\chapter{Teorie Axela Thue na temat sekwencji symboli}
+lbaldsaldsal dsadsa asdkdsak sadkdsa dsadsadsak dsak 
+dsa dsajdsajdas 
+\section{Definicje}
+\begin{itemize}
+\item Alfabet jest skończonym zbiorem symboli lub liter.
+\item Słowo alfabetu A jest skończoną sekwencją elementów z A. 
+\item Długość słowa ω jest reprezentowana przez |ω|.
+\item Puste słowo o długości 0 jest reprezentowane przez ε.
+\item Factor(czynnik) słowa ω jest słowem u, które występuje wewnątrz ω formie ω = xuy, podczas gdy x oraz y również są słowami tego alfabetu.
+\item Square(kwadrat) jest niepustym słowem w formie uu.
+\item Square-free, słowo jest wolne od kwadratów, jeśli żaden z jego czynników nie jest kwadratem.
+\item Overlap(nasunięcie) jest słowem w formie xuxux, gdzie x jest niepusty. Nazwa pojęcia wzięła się z tego, że xux występuje dwa razy w xuxux. Pierwszy raz jako prefiks(początkowy czynnik) oraz jako sufiks(końcowy czynnik) i te dwa wystąpienia mają wspólną część -centralne x, a więc nasuwają się na siebie.
+\item Overlap-free - słowo w którym żaden z czynników nie nasuwa się na siebie.
+W definicji Axela Thue słowo ω w alfabecie długości n jest nieredukowalne jeśli jakiekolwiek dwa wystąpienia tego samego słowa jako czynnik wewnątrz ω są zawsze oddzielone od siebie przez n-2 liter. Oznacza to, że nieredukowalne dwuliterowe słowo jest bez nasunięć i nieredukowalne trzyliterowe słowo jest bez kwadratów.
+\item Morfizm - mapowanie obiektu z jednej matematycznej struktury w inną.
+\end{itemize}
+
+
+
+\section{Thue-Morse sequence}
+W tej sekcji zostaną omówione podstawowe pojęcia związane z Thue-Morse sequence.
+Niech A = \{a, b\} będzie dwuliterowym alfabetem. Rozważmy morfizm µ z monoidu A*, który definiuje się następująco:
+\begin{center}
+µ(a) = ab,					µ(b) = ba
+\end{center}
+Dla n >=0:
+\begin{center}
+un = µn(a),				vn = µn(b)
+\end{center}
+Wtedy:		
+\begin{center}
+u0 = a 					v0 = b\\
+u1 = ab					v1 = ba\\
+u2 = abba				v2 = baab\\
+u3 = abbabaab			v3 = baababba
+\end{center}
+gdzie  jest uzyskiwane z ω przez zamianę 'a' oraz 'b'. Słowa un i vn są często nazywane 'Morse block' blokami morsa. Można łatwo zauważyc że u2n oraz v2n są palindromami oraz to że u2n+1 = ~v2n+1, gdzie ~w jest negacją w. Morfizm µ może być rozszerzony do nieskończonych słow, które mają dwa stałe punkty:
+\begin{center}
+t = abbabaabbaababbabaab... = µ(t)\\
+~t = baababbaabbabaababba... = µ(~t)
+\end{center}
+Przedstawione powyżej słowo t jest sekwencją Thue-Morse'a. Jest wiele innych sposobów na stworzenie tego słowa. Niech tn będzie n-tym symbolem w t, zaczynając od n = 0. Wtedy można pokazać, że:
+
+\[
+t_n=
+\left \{
+\begin{tabular}{ccc}
+$a\ \textrm{if}\ d_1(n) \equiv (\textrm{mod}\ 2)$ \\
+$a\ \textrm{if}\ d_1(n) \equiv (\textrm{mod}\ 2)$
+\end{tabular}
+\right \}
+\]
+
+gdzie $d_1$(n) jest liczbą bitów równych 1 w binarnej reprezentacji n. Dla n <= 12 oraz n generowane jest następujące słowo:
+
+\begin{tabbing}
+bin(0)~~~ \= = 0,~~~~~~~~~~ \= $d_1$ (0)~~~ \= = 0 mod 2 = 0 $\to$ a \\
+bin(1) \> = 1, \> $d_1$ (1) \> = 1 mod 2 = 1 $\to$ b\\
+bin(2) \> = 10, \> $d_1$ (2) \> = 1 mod 2 = 1 $\to$ b\\
+bin(3) \> = 11, \> $d_1$ (3) \> 	= 2 mod 2 = 0 $\to$ a\\
+bin(4) \> = 100, \> $d_1$ (4) \> = 1 mod 2 = 1 $\to$ b\\
+bin(5) \> = 101, \> $d_1$ (5) \> 	= 2 mod 2 = 0 $\to$ a\\
+bin(6) \> = 110, \> $d_1$ (6) \> = 2 mod 2 = 0 $\to$ a\\
+bin(7) \> = 111, \> $d_1$ (7) \> = 3 mod 2 = 1 $\to$ b\\
+bin(8) \> = 1000, \> $d_1$ (8) \> = 1 mod 2 = 1 $\to$ b\\
+bin(9) \> = 1001, \> $d_1$ (9) \> = 2 mod 2 = 0 $\to$ a\\
+bin(10) \> = 1010,	\> $d_1$ (10) \> = 2 mod 2 = 0 $\to$ a\\
+bin(11) \> = 1011, 	\> $d_1$ (11) \> = 3 mod 2 = 1 $\to$ b\\
+bin(12) \> = 1100, 	\> $d_1$ (12) \> = 2 mod 2 = 0 $\to$ a
+\end{tabbing}
+
+\noindent t = abbabaabbaaba\\
+
+W konsekwencji istnieje skończony automat obliczający wartości $t_n$. Automat ten ma dwa stany końcowe 0 oraz 1. Na początku czyta łańcuch znaków bin(n) od lewej do prawej, zaczynając od n = 0. Ostateczny stan równy jest 0 lub 1 i definiuje czy $t_n$ jest równe a lub b. W skrócie obliczenie jakie wykonuje automat to $d_1$(n) modulo 2.
+
+
+\section{Square-free words}
+Łatwo można zauważyc, że jedynymi słowami bez kwadratów w alfabecie A = \{a, b\} są: \emph{a, b, ab, ba, aba, bab}. Istnieje jednak dowolnie długi ciąg znaków wolny od kwadratów dla słów nad alfabetem trzyliterowym. By stworzyć dowolne słowo wolne od kwadratów Thue wymyślił następujący algorytm.\\
+Mając alfabet A = \{a, b, c\} należy zastąpić każde wystąpienie litery \emph{a} przez \emph{abac},  \emph{b} przez \emph{babc} oraz \emph{c} przez \emph{bcac}, jeśli jest poprzedzone przez \emph{a} lub \emph{acbc}, jeśli jest poprzedzone przez \emph{b}. Zaczynając od litery a otrzymujemy nieskończone słowo które nie zawiera kwadratów.\\
+
+\emph{abacbabcabacbcacbabcabacbabcacbcabacbabc...}\\
+
+W 1912 roku Axel Thue wymyślił inny sposób na generowanie nieskończonego słowa bez kwadratów na trzech literach z użyciem następującego morfizmu. 
+\begin{itemize}
+\item a -> abcab
+\item b -> acabcb
+\item c -> acbcacb
+\end{itemize}
+
+
+Po raz kolejny zastępujemy każde wystąpienie z naszych liter przez zdefiniowane sekwencje. Jest to dość skomplikowana struktura, zsumowana długość łańcuchów wynosi 18. A Carpi [7] dowiódł, że morfizm na alfabecie składającym się z trzech liter tworzący słowa wolne od kwadratów musi mieć długość równą co najmniej 18.
+
+
+\section{Zasady gry}
+
+W grze dostępnych jest kilka trybów zarówno dla jednego oraz dwóch graczy jak i komputerowa symulacja, czyli gra doskonała komputera przeciwko niemu samemu.
+
+Zasady trybu \textbf{Longest Square-Free word}, dla dwóch graczy są następujące.
+Na początku gry gracze ustalają moc zbioru kolorów, który musi mieć co najmniej 3 elementy oraz otrzymują swoje role, jeden z nich staje się architektem, drugi malarzem. Rola architekta polega na wybieraniu odpowiedniego indeksu w ciągu tworzonym przez graczy, pod którym powstanie nowy element. Malarz natomiast określa kolor wstawianego elementu. Gra kończy się w momencie, gdy w ciągu tworzonym przez graczy pojawia się \textbf{kwadrat}. 
+
+Indeks i  podawany przez architekta nie może być mniejszy od zera oraz większy niż n, gdzie n jest równe liczbie elementów w ciągu.
+Grę rozpoczyna architekt, podany przez niego indeks w pierwszym ruchu musi wynosić 0, ponieważ n = 0. Gracze wykonują swoje ruchy na przemian. Malarz otrzymuje punkt za każdy pomalowany element, który nie tworzy \textbf{kwadratu} wewnątrz ciągu.
+By wyłonić zwycięzcę potrzebne są dwie rundy. Każdy z graczy musi się sprawdzić się zarówno jako malarz i architekt. Wygrywa osoba, która zdobyła więcej punktów jako malarz.
+
+Tryb ten dostępny jest również dla jednego gracza, rolę przeciwnika otrzymuje wtedy komputer, który działa według algorytmu przewidującego określoną przez poziom trudności liczbę ruchów do przodu. Algorytm może pełnić zarówno rolę budowniczego jak i malarza.
+
+Bliźniaczym trybem gry opierającym się na tych samych zasadach z niewielką różnicą jest \textbf{Longest Overlap-Free word}. 
+Różnica polega na tym, że malarz w tworzonym ciągu musi unikać \textbf{nasunięcia} oraz moc zbioru kolorów musi mieć co najmniej 2 elementy.
+
+Podobnie jak w \textbf{Longest Square-Free word} jest możliwość gry przeciwko algorytmowi, który jest w stanie przewidywać określoną ilość ruchów do przodu.
+
+\section{Emacs i~psgml}
+
+Jedynym dostępnym w~chwili
+obecnej, efektywnym, tanim (darmowy) i~dostępnym na wielu
+platformach systemowo-sprzętowych środowisku do tworzenia dokumentów
+strukturalnych jakim jest edytor Emacs\index{edytor!Emacs} z~pakietem
+psgml. Środowisko to wspomaga autora poprzez:
+kolorowanie składni dokumentów SGML i~aplikacji SGML, automatyczne
+uzupełnianie brakujących znaczników, automatyczną kontrolę jakie
+w~danym kontekście można wstawiać znaczniki i~atrybuty, wyświetlanie
+informacje odnośnie możliwych i~domyślnych wartości.
+Wszystkie funkcje są dostępne za pomocą
+odpowiednie skrótów klawiszowych a~także dostępne poprzez wybór
+wskaźnikiem myszy odpowiedniej pozycji z~menu. Pakiet ten umożliwia
+również wywołanie zewnętrznego parsera\index{parser} SGML celem
+weryfikacji poprawności dokumentu.
+
+\chapter{Narzędzia i~standardy pokrewne}
+
+Systemy SGML, ze względu na mnogość funkcji jakie spełniają i~ich
+kompleksowe podejście do oznakowywania i~przetwarzania dokumentów
+tekstowych, są bardzo skomplikowane. Możemy wyróżnić dwa podejścia do
+budowy takich systemów.  Z~jednej strony, buduje się systemy
+zindywidualizowane, oparte o~specyficzne narzędzia tworzone w~takich
+językach, jak: C, C++, Perl czy Python. Edytory strukturalne, filtry
+do transformacji formatów czy parsery\index{parser} i~biblioteki
+przydatne do konstrukcji dalszych narzędzi, tworzone są według potrzeb
+określonych, pojedynczych systemów.
+
+Z~drugiej strony, twórcy oprogramowania postanowili pójść krok dalej
+i~połączyć te różne narzędzia w~jedną całość. Tą całość miał stanowić
+DSSSL lub jego XML-owy odpowiednik -- standard XSL. Ze względu na
+oferowane możliwości można twierdzić, że tworzenie i~używanie narzędzi
+implementujących standard DSSSL/XSL, jest najwłaściwszym
+podejściem. Przemawiają za tym różne argumenty, ale najważniejszym
+z~nich jest to, że mamy tu możliwość stworzenia niezależnego od
+platformy programowej i~narzędziowej zbioru szablonów -- przepisów jak
+przetwarzać dokumenty SGML.
+
+\section{Przetwarzanie dokumentów SGML -- standard DSSSL\label{s:dsssl}}
+
+DSSSL (\textit{Document Style Semantics and Specification Language\/})
+-- to międzynarodowy standard ściśle związany ze standardem SGML.
+Standard ten, można podzielić na następujące części:
+
+\begin{itemize}
+\item język transformacji (\textit{transformation language\/}).  To
+  definicja języka służącego do transformacji dokumentu oznaczonego
+  znacznikami zgodnie z~pewnym DTD na dokument oznaczony zgodnie
+  z~innym~DTD.
+\item język stylu (\textit{style language\/}) opisujący sposób
+  formatowania dokumentów SGML.
+\item język zapytań (\textit{query language\/}) służy do
+  identyfikowania poszczególnych fragmentów dokumentu SGML.
+\end{itemize}
+
+Opisane główne części składowe standardu DSSSL dają obraz tego, jak
+wiele aspektów przetwarzania zostało zdefiniowanych i~jak
+skomplikowany jest to problem. Jest to głównym powodem tego, że mimo
+upływu kilku lat od zdefiniowania standardu nie powstały ani
+komercyjne ani wolnodostępne aplikacje wspierające go
+w~całości. Istnieją natomiast \emph{nieliczne\/} narzędzia realizujące
+DSSSL w~ograniczonym zakresie, głównie w~części definiującej język
+stylu, który odpowiada za opatrzenie dokumentu czysto strukturalnego
+w~informacje formatujące. Daje to możliwość publikacji dokumentów SGML
+zarówno w~postaci elektronicznej, hipertekstowej czy też drukowanej.
+
+\section{Przetwarzanie dokumentów XML -- standard XSL\label{s:xsl}}
+
+Tak jak XML jest \emph{uproszczoną\/} wersją standardu SGML, tak XSL
+jest uproszczonym odpowiednikiem standardu DSSSL. W~szczególności,
+wyróżnić można w~tym standardzie następujące części składowe:
+
+\begin{itemize}
+\item język transformacji (XSLT) To definicja języka służącego do
+  transformacji dokumentu.
+\item język zapytań (XPath) służy do identyfikowania poszczególnych
+  fragmentów dokumentu.
+\item język stylu deefiniujący sposób formatowania dokumentów XML.
+\end{itemize}
+
+\chapter{Przegląd dostępnych narzędzi\label{PRZEGLAD.NARZEDZI}}
+
+W~celu wykorzystania standardu SGML do przetwarzania dokumentów,
+niezbędne jest zebranie odpowiedniego zestawu narzędzi. Narzędzi do
+przetwarzania dokumentów SGML jest wiele. Są to zarówno całe
+systemy zintegrowane, jak i~poszczególne programy, biblioteki czy
+skrypty wspomagające.
+
+\section{Narzędzia do przeglądania dokumentów SGML}
+
+Do tej kategorii oprogramowania zaliczamy przeglądarki dokumentów
+SGML oraz serwery sieciowe wspomagające standard SGML, przy
+czym rozwiązań wspierających standard XML jest już w~chwili obecnej
+dużo więcej i~są dużo powszechniejsze.
+
+Jeżeli chodzi o~przeglądarki to zarówno Internet Explorer jak
+i~Netscape umożliwiają bezpośrednie wyświetlenie dokumentów XML;
+ponieważ jednak nie wspierają w~całości standardu XML, prowadzi to
+ciągle do wielu problemów\footnote{Z~innych mniej popularnych
+  rozwiązań można wymienić takie aplikacje, jak: HyBrick SGML
+  Browser firmy Fujitsu Limited, Panorama Publisher firmy InterLeaf
+  Inc, DynaText firmy Inso Corporation czy darmowy QWeb. W~przypadku
+  serwerów zwykle dokonują one transformacji ,,w~locie'' żądanych
+  dokumentów na format HTML (rzadziej bezpośrednio wyświetlają
+  dokumenty XML).  Ta kategoria oprogramowania ma, z~punktu widzenia
+  projektu, znaczenie drugorzędne.}.
+
+\section{Parsery SGML}
+Program \texttt{nsgmls} (z~pakietu \texttt{SP} Jamesa Clarka) jest
+doskonałym parserem\index{parser} dokumentów SGML, dostępnym
+publicznie.  Parser \texttt{nsgmls} jest dostępny w~postaci źródłowej
+oraz w~postaci programów wykonywalnych przygotowanych na platformę
+MS~Windows, Linux/Unix i~inne. Oprócz analizy poprawności dokumentu
+parser\index{parser} ten umożliwia również konwersję danych do formatu
+ESIS\index{ESIS}, który wykorzystywany jest jako dane wejściowe przez
+wiele narzędzi do przetwarzania i~formatowania dokumentów SGML.
+Dodatkowymi, bardzo przydatnymi elementami pakietu \texttt{SP} są:
+program \texttt{sgmlnorm} do normalizacji, program \texttt{sx} służący
+do konwersji dokumentu SGML na XML oraz biblioteki programistyczne,
+przydatne przy tworzeniu specjalistycznych aplikacji służących do
+przetwarzania dokumentów SGML.
+
+W~przypadku dokumentów XML publicznie dostępnych, parserów jest
+w~chwili obecnej kilkadziesiąt. Do popularniejszych zaliczyć można
+Microsoft Java XML Parser firmy Microsoft, LT XML firmy Language
+Technology Group, Exapt oraz XP (James Clark)
+
+\section{Wykorzystanie języków skryptowych}
+
+\section{Wykorzystanie szablonów XSL}
+
+Stosując wersję XML typu DocBook można wykorzystać szablony stylów
+przygotowane w~standardzie XSL (autor N.~Walsh). W~chwili obecnej
+są dostępne narzędzia umożliwiające przetworzenie dokumentów XML do
+postaci drukowanej (Adobe PDF) oraz hipertekstowej (HTML).
+
+Podobnie jak w~przypadku szablonów DSSSL, szablony stylów XSL są
+sparametryzowane i~udokumentowane i~dzięki temu łatwe w~adaptacji. Do
+zamiany dokumentu XML na postać prezentacyjną można wykorzystać jeden
+z~dostępnych publicznie procesorów XSLT
+(por.~tabela~\ref{zest:proces:xslt}).
+
+\begin{table}[!htb]
+\begin{tabular}{|l|l|l|} \hline
+Nazwa & Autor      & Adres URL \\ \hline
+\texttt{sablotron} & Ginger Alliance & \url{http://www.gingerall.com} \\ \hline
+\texttt{Xt}        & J.~Clark & \url{http://www.jclark.com} \\ \hline
+\texttt{4XSLT}     & FourThought & \url{http://www.fourthought.com} \\ \hline
+\texttt{Saxon}     & Michael Kay &  \url{http://users.iclway.co.uk/mhkay/saxon} \\ \hline
+\texttt{Xalan}     & Apache XML Project & \url{http://xml.apache.org} \\ \hline
+\end{tabular}
+\caption{Publicznie dostępne procesory XLST\label{zest:proces:xslt}}
+\source{Opracowanie własne}
+\end{table}
+
+XSL:FO jest skomplikowanym językiem o~dużych możliwościach,
+zawierającym ponad 50 różnych ,,obiektów formatujących'', począwszy od
+najprostszych, takich jak prostokątne bloki tekstu poprzez wyliczenia,
+tabele i~odsyłacze. Obiekty te można formatować wykorzystując przeszło
+200 różnych właściwości (\emph{properties\/}), takich jak: kroje,
+odmiany i~wielkości pisma, odstępy, kolory itp.
+W~tym dokumencie przedstawione jest absolutne miniumum informacji
+na temat standardu XSL:FO.
+
+Cały dokument XSL:FO zawarty jest wewnątrz elementu \texttt{fo:root}.
+Element ten zawiera (w~podanej niżej kolejności):
+
+\begin{itemize}
+\item dokładnie jeden element \texttt{fo:layout-master-set} zawierający
+  szablony określające wygląd poszczególnych stron oraz sekwencji
+  stron (te ostatnie są opcjonalne, ale typowo są definiowane);
+\item zero lub więcej elementów \texttt{fo:declarations};
+\item jeden lub więcej elementów \texttt{fo:page-sequance}
+ zawierających treść formatowanego dokumentu wraz z~opisem
+ jego sformatowania i~podziału na strony.
+\end{itemize}
+
+% zakończenie
+\summary
+Możliwości, jakie stoją przed archiwum prac magisterskich opartych na
+XML-u, są ograniczone jedynie czasem, jaki należy poświęcić na pełną
+implementację systemu. Nie ma przeszkód technologicznych do stworzenia
+co najmniej równie doskonałego repozytorium, jak ma to miejsce w
+przypadku ETD. Jeżeli chcemy w pełni uczestniczyć w rozwoju nowej ery
+informacji, musimy szczególną uwagę przykładać do odpowiedniej
+klasyfikacji i archiwizacji danych. Sądzę, że język XML znacznie to
+upraszcza.
+
+% załączniki (opcjonalnie):
+\appendix
+\chapter{Tytuł załącznika jeden}
+
+Treść załącznika jeden.
+
+\chapter{Tytuł załącznika dwa}
+
+Treść załącznika dwa.
+
+% literatura (obowiązkowo):
+\bibliographystyle{unsrt}
+\bibliography{xml}
+
+% spis tabel (jeżeli jest potrzebny):
+\listoftables
+
+% spis rysunków (jeżeli jest potrzebny):
+\listoffigures
+
+\oswiadczenie
+
+\end{document}
