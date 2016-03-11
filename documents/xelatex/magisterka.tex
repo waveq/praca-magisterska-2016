@@ -78,20 +78,19 @@ W definicji Axela Thue słowo ω w alfabecie długości n jest nieredukowalne je
 \section{Thue-Morse sequence}
 W tej sekcji zostaną omówione podstawowe pojęcia związane z Thue-Morse sequence.
 Niech A = \{a, b\} będzie dwuliterowym alfabetem. Rozważmy morfizm µ z monoidu A*, który definiuje się następująco:
-\begin{center}
-µ(a) = ab,					µ(b) = ba
-\end{center}
-Dla n >=0:
-\begin{center}
-un = µn(a),				vn = µn(b)
-\end{center}
-Wtedy:		
-\begin{center}
-u0 = a 					v0 = b\\
-u1 = ab					v1 = ba\\
-u2 = abba				v2 = baab\\
-u3 = abbabaab			v3 = baababba
-\end{center}
+
+\begin{tabbing}
+
+\hspace{8em}\= µ(a) = ab,\hspace{7em}\= µ(b) = ba\\
+Dla n >=0:\\
+\> $u_n$ = µn(a),\> $v_n$ = µn(b)\\
+Wtedy:\\
+\> $u_0$ = a \> $v_0$ = b\\
+\> $u_1$ = ab \> $v_1$ = ba\\
+\> $u_2$ = abba	 \> $v_2$ = baab\\
+\> $u_3$ = abbabaab	 \> $v_3$ = baababba
+\end{tabbing}
+
 gdzie  jest uzyskiwane z ω przez zamianę 'a' oraz 'b'. Słowa un i vn są często nazywane 'Morse block' blokami morsa. Można łatwo zauważyc że u2n oraz v2n są palindromami oraz to że u2n+1 = ~v2n+1, gdzie ~w jest negacją w. Morfizm µ może być rozszerzony do nieskończonych słow, które mają dwa stałe punkty:
 \begin{center}
 t = abbabaabbaababbabaab... = µ(t)\\

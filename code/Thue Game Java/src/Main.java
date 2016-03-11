@@ -1,12 +1,11 @@
-import Thue.Theory;
+import Thue.AbstractFree;
+import Thue.OverlapFree;
+import Thue.SquareFree;
 
-/**
- * Created by szymonre on 24/11/15.
- */
 public class Main {
 	public static void main (String[] args) {
-
-		Theory t = new Theory();
-		t.theoryStart();
+		AbstractFree t = new SquareFree();
+		//t = new OverlapFree();
+		t.startGame();
 	}
 }
