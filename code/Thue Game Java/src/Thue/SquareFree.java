@@ -18,29 +18,31 @@ public class SquareFree extends AbstractFree {
 			List<Integer> repeatedSequence = findSquare();
 			if(repeatedSequence != null) {
 				System.out.println(SQUARE_FOUND);
-				repeatedSequence.forEach(element -> System.out.print(String.format(LIST_ELEMENT_FORMAT, element)));
+				printSequence(repeatedSequence);
 				finished = true;
 			}
 		}
 	}
 
 	private List<Integer> findSquare() {
-		List<Integer> repeatedSequence = null;
+		List<Integer> squareSeq = null;
 		int maxSeqSize = sequence.size()/2;
 		int minSeqSize = 1;
-		for(int subSeqSize=minSeqSize; subSeqSize<=maxSeqSize; subSeqSize++) {
-			repeatedSequence = compareSubSequences(subSeqSize);
-			if(repeatedSequence != null) {
-				return repeatedSequence;
+		for(int subSeqSize=minSeqSize;
+			subSeqSize<=maxSeqSize;
+			subSeqSize++) {
+			squareSeq = compareSubSeq(subSeqSize);
+			if(squareSeq != null) {
+				return squareSeq;
 			}
 		}
 		return null;
 	}
 
-	private List<Integer> compareSubSequences(int subSeqSize) {
+	private List<Integer> compareSubSeq(int subSeqSize) {
 		List<Integer> left = new ArrayList<>();
 		List<Integer> right = new ArrayList<>();
-		int comparesFitInSequence = (sequence.size()-subSeqSize*2) + 1;
+		int comparesFitInSequence = (sequence.size() + 1) - (subSeqSize*2) ;
 		for(int i=0; i<comparesFitInSequence; i++) {
 			for(int j =0;j<subSeqSize;j++) {
 				left.add(sequence.get(i+j));

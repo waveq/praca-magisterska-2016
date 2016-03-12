@@ -9,6 +9,9 @@
 % for fontspec version < 2.0
 \setmainfont[Numbers=OldStyle,Mapping=tex-text]{Arial}
 \setsansfont[Numbers=OldStyle,Mapping=tex-text]{Times New Roman}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{listings} 
 
 \setmonofont[Scale=0.75]{Monaco}
 
@@ -49,7 +52,7 @@
 
 Tematem niniejszej pracy jest Gra Thuego. Axel Thue był norweskim matematykiem żyjącym w latach 1863 - 1922, znanym z prac z zakresu kombinatoryki.
 
-Thue pracował nad problemami, powstałymi w wyniku badań nad sekwencjami symboli. Praca Thue [1] opisywała problem, który autor nazwał 'nieredukowalne słowa' ('irreducible words'). Poświęca w niej szczególną uwagę dwu i trzy literowym przypadkom. W skrócie wprowadza pojęcie znane obecnie jako Thue-Morse sequence i pokazuje, że nieskończone słowa Overlap-Free są pochodnymi tej sekwencji. W swoich pracach definiuje kolejną strukturę, a mianowicie infinite Square-Free word, oraz przedstawia sposoby generowania nieskończenie długich słów wolnych zarówno od kwadratów jak i nasunięć.
+Thue pracował nad problemami, powstałymi w wyniku badań nad sekwencjami symboli. Praca Thue [1] opisywała problem, który autor nazwał \textit{nieredukowalne słowa} (\textit{irreducible words}). Poświęca w niej szczególną uwagę dwu i trzy literowym przypadkom. W skrócie wprowadza pojęcie znane obecnie jako \textit{Thue-Morse word} i pokazuje, że nieskończone słowa bez nasunięć (\textit{Overlap-free}) są pochodnymi tej sekwencji. W swoich pracach definiuje kolejną strukturę, a mianowicie infinite \textit{Square-Free word}, oraz przedstawia sposoby generowania nieskończenie długich słów wolnych zarówno od kwadratów jak i nasunięć.
 
 Gra która powstała na podstawie teorii Thuego w skrócie polegała będzie na utworzeniu jak najdłuższego ciągu znaków nad określonym z góry alfabetem. Zależnie od trybu gry, kończyć się ona będzie w momencie gdy pojawi się zdefiniowany na początku rodzaj powtórzenia w tworzonym przez nas, bądź algorytm ciągu. Jednym z trybów gry jest walka komputera przeciwko niemu samemu, po takiej rozgrywce przedstawione zostaną złożoności czasowe oraz wnioski wynikające z obranej przez oponentów taktyki. 
 
@@ -61,91 +64,109 @@ dsa dsajdsajdas
 \section{Definicje}
 \begin{itemize}
 \item Alfabet jest skończonym zbiorem symboli lub liter.
-\item Słowo alfabetu A jest skończoną sekwencją elementów z A. 
-\item Długość słowa ω jest reprezentowana przez |ω|.
-\item Puste słowo o długości 0 jest reprezentowane przez ε.
-\item Factor(czynnik) słowa ω jest słowem u, które występuje wewnątrz ω formie ω = xuy, podczas gdy x oraz y również są słowami tego alfabetu.
-\item Square(kwadrat) jest niepustym słowem w formie uu.
+\item Słowo alfabetu $A$ jest skończoną sekwencją elementów z $A$. 
+\item Długość słowa $\omega$ jest reprezentowana przez $|\omega|$.
+\item Puste słowo o długości $0$ jest reprezentowane przez $\varepsilon$.
+\item Czynnik (factor) słowa $\omega$ jest słowem $u$, które występuje wewnątrz $\omega$ formie $\omega = xuy$, podczas gdy $x$ oraz $y$ również są słowami tego alfabetu.
+\item Kwadrat (square) jest niepustym słowem w formie $uu$, gdzie $u$ jest niepuste.
 \item Square-free, słowo jest wolne od kwadratów, jeśli żaden z jego czynników nie jest kwadratem.
-\item Overlap(nasunięcie) jest słowem w formie xuxux, gdzie x jest niepusty. Nazwa pojęcia wzięła się z tego, że xux występuje dwa razy w xuxux. Pierwszy raz jako prefiks(początkowy czynnik) oraz jako sufiks(końcowy czynnik) i te dwa wystąpienia mają wspólną część -centralne x, a więc nasuwają się na siebie.
+\item Nasunięcie (Overlap) jest słowem w formie $xuxux$, gdzie $x$ jest niepuste. Nazwa pojęcia wzięła się z tego, że $xux$ występuje dwa razy w $xuxux$. Pierwszy raz jako prefiks (początkowy czynnik) oraz jako sufiks (końcowy czynnik) i te dwa wystąpienia mają wspólną część - centralne $x$, a więc \textit{nasuwają} się na siebie.
 \item Overlap-free - słowo w którym żaden z czynników nie nasuwa się na siebie.
-W definicji Axela Thue słowo ω w alfabecie długości n jest nieredukowalne jeśli jakiekolwiek dwa wystąpienia tego samego słowa jako czynnik wewnątrz ω są zawsze oddzielone od siebie przez n-2 liter. Oznacza to, że nieredukowalne dwuliterowe słowo jest bez nasunięć i nieredukowalne trzyliterowe słowo jest bez kwadratów.
+W definicji Axela Thue słowo $\omega$ w alfabecie długości n jest nieredukowalne jeśli jakiekolwiek dwa wystąpienia tego samego słowa jako czynnik wewnątrz $\omega$ są zawsze oddzielone od siebie przez $n-2$ liter. Oznacza to, że nieredukowalne dwuliterowe słowo jest bez nasunięć i nieredukowalne trzyliterowe słowo jest bez kwadratów.
 \item Morfizm - mapowanie obiektu z jednej matematycznej struktury w inną.
 \end{itemize}
 
 
 
-\section{Thue-Morse sequence}
-W tej sekcji zostaną omówione podstawowe pojęcia związane z Thue-Morse sequence.
-Niech A = \{a, b\} będzie dwuliterowym alfabetem. Rozważmy morfizm µ z monoidu A*, który definiuje się następująco:
+\section{Thue-Morse word}
+Rozważmy nieskończone słowo
+
+{\centering $01101001100101101001011001101001 ...$ \par}
+
+Zostało ono nazwane po Thue, który badał jego właściwości w referacie z 1906 roku, oraz Morsie, który odkrył je na nowo w latach 20 XIX wieku. Słowo Thue-Morse'a występuje również o wiele wcześniej w wiadomościach Prouheta[200] z Francuską Akademią Nauk w 1851 roku. Rzeczywiście Prouhet podał więcej ogólnych konstrukcji, uzyskując nie tylko słowo Thue-Morse'a, ale całą rodzinę słów na większych alfabetach mających inne interesujące właściwości. Słowa te czasami odnoszą się do ogólnych słow Thue-Morse'a lub słów Prouheta.
+
+Niech $A = \{a, b\}$ będzie dwuliterowym alfabetem. Rozważmy morfizm $\mu$ z monoidu $A*$, który definiuje się następująco:
+
+
 
 \begin{tabbing}
 
-\hspace{8em}\= µ(a) = ab,\hspace{7em}\= µ(b) = ba\\
-Dla n >=0:\\
-\> $u_n$ = µn(a),\> $v_n$ = µn(b)\\
+\hspace{8em}\= $\mu(a) = ab$,\hspace{7em}\= $\mu(b) = ba$\\
+Dla $n \geq 0$:\\
+\> $u_n = \mu^n(a)$,\> $v_n = \mu^n(b)$\\
 Wtedy:\\
-\> $u_0$ = a \> $v_0$ = b\\
-\> $u_1$ = ab \> $v_1$ = ba\\
-\> $u_2$ = abba	 \> $v_2$ = baab\\
-\> $u_3$ = abbabaab	 \> $v_3$ = baababba
+\> $u_0 = a$ \> $v_0 = b$\\
+\> $u_1 = ab$ \> $v_1 = ba$\\
+\> $u_2 = abba$	 \> $v_2 = baab$\\
+\> $u_3 = abbabaab$ \> $v_3 = baababba$\\
+Wzór ogólny:\\
+\> $u_{n+1} = u_n v_n,$ \> $v_{n+1} = v_n u_n$\\
+\> $u_n = \overline{v}_n,$ \> $v_n = \overline{u}_n$
 \end{tabbing}
 
-gdzie  jest uzyskiwane z ω przez zamianę 'a' oraz 'b'. Słowa un i vn są często nazywane 'Morse block' blokami morsa. Można łatwo zauważyc że u2n oraz v2n są palindromami oraz to że u2n+1 = ~v2n+1, gdzie ~w jest negacją w. Morfizm µ może być rozszerzony do nieskończonych słow, które mają dwa stałe punkty:
-\begin{center}
-t = abbabaabbaababbabaab... = µ(t)\\
-~t = baababbaabbabaababba... = µ(~t)
-\end{center}
-Przedstawione powyżej słowo t jest sekwencją Thue-Morse'a. Jest wiele innych sposobów na stworzenie tego słowa. Niech tn będzie n-tym symbolem w t, zaczynając od n = 0. Wtedy można pokazać, że:
+gdzie $\overline{\omega}$ jest uzyskiwane z $\omega$ przez zamianę $a$ oraz $b$. Słowa $u_n$ i $v_n$ są często nazywane \textit{Blokami morsa}. Można łatwo zauważyc że $u_{2n}$ oraz $v_{2n}$ są palindromami oraz to że $u_{2n+1} = \neg v_{2n+1}$, gdzie $\neg w$ jest negacją $w$. Morfizm $\mu$ może być rozszerzony do nieskończonych słow, które mają dwa stałe punkty:
+
+
+{\centering 
+$t = abbabaabbaababbabaab... = \mu(t)$ \\
+$~t = baababbaabbabaababba... = \mu(~t)$ 
+\par}
+
+
+
+Przedstawione powyżej słowo $t$ jest sekwencją Thue-Morse'a. Jest wiele innych sposobów na stworzenie tego słowa. Niech $t_n$ będzie n-tym symbolem w $t$, zaczynając od $n = 0$. Wtedy można pokazać, że:
 
 \[
 t_n=
 \left \{
 \begin{tabular}{ccc}
-$a\ \textrm{if}\ d_1(n) \equiv (\textrm{mod}\ 2)$ \\
-$a\ \textrm{if}\ d_1(n) \equiv (\textrm{mod}\ 2)$
+$a\ if\ d_1(n) \equiv (mod\ 2)$ \\
+$a\ if\ d_1(n) \equiv (mod\ 2)$
 \end{tabular}
 \right \}
 \]
 
-gdzie $d_1$(n) jest liczbą bitów równych 1 w binarnej reprezentacji n. Dla n <= 12 oraz n generowane jest następujące słowo:
+\begin{align*}
+  &\phantom{{}\leq{}} \text{gdzie } d_1(n) \text{ jest liczbą bitów równych 1 w binarnej reprezentacji } n \text{.}  \\
+  & \text{Dla } n \leq 12 \text{ oraz } n \in \mathbb{N} \text{ generowane jest następujące słowo:}  \\
+\end{align*}
 
 \begin{tabbing}
-bin(0)~~~ \= = 0,~~~~~~~~~~ \= $d_1$ (0)~~~ \= = 0 mod 2 = 0 $\to$ a \\
-bin(1) \> = 1, \> $d_1$ (1) \> = 1 mod 2 = 1 $\to$ b\\
-bin(2) \> = 10, \> $d_1$ (2) \> = 1 mod 2 = 1 $\to$ b\\
-bin(3) \> = 11, \> $d_1$ (3) \> 	= 2 mod 2 = 0 $\to$ a\\
-bin(4) \> = 100, \> $d_1$ (4) \> = 1 mod 2 = 1 $\to$ b\\
-bin(5) \> = 101, \> $d_1$ (5) \> 	= 2 mod 2 = 0 $\to$ a\\
-bin(6) \> = 110, \> $d_1$ (6) \> = 2 mod 2 = 0 $\to$ a\\
-bin(7) \> = 111, \> $d_1$ (7) \> = 3 mod 2 = 1 $\to$ b\\
-bin(8) \> = 1000, \> $d_1$ (8) \> = 1 mod 2 = 1 $\to$ b\\
-bin(9) \> = 1001, \> $d_1$ (9) \> = 2 mod 2 = 0 $\to$ a\\
-bin(10) \> = 1010,	\> $d_1$ (10) \> = 2 mod 2 = 0 $\to$ a\\
-bin(11) \> = 1011, 	\> $d_1$ (11) \> = 3 mod 2 = 1 $\to$ b\\
-bin(12) \> = 1100, 	\> $d_1$ (12) \> = 2 mod 2 = 0 $\to$ a
+$bin(0)$\hspace{1em} \= $= 0,$\hspace{7em} \= $d_1 (0)$\hspace{1em} \= $= 0\ mod\ 2 = 0 \to a$ \\
+$bin(1)$ \> $= 1,$ \> $d_1 (1)$ \> $= 1\ mod 2 = 1 \to b$\\
+$bin(2)$ \> $= 10,$ \> $d_1 (2)$ \> $= 1\ mod 2 = 1 \to b$\\
+$bin(3)$ \> $= 11,$ \> $d_1 (3)$ \> $= 2\ mod 2 = 0 \to a$\\
+$bin(4)$ \> $= 100,$ \> $d_1 (4)$ \> $= 1\ mod 2 = 1 \to b$\\
+$bin(5)$ \> $= 101,$ \> $d_1 (5)$ \> $= 2\ mod 2 = 0 \to a$\\
+$bin(6)$ \> $= 110,$ \> $d_1 (6)$ \> $= 2\ mod 2 = 0 \to a$\\
+$bin(7)$ \> $= 111,$ \> $d_1 (7)$ \> $= 3\ mod 2 = 1 \to b$\\
+$bin(8)$ \> $= 1000,$ \> $d_1 (8)$ \> $= 1\ mod 2 = 1 \to b$\\
+$bin(9)$ \> $= 1001,$ \> $d_1 (9)$ \> $= 2\ mod 2 = 0 \to a$\\
+$bin(10)$ \> $= 1010,$	\> $d_1 (10)$ \> $= 2\ mod 2 = 0 \to a$\\
+$bin(11)$ \> $= 1011,$ 	\> $d_1 (11)$ \> $= 3\ mod 2 = 1 \to b$\\
+$bin(12)$ \> $= 1100,$ 	\> $d_1 (12)$ \> $= 2\ mod 2 = 0 \to a$
 \end{tabbing}
 
-\noindent t = abbabaabbaaba\\
+{\centering $t = abbabaabbaaba$ \par}
 
-W konsekwencji istnieje skończony automat obliczający wartości $t_n$. Automat ten ma dwa stany końcowe 0 oraz 1. Na początku czyta łańcuch znaków bin(n) od lewej do prawej, zaczynając od n = 0. Ostateczny stan równy jest 0 lub 1 i definiuje czy $t_n$ jest równe a lub b. W skrócie obliczenie jakie wykonuje automat to $d_1$(n) modulo 2.
+W konsekwencji istnieje skończony automat obliczający wartości $t_n$. Automat ten ma dwa stany końcowe $0$ oraz $1$. Na początku czyta łańcuch znaków $bin(n)$ od lewej do prawej, zaczynając od $n = 0$. Ostateczny stan równy jest $0$ lub $1$ i definiuje czy $t_n$ jest równe $a$ lub $b$. W skrócie obliczenie jakie wykonuje automat to $d_1(n)\ modulo\ 2$.
 
 
-\section{Square-free words}
-Łatwo można zauważyc, że jedynymi słowami bez kwadratów w alfabecie A = \{a, b\} są: \emph{a, b, ab, ba, aba, bab}. Istnieje jednak dowolnie długi ciąg znaków wolny od kwadratów dla słów nad alfabetem trzyliterowym. By stworzyć dowolne słowo wolne od kwadratów Thue wymyślił następujący algorytm.\\
-Mając alfabet A = \{a, b, c\} należy zastąpić każde wystąpienie litery \emph{a} przez \emph{abac},  \emph{b} przez \emph{babc} oraz \emph{c} przez \emph{bcac}, jeśli jest poprzedzone przez \emph{a} lub \emph{acbc}, jeśli jest poprzedzone przez \emph{b}. Zaczynając od litery a otrzymujemy nieskończone słowo które nie zawiera kwadratów.\\
+\section{Square-free word}
+Łatwo można zauważyc, że jedynymi słowami bez kwadratów w alfabecie $A = \{a, b\}$ są: $a, b, ab, ba, aba, bab$. Istnieje jednak dowolnie długi ciąg znaków wolny od kwadratów dla słów nad alfabetem trzyliterowym. By stworzyć dowolne słowo wolne od kwadratów Thue wymyślił następujący algorytm.\\
+Mając alfabet $A = \{a, b, c\}$ należy zastąpić każde wystąpienie litery $a$ przez $abac$,  $b$ przez $babc$ oraz $c$ przez $bcac$, jeśli jest poprzedzone przez $a$ lub $acbc$, jeśli jest poprzedzone przez $b$. Zaczynając od litery $a$ otrzymujemy nieskończone słowo które nie zawiera kwadratów.
 
-\emph{abacbabcabacbcacbabcabacbabcacbcabacbabc...}\\
+{\centering $abacbabcabacbcacbabcabacbabcacbcabacbabc...$ \par}
 
 W 1912 roku Axel Thue wymyślił inny sposób na generowanie nieskończonego słowa bez kwadratów na trzech literach z użyciem następującego morfizmu. 
 \begin{itemize}
-\item a -> abcab
-\item b -> acabcb
-\item c -> acbcacb
+\item $a \to abcab$
+\item $b \to acabcb$
+\item $c \to acbcacb$
 \end{itemize}
 
 
-Po raz kolejny zastępujemy każde wystąpienie z naszych liter przez zdefiniowane sekwencje. Jest to dość skomplikowana struktura, zsumowana długość łańcuchów wynosi 18. A Carpi [7] dowiódł, że morfizm na alfabecie składającym się z trzech liter tworzący słowa wolne od kwadratów musi mieć długość równą co najmniej 18.
+Po raz kolejny zastępujemy każde wystąpienie z naszych liter przez zdefiniowane sekwencje. Jest to dość skomplikowana struktura, zsumowana długość łańcuchów wynosi 18. A Carpi [7] dowiódł, że morfizm na alfabecie składającym się z trzech liter tworzący słowa wolne od kwadratów musi mieć długość równą co najmniej $18$.
 
 
 \section{Zasady gry}
@@ -155,33 +176,38 @@ W grze dostępnych jest kilka trybów zarówno dla jednego oraz dwóch graczy ja
 Zasady trybu \textbf{Longest Square-Free word}, dla dwóch graczy są następujące.
 Na początku gry gracze ustalają moc zbioru kolorów, który musi mieć co najmniej 3 elementy oraz otrzymują swoje role, jeden z nich staje się architektem, drugi malarzem. Rola architekta polega na wybieraniu odpowiedniego indeksu w ciągu tworzonym przez graczy, pod którym powstanie nowy element. Malarz natomiast określa kolor wstawianego elementu. Gra kończy się w momencie, gdy w ciągu tworzonym przez graczy pojawia się \textbf{kwadrat}. 
 
-Indeks i  podawany przez architekta nie może być mniejszy od zera oraz większy niż n, gdzie n jest równe liczbie elementów w ciągu.
-Grę rozpoczyna architekt, podany przez niego indeks w pierwszym ruchu musi wynosić 0, ponieważ n = 0. Gracze wykonują swoje ruchy na przemian. Malarz otrzymuje punkt za każdy pomalowany element, który nie tworzy \textbf{kwadratu} wewnątrz ciągu.
+Indeks $i$  podawany przez architekta nie może być mniejszy od zera oraz większy niż $n$, gdzie $n$ jest równe liczbie elementów w ciągu.
+Grę rozpoczyna architekt, podany przez niego indeks w pierwszym ruchu musi wynosić $0$, ponieważ $n = 0$. Gracze wykonują swoje ruchy na przemian. Malarz otrzymuje punkt za każdy pomalowany element, który nie tworzy \textbf{kwadratu} wewnątrz ciągu.
 By wyłonić zwycięzcę potrzebne są dwie rundy. Każdy z graczy musi się sprawdzić się zarówno jako malarz i architekt. Wygrywa osoba, która zdobyła więcej punktów jako malarz.
 
 Tryb ten dostępny jest również dla jednego gracza, rolę przeciwnika otrzymuje wtedy komputer, który działa według algorytmu przewidującego określoną przez poziom trudności liczbę ruchów do przodu. Algorytm może pełnić zarówno rolę budowniczego jak i malarza.
 
-Bliźniaczym trybem gry opierającym się na tych samych zasadach z niewielką różnicą jest \textbf{Longest Overlap-Free word}. 
-Różnica polega na tym, że malarz w tworzonym ciągu musi unikać \textbf{nasunięcia} oraz moc zbioru kolorów musi mieć co najmniej 2 elementy.
+Bliźniaczym trybem gry, opierającym się na tych samych zasadach z niewielką różnicą jest \textbf{Longest Overlap-Free word}. 
+Różnica polega na tym, że malarz w tworzonym ciągu musi unikać \textbf{nasunięcia} oraz moc zbioru kolorów musi mieć co najmniej $2$ elementy.
 
 Podobnie jak w \textbf{Longest Square-Free word} jest możliwość gry przeciwko algorytmowi, który jest w stanie przewidywać określoną ilość ruchów do przodu.
 
-\section{Emacs i~psgml}
+\chapter{Algorytmy obsługujące grę}
+\section{Algorytm wyszukiwania powtórzeń kwadratowych}
 
-Jedynym dostępnym w~chwili
-obecnej, efektywnym, tanim (darmowy) i~dostępnym na wielu
-platformach systemowo-sprzętowych środowisku do tworzenia dokumentów
-strukturalnych jakim jest edytor Emacs\index{edytor!Emacs} z~pakietem
-psgml. Środowisko to wspomaga autora poprzez:
-kolorowanie składni dokumentów SGML i~aplikacji SGML, automatyczne
-uzupełnianie brakujących znaczników, automatyczną kontrolę jakie
-w~danym kontekście można wstawiać znaczniki i~atrybuty, wyświetlanie
-informacje odnośnie możliwych i~domyślnych wartości.
-Wszystkie funkcje są dostępne za pomocą
-odpowiednie skrótów klawiszowych a~także dostępne poprzez wybór
-wskaźnikiem myszy odpowiedniej pozycji z~menu. Pakiet ten umożliwia
-również wywołanie zewnętrznego parsera\index{parser} SGML celem
-weryfikacji poprawności dokumentu.
+\lstset{language=Java}
+
+\begin{lstlisting}[frame=single]
+	private List<Integer> findSquare() {
+		List<Integer> squareSeq = null;
+		int maxSeqSize = sequence.size()/2;
+		int minSeqSize = 1;
+		for(int subSeqSize=minSeqSize; 
+			subSeqSize<=maxSeqSize; 
+			subSeqSize++) {
+			squareSeq = compareSubSeq(subSeqSize);
+			if(squareSeq != null) {
+				return squareSeq;
+			}
+		}
+		return null;
+	}
+\end{lstlisting}
 
 \chapter{Narzędzia i~standardy pokrewne}
 

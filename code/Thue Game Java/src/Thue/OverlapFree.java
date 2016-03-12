@@ -42,7 +42,7 @@ public class OverlapFree extends AbstractFree {
 	private List<Integer> compareSubSequencesOverlap(int subSeqSize) {
 		List<Integer> left = new ArrayList<>();
 		List<Integer> right = new ArrayList<>();
-		int comparesFitInSequence = (sequence.size()-subSeqSize*2) + 2;
+		int comparesFitInSequence = (sequence.size() + 2) - (subSeqSize*2);
 		for(int i=0; i<comparesFitInSequence; i++) {
 			for(int j =0;j<subSeqSize;j++) {
 				left.add(sequence.get(i+j));
