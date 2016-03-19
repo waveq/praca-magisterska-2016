@@ -1,5 +1,7 @@
 package Thue;
 
+import Thue.DataHolder.Subsequence;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -12,17 +14,23 @@ public abstract class AbstractFree {
 	protected List<Integer> numberSet = new ArrayList<>();
 	protected List<Integer> sequence = new ArrayList<>();
 
+	protected int builderIndex;
+
 	private static final String SET_SIZE_MESSAGE = "#> Podaj moc zbioru: ";
 	private static final String AVAILABLE_NUMBERS_MESSAGE = "#> Możesz użyć następujących liczb: ";
 	private static final String GET_INDEX_MESSAGE = "\n#> Podaj indeks: ";
 	private static final String GET_VALUE_MESSAGE = "#> Podaj liczbę: ";
 	private static final String LINE = "## ============== ##";
 	private static final String INVALID_NUMBERS = "#> Wprowadziłeś niepoprawne liczby, popraw się!";
+	private static final String INVALID_INDEX = "#> Wprowadziłeś niepoprawny indeks, popraw się!";
+	private static final String INVALID_NUMBER = "#> Wprowadziłeś niepoprawną liczbę, popraw się!";
 
 	protected static final String FIRST_NUMBER_MESSAGE = "#> Podaj pierwszą liczbę: ";
 	protected static final String SQUARE_FOUND = "\n#> Znaleziono kwadrat: ";
 	protected static final String OVERLAP_FOUND = "\n#> Znaleziono nasunięcie: ";
-	protected static final String LIST_ELEMENT_FORMAT = " | %s |";
+	protected static final String LIST_ELEMENT_FORMAT = " %s: { %s } ";
+	protected static final String COMPUTER_PICKED_COLOR = "#> Komputer wybrał kolor: %s";
+	protected static final String COMPUTER_LOST = "#> Komputer nie był w stanie znaleźć odpowiedniego koloru. Wygrałeś!";
 
 	public AbstractFree() {
 		power = getValueFromUser(SET_SIZE_MESSAGE);
@@ -48,7 +56,20 @@ public abstract class AbstractFree {
 
 	protected void printSequence(List<Integer> sequence) {
 		System.out.println(LINE);
-		sequence.forEach(elem -> System.out.print(String.format(LIST_ELEMENT_FORMAT, elem)));
+		int index =0;
+		for(int i=0;i<sequence.size();i++) {
+			System.out.print(String.format(LIST_ELEMENT_FORMAT, index++, sequence.get(i)));
+		}
+		System.out.print(String.format(LIST_ELEMENT_FORMAT, sequence.size(), " "));
+	}
+
+	protected void printSubsequence(Subsequence subsequence, int moveBy) {
+		int index = subsequence.getBegin();
+		index += moveBy;
+		int subsequenceEnd = subsequence.getBegin() + subsequence.getLength();
+		for(int i=subsequence.getBegin();i<subsequenceEnd;i++) {
+			System.out.print(String.format(LIST_ELEMENT_FORMAT, index++, sequence.get(i)));
+		}
 	}
 
 	protected void addNumberToSequence() throws InputMismatchException {
@@ -67,17 +88,41 @@ public abstract class AbstractFree {
 		}
 	}
 
-	private boolean invalidNumbers(int index, int number) {
-		return number < 0 || index < 0 || index > sequence.size() || number > power-1;
-	}
+	protected void humanBuilderPCPainterGetNumber() {
+		boolean invalidInput = true;
 
-	protected boolean listsAreEqual(List<Integer> left, List<Integer> right) {
-		for(int i =0;i<left.size();i++) {
-			if(left.get(i) != right.get(i)) {
-				return false;
+		while(invalidInput) {
+			int index = getValueFromUser(GET_INDEX_MESSAGE);
+			if(invalidIndex(index)) {
+				System.out.println(INVALID_INDEX);
+				invalidInput = true;
+			} else {
+				builderIndex = index;
+				invalidInput = false;
 			}
 		}
-		return true;
+	}
+
+	protected void PCPickRightColor(int index) {
+
+	}
+
+
+
+	protected void humanPainterPCBuilder() {
+
+	}
+
+	private boolean invalidIndex(int index) {
+		return index < 0 || index > sequence.size();
+	}
+
+	private boolean invalidNumber(int number) {
+		return number < 0 || number > power-1;
+	}
+
+	private boolean invalidNumbers(int index, int number) {
+		return invalidIndex(index) || invalidNumber(number);
 	}
 
 	public abstract void startGame();

@@ -25,7 +25,5 @@ public class Main {
 		if(t != null) {
 			t.startGame();
 		}
-
-		System.out.println("Gra skończona.");
 	}
 }
