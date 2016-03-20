@@ -1,4 +1,4 @@
-package Thue;
+package Thue.Algorithm;
 
 import Thue.DataHolder.Subsequence;
 
@@ -38,8 +38,8 @@ public class GameHandlingAlgorythm {
 		return null;
 	}
 
-	public static List<Integer> findOverlap(List<Integer> sequence) {
-		List<Integer> repeatedSequence = null;
+	public static Subsequence findOverlap(List<Integer> sequence) {
+		Subsequence repeatedSequence = null;
 		int maxSeqSize = (sequence.size()/2)+1;
 		int minSeqSize = 3;
 		for(int subSeqSize=minSeqSize; subSeqSize<=maxSeqSize; subSeqSize++) {
@@ -51,7 +51,7 @@ public class GameHandlingAlgorythm {
 		return null;
 	}
 
-	private static List<Integer> compareSubSequencesOverlap(int subSeqSize, List<Integer> sequence) {
+	private static Subsequence compareSubSequencesOverlap(int subSeqSize, List<Integer> sequence) {
 		List<Integer> left = new ArrayList<>();
 		List<Integer> right = new ArrayList<>();
 		int comparesFitInSequence = (sequence.size() + 2) - (subSeqSize*2);
@@ -61,7 +61,7 @@ public class GameHandlingAlgorythm {
 				right.add(sequence.get(i+j+subSeqSize-1));
 			}
 			if(listsAreEqual(left, right)) {
-				return left;
+				return new Subsequence(left, i, subSeqSize);
 			}
 			left.clear();
 			right.clear();

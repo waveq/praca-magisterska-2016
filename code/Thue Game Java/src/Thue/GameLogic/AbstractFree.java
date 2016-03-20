@@ -1,6 +1,7 @@
-package Thue;
+package Thue.GameLogic;
 
 import Thue.DataHolder.Subsequence;
+import Thue.GameConfig.GameMode;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -31,6 +32,10 @@ public abstract class AbstractFree {
 	protected static final String LIST_ELEMENT_FORMAT = " %s: { %s } ";
 	protected static final String COMPUTER_PICKED_COLOR = "#> Komputer wybrał kolor: %s";
 	protected static final String COMPUTER_LOST = "#> Komputer nie był w stanie znaleźć odpowiedniego koloru. Wygrałeś!";
+	protected static final int HUMAN_HUMAN_GAME_MODE = 1;
+	protected static final int HUMAN_BUILDER_GAME_MODE = 2;
+	protected static final int PC_BUILDER_GAME_MODE = 3;
+	protected static final int PC_PC_GAME_MODE = 4;
 
 	public AbstractFree() {
 		power = getValueFromUser(SET_SIZE_MESSAGE);
@@ -107,8 +112,6 @@ public abstract class AbstractFree {
 
 	}
 
-
-
 	protected void humanPainterPCBuilder() {
 
 	}
@@ -125,5 +128,7 @@ public abstract class AbstractFree {
 		return invalidIndex(index) || invalidNumber(number);
 	}
 
-	public abstract void startGame();
+	protected abstract void startGame(GameMode gameMode);
+
+	protected abstract void gameLoop(GameMode gameMode) throws Exception;
 }
