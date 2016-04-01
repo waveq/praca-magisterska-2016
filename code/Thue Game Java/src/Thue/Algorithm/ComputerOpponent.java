@@ -1,14 +1,25 @@
 package Thue.Algorithm;
 
+import Thue.DataHolder.Subsequence;
+import Thue.GameLogic.AbstractFree;
+import Thue.GameLogic.OverlapFree;
+import Thue.GameLogic.SquareFree;
+
 import java.util.List;
 
 public class ComputerOpponent {
 
-	public static int findRightColorSquare(List<Integer> sequence, int index, int power) {
+	private AbstractFree gameTypeInstance;
+
+	public ComputerOpponent(AbstractFree gameTypeInstance) {
+		this.gameTypeInstance = gameTypeInstance;
+	}
+
+	public int findRightColorGeneral(List<Integer> sequence, int index, int power) {
 		int colorIndex = -1;
 		for(int i=0;i<power; i++) {
 			sequence.add(index, i);
-			if(GameHandlingAlgorythm.findSquare(sequence) == null) {
+			if(pickProperFind(sequence) == null) {
 				colorIndex = i;
 				sequence.remove(index);
 				break;
@@ -20,19 +31,14 @@ public class ComputerOpponent {
 		return colorIndex;
 	}
 
-	public static int findRightColorOverlap(List<Integer> sequence, int index, int power) {
-		int colorIndex = -1;
-		for(int i=0;i<power; i++) {
-			sequence.add(index, i);
-			if(GameHandlingAlgorythm.findOverlap(sequence) == null) {
-				colorIndex = i;
-				sequence.remove(index);
-				break;
-			} else {
-				sequence.remove(index);
-			}
+	private Subsequence pickProperFind(List<Integer> sequence) {
+		if(gameTypeInstance instanceof OverlapFree) {
+			return GameHandlingAlgorythm.findOverlap(sequence);
+		} else if(gameTypeInstance instanceof SquareFree) {
+			return GameHandlingAlgorythm.findSquare(sequence);
 		}
 
-		return colorIndex;
+		System.out.println("### ERROR AT PICK PROPER FIND ###");
+		return null;
 	}
 }

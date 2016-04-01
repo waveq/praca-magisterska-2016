@@ -9,6 +9,7 @@ public class SquareFree extends AbstractFree {
 
 	public SquareFree() {
 		super();
+		computerOpponent = new ComputerOpponent(this);
 	}
 
 	public void startGame(GameMode gameMode) {
@@ -38,31 +39,5 @@ public class SquareFree extends AbstractFree {
 		}
 	}
 
-	private void handleGameModes(GameMode gameMode) throws Exception {
-		if(gameMode == GameMode.humanHuman) {
-			addNumberToSequence();
-		} else if(gameMode == GameMode.humanBuilder) {
-			builderMode();
-		} else if(gameMode == GameMode.pcBuilder) {
-			System.out.println("NOT SUPPORTED");
-			throw new Exception();
-		} else if(gameMode == GameMode.pcPc) {
-			System.out.println("NOT SUPPORTED");
-			throw new Exception();
-		} else {
-			throw new Exception();
-		}
-	}
 
-	private void builderMode() {
-		humanBuilderPCPainterGetNumber();
-		int colorIndex = ComputerOpponent.findRightColorSquare(sequence, builderIndex, power);
-		if(colorIndex > -1) {
-			System.out.println(String.format(COMPUTER_PICKED_COLOR, colorIndex));
-			sequence.add(builderIndex, colorIndex);
-		} else {
-			System.out.println(COMPUTER_LOST);
-			sequence.add(builderIndex, 0);
-		}
-	}
 }
