@@ -9,9 +9,9 @@ public class OverlapFree extends AbstractFree {
 
 
 
-	public OverlapFree() {
+	public OverlapFree(int nestingLevel) {
 		super();
-		computerOpponent = new ComputerOpponent(this);
+		computerOpponent = new ComputerOpponent(this, power, nestingLevel);
 	}
 
 	public void startGame(GameMode gameMode) {

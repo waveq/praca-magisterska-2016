@@ -7,9 +7,9 @@ import Thue.Algorithm.GameHandlingAlgorythm;
 
 public class SquareFree extends AbstractFree {
 
-	public SquareFree() {
+	public SquareFree(int nestingLevel) {
 		super();
-		computerOpponent = new ComputerOpponent(this);
+		computerOpponent = new ComputerOpponent(this, power, nestingLevel);
 	}
 
 	public void startGame(GameMode gameMode) {

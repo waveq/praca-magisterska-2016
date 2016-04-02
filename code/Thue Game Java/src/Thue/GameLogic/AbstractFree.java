@@ -124,7 +124,7 @@ public abstract class AbstractFree {
 
 	protected void builderMode() {
 		humanBuilderPCPainterGetNumber();
-		int colorIndex = computerOpponent.findRightColorPredicting(sequence, builderIndex, power);
+		int colorIndex = computerOpponent.findRightColorPredicting(sequence, builderIndex);
 		if(colorIndex > -1) {
 			System.out.println(String.format(COMPUTER_PICKED_COLOR, colorIndex));
 			sequence.add(builderIndex, colorIndex);

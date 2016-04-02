@@ -12,12 +12,16 @@ import java.util.List;
 public class ComputerOpponent {
 
 	private AbstractFree gameTypeInstance;
+	private int power;
+	private int nestingLevel;
 
-	public ComputerOpponent(AbstractFree gameTypeInstance) {
+	public ComputerOpponent(AbstractFree gameTypeInstance, int power, int nestingLevel) {
 		this.gameTypeInstance = gameTypeInstance;
+		this.power = power;
+		this.nestingLevel = nestingLevel;
 	}
 
-	public int findRightColorGeneral(List<Integer> sequence, int index, int power, int ignore) {
+	public int findRightColorGeneral(List<Integer> sequence, int index, int ignore) {
 		int colorIndex = -1;
 		for(int i=0;i<power; i++) {
 			if(i <= ignore) {
@@ -36,7 +40,7 @@ public class ComputerOpponent {
 		return colorIndex;
 	}
 
-	public int findRightColorGreedy(List<Integer> sequence, int index, int power) {
+	public int findRightColorGreedy(List<Integer> sequence, int index) {
 		int colorIndex = -1;
 		for(int i=0;i<power; i++) {
 			sequence.add(index, i);
@@ -52,43 +56,58 @@ public class ComputerOpponent {
 		return colorIndex;
 	}
 
+	public int findRightColorPredicting(List<Integer> sequence, int index) {
+		if(nestingLevel == 0) {
+			return findRightColorGreedy(sequence, index);
+		}
 
-	public int findRightColorPredicting(List<Integer> sequence, int index, int power) {
+		List<Integer> predictList = initPredictList(power);
+		List<Integer> colorList = getFitableColorList(sequence, index);
+
+		for(int color: colorList) {
+			sequence.add(index, color);
+			simulation(sequence, color, predictList, nestingLevel);
+			sequence.remove(index);
+
+		}
+		return predictList.indexOf(Collections.max(predictList));
+	}
+
+	private void simulation(List<Integer> sequence, int colorIndexInPredictList, List<Integer> predictList, int invokes) {
+		invokes--;
+		for(int j=0;j<sequence.size()+1;j++) {
+			List<Integer> colorList = getFitableColorList(sequence, j);
+			updatePredictList(predictList, colorIndexInPredictList, colorList.size());
+			for(int color: colorList) {
+				sequence.add(j, color);
+				if(invokes > 0) {
+					simulation(sequence, colorIndexInPredictList, predictList, invokes);
+				}
+				sequence.remove(j);
+			}
+		}
+	}
+
+	private List<Integer> getFitableColorList(List<Integer> sequence, int index) {
 		int colorIndex = -1;
 		int colorFromPreviousLoop;
+		List<Integer> fitableColorsList = new ArrayList<>();
 		List<Integer> predictList = initPredictList(power);
 
 		for(int k = 0;k<power;k++) {
 			colorFromPreviousLoop = colorIndex;
-			colorIndex = findRightColorGeneral(sequence, index, power, colorIndex);
-			if(colorIndex == -1) {
-				colorIndex = colorFromPreviousLoop+1;
+			colorIndex = findRightColorGeneral(sequence, index, colorIndex);
+			if (colorIndex == -1) {
+				colorIndex = colorFromPreviousLoop + 1;
 				continue;
 			}
-			sequence.add(index, colorIndex);
-			for (int currentIndex = 0; currentIndex < sequence.size()+1; currentIndex++) {
-				int colorsFitting = howManyColorsFit(sequence, currentIndex, power);
-				predictList.set(colorIndex, predictList.get(colorIndex)+colorsFitting);
-			}
-			sequence.remove(index);
+			fitableColorsList.add(colorIndex);
 		}
-
-		return predictList.indexOf(Collections.max(predictList));
+		return fitableColorsList;
 	}
 
-	public int howManyColorsFit(List<Integer> sequence, int index, int power) {
-		int colorsFiting = 0;
-		for(int i=0;i<power; i++) {
-			sequence.add(index, i);
-			if(pickProperFind(sequence) == null) {
-				colorsFiting++;
-				sequence.remove(index);
-			} else {
-				sequence.remove(index);
-			}
-		}
-
-		return colorsFiting;
+	private void updatePredictList(List<Integer> predictList, int colorIndex, int colorsFitting) {
+		predictList.set(colorIndex, predictList.get(colorIndex)+colorsFitting);
 	}
 
 	private List<Integer> initPredictList(int size) {

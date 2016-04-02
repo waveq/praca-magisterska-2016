@@ -7,7 +7,7 @@ public class ConfigRetriever {
 
 	public static final String GAME_MODE_PROPERTY = "gameMode";
 	public static final String GAME_TYPE_PROPERTY = "gameType";
-	public static final String GAME_DIFFICULTY_PROPERTY = "gameDifficulty";
+	public static final String GET_NESTING_LEVEL = "nestingLevel";
 
 	private static final String PROPERTIES_FILE = "src/Thue/GameConfig/config.properties";
 	private static final String ERROR_MESSAGE = "Probably there is no such property %s";
@@ -24,8 +24,8 @@ public class ConfigRetriever {
 		}
 	}
 
-	public static int getGameDifficulty() {
-		return Integer.parseInt(getProperty(GAME_DIFFICULTY_PROPERTY));
+	public static int getNestingLevel() {
+		return Integer.parseInt(getProperty(GET_NESTING_LEVEL));
 	}
 
 	public static String getGameType() {
