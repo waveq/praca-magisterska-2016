@@ -30,12 +30,12 @@ public class SquareFree extends AbstractFree {
 			printSequence(sequence);
 			Subsequence repeatedSequence = GameHandlingAlgorythm.findSquare(sequence);
 			if(repeatedSequence != null) {
-				System.out.println(SQUARE_FOUND);
-				System.out.println();
+				printlnAndLog(SQUARE_FOUND);
+				printlnAndLog(" ");
 				printSubsequence(repeatedSequence, 0);
-				System.out.print(" <-> ");
+				printAndLog(" <-> ");
 				printSubsequence(repeatedSequence, repeatedSequence.getLength());
-				System.out.println(String.format(POINTS_MESSAGE, sequence.size()));
+				printlnAndLog(String.format(POINTS_MESSAGE, sequence.size()));
 				finished = true;
 			}
 		}

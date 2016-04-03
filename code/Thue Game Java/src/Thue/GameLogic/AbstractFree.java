@@ -2,7 +2,10 @@ package Thue.GameLogic;
 
 import Thue.Algorithm.ComputerOpponent;
 import Thue.DataHolder.Subsequence;
+import Thue.GameConfig.ConfigRetriever;
 import Thue.GameConfig.GameMode;
+import Thue.GameConfig.NestingLevels;
+import Thue.GameConfig.ResultWriter;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -20,13 +23,15 @@ public abstract class AbstractFree {
 	protected ComputerOpponent computerOpponent;
 
 	private static final String SET_SIZE_MESSAGE = "#> Podaj moc zbioru: ";
-	private static final String AVAILABLE_NUMBERS_MESSAGE = "#> Możesz użyć następujących liczb: ";
+	private static final String AVAILABLE_NUMBERS_MESSAGE = "#> W grze dostępne są następujące liczby: ";
 	private static final String GET_INDEX_MESSAGE = "\n#> Podaj indeks: ";
 	private static final String GET_VALUE_MESSAGE = "#> Podaj liczbę: ";
 	private static final String LINE = "## ============== ##";
 	private static final String INVALID_NUMBERS = "#> Wprowadziłeś niepoprawne liczby, popraw się!";
 	private static final String INVALID_INDEX = "#> Wprowadziłeś niepoprawny indeks, popraw się!";
 	private static final String INVALID_NUMBER = "#> Wprowadziłeś niepoprawną liczbę, popraw się!";
+	private static final String BUILDER_LEVEL = "#> Poziom budowniczego ustawiono na: %s";
+	private static final String PAINTER_LEVEL = "#> Poziom malarza ustawiono na: %s";
 
 	protected static final String FIRST_NUMBER_MESSAGE = "#> Podaj pierwszą liczbę: ";
 	protected static final String SQUARE_FOUND = "\n#> Znaleziono kwadrat: ";
@@ -38,9 +43,17 @@ public abstract class AbstractFree {
 	protected static final String POINTS_MESSAGE = "\n#> Rozrgrywka trwała %s ruchów.";
 
 	public AbstractFree() {
-		power = getValueFromUser(SET_SIZE_MESSAGE);
+		power = ConfigRetriever.getSetPower();
+		writeConfig();
 		populateNumberSet(power);
 		printNumberSet();
+
+	}
+
+	private void writeConfig() {
+		NestingLevels levels = ConfigRetriever.getNestingLevels();
+		printlnAndLog(String.format(BUILDER_LEVEL, levels.getBuilderNestingLevel()));
+		printlnAndLog(String.format(PAINTER_LEVEL, levels.getPainterNestingLevel()));
 	}
 
 	protected int getValueFromUser(String message) {
@@ -49,8 +62,8 @@ public abstract class AbstractFree {
 	}
 
 	protected void printNumberSet() {
-		System.out.println(AVAILABLE_NUMBERS_MESSAGE);
-		numberSet.forEach(elem -> System.out.println(elem));
+		printlnAndLog(AVAILABLE_NUMBERS_MESSAGE);
+		numberSet.forEach(elem -> printlnAndLog(elem.toString()));
 	}
 
 	private void populateNumberSet(int power) {
@@ -60,12 +73,12 @@ public abstract class AbstractFree {
 	}
 
 	protected void printSequence(List<Integer> sequence) {
-		System.out.println(LINE);
+		printlnAndLog(LINE);
 		int index =0;
 		for(int i=0;i<sequence.size();i++) {
-			System.out.print(String.format(LIST_ELEMENT_FORMAT, index++, sequence.get(i)));
+			printAndLog(String.format(LIST_ELEMENT_FORMAT, index++, sequence.get(i)));
 		}
-		System.out.print(String.format(LIST_ELEMENT_FORMAT, sequence.size(), " "));
+		printAndLog(String.format(LIST_ELEMENT_FORMAT, sequence.size(), " "));
 	}
 
 	protected void printSubsequence(Subsequence subsequence, int moveBy) {
@@ -73,7 +86,7 @@ public abstract class AbstractFree {
 		index += moveBy;
 		int subsequenceEnd = subsequence.getBegin() + subsequence.getLength();
 		for(int i=subsequence.getBegin();i<subsequenceEnd;i++) {
-			System.out.print(String.format(LIST_ELEMENT_FORMAT, index++, sequence.get(i)));
+			printAndLog(String.format(LIST_ELEMENT_FORMAT, index++, sequence.get(i)));
 		}
 	}
 
@@ -141,7 +154,7 @@ public abstract class AbstractFree {
 		humanBuilderPCPainterGetNumber();
 		int color = computerOpponent.findRightColorPredicting(sequence, builderIndex);
 		if(color > -1) {
-			System.out.println(String.format(COMPUTER_PICKED_COLOR, color));
+			printlnAndLog(String.format(COMPUTER_PICKED_COLOR, color));
 			sequence.add(builderIndex, color);
 		} else {
 			System.out.println(COMPUTER_LOST);
@@ -149,20 +162,28 @@ public abstract class AbstractFree {
 		}
 	}
 
+	protected void printlnAndLog(String text) {
+		System.out.println(text);
+		ResultWriter.writelnToFile(text);
+	}
 
+	protected void printAndLog(String text) {
+		System.out.print(text);
+		ResultWriter.writeToFile(text);
+	}
 
 	protected void pcBuilder() {
 		int index = computerOpponent.findRightIndex(sequence);
-		System.out.println(String.format(COMPUTER_PICKED_INDEX, index));
+		printlnAndLog(String.format(COMPUTER_PICKED_INDEX, index));
 		int number = humanPainterPcBuilder();
 		sequence.add(index, number);
 	}
 
 	protected void pcPc() {
 		builderIndex = computerOpponent.findRightIndex(sequence);
-		System.out.println(String.format(COMPUTER_PICKED_INDEX, builderIndex));
+		printlnAndLog(String.format(String.format(COMPUTER_PICKED_INDEX, builderIndex)));
 		int color = computerOpponent.findRightColorPredicting(sequence, builderIndex);
-		System.out.println(String.format(COMPUTER_PICKED_COLOR, color));
+		printlnAndLog(String.format(COMPUTER_PICKED_COLOR, color));
 
 		sequence.add(builderIndex, color);
 

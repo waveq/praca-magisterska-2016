@@ -1,5 +1,6 @@
 package Thue.Init;
 
+import Thue.GameConfig.ResultWriter;
 import Thue.GameLogic.AbstractFree;
 import Thue.GameLogic.OverlapFree;
 import Thue.GameLogic.SquareFree;
@@ -15,10 +16,11 @@ public class Main {
 
 	private static void startGame() {
 		AbstractFree t = getGameType();
-
 		if(t != null) {
 			t.startGame(ConfigRetriever.getGameMode());
 		}
+
+		ResultWriter.closeStream();
 	}
 
 	private static AbstractFree getGameType() {
