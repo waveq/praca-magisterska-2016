@@ -24,10 +24,10 @@ public class Main {
 	private static AbstractFree getGameType() {
 		String gameType = ConfigRetriever.getGameType();
 		if(gameType.equals(SQUARE)) {
-			return new SquareFree(ConfigRetriever.getNestingLevel());
+			return new SquareFree(ConfigRetriever.getNestingLevels());
 		}
 		if(gameType.equals(OVERLAP)) {
-			return new OverlapFree(ConfigRetriever.getNestingLevel());
+			return new OverlapFree(ConfigRetriever.getNestingLevels());
 		}
 
 		return null;

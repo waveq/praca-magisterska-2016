@@ -4,12 +4,13 @@ import Thue.Algorithm.ComputerOpponent;
 import Thue.DataHolder.Subsequence;
 import Thue.GameConfig.GameMode;
 import Thue.Algorithm.GameHandlingAlgorythm;
+import Thue.GameConfig.NestingLevels;
 
 public class SquareFree extends AbstractFree {
 
-	public SquareFree(int nestingLevel) {
+	public SquareFree(NestingLevels nestingLevels) {
 		super();
-		computerOpponent = new ComputerOpponent(this, power, nestingLevel);
+		computerOpponent = new ComputerOpponent(this, power, nestingLevels);
 	}
 
 	public void startGame(GameMode gameMode) {
@@ -34,6 +35,7 @@ public class SquareFree extends AbstractFree {
 				printSubsequence(repeatedSequence, 0);
 				System.out.print(" <-> ");
 				printSubsequence(repeatedSequence, repeatedSequence.getLength());
+				System.out.println(String.format(POINTS_MESSAGE, sequence.size()));
 				finished = true;
 			}
 		}

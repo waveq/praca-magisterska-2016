@@ -1,6 +1,7 @@
 package Thue.Algorithm;
 
 import Thue.DataHolder.Subsequence;
+import Thue.GameConfig.NestingLevels;
 import Thue.GameLogic.AbstractFree;
 import Thue.GameLogic.OverlapFree;
 import Thue.GameLogic.SquareFree;
@@ -13,15 +14,17 @@ public class ComputerOpponent {
 
 	private AbstractFree gameTypeInstance;
 	private int power;
-	private int nestingLevel;
+	private int builderNestingLevel;
+	private int painterNestingLevel;
 
-	public ComputerOpponent(AbstractFree gameTypeInstance, int power, int nestingLevel) {
+	public ComputerOpponent(AbstractFree gameTypeInstance, int power, NestingLevels nestingLevels) {
 		this.gameTypeInstance = gameTypeInstance;
 		this.power = power;
-		this.nestingLevel = nestingLevel;
+		this.builderNestingLevel = nestingLevels.getBuilderNestingLevel();
+		this.painterNestingLevel = nestingLevels.getPainterNestingLevel();
 	}
 
-	public int findRightColorGeneral(List<Integer> sequence, int index, int ignore) {
+	private int findRightColorGeneral(List<Integer> sequence, int index, int ignore) {
 		int colorIndex = -1;
 		for(int i=0;i<power; i++) {
 			if(i <= ignore) {
@@ -40,24 +43,22 @@ public class ComputerOpponent {
 		return colorIndex;
 	}
 
-	public int findRightColorGreedy(List<Integer> sequence, int index) {
-		int colorIndex = -1;
+	private int findRightColorGreedy(List<Integer> sequence, int index) {
 		for(int i=0;i<power; i++) {
 			sequence.add(index, i);
 			if(pickProperFind(sequence) == null) {
-				colorIndex = i;
 				sequence.remove(index);
-				break;
+				return i;
 			} else {
 				sequence.remove(index);
 			}
 		}
 
-		return colorIndex;
+		return 0;
 	}
 
 	public int findRightColorPredicting(List<Integer> sequence, int index) {
-		if(nestingLevel == 0) {
+		if(builderNestingLevel == 0) {
 			return findRightColorGreedy(sequence, index);
 		}
 
@@ -66,22 +67,53 @@ public class ComputerOpponent {
 
 		for(int color: colorList) {
 			sequence.add(index, color);
-			simulation(sequence, color, predictList, nestingLevel);
+			simulation(sequence, color, predictList, builderNestingLevel);
 			sequence.remove(index);
 
 		}
 		return predictList.indexOf(Collections.max(predictList));
 	}
 
-	private void simulation(List<Integer> sequence, int colorIndexInPredictList, List<Integer> predictList, int invokes) {
+	private int findRightIndexGreedy(List<Integer> sequence) {
+		int winner = -1;
+		int smallestColorSize = power;
+
+		for (int i =0;i<sequence.size()+1;i++) {
+			List<Integer> colors = getFitableColorList(sequence, i);
+			if (colors.size() <= smallestColorSize) {
+				smallestColorSize = colors.size();
+				winner = i;
+			}
+		}
+		return winner;
+	}
+
+	public int findRightIndex(List<Integer> sequence) {
+		if(painterNestingLevel == 0) {
+			return findRightIndexGreedy(sequence);
+		}
+		List<Integer> predictList = initPredictList(sequence.size()+1);
+
+		for (int i =0;i<sequence.size()+1;i++) {
+			List<Integer> colors = getFitableColorList(sequence, i);
+			for (int color : colors) {
+				sequence.add(i, color);
+				simulation(sequence, i, predictList, painterNestingLevel);
+				sequence.remove(i);
+			}
+		}
+		return predictList.indexOf(Collections.min(predictList));
+	}
+
+	private void simulation(List<Integer> sequence, int indexInPreditctList, List<Integer> predictList, int invokes) {
 		invokes--;
 		for(int j=0;j<sequence.size()+1;j++) {
 			List<Integer> colorList = getFitableColorList(sequence, j);
-			updatePredictList(predictList, colorIndexInPredictList, colorList.size());
+			updatePredictList(predictList, indexInPreditctList, colorList.size());
 			for(int color: colorList) {
 				sequence.add(j, color);
 				if(invokes > 0) {
-					simulation(sequence, colorIndexInPredictList, predictList, invokes);
+					simulation(sequence, indexInPreditctList, predictList, invokes);
 				}
 				sequence.remove(j);
 			}
@@ -92,7 +124,6 @@ public class ComputerOpponent {
 		int colorIndex = -1;
 		int colorFromPreviousLoop;
 		List<Integer> fitableColorsList = new ArrayList<>();
-		List<Integer> predictList = initPredictList(power);
 
 		for(int k = 0;k<power;k++) {
 			colorFromPreviousLoop = colorIndex;

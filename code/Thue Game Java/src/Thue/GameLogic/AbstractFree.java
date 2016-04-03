@@ -33,7 +33,9 @@ public abstract class AbstractFree {
 	protected static final String OVERLAP_FOUND = "\n#> Znaleziono nasunięcie: ";
 	protected static final String LIST_ELEMENT_FORMAT = " %s: { %s } ";
 	protected static final String COMPUTER_PICKED_COLOR = "#> Komputer wybrał kolor: %s";
+	protected static final String COMPUTER_PICKED_INDEX = "\n#> Komputer wybrał indeks: %s";
 	protected static final String COMPUTER_LOST = "#> Komputer nie był w stanie znaleźć odpowiedniego koloru. Wygrałeś!";
+	protected static final String POINTS_MESSAGE = "\n#> Rozrgrywka trwała %s ruchów.";
 
 	public AbstractFree() {
 		power = getValueFromUser(SET_SIZE_MESSAGE);
@@ -106,39 +108,67 @@ public abstract class AbstractFree {
 		}
 	}
 
+	protected int humanPainterPcBuilder() {
+		boolean invalidInput = true;
+
+		while(invalidInput) {
+			int number = getValueFromUser(GET_VALUE_MESSAGE);
+			if(invalidNumber(number)) {
+				System.out.println(INVALID_NUMBERS);
+				invalidInput = true;
+			} else {
+				return number;
+			}
+		}
+		return -1;
+	}
+
 	protected void handleGameModes(GameMode gameMode) throws Exception {
 		if(gameMode == GameMode.humanHuman) {
 			addNumberToSequence();
 		} else if(gameMode == GameMode.humanBuilder) {
-			builderMode();
+			humanBuilder();
 		} else if(gameMode == GameMode.pcBuilder) {
-			System.out.println("NOT SUPPORTED");
-			throw new Exception();
+			pcBuilder();
 		} else if(gameMode == GameMode.pcPc) {
-			System.out.println("NOT SUPPORTED");
-			throw new Exception();
+			pcPc();
 		} else {
 			throw new Exception();
 		}
 	}
 
-	protected void builderMode() {
+	protected void humanBuilder() {
 		humanBuilderPCPainterGetNumber();
-		int colorIndex = computerOpponent.findRightColorPredicting(sequence, builderIndex);
-		if(colorIndex > -1) {
-			System.out.println(String.format(COMPUTER_PICKED_COLOR, colorIndex));
-			sequence.add(builderIndex, colorIndex);
+		int color = computerOpponent.findRightColorPredicting(sequence, builderIndex);
+		if(color > -1) {
+			System.out.println(String.format(COMPUTER_PICKED_COLOR, color));
+			sequence.add(builderIndex, color);
 		} else {
 			System.out.println(COMPUTER_LOST);
 			sequence.add(builderIndex, 0);
 		}
 	}
 
-	protected void PCPickRightColor(int index) {
+
+
+	protected void pcBuilder() {
+		int index = computerOpponent.findRightIndex(sequence);
+		System.out.println(String.format(COMPUTER_PICKED_INDEX, index));
+		int number = humanPainterPcBuilder();
+		sequence.add(index, number);
 	}
 
-	protected void humanPainterPCBuilder() {
+	protected void pcPc() {
+		builderIndex = computerOpponent.findRightIndex(sequence);
+		System.out.println(String.format(COMPUTER_PICKED_INDEX, builderIndex));
+		int color = computerOpponent.findRightColorPredicting(sequence, builderIndex);
+		System.out.println(String.format(COMPUTER_PICKED_COLOR, color));
+
+		sequence.add(builderIndex, color);
+
 	}
+
+
 
 	private boolean invalidIndex(int index) {
 		return index < 0 || index > sequence.size();

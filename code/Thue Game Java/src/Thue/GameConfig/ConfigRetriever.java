@@ -7,7 +7,8 @@ public class ConfigRetriever {
 
 	public static final String GAME_MODE_PROPERTY = "gameMode";
 	public static final String GAME_TYPE_PROPERTY = "gameType";
-	public static final String GET_NESTING_LEVEL = "nestingLevel";
+	public static final String GET_BUILDER_NESTING_LEVEL = "builderNestingLevel";
+	public static final String GET_PAINTER_NESTING_LEVEL = "painterNestingLevel";
 
 	private static final String PROPERTIES_FILE = "src/Thue/GameConfig/config.properties";
 	private static final String ERROR_MESSAGE = "Probably there is no such property %s";
@@ -24,8 +25,16 @@ public class ConfigRetriever {
 		}
 	}
 
-	public static int getNestingLevel() {
-		return Integer.parseInt(getProperty(GET_NESTING_LEVEL));
+	public static int getBuilderNestingLevel() {
+		return Integer.parseInt(getProperty(GET_BUILDER_NESTING_LEVEL));
+	}
+
+	public static int getPainterNestingLevel() {
+		return Integer.parseInt(getProperty(GET_PAINTER_NESTING_LEVEL));
+	}
+
+	public static NestingLevels getNestingLevels() {
+		return new NestingLevels(getBuilderNestingLevel(), getPainterNestingLevel());
 	}
 
 	public static String getGameType() {

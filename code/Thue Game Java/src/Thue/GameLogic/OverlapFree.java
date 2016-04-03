@@ -4,14 +4,15 @@ import Thue.Algorithm.ComputerOpponent;
 import Thue.DataHolder.Subsequence;
 import Thue.GameConfig.GameMode;
 import Thue.Algorithm.GameHandlingAlgorythm;
+import Thue.GameConfig.NestingLevels;
 
 public class OverlapFree extends AbstractFree {
 
 
 
-	public OverlapFree(int nestingLevel) {
+	public OverlapFree(NestingLevels nestingLevels) {
 		super();
-		computerOpponent = new ComputerOpponent(this, power, nestingLevel);
+		computerOpponent = new ComputerOpponent(this, power, nestingLevels);
 	}
 
 	public void startGame(GameMode gameMode) {
@@ -35,7 +36,8 @@ public class OverlapFree extends AbstractFree {
 				System.out.println();
 				printSubsequence(repeatedSequence, 0);
 				System.out.print(" <-> ");
-				printSubsequence(repeatedSequence, repeatedSequence.getLength()-1);
+				printSubsequence(repeatedSequence, repeatedSequence.getLength() - 1);
+				System.out.println(String.format(POINTS_MESSAGE, sequence.size()));
 				finished = true;
 			}
 		}
