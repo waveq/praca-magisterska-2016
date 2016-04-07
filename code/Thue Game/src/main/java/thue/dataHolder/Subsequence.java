@@ -1,4 +1,4 @@
-package Thue.DataHolder;
+package thue.dataHolder;
 
 import java.util.List;
 

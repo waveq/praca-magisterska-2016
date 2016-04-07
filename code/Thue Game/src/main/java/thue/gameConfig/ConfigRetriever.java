@@ -1,4 +1,4 @@
-package Thue.GameConfig;
+package thue.gameConfig;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -12,7 +12,7 @@ public class ConfigRetriever {
 	public static final String BUILDER_NESTING_LEVEL = "builderNestingLevel";
 	public static final String PAINTER_NESTING_LEVEL = "painterNestingLevel";
 
-	private static final String PROPERTIES_FILE = "src/Thue/GameConfig/config.properties";
+	private static final String PROPERTIES_FILE = "src/main/java/Thue/GameConfig/config.properties";
 	private static final String ERROR_MESSAGE = "Probably there is no such property %s";
 
 	private static String getProperty(String propertyKey) {

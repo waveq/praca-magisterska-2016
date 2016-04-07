@@ -1,10 +1,10 @@
-package Thue.Init;
+package thue.init;
 
-import Thue.GameConfig.ResultWriter;
-import Thue.GameLogic.AbstractFree;
-import Thue.GameLogic.OverlapFree;
-import Thue.GameLogic.SquareFree;
-import Thue.GameConfig.ConfigRetriever;
+import thue.gameConfig.ConfigRetriever;
+import thue.gameConfig.ResultWriter;
+import thue.gameLogic.AbstractFree;
+import thue.gameLogic.OverlapFree;
+import thue.gameLogic.SquareFree;
 
 public class Main {
 	private static final String SQUARE = "Square";

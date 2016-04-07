@@ -1,4 +1,4 @@
-package Thue.GameConfig;
+package thue.gameConfig;
 
 public class NestingLevels {
 

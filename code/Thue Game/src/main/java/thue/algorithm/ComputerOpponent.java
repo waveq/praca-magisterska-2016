@@ -1,10 +1,10 @@
-package Thue.Algorithm;
+package thue.algorithm;
 
-import Thue.DataHolder.Subsequence;
-import Thue.GameConfig.NestingLevels;
-import Thue.GameLogic.AbstractFree;
-import Thue.GameLogic.OverlapFree;
-import Thue.GameLogic.SquareFree;
+import thue.dataHolder.Subsequence;
+import thue.gameConfig.NestingLevels;
+import thue.gameLogic.AbstractFree;
+import thue.gameLogic.OverlapFree;
+import thue.gameLogic.SquareFree;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,6 +1,6 @@
-package Thue.Algorithm;
+package thue.algorithm;
 
-import Thue.DataHolder.Subsequence;
+import thue.dataHolder.Subsequence;
 
 import java.util.ArrayList;
 import java.util.List;

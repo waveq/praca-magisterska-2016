@@ -1,6 +1,9 @@
-package Thue.GameConfig;
+package thue.gameConfig;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -8,7 +11,7 @@ public class ResultWriter {
 
 	private static final String OUTPUT_PATH = "output/";
 	private static final String UTF8 = "UTF-8";
-	private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm";
+	private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 	private static int setPower = 0;
 	private static String gameMode = "";
 	private static String gameType = "";
@@ -30,15 +33,6 @@ public class ResultWriter {
 		try {
 			initWriter();
 			writeinOneLine(writer, text);
-		} catch (Exception e) {
-			System.out.println("Something went wrong during writing logs to file.");
-		}
-	}
-
-	public static void writeEmptyLine() {
-		try {
-			initWriter();
-			writeEmptyLine(writer);
 		} catch (Exception e) {
 			System.out.println("Something went wrong during writing logs to file.");
 		}

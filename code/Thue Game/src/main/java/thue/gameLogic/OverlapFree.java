@@ -1,10 +1,10 @@
-package Thue.GameLogic;
+package thue.gameLogic;
 
-import Thue.Algorithm.ComputerOpponent;
-import Thue.DataHolder.Subsequence;
-import Thue.GameConfig.GameMode;
-import Thue.Algorithm.GameHandlingAlgorythm;
-import Thue.GameConfig.NestingLevels;
+import thue.algorithm.ComputerOpponent;
+import thue.algorithm.GameHandlingAlgorythm;
+import thue.dataHolder.Subsequence;
+import thue.gameConfig.GameMode;
+import thue.gameConfig.NestingLevels;
 
 public class OverlapFree extends AbstractFree {
 

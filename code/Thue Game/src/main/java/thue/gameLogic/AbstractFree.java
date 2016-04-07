@@ -1,11 +1,11 @@
-package Thue.GameLogic;
+package thue.gameLogic;
 
-import Thue.Algorithm.ComputerOpponent;
-import Thue.DataHolder.Subsequence;
-import Thue.GameConfig.ConfigRetriever;
-import Thue.GameConfig.GameMode;
-import Thue.GameConfig.NestingLevels;
-import Thue.GameConfig.ResultWriter;
+import thue.algorithm.ComputerOpponent;
+import thue.dataHolder.Subsequence;
+import thue.gameConfig.ConfigRetriever;
+import thue.gameConfig.GameMode;
+import thue.gameConfig.NestingLevels;
+import thue.gameConfig.ResultWriter;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
