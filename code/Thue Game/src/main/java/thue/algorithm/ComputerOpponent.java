@@ -6,9 +6,7 @@ import thue.gameLogic.AbstractFree;
 import thue.gameLogic.OverlapFree;
 import thue.gameLogic.SquareFree;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class ComputerOpponent {
 
@@ -16,6 +14,8 @@ public class ComputerOpponent {
 	private int power;
 	private int builderNestingLevel;
 	private int painterNestingLevel;
+
+	private HashMap<String, Long> timeMeasures = new HashMap<>();
 
 	public ComputerOpponent(AbstractFree gameTypeInstance, int power, NestingLevels nestingLevels) {
 		this.gameTypeInstance = gameTypeInstance;
@@ -158,5 +158,23 @@ public class ComputerOpponent {
 
 		System.out.println("### ERROR AT PICK PROPER FIND ###");
 		return null;
+	}
+
+	public Long getTime(String measureName) {
+		return System.nanoTime() - timeMeasures.get(measureName);
+	}
+
+	public void startTime(String measureName) {
+		timeMeasures.put(measureName, System.nanoTime());
+	}
+
+	public Long resetTime(String measureName) {
+		return timeMeasures.remove(measureName);
+	}
+
+
+
+	public Long endTime(String measureName) {
+		return timeMeasures.remove(measureName);
 	}
 }

@@ -32,13 +32,15 @@ public abstract class AbstractFree {
 	private static final String INVALID_NUMBER = "#> Wprowadziłeś niepoprawną liczbę, popraw się!";
 	private static final String BUILDER_LEVEL = "#> Poziom budowniczego ustawiono na: %s";
 	private static final String PAINTER_LEVEL = "#> Poziom malarza ustawiono na: %s";
+	private static final String PAINTER = "painter";
+	private static final String BUILDER = "builder";
 
 	protected static final String FIRST_NUMBER_MESSAGE = "#> Podaj pierwszą liczbę: ";
 	protected static final String SQUARE_FOUND = "\n#> Znaleziono kwadrat: ";
 	protected static final String OVERLAP_FOUND = "\n#> Znaleziono nasunięcie: ";
 	protected static final String LIST_ELEMENT_FORMAT = " %s: { %s } ";
-	protected static final String COMPUTER_PICKED_COLOR = "#> Komputer wybrał kolor: %s";
-	protected static final String COMPUTER_PICKED_INDEX = "\n#> Komputer wybrał indeks: %s";
+	protected static final String COMPUTER_PICKED_COLOR = "#> Komputer wybrał kolor: %s \t| Czas trwania obliczeń: %s ns";
+	protected static final String COMPUTER_PICKED_INDEX = "\n#> Komputer wybrał indeks: %s \t| Czas trwania obliczeń: %s ns";
 	protected static final String COMPUTER_LOST = "#> Komputer nie był w stanie znaleźć odpowiedniego koloru. Wygrałeś!";
 	protected static final String POINTS_MESSAGE = "\n#> Rozrgrywka trwała %s ruchów.";
 
@@ -180,10 +182,13 @@ public abstract class AbstractFree {
 	}
 
 	protected void pcPc() {
+		computerOpponent.startTime(BUILDER);
 		builderIndex = computerOpponent.findRightIndex(sequence);
-		printlnAndLog(String.format(String.format(COMPUTER_PICKED_INDEX, builderIndex)));
+		printlnAndLog(String.format(String.format(COMPUTER_PICKED_INDEX, builderIndex, computerOpponent.getTime(BUILDER))));
+
+		computerOpponent.startTime(PAINTER);
 		int color = computerOpponent.findRightColorPredicting(sequence, builderIndex);
-		printlnAndLog(String.format(COMPUTER_PICKED_COLOR, color));
+		printlnAndLog(String.format(COMPUTER_PICKED_COLOR, color, computerOpponent.getTime(PAINTER)));
 
 		sequence.add(builderIndex, color);
 
