@@ -22,11 +22,11 @@ public class OverlapFree extends AbstractFree {
 			gameLoop(gameMode);
 		} catch(Exception e) {
 			System.out.println("\nSPRAWDZ PLIK CONFIG.PROPERTIES");
+			e.printStackTrace();
 		}
 	}
 
 	protected void gameLoop(GameMode gameMode) throws Exception {
-		boolean finished = false;
 		while(!finished) {
 			handleGameModes(gameMode);
 			printSequence(sequence);

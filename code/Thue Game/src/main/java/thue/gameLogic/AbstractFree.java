@@ -16,6 +16,8 @@ public abstract class AbstractFree {
 
 	protected int power;
 	protected int builderIndex;
+	protected boolean finished = false;
+
 
 	protected Scanner lineReader = new Scanner(System.in);
 	protected List<Integer> numberSet = new ArrayList<>();
@@ -42,6 +44,7 @@ public abstract class AbstractFree {
 	protected static final String COMPUTER_PICKED_COLOR = "#> Komputer wybrał kolor: %s \t| Czas trwania obliczeń: %s ns";
 	protected static final String COMPUTER_PICKED_INDEX = "\n#> Komputer wybrał indeks: %s \t| Czas trwania obliczeń: %s ns";
 	protected static final String COMPUTER_LOST = "#> Komputer nie był w stanie znaleźć odpowiedniego koloru. Wygrałeś!";
+	protected static final String TIMEOUT_MESSAGE = "\n#> Przekroczono limit czasu oczekiwania na decyzje komputera: %s ns";
 	protected static final String POINTS_MESSAGE = "\n#> Rozrgrywka trwała %s ruchów.";
 
 	public AbstractFree() {
@@ -154,13 +157,16 @@ public abstract class AbstractFree {
 
 	protected void humanBuilder() {
 		humanBuilderPCPainterGetNumber();
+		computerOpponent.startTime(PAINTER);
+
 		int color = computerOpponent.findRightColorPredicting(sequence, builderIndex);
 		if(color > -1) {
-			printlnAndLog(String.format(COMPUTER_PICKED_COLOR, color));
+			printlnAndLog(String.format(COMPUTER_PICKED_COLOR, color, computerOpponent.getTime(PAINTER)));
 			sequence.add(builderIndex, color);
 		} else {
-			System.out.println(COMPUTER_LOST);
-			sequence.add(builderIndex, 0);
+			printlnAndLog(String.format(TIMEOUT_MESSAGE, computerOpponent.getTime(PAINTER)));
+			finished = true;
+			return;
 		}
 	}
 
@@ -175,26 +181,42 @@ public abstract class AbstractFree {
 	}
 
 	protected void pcBuilder() {
+		computerOpponent.startTime(BUILDER);
 		int index = computerOpponent.findRightIndex(sequence);
-		printlnAndLog(String.format(COMPUTER_PICKED_INDEX, index));
-		int number = humanPainterPcBuilder();
-		sequence.add(index, number);
+		if(index > -1) {
+			printlnAndLog(String.format(COMPUTER_PICKED_INDEX, index, computerOpponent.getTime(BUILDER)));
+			int number = humanPainterPcBuilder();
+			sequence.add(index, number);
+		} else {
+			printlnAndLog(String.format(TIMEOUT_MESSAGE, computerOpponent.getTime(BUILDER)));
+			finished = true;
+			return;
+		}
 	}
 
 	protected void pcPc() {
 		computerOpponent.startTime(BUILDER);
 		builderIndex = computerOpponent.findRightIndex(sequence);
-		printlnAndLog(String.format(String.format(COMPUTER_PICKED_INDEX, builderIndex, computerOpponent.getTime(BUILDER))));
+		if(builderIndex > -1) {
+			printlnAndLog(String.format(String.format(COMPUTER_PICKED_INDEX, builderIndex, computerOpponent.getTime(BUILDER))));
+		} else {
+			printlnAndLog(String.format(TIMEOUT_MESSAGE, computerOpponent.getTime(BUILDER)));
+			finished = true;
+			return;
+		}
 
 		computerOpponent.startTime(PAINTER);
 		int color = computerOpponent.findRightColorPredicting(sequence, builderIndex);
-		printlnAndLog(String.format(COMPUTER_PICKED_COLOR, color, computerOpponent.getTime(PAINTER)));
-
-		sequence.add(builderIndex, color);
+		if(color > -1) {
+			printlnAndLog(String.format(COMPUTER_PICKED_COLOR, color, computerOpponent.getTime(PAINTER)));
+			sequence.add(builderIndex, color);
+		} else {
+			printlnAndLog(String.format(TIMEOUT_MESSAGE, computerOpponent.getTime(PAINTER)));
+			finished = true;
+			return;
+		}
 
 	}
-
-
 
 	private boolean invalidIndex(int index) {
 		return index < 0 || index > sequence.size();

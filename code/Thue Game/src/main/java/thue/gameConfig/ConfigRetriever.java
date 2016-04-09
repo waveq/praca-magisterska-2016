@@ -11,6 +11,7 @@ public class ConfigRetriever {
 
 	public static final String BUILDER_NESTING_LEVEL = "builderNestingLevel";
 	public static final String PAINTER_NESTING_LEVEL = "painterNestingLevel";
+	public static final String MAX_THINK_TIME = "maxThinkTime";
 
 	private static final String PROPERTIES_FILE = "src/main/java/Thue/GameConfig/config.properties";
 	private static final String ERROR_MESSAGE = "Probably there is no such property %s";
@@ -25,6 +26,10 @@ public class ConfigRetriever {
 			System.out.println(String.format(ERROR_MESSAGE, propertyKey));
 			return null;
 		}
+	}
+
+	public static Long getMaxThinkTime() {
+		return Long.parseLong(getProperty(MAX_THINK_TIME));
 	}
 
 	public static int getBuilderNestingLevel() {

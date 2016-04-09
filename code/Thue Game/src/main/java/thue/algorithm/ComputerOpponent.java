@@ -1,6 +1,7 @@
 package thue.algorithm;
 
 import thue.dataHolder.Subsequence;
+import thue.gameConfig.ConfigRetriever;
 import thue.gameConfig.NestingLevels;
 import thue.gameLogic.AbstractFree;
 import thue.gameLogic.OverlapFree;
@@ -14,6 +15,8 @@ public class ComputerOpponent {
 	private int power;
 	private int builderNestingLevel;
 	private int painterNestingLevel;
+	private boolean stopThinking = false;
+	private Long maximumThinkTime = ConfigRetriever.getMaxThinkTime();
 
 	private HashMap<String, Long> timeMeasures = new HashMap<>();
 
@@ -69,7 +72,9 @@ public class ComputerOpponent {
 			sequence.add(index, color);
 			simulation(sequence, color, predictList, builderNestingLevel);
 			sequence.remove(index);
-
+			if(getTime("painter") > maximumThinkTime) {
+				return -1;
+			}
 		}
 		return predictList.indexOf(Collections.max(predictList));
 	}
@@ -100,7 +105,11 @@ public class ComputerOpponent {
 				sequence.add(i, color);
 				simulation(sequence, i, predictList, painterNestingLevel);
 				sequence.remove(i);
+				if(getTime("builder") > maximumThinkTime) {
+					return -1;
+				}
 			}
+
 		}
 		return predictList.indexOf(Collections.min(predictList));
 	}
@@ -161,7 +170,12 @@ public class ComputerOpponent {
 	}
 
 	public Long getTime(String measureName) {
-		return System.nanoTime() - timeMeasures.get(measureName);
+		Long currentTime = System.nanoTime();
+		Long startTime = timeMeasures.get(measureName);
+		if(startTime == null) {
+			startTime = currentTime;
+		}
+		return currentTime - startTime;
 	}
 
 	public void startTime(String measureName) {
