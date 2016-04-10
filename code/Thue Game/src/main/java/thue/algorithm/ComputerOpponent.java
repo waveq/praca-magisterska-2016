@@ -2,7 +2,7 @@ package thue.algorithm;
 
 import thue.dataHolder.Subsequence;
 import thue.gameConfig.ConfigRetriever;
-import thue.gameConfig.NestingLevels;
+import thue.dataHolder.NestingLevels;
 import thue.gameLogic.AbstractFree;
 import thue.gameLogic.OverlapFree;
 import thue.gameLogic.SquareFree;

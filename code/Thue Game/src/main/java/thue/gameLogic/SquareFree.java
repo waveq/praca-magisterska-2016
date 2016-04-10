@@ -4,12 +4,12 @@ import thue.algorithm.ComputerOpponent;
 import thue.algorithm.GameHandlingAlgorythm;
 import thue.dataHolder.Subsequence;
 import thue.gameConfig.GameMode;
-import thue.gameConfig.NestingLevels;
+import thue.dataHolder.NestingLevels;
 
 public class SquareFree extends AbstractFree {
 
-	public SquareFree(NestingLevels nestingLevels) {
-		super();
+	public SquareFree(NestingLevels nestingLevels, int power) {
+		super(nestingLevels, power);
 		computerOpponent = new ComputerOpponent(this, power, nestingLevels);
 	}
 

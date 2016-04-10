@@ -15,6 +15,7 @@ public class Main {
 	}
 
 	private static void startGame() {
+		ResultWriter.initConfigValues(ConfigRetriever.getGameType(), ConfigRetriever.getGameMode().getGameModeName(),ConfigRetriever.getSetPower());
 		AbstractFree t = getGameType();
 		if(t != null) {
 			t.startGame(ConfigRetriever.getGameMode());
@@ -26,10 +27,10 @@ public class Main {
 	private static AbstractFree getGameType() {
 		String gameType = ConfigRetriever.getGameType();
 		if(gameType.equals(SQUARE)) {
-			return new SquareFree(ConfigRetriever.getNestingLevels());
+			return new SquareFree(ConfigRetriever.getNestingLevels(), ConfigRetriever.getSetPower());
 		}
 		if(gameType.equals(OVERLAP)) {
-			return new OverlapFree(ConfigRetriever.getNestingLevels());
+			return new OverlapFree(ConfigRetriever.getNestingLevels(), ConfigRetriever.getSetPower());
 		}
 
 		return null;

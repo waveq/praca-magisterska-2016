@@ -4,14 +4,14 @@ import thue.algorithm.ComputerOpponent;
 import thue.algorithm.GameHandlingAlgorythm;
 import thue.dataHolder.Subsequence;
 import thue.gameConfig.GameMode;
-import thue.gameConfig.NestingLevels;
+import thue.dataHolder.NestingLevels;
 
 public class OverlapFree extends AbstractFree {
 
 
 
-	public OverlapFree(NestingLevels nestingLevels) {
-		super();
+	public OverlapFree(NestingLevels nestingLevels, int power) {
+		super(nestingLevels, power);
 		computerOpponent = new ComputerOpponent(this, power, nestingLevels);
 	}
 

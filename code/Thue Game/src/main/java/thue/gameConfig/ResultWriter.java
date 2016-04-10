@@ -12,10 +12,11 @@ public class ResultWriter {
 	private static final String OUTPUT_PATH = "output/";
 	private static final String UTF8 = "UTF-8";
 	private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
-	private static int setPower = 0;
+	private static final String EXCEPTION_MESSAGE = "Coś poszło nie tak podczas zapisywania danych do pliku.";
+
 	private static String gameMode = "";
 	private static String gameType = "";
-
+	private static int setPower = 0;
 
 	private static FileWriter fileWriter;
 	private static BufferedWriter writer;
@@ -25,7 +26,8 @@ public class ResultWriter {
 			initWriter();
 			writeNewLine(writer, text);
 		} catch (Exception e) {
-			System.out.println("Something went wrong during writing logs to file.");
+			System.out.println(EXCEPTION_MESSAGE);
+			e.printStackTrace();
 		}
 	}
 
@@ -34,7 +36,8 @@ public class ResultWriter {
 			initWriter();
 			writeinOneLine(writer, text);
 		} catch (Exception e) {
-			System.out.println("Something went wrong during writing logs to file.");
+			System.out.println(EXCEPTION_MESSAGE);
+			e.printStackTrace();
 		}
 	}
 
@@ -43,6 +46,7 @@ public class ResultWriter {
 			writer.close();
 		} catch (IOException e) {
 			System.out.println("Cannot close stream.");
+			e.printStackTrace();
 		}
 	}
 
@@ -55,16 +59,15 @@ public class ResultWriter {
 	}
 
 	private static String generateFileName() {
-		initConfigValues();
 		SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
 		String date = sdf.format(new Date());
 		return String.format("%s %s %s %s colors.txt", date, gameType, gameMode, setPower);
 	}
 
-	private static void initConfigValues() {
-		gameType = ConfigRetriever.getGameType();
-		gameMode = ConfigRetriever.getGameMode().getGameModeName();
-		setPower = ConfigRetriever.getSetPower();
+	public static void initConfigValues(String gameType, String gameMode, int setPower) {
+		ResultWriter.gameType =  gameType;
+		ResultWriter.gameMode = gameMode;
+		ResultWriter.setPower = setPower;
 	}
 
 	private static void writeNewLine(BufferedWriter writer, String text) throws Exception {

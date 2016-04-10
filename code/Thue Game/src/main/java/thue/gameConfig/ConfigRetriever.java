@@ -1,5 +1,7 @@
 package thue.gameConfig;
 
+import thue.dataHolder.NestingLevels;
+
 import java.io.FileInputStream;
 import java.io.InputStream;
 

@@ -2,9 +2,8 @@ package thue.gameLogic;
 
 import thue.algorithm.ComputerOpponent;
 import thue.dataHolder.Subsequence;
-import thue.gameConfig.ConfigRetriever;
 import thue.gameConfig.GameMode;
-import thue.gameConfig.NestingLevels;
+import thue.dataHolder.NestingLevels;
 import thue.gameConfig.ResultWriter;
 
 import java.util.ArrayList;
@@ -17,6 +16,7 @@ public abstract class AbstractFree {
 	protected int power;
 	protected int builderIndex;
 	protected boolean finished = false;
+	private NestingLevels nestingLevels;
 
 
 	protected Scanner lineReader = new Scanner(System.in);
@@ -41,24 +41,23 @@ public abstract class AbstractFree {
 	protected static final String SQUARE_FOUND = "\n#> Znaleziono kwadrat: ";
 	protected static final String OVERLAP_FOUND = "\n#> Znaleziono nasunięcie: ";
 	protected static final String LIST_ELEMENT_FORMAT = " %s: { %s } ";
-	protected static final String COMPUTER_PICKED_COLOR = "#> Komputer wybrał kolor: %s \t| Czas trwania obliczeń: %s ns";
-	protected static final String COMPUTER_PICKED_INDEX = "\n#> Komputer wybrał indeks: %s \t| Czas trwania obliczeń: %s ns";
+	protected static final String COMPUTER_PICKED_COLOR = "#> Komputer wybrał kolor: %s \t| Czas trwania obliczeń: %s s";
+	protected static final String COMPUTER_PICKED_INDEX = "\n#> Komputer wybrał indeks: %s \t| Czas trwania obliczeń: %s s";
 	protected static final String COMPUTER_LOST = "#> Komputer nie był w stanie znaleźć odpowiedniego koloru. Wygrałeś!";
-	protected static final String TIMEOUT_MESSAGE = "\n#> Przekroczono limit czasu oczekiwania na decyzje komputera: %s ns";
+	protected static final String TIMEOUT_MESSAGE = "\n#> Przekroczono limit czasu oczekiwania na decyzje komputera: %s s";
 	protected static final String POINTS_MESSAGE = "\n#> Rozrgrywka trwała %s ruchów.";
 
-	public AbstractFree() {
-		power = ConfigRetriever.getSetPower();
+	public AbstractFree(NestingLevels nestingLevels, int power) {
+		this.power = power;
+		this.nestingLevels = nestingLevels;
 		writeConfig();
 		populateNumberSet(power);
 		printNumberSet();
-
 	}
 
 	private void writeConfig() {
-		NestingLevels levels = ConfigRetriever.getNestingLevels();
-		printlnAndLog(String.format(BUILDER_LEVEL, levels.getBuilderNestingLevel()));
-		printlnAndLog(String.format(PAINTER_LEVEL, levels.getPainterNestingLevel()));
+		printlnAndLog(String.format(BUILDER_LEVEL, nestingLevels.getBuilderNestingLevel()));
+		printlnAndLog(String.format(PAINTER_LEVEL, nestingLevels.getPainterNestingLevel()));
 	}
 
 	protected int getValueFromUser(String message) {
@@ -161,13 +160,18 @@ public abstract class AbstractFree {
 
 		int color = computerOpponent.findRightColorPredicting(sequence, builderIndex);
 		if(color > -1) {
-			printlnAndLog(String.format(COMPUTER_PICKED_COLOR, color, computerOpponent.getTime(PAINTER)));
+			printlnAndLog(String.format(COMPUTER_PICKED_COLOR, color, convertNanoSecondsToSeconds(computerOpponent.getTime(PAINTER))));
 			sequence.add(builderIndex, color);
 		} else {
-			printlnAndLog(String.format(TIMEOUT_MESSAGE, computerOpponent.getTime(PAINTER)));
+			printlnAndLog(String.format(TIMEOUT_MESSAGE, convertNanoSecondsToSeconds(computerOpponent.getTime(PAINTER))));
 			finished = true;
 			return;
 		}
+	}
+
+	private double convertNanoSecondsToSeconds(Long nano) {
+		double value =  (double)nano / 1000000000.0;
+		return  Math.round( value * 1000.0 ) / 1000.0;
 	}
 
 	protected void printlnAndLog(String text) {
@@ -184,11 +188,11 @@ public abstract class AbstractFree {
 		computerOpponent.startTime(BUILDER);
 		int index = computerOpponent.findRightIndex(sequence);
 		if(index > -1) {
-			printlnAndLog(String.format(COMPUTER_PICKED_INDEX, index, computerOpponent.getTime(BUILDER)));
+			printlnAndLog(String.format(COMPUTER_PICKED_INDEX, index, convertNanoSecondsToSeconds(computerOpponent.getTime(BUILDER))));
 			int number = humanPainterPcBuilder();
 			sequence.add(index, number);
 		} else {
-			printlnAndLog(String.format(TIMEOUT_MESSAGE, computerOpponent.getTime(BUILDER)));
+			printlnAndLog(String.format(TIMEOUT_MESSAGE, convertNanoSecondsToSeconds(computerOpponent.getTime(BUILDER))));
 			finished = true;
 			return;
 		}
@@ -198,9 +202,9 @@ public abstract class AbstractFree {
 		computerOpponent.startTime(BUILDER);
 		builderIndex = computerOpponent.findRightIndex(sequence);
 		if(builderIndex > -1) {
-			printlnAndLog(String.format(String.format(COMPUTER_PICKED_INDEX, builderIndex, computerOpponent.getTime(BUILDER))));
+			printlnAndLog(String.format(String.format(COMPUTER_PICKED_INDEX, builderIndex, convertNanoSecondsToSeconds(computerOpponent.getTime(BUILDER)))));
 		} else {
-			printlnAndLog(String.format(TIMEOUT_MESSAGE, computerOpponent.getTime(BUILDER)));
+			printlnAndLog(String.format(TIMEOUT_MESSAGE, convertNanoSecondsToSeconds(computerOpponent.getTime(BUILDER))));
 			finished = true;
 			return;
 		}
@@ -208,10 +212,10 @@ public abstract class AbstractFree {
 		computerOpponent.startTime(PAINTER);
 		int color = computerOpponent.findRightColorPredicting(sequence, builderIndex);
 		if(color > -1) {
-			printlnAndLog(String.format(COMPUTER_PICKED_COLOR, color, computerOpponent.getTime(PAINTER)));
+			printlnAndLog(String.format(COMPUTER_PICKED_COLOR, color, convertNanoSecondsToSeconds(computerOpponent.getTime(PAINTER))));
 			sequence.add(builderIndex, color);
 		} else {
-			printlnAndLog(String.format(TIMEOUT_MESSAGE, computerOpponent.getTime(PAINTER)));
+			printlnAndLog(String.format(TIMEOUT_MESSAGE, convertNanoSecondsToSeconds(computerOpponent.getTime(PAINTER))));
 			finished = true;
 			return;
 		}
