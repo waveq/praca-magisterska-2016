@@ -44,6 +44,7 @@ public class ResultWriter {
 	public static void closeStream() {
 		try {
 			writer.close();
+			writer = null;
 		} catch (IOException e) {
 			System.out.println("Cannot close stream.");
 			e.printStackTrace();

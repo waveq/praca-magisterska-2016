@@ -61,7 +61,7 @@ public class ComputerOpponent {
 	}
 
 	public int findRightColorPredicting(List<Integer> sequence, int index) {
-		if(builderNestingLevel == 0) {
+		if(painterNestingLevel == 0) {
 			return findRightColorGreedy(sequence, index);
 		}
 
@@ -70,13 +70,49 @@ public class ComputerOpponent {
 
 		for(int color: colorList) {
 			sequence.add(index, color);
-			simulation(sequence, color, predictList, builderNestingLevel);
+			simulation(sequence, color, predictList, painterNestingLevel);
 			sequence.remove(index);
 			if(getTime("painter") > maximumThinkTime) {
 				return -1;
 			}
 		}
-		return predictList.indexOf(Collections.max(predictList));
+	//	return predictList.indexOf(Collections.max(predictList));
+		return getRandomMaxFromPredict(predictList);
+	}
+
+	private int getRandomMaxFromPredict(List<Integer> predictList) {
+		int max = Collections.max(predictList);
+		List<Integer> indexesOfMax = new ArrayList<>();
+		for(int i = 0; i<predictList.size();i++) {
+			if(predictList.get(i) == max) {
+				indexesOfMax.add(i);
+			}
+		}
+		return indexesOfMax.get(getRandomNumberInRange(0, indexesOfMax.size() - 1));
+	}
+
+	private int getRandomMinFromPredict(List<Integer> predictList) {
+		int min = Collections.min(predictList);
+		List<Integer> indexesOfMin = new ArrayList<>();
+		for(int i = 0; i<predictList.size();i++) {
+			if(predictList.get(i) == min) {
+				indexesOfMin.add(i);
+			}
+		}
+		return indexesOfMin.get(getRandomNumberInRange(0, indexesOfMin.size()-1));
+	}
+
+	private int getRandomNumberInRange(int min, int max) {
+
+		if(min == max) {
+			return min;
+		}
+		if (min > max) {
+			throw new IllegalArgumentException("Max musi być większy bądź równy min.");
+		}
+
+		Random r = new Random();
+		return r.nextInt((max - min) + 1) + min;
 	}
 
 	private int findRightIndexGreedy(List<Integer> sequence) {
@@ -94,7 +130,7 @@ public class ComputerOpponent {
 	}
 
 	public int findRightIndex(List<Integer> sequence) {
-		if(painterNestingLevel == 0) {
+		if(builderNestingLevel == 0) {
 			return findRightIndexGreedy(sequence);
 		}
 		List<Integer> predictList = initPredictList(sequence.size()+1);
@@ -103,7 +139,7 @@ public class ComputerOpponent {
 			List<Integer> colors = getFitableColorList(sequence, i);
 			for (int color : colors) {
 				sequence.add(i, color);
-				simulation(sequence, i, predictList, painterNestingLevel);
+				simulation(sequence, i, predictList, builderNestingLevel);
 				sequence.remove(i);
 				if(getTime("builder") > maximumThinkTime) {
 					return -1;
@@ -111,7 +147,8 @@ public class ComputerOpponent {
 			}
 
 		}
-		return predictList.indexOf(Collections.min(predictList));
+	//	return predictList.indexOf(Collections.min(predictList));
+		return getRandomMinFromPredict(predictList);
 	}
 
 	private void simulation(List<Integer> sequence, int indexInPreditctList, List<Integer> predictList, int invokes) {
