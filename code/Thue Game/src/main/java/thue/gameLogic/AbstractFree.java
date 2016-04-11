@@ -28,7 +28,6 @@ public abstract class AbstractFree {
 	private static final String AVAILABLE_NUMBERS_MESSAGE = "#> W grze dostępne są następujące liczby: ";
 	private static final String GET_INDEX_MESSAGE = "\n#> Podaj indeks: ";
 	private static final String GET_VALUE_MESSAGE = "#> Podaj liczbę: ";
-	private static final String LINE = "## ============== ##";
 	private static final String INVALID_NUMBERS = "#> Wprowadziłeś niepoprawne liczby, popraw się!";
 	private static final String INVALID_INDEX = "#> Wprowadziłeś niepoprawny indeks, popraw się!";
 	private static final String INVALID_NUMBER = "#> Wprowadziłeś niepoprawną liczbę, popraw się!";
@@ -37,15 +36,19 @@ public abstract class AbstractFree {
 	private static final String PAINTER = "painter";
 	private static final String BUILDER = "builder";
 
+	protected static final String LINE = "\n## =============================================================== ##";
+	protected static final String LINELN = "\n\n## =============================================================== ##";
 	protected static final String FIRST_NUMBER_MESSAGE = "#> Podaj pierwszą liczbę: ";
-	protected static final String SQUARE_FOUND = "\n#> Znaleziono kwadrat: ";
-	protected static final String OVERLAP_FOUND = "\n#> Znaleziono nasunięcie: ";
+	protected static final String SQUARE_FOUND = "\n\n#> Znaleziono kwadrat: ";
+	protected static final String OVERLAP_FOUND = "\n\n#> Znaleziono nasunięcie: ";
 	protected static final String LIST_ELEMENT_FORMAT = " %s: { %s } ";
 	protected static final String COMPUTER_PICKED_COLOR = "#> Komputer wybrał kolor: %s \t| Czas trwania obliczeń: %s s";
 	protected static final String COMPUTER_PICKED_INDEX = "\n#> Komputer wybrał indeks: %s \t| Czas trwania obliczeń: %s s";
 	protected static final String COMPUTER_LOST = "#> Komputer nie był w stanie znaleźć odpowiedniego koloru. Wygrałeś!";
 	protected static final String TIMEOUT_MESSAGE = "\n#> Przekroczono limit czasu oczekiwania na decyzje komputera: %s s";
 	protected static final String POINTS_MESSAGE = "\n#> Rozrgrywka trwała %s ruchów.";
+	protected static final String OTHER_SCENARIOS_MESSAGE = "\n#> Inne scenariusze kończącego ruchu:";
+	protected static final String FOR_NUMBER = "\n\n#> Dla liczby %s:";
 
 	public AbstractFree(NestingLevels nestingLevels, int power) {
 		this.power = power;
@@ -77,12 +80,12 @@ public abstract class AbstractFree {
 	}
 
 	protected void printSequence(List<Integer> sequence) {
-		printlnAndLog(LINE);
 		int index =0;
 		for(int i=0;i<sequence.size();i++) {
 			printAndLog(String.format(LIST_ELEMENT_FORMAT, index++, sequence.get(i)));
 		}
 		printAndLog(String.format(LIST_ELEMENT_FORMAT, sequence.size(), " "));
+		printAndLog(LINE);
 	}
 
 	protected void printSubsequence(Subsequence subsequence, int moveBy) {
@@ -219,7 +222,6 @@ public abstract class AbstractFree {
 			finished = true;
 			return;
 		}
-
 	}
 
 	private boolean invalidIndex(int index) {

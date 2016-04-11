@@ -30,15 +30,36 @@ public class SquareFree extends AbstractFree {
 			printSequence(sequence);
 			Subsequence repeatedSequence = GameHandlingAlgorythm.findSquare(sequence);
 			if(repeatedSequence != null) {
-				printlnAndLog(SQUARE_FOUND);
-				printlnAndLog(" ");
-				printSubsequence(repeatedSequence, 0);
-				printAndLog(" <-> ");
-				printSubsequence(repeatedSequence, repeatedSequence.getLength());
+				printAndLog(SQUARE_FOUND);
+				printGameOverSquare(repeatedSequence);
+				printlnAndLog(LINELN);
+				printOtherFinalOptions();
+				printlnAndLog(LINELN);
 				printlnAndLog(String.format(POINTS_MESSAGE, sequence.size()));
 				finished = true;
 			}
 		}
+	}
+
+	private void printOtherFinalOptions() {
+		int failedColor = sequence.get(builderIndex);
+		printAndLog(OTHER_SCENARIOS_MESSAGE);
+		for(int i =0;i<power;i++) {
+			if(i == failedColor) {
+				continue;
+			}
+			sequence.set(builderIndex, i);
+			Subsequence repeatedSequence = GameHandlingAlgorythm.findSquare(sequence);
+			printAndLog(String.format(FOR_NUMBER, i));
+			printGameOverSquare(repeatedSequence);
+		}
+	}
+
+	private void printGameOverSquare(Subsequence repeatedSequence) {
+		printlnAndLog(" ");
+		printSubsequence(repeatedSequence, 0);
+		printAndLog(" <-> ");
+		printSubsequence(repeatedSequence, repeatedSequence.getLength());
 	}
 
 
