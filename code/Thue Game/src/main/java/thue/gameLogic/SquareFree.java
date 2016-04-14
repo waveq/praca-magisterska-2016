@@ -11,6 +11,7 @@ public class SquareFree extends AbstractFree {
 	public SquareFree(NestingLevels nestingLevels, int power) {
 		super(nestingLevels, power);
 		computerOpponent = new ComputerOpponent(this, power, nestingLevels);
+		computerOpponent.startTime(GAME_TIME);
 	}
 
 	public void startGame(GameMode gameMode) {
@@ -31,11 +32,14 @@ public class SquareFree extends AbstractFree {
 			Subsequence repeatedSequence = GameHandlingAlgorythm.findSquare(sequence);
 			if(repeatedSequence != null) {
 				printAndLog(SQUARE_FOUND);
+
 				printGameOverSquare(repeatedSequence);
 				printlnAndLog(LINELN);
+
 				printOtherFinalOptions();
 				printlnAndLog(LINELN);
-				printlnAndLog(String.format(POINTS_MESSAGE, sequence.size()));
+
+				printlnAndLog(String.format(POINTS_MESSAGE, sequence.size(), convertNanoSecondsToSeconds(computerOpponent.getTime(GAME_TIME))));
 				finished = true;
 			}
 		}

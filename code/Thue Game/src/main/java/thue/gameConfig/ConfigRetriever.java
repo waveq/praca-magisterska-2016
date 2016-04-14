@@ -7,13 +7,13 @@ import java.io.InputStream;
 
 public class ConfigRetriever {
 
-	public static final String GAME_MODE_PROPERTY = "gameMode";
-	public static final String GAME_TYPE_PROPERTY = "gameType";
-	public static final String SET_POWER = "setPower";
-
-	public static final String BUILDER_NESTING_LEVEL = "builderNestingLevel";
-	public static final String PAINTER_NESTING_LEVEL = "painterNestingLevel";
-	public static final String MAX_THINK_TIME = "maxThinkTime";
+	private static final String GAME_MODE_PROPERTY = "gameMode";
+	private static final String GAME_TYPE_PROPERTY = "gameType";
+	private static final String SET_POWER = "setPower";
+	private static final String BUILDER_NESTING_LEVEL_PROPERTY = "builderNestingLevel";
+	private static final String PAINTER_NESTING_LEVEL_PROPERTY = "painterNestingLevel";
+	private static final String MAX_THINK_TIME_PROPERTY = "maxThinkTime";
+	private static final String MAKE_OVERALL_TEST_PROPERTY = "makeOverallTest";
 
 	private static final String PROPERTIES_FILE = "src/main/java/Thue/GameConfig/config.properties";
 	private static final String ERROR_MESSAGE = "Probably there is no such property %s";
@@ -30,16 +30,20 @@ public class ConfigRetriever {
 		}
 	}
 
+	public static boolean isMakeOverallTest() {
+		return Boolean.parseBoolean(getProperty(MAKE_OVERALL_TEST_PROPERTY));
+	}
+
 	public static Long getMaxThinkTime() {
-		return Long.parseLong(getProperty(MAX_THINK_TIME));
+		return Long.parseLong(getProperty(MAX_THINK_TIME_PROPERTY));
 	}
 
 	public static int getBuilderNestingLevel() {
-		return Integer.parseInt(getProperty(BUILDER_NESTING_LEVEL));
+		return Integer.parseInt(getProperty(BUILDER_NESTING_LEVEL_PROPERTY));
 	}
 
 	public static int getPainterNestingLevel() {
-		return Integer.parseInt(getProperty(PAINTER_NESTING_LEVEL));
+		return Integer.parseInt(getProperty(PAINTER_NESTING_LEVEL_PROPERTY));
 	}
 
 	public static int getSetPower() {

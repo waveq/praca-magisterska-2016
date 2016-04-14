@@ -46,9 +46,10 @@ public abstract class AbstractFree {
 	protected static final String COMPUTER_PICKED_INDEX = "\n#> Komputer wybrał indeks: %s \t| Czas trwania obliczeń: %s s";
 	protected static final String COMPUTER_LOST = "#> Komputer nie był w stanie znaleźć odpowiedniego koloru. Wygrałeś!";
 	protected static final String TIMEOUT_MESSAGE = "\n#> Przekroczono limit czasu oczekiwania na decyzje komputera: %s s";
-	protected static final String POINTS_MESSAGE = "\n#> Rozrgrywka trwała %s ruchów.";
+	protected static final String POINTS_MESSAGE = "\n#> Rozrgrywka trwała %s ruchów i %s sekund.";
 	protected static final String OTHER_SCENARIOS_MESSAGE = "\n#> Inne scenariusze kończącego ruchu:";
 	protected static final String FOR_NUMBER = "\n\n#> Dla liczby %s:";
+	protected static final String GAME_TIME = "gameTime";
 
 	public AbstractFree(NestingLevels nestingLevels, int power) {
 		this.power = power;
@@ -172,7 +173,7 @@ public abstract class AbstractFree {
 		}
 	}
 
-	private double convertNanoSecondsToSeconds(Long nano) {
+	protected double convertNanoSecondsToSeconds(Long nano) {
 		double value =  (double)nano / 1000000000.0;
 		return  Math.round( value * 1000.0 ) / 1000.0;
 	}

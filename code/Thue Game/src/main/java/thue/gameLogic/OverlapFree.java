@@ -13,6 +13,7 @@ public class OverlapFree extends AbstractFree {
 	public OverlapFree(NestingLevels nestingLevels, int power) {
 		super(nestingLevels, power);
 		computerOpponent = new ComputerOpponent(this, power, nestingLevels);
+		computerOpponent.startTime(GAME_TIME);
 	}
 
 	public void startGame(GameMode gameMode) {
@@ -33,13 +34,14 @@ public class OverlapFree extends AbstractFree {
 			Subsequence repeatedSequence = GameHandlingAlgorythm.findOverlap(sequence);
 			if(repeatedSequence != null) {
 				printAndLog(OVERLAP_FOUND);
+
 				printGameOverOverlap(repeatedSequence);
 				printlnAndLog(LINELN);
 
 				printOtherFinalOptions();
 				printlnAndLog(LINELN);
 
-				printlnAndLog(String.format(POINTS_MESSAGE, sequence.size()));
+				printlnAndLog(String.format(POINTS_MESSAGE, sequence.size(), convertNanoSecondsToSeconds(computerOpponent.getTime(GAME_TIME))));
 				finished = true;
 			}
 		}

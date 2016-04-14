@@ -17,8 +17,12 @@ public class Main {
 	}
 
 	private static void startGame() {
-		//performLoops(SQUARE);
-		startGameRegular();
+		if(!ConfigRetriever.isMakeOverallTest()) {
+			startGameRegular();
+		} else {
+			performLoops(SQUARE);
+			performLoops(OVERLAP);
+		}
 	}
 
 	private static void performLoops(String gameType) {
