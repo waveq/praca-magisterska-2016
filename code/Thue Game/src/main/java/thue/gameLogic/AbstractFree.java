@@ -220,6 +220,7 @@ public abstract class AbstractFree {
 			sequence.add(builderIndex, color);
 		} else {
 			printlnAndLog(String.format(TIMEOUT_MESSAGE, convertNanoSecondsToSeconds(computerOpponent.getTime(PAINTER))));
+
 			finished = true;
 			return;
 		}

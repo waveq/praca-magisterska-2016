@@ -28,7 +28,7 @@ public class Main {
 	private static void performLoops(String gameType) {
 		for(int builder = 0;builder<7;builder++) {
 			for (int painter = 0;painter<7;painter++) {
-				for (int powlvl = 1; powlvl<14;powlvl++) {
+				for (int powlvl = 1; powlvl<8;powlvl++) {
 					ResultWriter.initConfigValues(gameType, GameMode.pcPc.getGameModeName(), powlvl);
 
 					AbstractFree t = null;
