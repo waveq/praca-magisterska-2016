@@ -43,8 +43,18 @@ public class Main {
 					}
 
 					ResultWriter.closeStream();
+					sleepFor(2);
 				}
 			}
+		}
+	}
+
+	private static  void sleepFor(int seconds) {
+		try {
+			Thread.sleep(1000*seconds);
+		} catch (InterruptedException e) {
+			System.out.println("Error during sleep");
+			e.printStackTrace();
 		}
 	}
 
