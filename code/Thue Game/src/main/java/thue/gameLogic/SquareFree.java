@@ -40,10 +40,10 @@ public class SquareFree extends AbstractFree {
 					printOtherFinalOptions();
 					printlnAndLog(LINELN);
 				}
-				printlnAndLog(String.format(POINTS_MESSAGE, sequence.size(), convertNanoSecondsToSeconds(computerOpponent.getTime(GAME_TIME))));
 				finished = true;
 			}
 		}
+		printlnAndLog(String.format(POINTS_MESSAGE, sequence.size(), convertNanoSecondsToSeconds(computerOpponent.getTime(GAME_TIME))));
 	}
 
 	private void printOtherFinalOptions() {
