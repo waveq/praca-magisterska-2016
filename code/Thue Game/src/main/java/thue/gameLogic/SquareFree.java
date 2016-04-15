@@ -36,9 +36,10 @@ public class SquareFree extends AbstractFree {
 				printGameOverSquare(repeatedSequence);
 				printlnAndLog(LINELN);
 
-				printOtherFinalOptions();
-				printlnAndLog(LINELN);
-
+				if(gameMode == GameMode.pcPc) {
+					printOtherFinalOptions();
+					printlnAndLog(LINELN);
+				}
 				printlnAndLog(String.format(POINTS_MESSAGE, sequence.size(), convertNanoSecondsToSeconds(computerOpponent.getTime(GAME_TIME))));
 				finished = true;
 			}

@@ -29,7 +29,7 @@ public class Main {
 		for(int builder = 0;builder<7;builder++) {
 			for (int painter = 0;painter<7;painter++) {
 				for (int powlvl = 1; powlvl<8;powlvl++) {
-					ResultWriter.initConfigValues(gameType, GameMode.pcPc.getGameModeName(), powlvl);
+					ResultWriter.initConfigValues(gameType, GameMode.pcPc.getGameModeName(), powlvl, builder, painter);
 
 					AbstractFree t = null;
 					if(gameType == SQUARE) {
@@ -49,7 +49,15 @@ public class Main {
 	}
 
 	private static void startGameRegular() {
-		ResultWriter.initConfigValues(ConfigRetriever.getGameType(), ConfigRetriever.getGameMode().getGameModeName(),ConfigRetriever.getSetPower());
+		int builder = -1;
+		int painter = -1;
+		if(ConfigRetriever.getGameMode() == GameMode.pcPc || ConfigRetriever.getGameMode() == GameMode.pcBuilder) {
+			builder = ConfigRetriever.getBuilderNestingLevel();
+		}
+		if(ConfigRetriever.getGameMode() == GameMode.pcPc || ConfigRetriever.getGameMode() == GameMode.humanBuilder) {
+			painter = ConfigRetriever.getPainterNestingLevel();
+		}
+		ResultWriter.initConfigValues(ConfigRetriever.getGameType(), ConfigRetriever.getGameMode().getGameModeName(), ConfigRetriever.getSetPower(), builder, painter);
 
 		AbstractFree t = getGameType();
 		if(t != null) {

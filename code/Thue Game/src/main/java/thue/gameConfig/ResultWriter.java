@@ -17,6 +17,8 @@ public class ResultWriter {
 	private static String gameMode = "";
 	private static String gameType = "";
 	private static int setPower = 0;
+	private static int builderLevel = -1;
+	private static int painterLevel = -1;
 
 	private static FileWriter fileWriter;
 	private static BufferedWriter writer;
@@ -62,13 +64,26 @@ public class ResultWriter {
 	private static String generateFileName() {
 		SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
 		String date = sdf.format(new Date());
+		if(builderLevel != -1 && painterLevel != -1) {
+			return String.format("%s %s %s %s colors builder: %s painter: %s.txt", date, gameType, gameMode, setPower, builderLevel, painterLevel);
+		} else if(builderLevel != -1) {
+			return String.format("%s %s %s %s colors builder: %s.txt", date, gameType, gameMode, setPower, builderLevel);
+		} else if(painterLevel != -1) {
+			return String.format("%s %s %s %s colors painter: %s.txt", date, gameType, gameMode, setPower, painterLevel);
+		}
 		return String.format("%s %s %s %s colors.txt", date, gameType, gameMode, setPower);
 	}
 
-	public static void initConfigValues(String gameType, String gameMode, int setPower) {
+	public static void initConfigValues(String gameType, String gameMode, int setPower, int builderLevel, int painterLevel) {
 		ResultWriter.gameType =  gameType;
 		ResultWriter.gameMode = gameMode;
 		ResultWriter.setPower = setPower;
+		if(builderLevel != -1) {
+			ResultWriter.builderLevel = builderLevel;
+		}
+		if(painterLevel != -1) {
+			ResultWriter.painterLevel = painterLevel;
+		}
 	}
 
 	private static void writeNewLine(BufferedWriter writer, String text) throws Exception {
