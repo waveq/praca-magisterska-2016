@@ -11,6 +11,7 @@ import thue.gameLogic.SquareFree;
 public class Main {
 	private static final String SQUARE = "Square";
 	private static final String OVERLAP = "Overlap";
+	private static final String SLEEP_ERROR_MESSAGE = "Error during sleep";
 
 	public static void main (String[] args) {
 		startGame();
@@ -29,6 +30,12 @@ public class Main {
 		for(int builder = 0;builder<7;builder++) {
 			for (int painter = 0;painter<7;painter++) {
 				for (int powlvl = 1; powlvl<8;powlvl++) {
+
+					if(ignoreBelowLevel(1, 6, builder, painter)) {
+						continue;
+					}
+
+
 					ResultWriter.initConfigValues(gameType, GameMode.pcPc.getGameModeName(), powlvl, builder, painter);
 
 					AbstractFree t = null;
@@ -48,12 +55,18 @@ public class Main {
 			}
 		}
 	}
+	private static boolean ignoreBelowLevel(int ignoreBuilder, int ignorePainter, int currentBuilder, int currentPainter) {
+		if(currentBuilder <= ignoreBuilder && currentPainter <= ignorePainter) {
+			return true;
+		}
+		return false;
+	}
 
 	private static  void sleepFor(int seconds) {
 		try {
 			Thread.sleep(1000*seconds);
 		} catch (InterruptedException e) {
-			System.out.println("Error during sleep");
+			System.out.println(SLEEP_ERROR_MESSAGE);
 			e.printStackTrace();
 		}
 	}

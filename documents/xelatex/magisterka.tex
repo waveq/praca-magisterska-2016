@@ -169,22 +169,37 @@ W 1912 roku Axel Thue wymyślił inny sposób na generowanie nieskończonego sł
 
 Po raz kolejny zastępujemy każde wystąpienie z naszych liter przez zdefiniowane sekwencje. Jest to dość skomplikowana struktura, zsumowana długość łańcuchów wynosi 18. A Carpi [7] dowiódł, że morfizm na alfabecie składającym się z trzech liter tworzący słowa wolne od kwadratów musi mieć długość równą co najmniej $18$.
 
+% - Bob wybiera indeks w ciągu, natomiast Alicja wybiera symbol z wcześniej ustalonego zbioru $A$.
+\section{Thue online}
+Praca J. Grytczuka, P. Szafrugi i M. Zmarza pod tytułem Online version of theorem of Thue[8] opisuje wersję online teorii Thuego. Jest to gra dla dwóch graczy Boba oraz Alicji. Podczas rozgrywki Alicja i Bob naprzemiennie wykonując swoje ruchy tworzą ciąg bez kwadratów. Celem Boba jest jak najszybsze skończenie rozgrywki poprzez utworzenie kwadratu, Alicja natomiast musi tego unikać.
 
-\section{Zasady gry}
+Wartym wspomnienia jest uproszczony tryb gry, podczas którego mamy dwóch graczy - Alicję i Boba, tak jak zostało wspomniane tylko Alicji zależy na tym by uniknąć kwadratów. Rozgrywka polega na tym, że Alicja i Bob wybierają na przemian symbole z ustalonego zbioru $A$, oraz dopisują je na końcu istniejącego ciągu. W momencie, gdy pojawia się kwadrat $aa$, jego druga część, czyli w naszym przypadku prawe $a$, zostaje usunięte. Zostało udowodnione w [9] J. Grytczuk, J. Kozik, P. Micek, New approach to nonrepetitive sequences. Random Structures Algorithms, DOI 10.1002/rsa.20411. , że Alicja jest wstanie stworzyć dowolnie długi ciąg bez kwadratów, nie zważając na ruchy Boba. Powyższe jednak jest możliwe pod warunkiem, że moc zbioru $A$ wynosi conajmniej $8$.
 
-W grze dostępnych jest kilka trybów zarówno dla jednego oraz dwóch graczy jak i komputerowa symulacja, czyli gra doskonała komputera przeciwko niemu samemu.
+Innym typem gry przedstawionym w pracy[8] jest Online Thue game. Po raz  
+kolejny gracze wykonują swoje ruchy na przemian. W swojej rundzie Bob wybiera indeks w istniejącym ciągu $S$, który jest sprecyzowany przez 
+liczbę $i \in \{0, 1, ..., n\}$, następnie Alicja wybiera symbol $x \in A
+$, który jest wstawiany jedną pozycję w prawo od $s_i$, dając nam nową sekwencję $S' = s_1, ..., s_i, x, s_{i+1}, ...,s_n$ w momencie gdy $i = 0$, $x$ jest ustawiany na początku $S$. Celem Boba jest zmuszenie Alicji do stworzenia kwadratu, podczas gdy Alicja unika tego najdłużej jak to możliwe. Na przykład, jeśli ustalimy, że $A = \{a, b, c\}$ i $S = acbc$, wtedy Bob wybierając indeks $i = 1$ nie daje Alicji możliwości wybrania symbolu, który nie stworzyłby kwadratu. Rzeczywiście wybierając jakikolwiek $x \in A$ doprowadza do utworzenia kwadratu w $S'$: $\textbf{aa}cb, a\textbf{bcbc}, a\textbf{cc}bc$. W przypadku gdy Bob obierze dobrą strategię, rozgrywka na 3 symbolach skończy się na ciągu długości 5, nie ważne jak dobrą strategię obierze Alicja. Oczywiście im większą moc ma zbiór $A$, tym więcej ruchów, będzie potrzebował Bob, by zakończyć rozgrywkę. 
 
-Zasady trybu \textbf{Longest Square-Free word}, dla dwóch graczy są następujące.
-Na początku gry gracze ustalają moc zbioru kolorów, który musi mieć co najmniej 3 elementy oraz otrzymują swoje role, jeden z nich staje się architektem, drugi malarzem. Rola architekta polega na wybieraniu odpowiedniego indeksu w ciągu tworzonym przez graczy, pod którym powstanie nowy element. Malarz natomiast określa kolor wstawianego elementu. Gra kończy się w momencie, gdy w ciągu tworzonym przez graczy pojawia się \textbf{kwadrat}. 
+[9] A. Ku ̈ndgen and M. J. Pelsmajer, Nonrepetitive colorings of graphs of bounded treewidth, Discrete Math. 308 (2008), 4473–4478. [10] J. Bara ́t, P. P. Varju ́. On square-free vertex colorings of graphs. Studia Sci. Math. Hungar. 44 (2007) 411–422. 
 
-Indeks $i$  podawany przez architekta nie może być mniejszy od zera oraz większy niż $n$, gdzie $n$ jest równe liczbie elementów w ciągu.
-Grę rozpoczyna architekt, podany przez niego indeks w pierwszym ruchu musi wynosić $0$, ponieważ $n = 0$. Gracze wykonują swoje ruchy na przemian. Malarz otrzymuje punkt za każdy pomalowany element, który nie tworzy \textbf{kwadratu} wewnątrz ciągu.
-By wyłonić zwycięzcę potrzebne są dwie rundy. Każdy z graczy musi się sprawdzić się zarówno jako malarz i architekt. Wygrywa osoba, która zdobyła więcej punktów jako malarz.
+Grytczuk, Szafruga i Zmarza[8] wysnuli teorię, że istnieje strategia dla Alicji gwarantująca jej utworzenie dowolnie długiej gry w online Thue game na zbiorze o mocy 12 symboli. Teorię swoją oparli o prace Ku ̈ndegena i Pelsmajera[9], oraz Baráta and Varju[10], na temat niepowtarzalnych kolorowań grafów planarnych (outerplanar graphs?).
+
+Autorzy [8] nie zamkneli do końca problemu i zauważyli, że może istnieć strategia dla Alicji, która pozwoliłaby jej na dowolnie długą rozgrywkę nawet przy mocy zbioru $A$ równej 9.
+
+
+\section{Komputerowa implementacja Online Thue Game}
+
+Komputerowa implementacja gry Thuego opiera się na pomyśle gry z pracy [8]. W grze dostępnych jest kilka trybów zarówno dla jednego oraz dwóch graczy jak i komputerowa symulacja, czyli gra komputera przeciwko niemu samemu.
+
+Implementacja gry Online Thue Game nazywana będzie \textbf{Longest Square-Free word}.
+Zasady pozostają niemal identyczne. Na początku gry gracze ustalają moc zbioru symboli, oraz otrzymują swoje role, jeden z nich staje się architektem, drugi malarzem. Rola architekta polega na wybieraniu odpowiedniego indeksu w ciągu tworzonym przez graczy, pod którym powstanie nowy element. Malarz natomiast określa kolor wstawianego elementu. Gra kończy się w momencie, gdy w ciągu tworzonym przez graczy pojawia się \textbf{kwadrat}. Indeks $i$  podawany przez architekta nie może być mniejszy od zera oraz większy niż $n$, gdzie $n$ jest równe liczbie elementów w ciągu. Na początku gry ciąg $S$ zawiera tylko jeden symbol równy 0.
+Grę rozpoczyna architekt, gracze wykonują swoje ruchy na przemian. Malarz otrzymuje punkt za każdy pomalowany element, który nie tworzy \textbf{kwadratu} wewnątrz ciągu.
+By wyłonić zwycięzcę potrzebne są dwie rundy. Każdy z graczy musi sprawdzić się zarówno jako malarz i architekt. Wygrywa osoba, która zdobyła więcej punktów jako malarz.
 
 Tryb ten dostępny jest również dla jednego gracza, rolę przeciwnika otrzymuje wtedy komputer, który działa według algorytmu przewidującego określoną przez poziom trudności liczbę ruchów do przodu. Algorytm może pełnić zarówno rolę budowniczego jak i malarza.
 
 Bliźniaczym trybem gry, opierającym się na tych samych zasadach z niewielką różnicą jest \textbf{Longest Overlap-Free word}. 
-Różnica polega na tym, że malarz w tworzonym ciągu musi unikać \textbf{nasunięcia} oraz moc zbioru kolorów musi mieć co najmniej $2$ elementy.
+Różnica polega na tym, że malarz w tworzonym ciągu musi unikać \textbf{nasunięcia}.
 
 Podobnie jak w \textbf{Longest Square-Free word} jest możliwość gry przeciwko algorytmowi, który jest w stanie przewidywać określoną ilość ruchów do przodu.
 
