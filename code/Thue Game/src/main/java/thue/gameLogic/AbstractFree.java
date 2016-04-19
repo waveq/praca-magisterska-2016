@@ -23,6 +23,7 @@ public abstract class AbstractFree {
 	protected List<Integer> numberSet = new ArrayList<>();
 	protected List<Integer> sequence = new ArrayList<>();
 	protected ComputerOpponent computerOpponent;
+	protected GameMode gameMode;
 
 	private static final String SET_SIZE_MESSAGE = "#> Podaj moc zbioru: ";
 	private static final String AVAILABLE_NUMBERS_MESSAGE = "#> W grze dostępne są następujące liczby: ";
@@ -51,17 +52,22 @@ public abstract class AbstractFree {
 	protected static final String FOR_NUMBER = "\n\n#> Dla liczby %s:";
 	protected static final String GAME_TIME = "gameTime";
 
-	public AbstractFree(NestingLevels nestingLevels, int power) {
+	public AbstractFree(NestingLevels nestingLevels, int power, GameMode gameMode) {
 		this.power = power;
 		this.nestingLevels = nestingLevels;
+		this.gameMode = gameMode;
 		writeConfig();
 		populateNumberSet(power);
 		printNumberSet();
 	}
 
 	private void writeConfig() {
-		printlnAndLog(String.format(BUILDER_LEVEL, nestingLevels.getBuilderNestingLevel()));
-		printlnAndLog(String.format(PAINTER_LEVEL, nestingLevels.getPainterNestingLevel()));
+		if(gameMode == GameMode.pcPc || gameMode == GameMode.pcBuilder) {
+			printlnAndLog(String.format(BUILDER_LEVEL, nestingLevels.getBuilderNestingLevel()));
+		}
+		if(gameMode == GameMode.pcPc || gameMode == GameMode.humanBuilder) {
+			printlnAndLog(String.format(PAINTER_LEVEL, nestingLevels.getPainterNestingLevel()));
+		}
 	}
 
 	protected int getValueFromUser(String message) {
@@ -238,7 +244,7 @@ public abstract class AbstractFree {
 		return invalidIndex(index) || invalidNumber(number);
 	}
 
-	public abstract void startGame(GameMode gameMode);
+	public abstract void startGame();
 
 	protected abstract void gameLoop(GameMode gameMode) throws Exception;
 }

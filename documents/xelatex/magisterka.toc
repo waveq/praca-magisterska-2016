@@ -6,19 +6,22 @@
 \contentsline {section}{\numberline {1.3}Square-free word}{10}{section.1.3}
 \contentsline {section}{\numberline {1.4}Thue online}{11}{section.1.4}
 \contentsline {section}{\numberline {1.5}Komputerowa implementacja Online Thue Game}{12}{section.1.5}
-\contentsline {chapter}{\numberline {2}Algorytmy obsługujące grę}{14}{chapter.2}
-\contentsline {section}{\numberline {2.1}Algorytm wyszukiwania powtórzeń kwadratowych}{14}{section.2.1}
-\contentsline {chapter}{\numberline {3}Narzędzia i\nobreakspace {}standardy pokrewne}{15}{chapter.3}
-\contentsline {section}{\numberline {3.1}Przetwarzanie dokumentów SGML -- standard DSSSL}{15}{section.3.1}
-\contentsline {section}{\numberline {3.2}Przetwarzanie dokumentów XML -- standard XSL}{16}{section.3.2}
-\contentsline {chapter}{\numberline {4}Przegląd dostępnych narzędzi}{17}{chapter.4}
-\contentsline {section}{\numberline {4.1}Narzędzia do przeglądania dokumentów SGML}{17}{section.4.1}
-\contentsline {section}{\numberline {4.2}Parsery SGML}{18}{section.4.2}
-\contentsline {section}{\numberline {4.3}Wykorzystanie języków skryptowych}{18}{section.4.3}
-\contentsline {section}{\numberline {4.4}Wykorzystanie szablonów XSL}{18}{section.4.4}
-\contentsline {chapter}{Zakończenie}{20}{chapter*.5}
-\contentsline {chapter}{\numberline {A}Tytuł załącznika jeden}{21}{appendix.A}
-\contentsline {chapter}{\numberline {B}Tytuł załącznika dwa}{22}{appendix.B}
-\contentsline {chapter}{Spis tabel}{23}{appendix*.6}
-\contentsline {chapter}{Spis rysunków}{24}{appendix*.7}
-\contentsline {chapter}{Oświadczenie}{25}{appendix*.8}
+\contentsline {chapter}{\numberline {2}Longest free word jako wykonywalny program}{14}{chapter.2}
+\contentsline {section}{\numberline {2.1}Plik konfiguracyjny}{14}{section.2.1}
+\contentsline {section}{\numberline {2.2}Algorytm szukający powtórzeń wewnątrz ciągu}{15}{section.2.2}
+\contentsline {section}{\numberline {2.3}Komunikacja z użytkownikiem}{20}{section.2.3}
+\contentsline {section}{\numberline {2.4}Algorytmy wyszukiwania optymalnych ruchów}{22}{section.2.4}
+\contentsline {chapter}{\numberline {3}Narzędzia i\nobreakspace {}standardy pokrewne}{23}{chapter.3}
+\contentsline {section}{\numberline {3.1}Przetwarzanie dokumentów SGML -- standard DSSSL}{23}{section.3.1}
+\contentsline {section}{\numberline {3.2}Przetwarzanie dokumentów XML -- standard XSL}{24}{section.3.2}
+\contentsline {chapter}{\numberline {4}Przegląd dostępnych narzędzi}{25}{chapter.4}
+\contentsline {section}{\numberline {4.1}Narzędzia do przeglądania dokumentów SGML}{25}{section.4.1}
+\contentsline {section}{\numberline {4.2}Parsery SGML}{26}{section.4.2}
+\contentsline {section}{\numberline {4.3}Wykorzystanie języków skryptowych}{26}{section.4.3}
+\contentsline {section}{\numberline {4.4}Wykorzystanie szablonów XSL}{26}{section.4.4}
+\contentsline {chapter}{Zakończenie}{28}{chapter*.5}
+\contentsline {chapter}{\numberline {A}Tytuł załącznika jeden}{29}{appendix.A}
+\contentsline {chapter}{\numberline {B}Tytuł załącznika dwa}{30}{appendix.B}
+\contentsline {chapter}{Spis tabel}{31}{appendix*.6}
+\contentsline {chapter}{Spis rysunków}{32}{appendix*.7}
+\contentsline {chapter}{Oświadczenie}{33}{appendix*.8}

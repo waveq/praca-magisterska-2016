@@ -10,13 +10,14 @@ public class OverlapFree extends AbstractFree {
 
 
 
-	public OverlapFree(NestingLevels nestingLevels, int power) {
-		super(nestingLevels, power);
+	public OverlapFree(NestingLevels nestingLevels, int power, GameMode gameMode) {
+		super(nestingLevels, power, gameMode);
 		computerOpponent = new ComputerOpponent(this, power, nestingLevels);
 		computerOpponent.startTime(GAME_TIME);
 	}
 
-	public void startGame(GameMode gameMode) {
+
+	public void startGame() {
 		sequence.add(0);
 		printSequence(sequence);
 		try {

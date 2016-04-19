@@ -12,7 +12,7 @@ public class GameHandlingAlgorythm {
 		int maxSeqSize = sequence.size()/2;
 		int minSeqSize = 1;
 		for(int subSeqSize=minSeqSize; subSeqSize<=maxSeqSize; subSeqSize++) {
-			squareSubsequence = compareSubSeq(subSeqSize, sequence);
+			squareSubsequence = compareSubSequence(subSeqSize, sequence);
 			if(squareSubsequence != null) {
 				return squareSubsequence;
 			}
@@ -20,7 +20,7 @@ public class GameHandlingAlgorythm {
 		return null;
 	}
 
-	private static Subsequence compareSubSeq(int subSeqSize, List<Integer> sequence) {
+	private static Subsequence compareSubSequence(int subSeqSize, List<Integer> sequence) {
 		List<Integer> left = new ArrayList<>();
 		List<Integer> right = new ArrayList<>();
 		int comparesFitInSequence = (sequence.size() + 1) - (subSeqSize*2) ;

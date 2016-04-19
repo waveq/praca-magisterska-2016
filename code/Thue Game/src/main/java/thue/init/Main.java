@@ -40,13 +40,13 @@ public class Main {
 
 					AbstractFree t = null;
 					if(gameType == SQUARE) {
-						t = new SquareFree(new NestingLevels(builder, painter), powlvl);
+						t = new SquareFree(new NestingLevels(builder, painter), powlvl, GameMode.pcPc);
 					}
 					if(gameType == OVERLAP) {
-						t = new OverlapFree(new NestingLevels(builder, painter), powlvl);
+						t = new OverlapFree(new NestingLevels(builder, painter), powlvl, GameMode.pcPc);
 					}
 					if(t != null) {
-						t.startGame(GameMode.pcPc);
+						t.startGame();
 					}
 
 					ResultWriter.closeStream();
@@ -84,7 +84,7 @@ public class Main {
 
 		AbstractFree t = getGameType();
 		if(t != null) {
-			t.startGame(ConfigRetriever.getGameMode());
+			t.startGame();
 		}
 
 		ResultWriter.closeStream();
@@ -93,10 +93,10 @@ public class Main {
 	private static AbstractFree getGameType() {
 		String gameType = ConfigRetriever.getGameType();
 		if(gameType.equals(SQUARE)) {
-			return new SquareFree(ConfigRetriever.getNestingLevels(), ConfigRetriever.getSetPower());
+			return new SquareFree(ConfigRetriever.getNestingLevels(), ConfigRetriever.getSetPower(), ConfigRetriever.getGameMode());
 		}
 		if(gameType.equals(OVERLAP)) {
-			return new OverlapFree(ConfigRetriever.getNestingLevels(), ConfigRetriever.getSetPower());
+			return new OverlapFree(ConfigRetriever.getNestingLevels(), ConfigRetriever.getSetPower(), ConfigRetriever.getGameMode());
 		}
 
 		return null;

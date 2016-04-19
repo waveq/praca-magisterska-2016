@@ -8,13 +8,13 @@ import thue.dataHolder.NestingLevels;
 
 public class SquareFree extends AbstractFree {
 
-	public SquareFree(NestingLevels nestingLevels, int power) {
-		super(nestingLevels, power);
+	public SquareFree(NestingLevels nestingLevels, int power, GameMode gameMode) {
+		super(nestingLevels, power, gameMode);
 		computerOpponent = new ComputerOpponent(this, power, nestingLevels);
 		computerOpponent.startTime(GAME_TIME);
 	}
 
-	public void startGame(GameMode gameMode) {
+	public void startGame() {
 		sequence.add(0);
 		printSequence(sequence);
 		try {

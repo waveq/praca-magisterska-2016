@@ -12,6 +12,8 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{listings} 
+\usepackage{color}
+\usepackage{graphicx}
 
 \setmonofont[Scale=0.75]{Monaco}
 
@@ -173,16 +175,16 @@ Po raz kolejny zastępujemy każde wystąpienie z naszych liter przez zdefiniowa
 \section{Thue online}
 Praca J. Grytczuka, P. Szafrugi i M. Zmarza pod tytułem Online version of theorem of Thue[8] opisuje wersję online teorii Thuego. Jest to gra dla dwóch graczy Boba oraz Alicji. Podczas rozgrywki Alicja i Bob naprzemiennie wykonując swoje ruchy tworzą ciąg bez kwadratów. Celem Boba jest jak najszybsze skończenie rozgrywki poprzez utworzenie kwadratu, Alicja natomiast musi tego unikać.
 
-Wartym wspomnienia jest uproszczony tryb gry, podczas którego mamy dwóch graczy - Alicję i Boba, tak jak zostało wspomniane tylko Alicji zależy na tym by uniknąć kwadratów. Rozgrywka polega na tym, że Alicja i Bob wybierają na przemian symbole z ustalonego zbioru $A$, oraz dopisują je na końcu istniejącego ciągu. W momencie, gdy pojawia się kwadrat $aa$, jego druga część, czyli w naszym przypadku prawe $a$, zostaje usunięte. Zostało udowodnione w [9] J. Grytczuk, J. Kozik, P. Micek, New approach to nonrepetitive sequences. Random Structures Algorithms, DOI 10.1002/rsa.20411. , że Alicja jest wstanie stworzyć dowolnie długi ciąg bez kwadratów, nie zważając na ruchy Boba. Powyższe jednak jest możliwe pod warunkiem, że moc zbioru $A$ wynosi conajmniej $8$.
+Wartym wspomnienia jest uproszczony tryb gry, podczas którego mamy dwóch graczy - Alicję i Boba, tak jak zostało wspomniane, tylko Alicji zależy na tym by uniknąć kwadratów. Rozgrywka polega na tym, że Alicja i Bob wybierają na przemian symbole z ustalonego zbioru $A$, oraz dopisują je na końcu istniejącego ciągu. W momencie, gdy pojawia się kwadrat $aa$, jego druga część, czyli w naszym przypadku prawe $a$, zostaje usunięte. Zostało udowodnione w [9] J. Grytczuk, J. Kozik, P. Micek, New approach to nonrepetitive sequences. Random Structures Algorithms, DOI 10.1002/rsa.20411. , że Alicja jest wstanie stworzyć dowolnie długi ciąg bez kwadratów, nie zważając na ruchy Boba. Powyższe jest jednak możliwe pod warunkiem, że moc zbioru $A$ wynosi conajmniej $8$.
 
 Innym typem gry przedstawionym w pracy[8] jest Online Thue game. Po raz  
 kolejny gracze wykonują swoje ruchy na przemian. W swojej rundzie Bob wybiera indeks w istniejącym ciągu $S$, który jest sprecyzowany przez 
 liczbę $i \in \{0, 1, ..., n\}$, następnie Alicja wybiera symbol $x \in A
-$, który jest wstawiany jedną pozycję w prawo od $s_i$, dając nam nową sekwencję $S' = s_1, ..., s_i, x, s_{i+1}, ...,s_n$ w momencie gdy $i = 0$, $x$ jest ustawiany na początku $S$. Celem Boba jest zmuszenie Alicji do stworzenia kwadratu, podczas gdy Alicja unika tego najdłużej jak to możliwe. Na przykład, jeśli ustalimy, że $A = \{a, b, c\}$ i $S = acbc$, wtedy Bob wybierając indeks $i = 1$ nie daje Alicji możliwości wybrania symbolu, który nie stworzyłby kwadratu. Rzeczywiście wybierając jakikolwiek $x \in A$ doprowadza do utworzenia kwadratu w $S'$: $\textbf{aa}cb, a\textbf{bcbc}, a\textbf{cc}bc$. W przypadku gdy Bob obierze dobrą strategię, rozgrywka na 3 symbolach skończy się na ciągu długości 5, nie ważne jak dobrą strategię obierze Alicja. Oczywiście im większą moc ma zbiór $A$, tym więcej ruchów, będzie potrzebował Bob, by zakończyć rozgrywkę. 
+$, który jest wstawiany jedną pozycję w prawo od $s_i$, dając nam nową sekwencję $S' = s_1, ..., s_i, x, s_{i+1}, ...,s_n$ w momencie gdy $i = 0$, $x$ jest ustawiany na początku $S$. Celem Boba jest zmuszenie Alicji do stworzenia kwadratu, podczas gdy Alicja unika tego najdłużej jak to możliwe. Na przykład, jeśli ustalimy, że $A = \{a, b, c\}$ i $S = acbc$, wtedy Bob wybierając indeks $i = 1$ nie daje Alicji możliwości wybrania symbolu, który nie stworzyłby kwadratu. Rzeczywiście wybierając jakikolwiek $x \in A$ doprowadza do utworzenia kwadratu w $S'$: $\textbf{aa}cb, a\textbf{bcbc}, a\textbf{cc}bc$. W przypadku gdy Bob obierze dobrą strategię, rozgrywka na 3 symbolach skończy się na ciągu o długości $\leq 5$, nie ważne jak dobrą strategię obierze Alicja. Oczywiście im większą moc ma zbiór $A$, tym więcej ruchów, będzie potrzebował Bob, by zakończyć rozgrywkę. 
 
 [9] A. Ku ̈ndgen and M. J. Pelsmajer, Nonrepetitive colorings of graphs of bounded treewidth, Discrete Math. 308 (2008), 4473–4478. [10] J. Bara ́t, P. P. Varju ́. On square-free vertex colorings of graphs. Studia Sci. Math. Hungar. 44 (2007) 411–422. 
 
-Grytczuk, Szafruga i Zmarza[8] wysnuli teorię, że istnieje strategia dla Alicji gwarantująca jej utworzenie dowolnie długiej gry w online Thue game na zbiorze o mocy 12 symboli. Teorię swoją oparli o prace Ku ̈ndegena i Pelsmajera[9], oraz Baráta and Varju[10], na temat niepowtarzalnych kolorowań grafów planarnych (outerplanar graphs?).
+Grytczuk, Szafruga i Zmarza[8] wysnuli teorię, że istnieje strategia dla Alicji gwarantująca jej utworzenie dowolnie długiej gry w online Thue game na zbiorze o 12 symboli. Teorię swoją oparli o prace Ku ̈ndegena i Pelsmajera[9], oraz Baráta and Varju[10], na temat niepowtarzalnych kolorowań grafów planarnych (outerplanar graphs?).
 
 Autorzy [8] nie zamkneli do końca problemu i zauważyli, że może istnieć strategia dla Alicji, która pozwoliłaby jej na dowolnie długą rozgrywkę nawet przy mocy zbioru $A$ równej 9.
 
@@ -192,8 +194,8 @@ Autorzy [8] nie zamkneli do końca problemu i zauważyli, że może istnieć str
 Komputerowa implementacja gry Thuego opiera się na pomyśle gry z pracy [8]. W grze dostępnych jest kilka trybów zarówno dla jednego oraz dwóch graczy jak i komputerowa symulacja, czyli gra komputera przeciwko niemu samemu.
 
 Implementacja gry Online Thue Game nazywana będzie \textbf{Longest Square-Free word}.
-Zasady pozostają niemal identyczne. Na początku gry gracze ustalają moc zbioru symboli, oraz otrzymują swoje role, jeden z nich staje się architektem, drugi malarzem. Rola architekta polega na wybieraniu odpowiedniego indeksu w ciągu tworzonym przez graczy, pod którym powstanie nowy element. Malarz natomiast określa kolor wstawianego elementu. Gra kończy się w momencie, gdy w ciągu tworzonym przez graczy pojawia się \textbf{kwadrat}. Indeks $i$  podawany przez architekta nie może być mniejszy od zera oraz większy niż $n$, gdzie $n$ jest równe liczbie elementów w ciągu. Na początku gry ciąg $S$ zawiera tylko jeden symbol równy 0.
-Grę rozpoczyna architekt, gracze wykonują swoje ruchy na przemian. Malarz otrzymuje punkt za każdy pomalowany element, który nie tworzy \textbf{kwadratu} wewnątrz ciągu.
+Zasady pozostają niemal identyczne. Na początku gry, gracze ustalają moc zbioru symboli, oraz otrzymują swoje role. Jeden z nich staje się architektem, drugi malarzem. Rola architekta polega na wybieraniu odpowiedniego indeksu w ciągu tworzonym przez graczy, pod którym powstanie nowy element. Malarz natomiast określa symbol wstawianego elementu. Gra kończy się w momencie, gdy w ciągu tworzonym przez graczy pojawia się \textbf{kwadrat}. Indeks $i$  podawany przez architekta nie może być mniejszy od zera oraz większy niż $n$, gdzie $n$ jest równe liczbie elementów w ciągu. Na początku gry ciąg $S$ zawiera tylko jeden symbol równy 0.
+Grę rozpoczyna architekt. Gracze wykonują swoje ruchy na przemian. Malarz otrzymuje punkt za każdy pomalowany element, który nie tworzy \textbf{kwadratu} wewnątrz ciągu.
 By wyłonić zwycięzcę potrzebne są dwie rundy. Każdy z graczy musi sprawdzić się zarówno jako malarz i architekt. Wygrywa osoba, która zdobyła więcej punktów jako malarz.
 
 Tryb ten dostępny jest również dla jednego gracza, rolę przeciwnika otrzymuje wtedy komputer, który działa według algorytmu przewidującego określoną przez poziom trudności liczbę ruchów do przodu. Algorytm może pełnić zarówno rolę budowniczego jak i malarza.
@@ -203,27 +205,227 @@ Różnica polega na tym, że malarz w tworzonym ciągu musi unikać \textbf{nasu
 
 Podobnie jak w \textbf{Longest Square-Free word} jest możliwość gry przeciwko algorytmowi, który jest w stanie przewidywać określoną ilość ruchów do przodu.
 
-\chapter{Algorytmy obsługujące grę}
-\section{Algorytm wyszukiwania powtórzeń kwadratowych}
+\chapter{Longest free word jako wykonywalny program}
+Aplikacja, która powstała na bazie gier Longest Square-free word oraz Longest Overlap-free word, została napisana w Javie. Program umożliwia rozgrywkę w obu wersjach gry, zarówno z drugim graczem, jak i z komputerem, oraz jest w stanie zasymulować rozgrywkę dwóch graczy komputerowych, grających przeciwko sobie z ustawionymi przez nas poziomami inteligencji. Dodatkową opcją jest uruchomienie obszernego testu, który zasymuluje rozgrywkę komputerowych graczy na wszystkich poziomach trudności, mniejszych od sprecyzowanego przez nas $n$. Komunikacja z aplikacją odbywa się poprzez wspomniany plik konfiguracyjny - przed uruchomieniem aplikacji, oraz konsolę aplikacji - po jej uruchomieniu. W programie zostało użyte narzędzie automatyzujące budowę aplikacji - Maven. Dzięki niemu, po pobraniu kodu źródłowego aplikacji jesteśmy w stanie uruchomić ją z poziomu konsoli dzięki dwóm linijkom wpisanym do terminala. Okazało się ono niezwykle pomocne podczas przeprowadzania czasochłonnych testów na maszynie zdalnej, której sterowanie odbywało się właśnie poprzez terminal.
 
-\lstset{language=Java}
+
+\section{Plik konfiguracyjny}
+Opcje dostępne wewnątrz pliku konfiguracyjnego to:
+\begin{itemize}
+\item \textbf{gameType} - wartości, jakie możemy wprowadzić to Square oraz Overlap. Jest to typ gry, którego zamierzamy użyć i precyzuje, czy zagramy w Longest Square-free word czy Longest Overlap-free word.
+\item \textbf{gameMode} - tryb gry wartości wpisywane w tym polu mają wpływ na to, czy gra odbywać się będzie z drugim człowiekiem - \textit{humanHuman}, komputerem z tym warunkiem, że to my jesteśmy budowniczym - \textit{humanBuilder}, ponownie z komputerem, jednak tym razem to on jest budowniczym - \textit{pcBuilder}, oraz walka dwóch komputerów - \textit{pcPc}.
+\item \textbf{setPower} - jest to moc zbioru elementów, do których dostęp będzie miał malarz podczas rozgrywki. Zbiór ten wypełniany jest liczbami $\in \{0, ...,n-1\}$
+\item \textbf{builderNestingLevel} i \textbf{painterNestingLevel} - poziom zagnieżdżenia na jaki komputer sobie pozwoli jako budowniczy i malarz. Zasada działania zagnieżdżeń zostanie omówiona w dalszej części pracy.
+\item \textbf{maxThinkTime} - podczas przeprowadzania testów z udziałem komputerowych graczy, czasami nie chcemy by przeciwnik myślał nad swoim ruchem 17 godzin. Właśnie dlatego została wprowadzona ta opcja konfiguracyjna. Jeśli czas jaki komputer spędził nad wyliczeniem kolejnej pozycji lub symbolu, będzie większy niż ustalona przez nas liczba nanosekund rozgrywka zostaje przerwana.
+\item \textbf{makeOverallTest} - gdy opcja ta zostanie ustawiona na true, po uruchomieniu aplikacji zostanie przeprowadzony obszerny test, zawierający w sobie kombinacje rozgrywek komputerów o wszystkich poziomach zagnieżdżeń $\leq 6$ na wszystkich mocach zbiorów $>0 $ i $\leq 7$. Czyli zostanie wykonanych $6*6*6$ rozgrywek. Warto wspomnieć, że podczas tego testu opcja maxThinkTime okazała się niezwykle pomocna.
+\end{itemize}
+
+\section{Algorytm szukający powtórzeń wewnątrz ciągu}
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{black},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+}
+
+\lstset{
+    inputencoding=utf8x, 
+    extendedchars=\true,
+    literate=%
+    {ą}{{\k{a}}}1
+    {Ą}{{\k{A}}}1
+    {ę}{{\k{e}}}1
+    {Ę}{{\k{E}}}1
+    {ó}{{\'o}}1
+    {Ó}{{\'O}}1
+    {ś}{{\'s}}1
+    {Ś}{{\'S}}1
+    {ł}{{\l{}}}1
+    {Ł}{{\L{}}}1
+    {ż}{{\.z}}1
+    {Ż}{{\.Z}}1
+    {ź}{{\'z}}1
+    {Ź}{{\'Z}}1
+    {ć}{{\'c}}1
+    {Ć}{{\'C}}1
+    {ń}{{\'n}}1
+    {Ń}{{\'N}}1
+}
 
 \begin{lstlisting}[frame=single]
-	private List<Integer> findSquare() {
-		List<Integer> squareSeq = null;
-		int maxSeqSize = sequence.size()/2;
-		int minSeqSize = 1;
-		for(int subSeqSize=minSeqSize; 
-			subSeqSize<=maxSeqSize; 
-			subSeqSize++) {
-			squareSeq = compareSubSeq(subSeqSize);
-			if(squareSeq != null) {
-				return squareSeq;
-			}
+List<Integer> findSquare(List<Integer> sequence) {
+	List<Integer> squareSeq = null;
+	int maxSeqSize = sequence.size()/2;
+	int minSeqSize = 1;
+	for(int subSeąSize=minSeqSize; subSeqSize<=maxSeqSize;subSeqSize++) {
+		squareSeq = compareSubSeq(subSeqSize, sequence);
+		if(squareSeq != null) {
+			return squareSeq;
 		}
-		return null;
 	}
+	return null;
+}
 \end{lstlisting}
+
+Powyższy algorytm ma za zadanie znalezienie kwadratu w sekwencji, którą reprezentuje lista Integerów przekazana w parametrze. Zmienna \textbf{maxSeqSize} jest to długość najdłuższego podciągu jaki się zmieści w sekwencji, jeśli dostawimy za nim podciąg o identycznej długości.
+
+Natomiast zmienna \textbf{minSeqSize} jest to minimalna długość podciągu, który może składać się na kwadrat, naturalnie wynosi ona 1. 
+
+W linii 5 wykonujemy pętlę, wewnątrz, której do metody \textbf{compareSubSeq} przekazywana jest długość podciągu, który składać się będzie na kwadrat, oraz naszą sekwencję. Metoda \textbf{compareSubSeq} zwróci nam lewą część znalezionego kwadratu, lub null w przypadku, gdy taki kwadrat w sekwencji nie istnieje.
+
+\begin{lstlisting}[frame=single]
+Subsequence compareSubSeq(int subSeqSize, List<Integer> sequence) {
+	List<Integer> left = new ArrayList<>();
+	List<Integer> right = new ArrayList<>();
+	int comparesFitInSequence = (sequence.size() + 1) - (subSeqSize*2) ;
+	for(int i=0; i<comparesFitInSequence; i++) {
+		for(int j =0;j<subSeqSize;j++) {
+			left.add(sequence.get(i+j));
+			right.add(sequence.get(i+j+subSeqSize));
+		}
+		if(listsAreEqual(left, right)) {
+			return new Subsequence(left, i, subSeqSize);
+		}
+		left.clear();
+		right.clear();
+	}
+	return null;
+}
+\end{lstlisting}
+Zmienne \textbf{left} i \textbf{right} są to podciągi, które reprezentują lewą i prawą część kwadratu $aa$. Zmienna \textbf{comparesFitInSequence} jest to ilość porównań jaka zmieści się wewnątrz naszej sekwencji. Dla przykładu, gdy nasz ciąg, jest reprezentowany przez $S = abcabaca$, a wcześniej sprecyzowana długość podciągu, składającego się na kwadrat wynosi 2, to zmienna \textbf{comparesFitInSequence} zostanie ustawiona na $(8 + 1) - (2 * 2)$ czyli 5, ponieważ możliwe są następujące porównania: $\textbf{abca}baca$, $a\textbf{bcab}aca$, $ab\textbf{caba}ca$, $abc\textbf{abac}a$, $abca\textbf{baca}$
+W pętli znajdującej się w linii 5 do listy \textbf{left} oraz \textbf{right} dodawane są podciągi odpowiedniej długości, natomiast w linii 10 następuje sprawdzenie czy podciągi są identyczne. Jeśli - tak oznacza to, że w naszej sekwencji, rozpoczynając od indeksu $i$ występuje kwadrat długości $2 * \textbf{subSeqSize}$. Jeśli listy są różne to w linii 13 następuje ich wyczyszczenie, po to by pętla mogła porównać dwa kolejne podciągi.
+
+Działanie algorytmu ilustruje grafika:
+
+\begin{center}
+\includegraphics[scale = 0.2]{images/squareFinding}
+\end{center}
+
+Dla typu gry w którym unikamy nasunięć powstały osobne metody.
+
+\begin{lstlisting}[frame=single]
+Subsequence findOverlap(List<Integer> sequence) {
+	Subsequence repeatedSequence = null;
+	int maxSeqSize = (sequence.size()/2)+1;
+	int minSeqSize = 3;
+	for(int subSeqSize=minSeqSize; subSeqSize<=maxSeqSize; subSeqSize++) {
+		repeatedSequence = compareSubSeqOverlap(subSeqSize, sequence);
+		if(repeatedSequence != null) {
+			return repeatedSequence;
+		}
+	}
+	return null;
+}
+\end{lstlisting}
+
+Metoda \textbf{findOverlap}, działa w sposób podobny do metody \textbf{findSquare}. Różnice to inne wartości zmiennych \textbf{maxSeqSize}, \textbf{minSeqSize} oraz metoda wywoływana w pętli.
+
+Do zmiennej \textbf{maxSeqSize} przypisywana jest liczba o jeden większa niż długość sekwencji, ponieważ szukamy nasunięcia, a więc podciągi będą ze sobą dzieliły jeden znak. Wobec tego dla ciągu $S = \{abcabcb\}$, najdłuższy porównywany ciąg będzie długości 4, ponieważ w ostatniej iteracji pętli będziemy ze sobą porównywali podciągi $abca$ oraz $abcb$, które dzielą ze sobą literę $a$.
+
+Wartość zmiennej \textbf{minSeqSize} wynosi 3, ponieważ jest to warunkiem stworzenia nasunięcia.
+
+\begin{lstlisting}[frame=single]
+
+Subsequence compareSubSeqOverlap(int subSeqSize, List<Integer> sequence) {
+	List<Integer> left = new ArrayList<>();
+	List<Integer> right = new ArrayList<>();
+	int comparesFitInSequence = (sequence.size() + 2) - (subSeqSize*2);
+	for(int i=0; i<comparesFitInSequence; i++) {
+		for(int j =0;j<subSeqSize;j++) {
+			left.add(sequence.get(i+j));
+			right.add(sequence.get(i+j+subSeqSize-1));
+		}
+		if(listsAreEqual(left, right)) {
+			return new Subsequence(left, i, subSeqSize);
+		}
+		left.clear();
+		right.clear();
+	}
+	return null;
+} 
+\end{lstlisting}
+
+Metoda \textbf{compareSubSeqOverlap} również jest analogiczna do metody \textbf{compareSubSeq}. Różni się tutaj wartość zmiennej \textbf{comparesFitInSequence}, jest ona większa o 1, z takiego samego powodu, co zmienna \textbf{maxSeqSize} z metody \textbf{findOverlap}. Różni się również podciąg zapisywany do zmiennej \textbf{right}, w pętli z 6 linii. Pierwszy indeks owego podciągu jest równy indeksowi ostatniego elementu, lewego podciągu, po to by stworzyć nasunięcie.
+
+Działanie algorytmu ilustruje grafika:
+\begin{center}
+\includegraphics[scale = 0.2]{images/overlapFinding}
+\end{center}
+
+\section{Komunikacja z użytkownikiem}
+Plik konfiguracyjny nie jest wystarczającym środkiem komunikacji z aplikacjią. W związku z tym, po uruchomieniu programu mamy dostęp do konsoli, służy do wyświetlania jak i wprowadzania treści.
+
+Po uruchomieniu aplikacji wypisywane w konsoli wypisywane są najważniejsze opcje konfiguracyjne, takie jak poziom budowniczego, poziom malarza oraz lista dostępnych symboli. Jeśli uruchomiliśmy grę w trybie \textbf{humanHuman}, to aplikacja w pierwszej kolejności poprosi nas o indeks. Po wpisaniu indeksu mieszczącego się w przedziale $\in \{0,...,n\}$, gdy to zrobimy zostaniemy poproszeni o podanie symbolu $\geq 0$ i $< setPower$. W momencie gdy podaliśmy prawidłowe wartości na ekran konsoli wyświetlany zostaje ciąg $S'$, który został utworzony poprzez dodanie do istniejącego ciągu odpowiedniego symbolu. Jeśli w ciągu $S'$ pojawi się kwadrat, na ekran zostanie wyświetlony czas rozgrywki, ilość ruchów jaka została do tej pory wykonana oraz indeksy wraz z symbolami, wspomnianego powtórzenia.
+
+Oto przykład prostej rozgrywki:
+
+\begin{lstlisting}
+#> W grze dostępne są następujące liczby: 
+0
+1
+2
+ 0: { 0 }  1: {   } 
+## =============================================================== ##
+#> Podaj indeks: 
+1
+#> Podaj liczbę: 
+2
+ 0: { 0 }  1: { 2 }  2: {   } 
+## =============================================================== ##
+#> Podaj indeks: 
+1
+#> Podaj liczbę: 
+1
+ 0: { 0 }  1: { 1 }  2: { 2 }  3: {   } 
+## =============================================================== ##
+#> Podaj indeks: 
+3
+#> Podaj liczbę: 
+1
+ 0: { 0 }  1: { 1 }  2: { 2 }  3: { 1 }  4: {   } 
+## =============================================================== ##
+#> Podaj indeks: 
+4
+#> Podaj liczbę: 
+2
+ 0: { 0 }  1: { 1 }  2: { 2 }  3: { 1 }  4: { 2 }  5: {   } 
+## =============================================================== ##
+
+#> Znaleziono kwadrat:  
+ 1: { 1 }  2: { 2 }  <->  3: { 1 }  4: { 2 } 
+
+## =============================================================== ##
+
+#> Rozrgrywka trwała 5 ruchów i 20.339 sekund.
+\end{lstlisting}
+Jeśli uruchomimy rozgrywkę z komputerem, obok wybranego indeksu lub symbolu pojawia się również czas jaki był mu potrzebny na podjęcie decyzji.
+
+\begin{lstlisting}
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 24.127 s
+#> Komputer wybrał liczbę: 4 	| Czas trwania obliczeń: 0.012 s\end{lstlisting}
+
+By ułatwić późniejszą analizę wszystkie informacje zawarte w konsoli, zapisywane są do nowo utworzonego pliku w katalogu output.
+
+\section{Algorytmy wyszukiwania optymalnych ruchów}
+Jak zostało wcześniej wspomniane można sterować poziomem inteligencji komputerowych oponentów za pomocą zmiennych konfiguracyjnych. Jeśli ustawimy poziom zagnieżdżeń na 0, algorytm będzie działał zachłannie, wybierając opcje, która jest najatrakcyjniejsza w danym momencie, nie zważając na to, co może wydarzyć się w kolejnej turze.
+
 
 \chapter{Narzędzia i~standardy pokrewne}
 
