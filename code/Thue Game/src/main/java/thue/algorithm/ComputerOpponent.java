@@ -46,12 +46,12 @@ public class ComputerOpponent {
 		return colorIndex;
 	}
 
-	private int findRightColorGreedy(List<Integer> sequence, int index) {
-		for(int i=0;i<power; i++) {
-			sequence.add(index, i);
+	private int findRightColorGreedy(List<Integer> sequence, int index, int power) {
+		for(int symbol=0;symbol<power; symbol++) {
+			sequence.add(index, symbol);
 			if(pickProperFind(sequence) == null) {
 				sequence.remove(index);
-				return i;
+				return symbol;
 			} else {
 				sequence.remove(index);
 			}
@@ -62,25 +62,22 @@ public class ComputerOpponent {
 
 	public int findRightColorPredicting(List<Integer> sequence, int index) {
 		if(painterNestingLevel == 0) {
-			return findRightColorGreedy(sequence, index);
+			return findRightColorGreedy(sequence, index, power);
 		}
-
-		List<Integer> predictList = initPredictList(power);
+		List<Integer> scoreList = initScoreList(power);
 		List<Integer> colorList = getFitableColorList(sequence, index);
-
 		for(int color: colorList) {
 			sequence.add(index, color);
-			simulation(sequence, color, predictList, painterNestingLevel);
+			simulation(sequence, color, scoreList, painterNestingLevel);
 			sequence.remove(index);
 			if(getTime("painter") > maximumThinkTime) {
 				return -1;
 			}
 		}
-	//	return predictList.indexOf(Collections.max(predictList));
-		return getRandomMaxFromPredict(predictList);
+		return getRandomFromScoreList(scoreList);
 	}
 
-	private int getRandomMaxFromPredict(List<Integer> predictList) {
+	private int getRandomFromScoreList(List<Integer> predictList) {
 		int max = Collections.max(predictList);
 		List<Integer> indexesOfMax = new ArrayList<>();
 		for(int i = 0; i<predictList.size();i++) {
@@ -115,7 +112,7 @@ public class ComputerOpponent {
 		return r.nextInt((max - min) + 1) + min;
 	}
 
-	private int findRightIndexGreedy(List<Integer> sequence) {
+	private int findRightIndexGreedy(List<Integer> sequence, int power) {
 		int winner = -1;
 		int smallestColorSize = power;
 
@@ -131,15 +128,15 @@ public class ComputerOpponent {
 
 	public int findRightIndex(List<Integer> sequence) {
 		if(builderNestingLevel == 0) {
-			return findRightIndexGreedy(sequence);
+			return findRightIndexGreedy(sequence, power);
 		}
-		List<Integer> predictList = initPredictList(sequence.size()+1);
+		List<Integer> scoreList = initScoreList(sequence.size() + 1);
 
 		for (int i =0;i<sequence.size()+1;i++) {
 			List<Integer> colors = getFitableColorList(sequence, i);
 			for (int color : colors) {
 				sequence.add(i, color);
-				simulation(sequence, i, predictList, builderNestingLevel);
+				simulation(sequence, i, scoreList, builderNestingLevel);
 				sequence.remove(i);
 				if(getTime("builder") > maximumThinkTime) {
 					return -1;
@@ -147,19 +144,18 @@ public class ComputerOpponent {
 			}
 
 		}
-	//	return predictList.indexOf(Collections.min(predictList));
-		return getRandomMinFromPredict(predictList);
+		return getRandomMinFromPredict(scoreList);
 	}
 
-	private void simulation(List<Integer> sequence, int indexInPreditctList, List<Integer> predictList, int invokes) {
+	private void simulation(List<Integer> sequence, int indexInScoreList, List<Integer> scoreList, int invokes) {
 		invokes--;
 		for(int j=0;j<sequence.size()+1;j++) {
 			List<Integer> colorList = getFitableColorList(sequence, j);
-			updatePredictList(predictList, indexInPreditctList, colorList.size());
+			updateScoreList(scoreList, indexInScoreList, colorList.size());
 			for(int color: colorList) {
 				sequence.add(j, color);
 				if(invokes > 0) {
-					simulation(sequence, indexInPreditctList, predictList, invokes);
+					simulation(sequence, indexInScoreList, scoreList, invokes);
 				}
 				sequence.remove(j);
 			}
@@ -183,16 +179,16 @@ public class ComputerOpponent {
 		return fitableColorsList;
 	}
 
-	private void updatePredictList(List<Integer> predictList, int colorIndex, int colorsFitting) {
-		predictList.set(colorIndex, predictList.get(colorIndex)+colorsFitting);
+	private void updateScoreList(List<Integer> scoreList, int colorIndex, int colorsFitting) {
+		scoreList.set(colorIndex, scoreList.get(colorIndex)+colorsFitting);
 	}
 
-	private List<Integer> initPredictList(int size) {
-		List<Integer> predictList = new ArrayList<>();
+	private List<Integer> initScoreList(int size) {
+		List<Integer> scoreList = new ArrayList<>();
 		for(int i=0;i<size;i++) {
-			predictList.add(0);
+			scoreList.add(0);
 		}
-		return predictList;
+		return scoreList;
 	}
 
 	private Subsequence pickProperFind(List<Integer> sequence) {
@@ -222,8 +218,6 @@ public class ComputerOpponent {
 	public Long resetTime(String measureName) {
 		return timeMeasures.remove(measureName);
 	}
-
-
 
 	public Long endTime(String measureName) {
 		return timeMeasures.remove(measureName);

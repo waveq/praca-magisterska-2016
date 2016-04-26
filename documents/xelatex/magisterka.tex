@@ -205,8 +205,8 @@ Różnica polega na tym, że malarz w tworzonym ciągu musi unikać \textbf{nasu
 
 Podobnie jak w \textbf{Longest Square-Free word} jest możliwość gry przeciwko algorytmowi, który jest w stanie przewidywać określoną ilość ruchów do przodu.
 
-\chapter{Longest free word jako wykonywalny program}
-Aplikacja, która powstała na bazie gier Longest Square-free word oraz Longest Overlap-free word, została napisana w Javie. Program umożliwia rozgrywkę w obu wersjach gry, zarówno z drugim graczem, jak i z komputerem, oraz jest w stanie zasymulować rozgrywkę dwóch graczy komputerowych, grających przeciwko sobie z ustawionymi przez nas poziomami inteligencji. Dodatkową opcją jest uruchomienie obszernego testu, który zasymuluje rozgrywkę komputerowych graczy na wszystkich poziomach trudności, mniejszych od sprecyzowanego przez nas $n$. Komunikacja z aplikacją odbywa się poprzez wspomniany plik konfiguracyjny - przed uruchomieniem aplikacji, oraz konsolę aplikacji - po jej uruchomieniu. W programie zostało użyte narzędzie automatyzujące budowę aplikacji - Maven. Dzięki niemu, po pobraniu kodu źródłowego aplikacji jesteśmy w stanie uruchomić ją z poziomu konsoli dzięki dwóm linijkom wpisanym do terminala. Okazało się ono niezwykle pomocne podczas przeprowadzania czasochłonnych testów na maszynie zdalnej, której sterowanie odbywało się właśnie poprzez terminal.
+\chapter{Aplikacja Longest free word}
+Program, który powstał na bazie gier Longest Square-free word oraz Longest Overlap-free word, został napisany w Javie. Umożliwia on rozgrywkę w obu wersjach gry, zarówno z drugim graczem, jak i z komputerem, oraz jest w stanie zasymulować rozgrywkę dwóch graczy komputerowych, grających przeciwko sobie z ustawionymi przez nas poziomami inteligencji. Dodatkową opcją jest uruchomienie obszernego testu, który zasymuluje rozgrywkę komputerowych graczy na wszystkich poziomach trudności, mniejszych od sprecyzowanego przez nas $n$. Komunikacja z aplikacją odbywa się poprzez wspomniany plik konfiguracyjny - przed uruchomieniem aplikacji, oraz konsolę aplikacji - po jej uruchomieniu. W programie zostało użyte narzędzie automatyzujące budowę aplikacji - Maven. Dzięki niemu, po pobraniu kodu źródłowego aplikacji jesteśmy w stanie uruchomić ją z poziomu konsoli dzięki dwóm linijkom wpisanym do terminala. Okazało się ono niezwykle pomocne podczas przeprowadzania czasochłonnych testów na maszynie zdalnej, której sterowanie odbywało się właśnie poprzez terminal.
 
 
 \section{Plik konfiguracyjny}
@@ -423,8 +423,115 @@ Jeśli uruchomimy rozgrywkę z komputerem, obok wybranego indeksu lub symbolu po
 
 By ułatwić późniejszą analizę wszystkie informacje zawarte w konsoli, zapisywane są do nowo utworzonego pliku w katalogu output.
 
-\section{Algorytmy wyszukiwania optymalnych ruchów}
-Jak zostało wcześniej wspomniane można sterować poziomem inteligencji komputerowych oponentów za pomocą zmiennych konfiguracyjnych. Jeśli ustawimy poziom zagnieżdżeń na 0, algorytm będzie działał zachłannie, wybierając opcje, która jest najatrakcyjniejsza w danym momencie, nie zważając na to, co może wydarzyć się w kolejnej turze.
+\section{Zachłanny algorytm wyszukiwania symbolu}
+Jak zostało wcześniej wspomniane można sterować poziomem inteligencji komputerowych oponentów za pomocą zmiennych konfiguracyjnych. Jeśli ustawimy poziom zagnieżdżeń na 0, algorytm będzie działał zachłannie, wybierając opcje, która jest najatrakcyjniejsza w danym momencie, nie zważając na to, co może wydarzyć się w kolejnej turze. Obrazuje to poniższy algorytm szukający pasującego symbolu na wskazanym wcześniej indeksie.
+
+\begin{lstlisting}[frame=single]
+int findRightColorGreedy(List<Integer> sequence, int index, int power) {
+		for(int symbol=0;symbol<power; symbol++) {
+			sequence.add(index, symbol);
+			if(pickProperFind(sequence) == null) {
+				sequence.remove(index);
+				return symbol;
+			} else {
+				sequence.remove(index);
+			}
+		}
+		return -1;
+	}
+\end{lstlisting}
+
+Metoda na wejściu dostaje trzy parametry:
+\begin{itemize}
+\item sequence - utworzony wcześniej ciąg.
+\item index - indeks wybrany przez budowniczoego.
+\item power - moc zbioru symboli.
+\end{itemize}
+Zbiór symboli to liczby należące do przedziału $[0; power-1]$. W 2 linii metody rozpoczyna się pętla, która iteruje po wszystkich dostępnych symbolach. W kolejnej linii symbol dodawany jest do naszego ciągu na podanej pozycji. Metoda pickProperFind z warunku if zależnie od typu gry wywołuje wcześniej opisane metody findSquare lub findOverlap. Jeśli warunek if zostanie spełniony oznacza to, że po dodaniu aktualnego symbolu na danej pozycji nie powoduje stworzenia kwadratu/nasunięcia, algorytm zatem usuwa dodany element z ciągu i zwraca go w linii 6. Jeżeli  okaże się jednak, że dodany symbol tworzy powtórzenie w ciągu, zostaje on również usunięty, a pętla zaczyna się od początku. Metoda zwraca wartość -1 jeśli okaże się, że żaden z symboli nie jest w stanie stworzyć ciągu wolnego od kwadratów/nasunięć.
+
+\section{Zachłanny algorytm wyszukiwania indeksu}
+By można było przeprowadzić symulację gry, należy wprowadzić również algorytm budowczniego, starający się znaleźć najmniej atrakcyjny indeks dla malarza. Zachłanny algorytm realizujący to zadanie znajduje się poniżej.
+
+\begin{lstlisting}[frame=single]
+int findRightIndexGreedy(List<Integer> sequence, int power) {
+	int winner = -1;
+	int smallestSymbolSize = power;
+	for (int i =0;i<sequence.size()+1;i++) {
+		List<Integer> symbols = getFitableColorList(sequence, i);
+		if (symbols.size() <= smallestSymbolSize) {
+			smallestSymbolSize = symbols.size();
+			winner = i;
+		}
+	}
+	return winner;
+}
+\end{lstlisting}
+
+Algorytm jako parametry, otrzymuje stworzony wcześniej ciąg, oraz moc zbioru symboli. Zmienna winner ustawiona początkowo na -1, reprezentuje indeks, który zostanie zwrócony jako ten, pod którym jest najmniejsza dowolność wyboru symboli, bez tworzenia powtórzeń. Metoda iteruje po każdym indeksie ciągu i zapisuje do listy symbole, po których wstawieniu w dane miejsce nie utworzy się kwadrat/nasunięcie. Następnie w warunku if z 6 linii sprawdzane jest, czy aktualna lista symboli jest mniejsza niż ta, zarejestrowana wcześniej. Jeśli tak, do zmiennej winner zapisany zostaje aktualny indeks.
+
+\section{Algorytm wyszukiwania symbolu z zagnieżdżeniami}
+Algorytm zachłanny nie jest wystarczająco sprytny, żeby przeciwstawić się człowiekowi mającemu odrobinę doświadczenia w Longest free word. Wobec tego powstał algorytm nie działający zachłannie, lecz starający się przewidzieć, jakie konsekwencje w kolejnych turach może nieść ze sobą dany wybór.
+
+Poniższy algorytm wprowadza pojęcie punktacji. Podczas jego działania, dla możliwych wyborów nadawane są punkty. Im więcej punktów uzyska dany symbol, tym atrakcyjniejszym staje się on wyborem. Algorytm sprawdza jakie symbole można dodać w predefiniowanym indeksie, następnie iterując w pętli, dodaje każdy z symboli i sprawdza, ile możliwości będzie miał w kolejnej lub kolejnych turach, biorąc pod uwagę wszystkie dostępne indeksy. Każda dodatkowa możliwość to dodatkowy punkt dla wybranego koloru. Sam algorytm składa się z dwóch głownych części: \textbf{findRightColorPredicting} oraz \textbf{simulation}.
+
+\begin{lstlisting}[frame=single]
+int findRightColorPredicting(List<Integer> sequence, int index) {
+	List<Integer> scoreList = initScoreList(power);
+	List<Integer> symbolList = getFitableSymbolList(sequence, index);
+	for(int symbol: symbolList) {
+		sequence.add(index, symbol);
+		simulation(sequence, symbol, scoreList, painterNestingLevel);
+		sequence.remove(index);
+	}
+	return getRandomFromScoreList(scoreList);
+}
+\end{lstlisting}
+
+Na początku algorytm inicjalizuje listy \textbf{scoreList} oraz \textbf{symbolList}. Tę pierwszą tyloma zerami ile jest w grze dostępnych symboli, drugą natomiast symbolami, jakie możemy wstawić w zdefiniowany przez budowniczego indeks. Linia 4 rozpoczyna pętlę, która iterując po liście \textbf{symbolList}, dodaje jej element, wywołuje metodę \textbf{simulation}, przekazując utworzony \textbf{ciąg}, dodany \textbf{symbol}, \textbf{scoreList} oraz p\textbf{oziom zagnieżdżenia malarza}, po czym usuwa dodany \textbf{symbol} sprawiając, że ciąg pozostaje bez zmian. Na końcu zwraca element, który miał największą liczbę punktów. Jeśli kilka symboli otrzymało ich tyle samo, program wybiera losowy z nich. Dzięki w grze występuje pewna przypadkowość, oraz jest mała szansa na powtórzenie dwóch identycznych rozgrywek przy odpowiednio długim ciągu.
+
+Wewnątrz metody \textbf{simulation} nadawane są punkty, oraz za pomocą rekurencji wykonywana jest symulacja kolejnych iteracji gry.
+
+\begin{lstlisting}[frame=single]
+void simulation(List<Integer> sequence, int indexInScoreList, List<Integer> scoreList, int invokes) {
+	invokes--;
+	for(int j=0;j<sequence.size()+1;j++) {
+		List<Integer> symbolList = getFitableSymbolList(sequence, j);
+		updateScoreList(scoreList, indexInScoreList, symbolList.size());
+		for(int symbol: symbolList) {
+			sequence.add(j, symbol);
+			if(invokes > 0) {
+				simulation(sequence, indexInScoreList, scoreList, invokes);
+			}
+			sequence.remove(j);
+		}
+	}
+}
+\end{lstlisting}
+
+Na początku dekrementowana zostaje ilość zagnieżdżeń na jaką chcemy się zagłębić. Oznacza to, że jeśli poziom zagnieżdżenia ustawiony jest na 1, to metoda \textbf{simulation} zostanie wywołana tylko raz. Pętla z 3 linii iteruje po indeksach pod którymi możliwe jest dodanie symbolu. W 4 linii do listy zapisywane są symbole, które można wcisnąć pod aktualny indeks, nie powodując powtórzenia. Metoda \textbf{updateScoreList} zwiększa ilość punktów symbolu przekazanemu z poprzedniej metody. Ilość punktów jest równa liczbie elementów, zmiennej \textbf{symbolList}. Pętla z 6 linii iterując po liście pasujących symboli, dodaje element, następnie pod warunkiem, że \textbf{invokes} jest większe od 0 wywołuje samą siebie ze zmodyfikowanym ciągiem, tym samym indeksem, który został przekazany na początku, listą punktową oraz pozostałą liczbą wywołań. Na końcu pętli element zostaje usunięty, po to, by ciąg wrócił do pierwotnego stanu.
+
+\section{Algorytm wyszukiwania indeksu z zagnieżdżeniami}
+Sposób działania algorytmu z zagnieżdżeniami szukającego indeksu, który ma największą szansę na stworzenie powtórzenia, działa na podobnej zasadzie, co algorytm wyszukiwania symbolu. Różnica polega na tym, że w jego pierwszej części, iterujemy po wszystkich dostępnych symbolach, a nie jednym predefiniowanym, oraz punkty nadawane zostają indeksom i zwracamy ten, który uzyska ich najmniej. Druga część algorytmu czyli metoda \textbf{simulation} pozostaje bez zmian.
+
+\begin{lstlisting}[frame=single]
+int findRightIndex(List<Integer> sequence) {
+	List<Integer> scoreList = initScoreList(sequence.size() + 1);
+	for (int i = 0; i<sequence.size() + 1; i++) {
+		List<Integer> symbols = getFitableSymbolList(sequence, i);
+		for (int symbol : symbols) {
+			sequence.add(i, symbol);
+			simulation(sequence, i, predictList, builderNestingLevel);
+			sequence.remove(i);
+		}
+	}
+	return getRandomMinFromPredict(scoreList);
+}
+\end{lstlisting}
+
+Na początku metody zainicjalizowana zostaje zmienna scoreList. Do listy dodane zostają zera w ilość odpowiadającej długość ciągu plus jeden, bo właśnie na tylu indeksach możemy dodać nowy element. W 3 linii iterujemy po każdym dostępnym indeksie, natomiast od 4 linii mamy już wszystko to co w algorytmie szukającym symbolu. Na końcu metody zwracany zostaje indeks, który uzyskał najmniej punktów, czyli będzie najmniej atrakcyjny dla malarza. Tak jak poprzednio jeśli istnieje więcej niż jeden indeks z minimalna wartością, element jest wybierany losowo.
+
+\section{Longest free word z interfejsem graficznym}
+
 
 
 \chapter{Narzędzia i~standardy pokrewne}
