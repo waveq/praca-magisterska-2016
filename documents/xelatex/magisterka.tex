@@ -510,6 +510,16 @@ void simulation(List<Integer> sequence, int indexInScoreList, List<Integer> scor
 
 Na początku dekrementowana zostaje ilość zagnieżdżeń na jaką chcemy się zagłębić. Oznacza to, że jeśli poziom zagnieżdżenia ustawiony jest na 1, to metoda \textbf{simulation} zostanie wywołana tylko raz. Pętla z 3 linii iteruje po indeksach pod którymi możliwe jest dodanie symbolu. W 4 linii do listy zapisywane są symbole, które można wcisnąć pod aktualny indeks, nie powodując powtórzenia. Metoda \textbf{updateScoreList} zwiększa ilość punktów symbolu przekazanemu z poprzedniej metody. Ilość punktów jest równa liczbie elementów, zmiennej \textbf{symbolList}. Pętla z 6 linii iterując po liście pasujących symboli, dodaje element, następnie pod warunkiem, że \textbf{invokes} jest większe od 0 wywołuje samą siebie ze zmodyfikowanym ciągiem, tym samym indeksem, który został przekazany na początku, listą punktową oraz pozostałą liczbą wywołań. Na końcu pętli element zostaje usunięty, po to, by ciąg wrócił do pierwotnego stanu.
 
+Algorytm obrazuje poniższa grafika:
+
+\begin{center}
+\includegraphics[scale = 0.08]{images/nestingPainter}
+\end{center}
+
+Mamy ciąg $S = a, b$, architekt wybrał indeks 2, czyli malarz wybiera symbol jaki zostanie wstawiony za literką $b$. Typ gry to \textbf{Longest square free word}. Moc zbioru wynosi 3, więc do wyboru są dostępne symbole $a$, $b$, $c$. Wstawienie symbolu $b$ stworzyłoby kwadrat, dlatego algorytm rozważa literki $a$ oraz $c$. Zmienna $n$ jest to poziom zagnieżdżenia algorytmu, natomiast liczby przy pasujących symbolach oznaczają punkty, jakie zostają przypisane symbolowi $a$ lub $c$. 
+
+Już przy pierwszym zagnieżdżeniu widać, że literka $c$ jest atrakcyjniejsza, ponieważ wstawienie jej zapewnia malarzowi więcej możliwości w kolejnych rundach. Jednak sprawdzenie jednego ruchu do przodu nie zawsze jest wystarczające i zdarza się, że z pozoru nieatrakcyjny symbol w perspektywie kolejnych tur jest najlepszą opcją.
+
 \section{Algorytm wyszukiwania indeksu z zagnieżdżeniami}
 Sposób działania algorytmu z zagnieżdżeniami szukającego indeksu, który ma największą szansę na stworzenie powtórzenia, działa na podobnej zasadzie, co algorytm wyszukiwania symbolu. Różnica polega na tym, że w jego pierwszej części, iterujemy po wszystkich dostępnych symbolach, a nie jednym predefiniowanym, oraz punkty nadawane zostają indeksom i zwracamy ten, który uzyska ich najmniej. Druga część algorytmu czyli metoda \textbf{simulation} pozostaje bez zmian.
 
