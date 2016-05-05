@@ -61,8 +61,9 @@ Gra która powstała na podstawie teorii Thuego w skrócie polegała będzie na 
 Ostatnia część pracy poświęcona jest analizie algorytmów zarówno pod względem czasu ich wykonywania jak i zdolności do przewidywania ruchów przeciwnika.
 
 \chapter{Teorie Axela Thue na temat sekwencji symboli}
-lbaldsaldsal dsadsa asdkdsak sadkdsa dsadsadsak dsak 
-dsa dsajdsajdas 
+Zanim przejdziemy do twierdzeń, koniecznym jest wyjaśnienie podstawowych twierdzeń, które w dalszej części pracy będą wielokrotnie wykorzystywane. Niżej wyjaśnione zostały sposoby generowania nieskończenie długich ciągów składających się z dwóch symboli, nie zawierających nasunięć. Po czym ukazane zostały metody tworzenia nieskończenie długich ciągów na trzech znakach, wolnych od kwadratów. Na koniec części teoretycznej przedstawiony został pomysł gry dla dwóch graczy wykorzystujący powyższe własności.
+
+
 \section{Definicje}
 \begin{itemize}
 \item Alfabet jest skończonym zbiorem symboli lub liter.
@@ -518,7 +519,7 @@ Algorytm obrazuje poniższa grafika:
 
 Mamy ciąg $S = a, b$, architekt wybrał indeks 2, czyli malarz wybiera symbol jaki zostanie wstawiony za literką $b$. Typ gry to \textbf{Longest square free word}. Moc zbioru wynosi 3, więc do wyboru są dostępne symbole $a$, $b$, $c$. Wstawienie symbolu $b$ stworzyłoby kwadrat, dlatego algorytm rozważa literki $a$ oraz $c$. Zmienna $n$ jest to poziom zagnieżdżenia algorytmu, natomiast liczby przy pasujących symbolach oznaczają punkty, jakie zostają przypisane symbolowi $a$ lub $c$. 
 
-Już przy pierwszym zagnieżdżeniu widać, że literka $c$ jest atrakcyjniejsza, ponieważ wstawienie jej zapewnia malarzowi więcej możliwości w kolejnych rundach. Jednak sprawdzenie jednego ruchu do przodu nie zawsze jest wystarczające i zdarza się, że z pozoru nieatrakcyjny symbol w perspektywie kolejnych tur jest najlepszą opcją.
+Już przy pierwszym zagnieżdżeniu widać, że literka $c$ jest atrakcyjniejsza, ponieważ wstawienie jej zapewnia malarzowi więcej możliwości w kolejnych rundach. Jednak sprawdzenie jednego ruchu do przodu nie zawsze jest wystarczające i zdarza się, że z pozoru nieatrakcyjny symbol w perspektywie kolejnych, tur jest najlepszą opcją.
 
 \section{Algorytm wyszukiwania indeksu z zagnieżdżeniami}
 Sposób działania algorytmu z zagnieżdżeniami szukającego indeksu, który ma największą szansę na stworzenie powtórzenia, działa na podobnej zasadzie, co algorytm wyszukiwania symbolu. Różnica polega na tym, że w jego pierwszej części, iterujemy po wszystkich dostępnych symbolach, a nie jednym predefiniowanym, oraz punkty nadawane zostają indeksom i zwracamy ten, który uzyska ich najmniej. Druga część algorytmu czyli metoda \textbf{simulation} pozostaje bez zmian.
@@ -540,8 +541,20 @@ int findRightIndex(List<Integer> sequence) {
 
 Na początku metody zainicjalizowana zostaje zmienna scoreList. Do listy dodane zostają zera w ilość odpowiadającej długość ciągu plus jeden, bo właśnie na tylu indeksach możemy dodać nowy element. W 3 linii iterujemy po każdym dostępnym indeksie, natomiast od 4 linii mamy już wszystko to co w algorytmie szukającym symbolu. Na końcu metody zwracany zostaje indeks, który uzyskał najmniej punktów, czyli będzie najmniej atrakcyjny dla malarza. Tak jak poprzednio jeśli istnieje więcej niż jeden indeks z minimalna wartością, element jest wybierany losowo.
 
-\section{Longest free word z interfejsem graficznym}
+\section{Longest square free word z interfejsem graficznym}
+Powstała również wersja gry, w której użytkownik nie korzysta z konsoli, lecz z graficznego interfejsu. W tej odmianie użytkownik za pomocą trzech kolorów ma stworzyć jak najdłuższy ciąg bez kwadratów. Czynności jakie gracz wykonuje to wybranie miejsca, w które zostanie wstawiony element oraz jego kolor. Jeśli w tworzonym ciągu pojawi się kwadrat rozgrywka zostaje przerwana i na ekranie zostają podświetlone powtórzenia składające się na kwadrat. Program zapisuje również najwyższy wynik, który jest równy długości utworzonego ciągu. Algorytm szukający kwadratów nie różni się w żaden sposób od algorytmu z podstawowej wersji gry.
 
+\begin{center}
+\includegraphics[scale = 0.2]{images/thueMobile}
+\end{center}
+
+Aplikacja została napisana na popularnym silniku do tworzenia gier - Unity. Pozwala on kompilować kod programu do plików wykonywalnych, które mogą być uruchamiane w przeglądarkach, na komputerach osobistych, konsolach i telefonach komórkowych. W tym przypadku pod uwagę brane były głównie telefony komórkowe, o czym może świadczyć wielkość przycisków i mała ilość szczegółów na ekranie.
+
+
+\chapter{Analiza symulowanych potyczek} 
+
+\section{Ilość symboli potrzebna na rozgranie partii}
+Długość gry zależna jest od dwóch czynników. Ustawionego poziomu zagnieżdżenia i ilości dostępnych symboli. Thue w swoim twierdzeniu[][], udowodnił, że jesteśmy w stanie stworzyć nieskończenie długi ciąg bez kwadratów mając do dyspozycji 3 symbole. Sytuacja zmienia się, gdy ciąg tworzony jest przez dwóch oponentów, z których jeden stara się utworzyć kwadrat. Nawet używając zachłannego algorytmu w przypadku budowniczego i algorytmu z zagnieżdżeniami 7 poziomu dla malarza, rozgrywka zawsze trwała będzie maksymalnie 5 ruchów. 
 
 
 \chapter{Narzędzia i~standardy pokrewne}

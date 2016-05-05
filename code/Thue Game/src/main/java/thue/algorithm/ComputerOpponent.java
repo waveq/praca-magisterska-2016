@@ -74,10 +74,15 @@ public class ComputerOpponent {
 				return -1;
 			}
 		}
-		return getRandomFromScoreList(scoreList);
+
+		if(ConfigRetriever.isRandomization()) {
+			return getRandomMaxFromScoreList(scoreList);
+		} else {
+			return scoreList.indexOf(Collections.max(scoreList));
+		}
 	}
 
-	private int getRandomFromScoreList(List<Integer> predictList) {
+	private int getRandomMaxFromScoreList(List<Integer> predictList) {
 		int max = Collections.max(predictList);
 		List<Integer> indexesOfMax = new ArrayList<>();
 		for(int i = 0; i<predictList.size();i++) {
@@ -144,7 +149,12 @@ public class ComputerOpponent {
 			}
 
 		}
-		return getRandomMinFromPredict(scoreList);
+
+		if(ConfigRetriever.isRandomization()) {
+			return getRandomMinFromPredict(scoreList);
+		} else {
+			return scoreList.indexOf(Collections.min(scoreList));
+		}
 	}
 
 	private void simulation(List<Integer> sequence, int indexInScoreList, List<Integer> scoreList, int invokes) {
