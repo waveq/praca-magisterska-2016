@@ -1,5 +1,6 @@
 package thue.init;
 
+import thue.dataHolder.ConfigHolder;
 import thue.dataHolder.NestingLevels;
 import thue.gameConfig.ConfigRetriever;
 import thue.gameConfig.GameMode;
@@ -7,6 +8,10 @@ import thue.gameConfig.ResultWriter;
 import thue.gameLogic.AbstractFree;
 import thue.gameLogic.OverlapFree;
 import thue.gameLogic.SquareFree;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 	private static final String SQUARE = "Square";
@@ -18,12 +23,27 @@ public class Main {
 	}
 
 	private static void startGame() {
-		if(!ConfigRetriever.isMakeOverallTest()) {
+		if(!ConfigRetriever.isMakeOverallTest() && !ConfigRetriever.isMakeQueueTest()) {
 			startGameRegular();
-		} else {
+		}
+
+		if(ConfigRetriever.isMakeQueueTest()) {
+			executeQueue();
+		}
+
+		if(ConfigRetriever.isMakeOverallTest()) {
 			performLoops(SQUARE);
 			performLoops(OVERLAP);
 		}
+
+	}
+
+	private static void executeQueue() {
+		List<ConfigHolder> executionQueue = Arrays.asList(
+				new ConfigHolder().builderLevel(0).painterLevel(1).gameType(SQUARE).gameMode(GameMode.pcPc).powLvl(3),
+				new ConfigHolder().builderLevel(0).painterLevel(1).gameType(SQUARE).gameMode(GameMode.pcPc).powLvl(4)
+		);
+		executionQueue.forEach(elem -> executeGame(elem));
 	}
 
 	private static void performLoops(String gameType) {
@@ -34,27 +54,40 @@ public class Main {
 					if(ignoreBelowLevel(1, 6, builder, painter)) {
 						continue;
 					}
+					ConfigHolder configHolder =
+							new ConfigHolder().builderLevel(builder).painterLevel(painter).gameType(gameType).gameMode(GameMode.pcPc).powLvl(powlvl);
 
-
-					ResultWriter.initConfigValues(gameType, GameMode.pcPc.getGameModeName(), powlvl, builder, painter);
-
-					AbstractFree t = null;
-					if(gameType == SQUARE) {
-						t = new SquareFree(new NestingLevels(builder, painter), powlvl, GameMode.pcPc);
-					}
-					if(gameType == OVERLAP) {
-						t = new OverlapFree(new NestingLevels(builder, painter), powlvl, GameMode.pcPc);
-					}
-					if(t != null) {
-						t.startGame();
-					}
-
-					ResultWriter.closeStream();
-					sleepFor(2);
+					executeGame(configHolder);
 				}
 			}
 		}
 	}
+
+	private static void executeGame(ConfigHolder configHolder) {
+		String gameType = configHolder.getGameType();
+		String gameMode = configHolder.getGameMode().getGameModeName();
+		int powlvl = configHolder.getPowlvl();
+		int painter = configHolder.getNestingLevels().getPainterNestingLevel();
+		int builder = configHolder.getNestingLevels().getBuilderNestingLevel();
+
+		ResultWriter.initConfigValues(gameType, gameMode, powlvl, painter, builder);
+
+		AbstractFree t = null;
+		if(gameType == SQUARE) {
+			t = new SquareFree(new NestingLevels(builder, painter), powlvl, GameMode.pcPc);
+		}
+		if(gameType == OVERLAP) {
+			t = new OverlapFree(new NestingLevels(builder, painter), powlvl, GameMode.pcPc);
+		}
+		if(t != null) {
+			t.startGame();
+		}
+
+		ResultWriter.closeStream();
+		sleepFor(2);
+	}
+
+
 	private static boolean ignoreBelowLevel(int ignoreBuilder, int ignorePainter, int currentBuilder, int currentPainter) {
 		if(currentBuilder <= ignoreBuilder && currentPainter <= ignorePainter) {
 			return true;

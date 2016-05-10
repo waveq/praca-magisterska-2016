@@ -14,6 +14,7 @@ public class ConfigRetriever {
 	private static final String PAINTER_NESTING_LEVEL_PROPERTY = "painterNestingLevel";
 	private static final String MAX_THINK_TIME_PROPERTY = "maxThinkTime";
 	private static final String MAKE_OVERALL_TEST_PROPERTY = "makeOverallTest";
+	private static final String MAKE_QUEUE_TEST_PROPERTY = "makeQueueTest";
 	private static final String RANDOMIZATION = "randomization";
 
 	private static final String PROPERTIES_FILE = "src/main/java/thue/gameConfig/config.properties";
@@ -34,6 +35,10 @@ public class ConfigRetriever {
 
 	public static boolean isMakeOverallTest() {
 		return Boolean.parseBoolean(getProperty(MAKE_OVERALL_TEST_PROPERTY));
+	}
+
+	public static boolean isMakeQueueTest() {
+		return Boolean.parseBoolean(getProperty(MAKE_QUEUE_TEST_PROPERTY));
 	}
 
 	public static boolean isRandomization() {

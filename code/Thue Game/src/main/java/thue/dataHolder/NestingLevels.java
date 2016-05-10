@@ -17,4 +17,12 @@ public class NestingLevels {
 	public int getPainterNestingLevel() {
 		return painterNestingLevel;
 	}
+
+	public void setPainterNestingLevel(int painterNestingLevel) {
+		this.painterNestingLevel = painterNestingLevel;
+	}
+
+	public void setBuilderNestingLevel(int builderNestingLevel) {
+		this.builderNestingLevel= builderNestingLevel;
+	}
 }
