@@ -14,6 +14,8 @@
 \usepackage{listings} 
 \usepackage{color}
 \usepackage{graphicx}
+\usepackage{float}
+\usepackage[section]{placeins}
 
 \setmonofont[Scale=0.75]{Monaco}
 
@@ -513,9 +515,13 @@ Na początku dekrementowana zostaje ilość zagnieżdżeń na jaką chcemy się 
 
 Algorytm obrazuje poniższa grafika:
 
-\begin{center}
-\includegraphics[scale = 0.08]{images/nestingPainter}
-\end{center}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.08]{images/nestingPainter}
+    \caption{Rysunek}
+    \label{fig:mesh12}
+\end{figure}
 
 Mamy ciąg $S = a, b$, architekt wybrał indeks 2, czyli malarz wybiera symbol jaki zostanie wstawiony za literką $b$. Typ gry to \textbf{Longest square free word}. Moc zbioru wynosi 3, więc do wyboru są dostępne symbole $a$, $b$, $c$. Wstawienie symbolu $b$ stworzyłoby kwadrat, dlatego algorytm rozważa literki $a$ oraz $c$. Zmienna $n$ jest to poziom zagnieżdżenia algorytmu, natomiast liczby przy pasujących symbolach oznaczają punkty, jakie zostają przypisane symbolowi $a$ lub $c$. 
 
@@ -729,12 +735,66 @@ malarz 1
 #> Rozrgrywka trwała 63 ruchów i 7997.669 sekund.
 #> Rozrgrywka trwała 83 ruchów i 36676.259 sekund.
 
-
-
-
 \fi
 
-\section{Czas oczekiwania na decyzje}
+\section{Pomiary czasów potrzebnych na podjęcie decyzji}
+Nieodłącznym elementem analizy działania aplikacji jest badanie czasu w jakim wykonuje ona swoje algorytmy. Nie inaczej jest w przypadku Longest Free Word. Najkrótrzy zbadany czas decyzji algorytmu wyniósł 0.001 sekundy, najdłuższy natomiast około 2 godzin. Czas potrzebny na decyzję jest tym dłuższy im dłuższy jest stworzony do tej pory ciąg. Naturalnie więc, na początku rozgrywki algorytm będzie działał szybko, lecz w raz z rozwojem potyczki będzie zwalniał. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.7]{images/timeBuilder0Painter1}
+    \caption{Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: 0, Malarz: 1.}
+    \label{fig:builder0painter1}
+\end{figure}
+
+Jak widać na wykresie \ref{fig:builder0painter1}, czas na podjęcie decyzji zwiększa się wraz z długością ciągu. Widoczne odchylenia to prawdopodobnie efekt działania innego procesu na tej samej maszynie.
+
+Warto zauważyć jak ogromne różnice w wydajności istnieją pomiędzy poziomami zagnieżdżenia algorytmów.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.7]{images/timeBuilder1Painter1}
+    \caption{Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: 1, Malarz: 1.}
+    \label{fig:builder1painter1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.7]{images/timeBuilder2Painter1}
+    \caption{Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: 2, Malarz: 1.}
+    \label{fig:builder2painter1}
+\end{figure}
+
+Przy zagnieżdżeniu ustawionym na 2, dla ciągu długości 100 wyliczenie odpowiedniej decyzji zajęło około 170 razy więcej czasu niż przy zagnieżdżeniu równym 1.
+
+Odrobinę inaczej wyglądają analogiczne wykresy dla malarza. Algorytm malarza z zagnieżdżeniami symuluje dodawanie kolejnych symboli w wyznaczonym indeksie, jednak jeżeli w danym miejscu da się wstawić tylko 1 symbol, to przeprowadzi mniej symulacji niż jeśli dałoby się tam wstawić 5 symboli. Dzięki tej zależności na wykresie można zauważyć, przy których ruchach malarz jest w opałach, a przy których ma dostępnych wiele opcji.
+
+Na wykresie \ref{fig:painter1builder0}, widać wzloty i spadki czasu trwania algorytmu. Jak widać zachłanny algorytm budowniczego cyklicznie redukuje liczbę opcji malarza.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.7]{images/timePainter1Builder0}
+    \caption{Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: 0, Malarz: 1.}
+    \label{fig:painter1builder0}
+\end{figure}
+
+Jeśli przeanalizujemy wykres \ref{fig:painter1builder2} zauważymy, że podczas rozgrywki ze sprytniejszym algorytmem budowniczego, krzywe są o wiele bardziej spiczaste, co oznacza, że jest to trudna rozgrywka dla malarza, która ostatecznie kończy się w 82 ruchu.
+
+Ponownie możemy porównać ze sobą czasy podejmowania decyzji dla algorytmu z zagnieżdżeniem 1 poziom na wykresie \ref{fig:painter1builder2}, oraz 2 poziomu na wykresie \ref{fig:painter2builder0}. Decyzja dla ciągu długości 79 pierwszemu algorytmowi zajęła $0.061$ sekundy, natomiast temu bardziej złożonemu $17.711$. Zatem w tym konkretnym ruchu algorytm z zagnieżdżeniem o $1$ większym decydował się około $290$ razy dłużej.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.7]{images/timePainter1Builder2}
+    \caption{Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: 2, Malarz: 1.}
+    \label{fig:painter1builder2}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.7]{images/timePainter2Builder0}
+    \caption{Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: 0, Malarz: 2.}
+    \label{fig:painter2builder0}
+\end{figure}
 
 
 \section{Obserwacja zachowań algorytmu budowniczego}
