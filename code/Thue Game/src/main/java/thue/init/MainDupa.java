@@ -9,11 +9,10 @@ import thue.gameLogic.AbstractFree;
 import thue.gameLogic.OverlapFree;
 import thue.gameLogic.SquareFree;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Main {
+public class MainDupa {
 	private static final String SQUARE = "Square";
 	private static final String OVERLAP = "Overlap";
 	private static final String SLEEP_ERROR_MESSAGE = "Error during sleep";
@@ -40,7 +39,7 @@ public class Main {
 
 	private static void executeQueue() {
 		List<ConfigHolder> executionQueue = Arrays.asList(
-				new ConfigHolder().builderLevel(0).painterLevel(0).gameType(SQUARE).gameMode(GameMode.pcPc).powLvl(10)
+				new ConfigHolder().builderLevel(5).painterLevel(2).gameType(SQUARE).gameMode(GameMode.pcPc).powLvl(5)
 			//	new ConfigHolder().builderLevel(0).painterLevel(2).gameType(SQUARE).gameMode(GameMode.pcPc).powLvl(5)
 			//	new ConfigHolder().builderLevel(0).painterLevel(2).gameType(SQUARE).gameMode(GameMode.pcPc).powLvl(5),
 			//	new ConfigHolder().builderLevel(0).painterLevel(2).gameType(SQUARE).gameMode(GameMode.pcPc).powLvl(5),
