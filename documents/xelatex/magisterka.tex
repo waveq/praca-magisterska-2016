@@ -315,11 +315,12 @@ Subsequence compareSubSeq(int subSeqSize, List<Integer> sequence) {
 Zmienne \textbf{left} i \textbf{right} są to podciągi, które reprezentują lewą i prawą część kwadratu $aa$. Zmienna \textbf{comparesFitInSequence} jest to ilość porównań jaka zmieści się wewnątrz naszej sekwencji. Dla przykładu, gdy nasz ciąg, jest reprezentowany przez $S = abcabaca$, a wcześniej sprecyzowana długość podciągu, składającego się na kwadrat wynosi 2, to zmienna \textbf{comparesFitInSequence} zostanie ustawiona na $(8 + 1) - (2 * 2)$ czyli 5, ponieważ możliwe są następujące porównania: $\textbf{abca}baca$, $a\textbf{bcab}aca$, $ab\textbf{caba}ca$, $abc\textbf{abac}a$, $abca\textbf{baca}$
 W pętli znajdującej się w linii 5 do listy \textbf{left} oraz \textbf{right} dodawane są podciągi odpowiedniej długości, natomiast w linii 10 następuje sprawdzenie czy podciągi są identyczne. Jeśli - tak oznacza to, że w naszej sekwencji, rozpoczynając od indeksu $i$ występuje kwadrat długości $2 * \textbf{subSeqSize}$. Jeśli listy są różne to w linii 13 następuje ich wyczyszczenie, po to by pętla mogła porównać dwa kolejne podciągi.
 
-Działanie algorytmu ilustruje grafika:
-
-\begin{center}
-\includegraphics[scale = 0.2]{images/squareFinding}
-\end{center}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.2]{images/squareFinding}
+    \caption{Działanie algorytmu szukającego kwadratów.}
+    \label{fig:squareFinding}
+\end{figure}
 
 Dla typu gry w którym unikamy nasunięć powstały osobne metody.
 
@@ -367,10 +368,12 @@ Subsequence compareSubSeqOverlap(int subSeqSize, List<Integer> sequence) {
 
 Metoda \textbf{compareSubSeqOverlap} również jest analogiczna do metody \textbf{compareSubSeq}. Różni się tutaj wartość zmiennej \textbf{comparesFitInSequence}, jest ona większa o 1, z takiego samego powodu, co zmienna \textbf{maxSeqSize} z metody \textbf{findOverlap}. Różni się również podciąg zapisywany do zmiennej \textbf{right}, w pętli z 6 linii. Pierwszy indeks owego podciągu jest równy indeksowi ostatniego elementu, lewego podciągu, po to by stworzyć nasunięcie.
 
-Działanie algorytmu ilustruje grafika:
-\begin{center}
-\includegraphics[scale = 0.2]{images/overlapFinding}
-\end{center}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.2]{images/overlapFinding}
+    \caption{Działanie algorytmu szukającego nasunięć.}
+    \label{fig:overlapFinding}
+\end{figure}
 
 \section{Komunikacja z użytkownikiem}
 Plik konfiguracyjny nie jest wystarczającym środkiem komunikacji z aplikacjią. W związku z tym, po uruchomieniu programu mamy dostęp do konsoli, służy do wyświetlania jak i wprowadzania treści.
@@ -516,14 +519,14 @@ Na początku dekrementowana zostaje ilość zagnieżdżeń na jaką chcemy się 
 Algorytm obrazuje poniższa grafika:
 
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[scale = 0.08]{images/nestingPainter}
-    \caption{Rysunek}
-    \label{fig:mesh12}
+    \caption{Działanie algorytmu malarza z zagnieżdżeniami.}
+    \label{fig:nestingPainter}
 \end{figure}
 
-Mamy ciąg $S = a, b$, architekt wybrał indeks 2, czyli malarz wybiera symbol jaki zostanie wstawiony za literką $b$. Typ gry to \textbf{Longest square free word}. Moc zbioru wynosi 3, więc do wyboru są dostępne symbole $a$, $b$, $c$. Wstawienie symbolu $b$ stworzyłoby kwadrat, dlatego algorytm rozważa literki $a$ oraz $c$. Zmienna $n$ jest to poziom zagnieżdżenia algorytmu, natomiast liczby przy pasujących symbolach oznaczają punkty, jakie zostają przypisane symbolowi $a$ lub $c$. 
+Mamy ciąg $S = a, b$, budowniczy wybrał indeks 2, czyli malarz wybiera symbol jaki zostanie wstawiony za literką $b$. Typ gry to \textbf{Longest square free word}. Moc zbioru wynosi 3, więc do wyboru są dostępne symbole $a$, $b$, $c$. Wstawienie symbolu $b$ stworzyłoby kwadrat, dlatego algorytm rozważa literki $a$ oraz $c$. Zmienna $n$ jest to poziom zagnieżdżenia algorytmu, natomiast liczby przy pasujących symbolach oznaczają punkty, jakie zostają przypisane symbolowi $a$ lub $c$. 
 
 Już przy pierwszym zagnieżdżeniu widać, że literka $c$ jest atrakcyjniejsza, ponieważ wstawienie jej zapewnia malarzowi więcej możliwości w kolejnych rundach. Jednak sprawdzenie jednego ruchu do przodu nie zawsze jest wystarczające i zdarza się, że z pozoru nieatrakcyjny symbol w perspektywie kolejnych, tur jest najlepszą opcją.
 
@@ -550,9 +553,12 @@ Na początku metody zainicjalizowana zostaje zmienna scoreList. Do listy dodane 
 \section{Longest square free word z interfejsem graficznym}
 Powstała również wersja gry, w której użytkownik nie korzysta z konsoli, lecz z graficznego interfejsu. W tej odmianie użytkownik za pomocą trzech kolorów ma stworzyć jak najdłuższy ciąg bez kwadratów. Czynności jakie gracz wykonuje to wybranie miejsca, w które zostanie wstawiony element oraz jego kolor. Jeśli w tworzonym ciągu pojawi się kwadrat rozgrywka zostaje przerwana i na ekranie zostają podświetlone powtórzenia składające się na kwadrat. Program zapisuje również najwyższy wynik, który jest równy długości utworzonego ciągu. Algorytm szukający kwadratów nie różni się w żaden sposób od algorytmu z podstawowej wersji gry.
 
-\begin{center}
-\includegraphics[scale = 0.2]{images/thueMobile}
-\end{center}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.2]{images/thueMobile}
+    \caption{Longest Free Word z interfejsem graficznym}
+    \label{fig:thueMobile}
+\end{figure}
 
 Aplikacja została napisana na popularnym silniku do tworzenia gier - Unity. Pozwala on kompilować kod programu do plików wykonywalnych, które mogą być uruchamiane w przeglądarkach, na komputerach osobistych, konsolach i telefonach komórkowych. W tym przypadku pod uwagę brane były głównie telefony komórkowe, o czym może świadczyć wielkość przycisków i mała ilość szczegółów na ekranie.
 
@@ -567,34 +573,38 @@ Dla 4 symboli, również nie jest możliwe rozegranie partii dłuższej niż 10 
 Dopiero rozgrywka na 5 symbolach daje algorytmom pole do popisu, bowiem w przeprowadzonych badaniach, zależnie od ustawionych poziomów, trwała ona od 11 do conajmniej 236 ruchów.
 
 \begin{table}[!h]
-\begin{tabular}{|l|l|l|l|} \hline
-Ilość symboli & Malarz & Budowniczy & Ilość ruchów \\ \hline
-$3$ & $\geq 0$ & $\geq 0$ & $5$\\ \hline
-$4$ & $0$ & $0$ & $7$\\ \hline
-$4$ & $\geq 1 $ & $\geq 1$ & $7$\\ \hline
-$4$ & $0$ & $\geq 1$ & $10$\\ \hline
-\end{tabular}
+	\begin{tabular}{|l|l|l|l|} \hline
+	Ilość symboli & Malarz & Budowniczy & Ilość ruchów \\ \hline
+	$3$ & $\geq 0$ & $\geq 0$ & $5$\\ \hline
+	$4$ & $0$ & $0$ & $7$\\ \hline
+	$4$ & $\geq 1 $ & $\geq 1$ & $7$\\ \hline
+	$4$ & $0$ & $\geq 1$ & $10$\\ \hline
+	\end{tabular}
+	\caption{Maksymalna ilość ruchów w stosunku do ilości dostępnych symboli.}
+	\label{fig:maxGameLength}
 \end{table}
 
 \hfill \break
 Używanie zachłannego algorytmu malarza nadal nie skutkuje zbyt długą grą. Niezależnie od poziomu budowniczego, kwadrat pojawi się zawsze po 11 kroku. Jednak podczas prób, gdy malarz miał ustawiony poziom zagnieżdżenia równy 1, a budowniczy działał zachłannie, rozgrywka trwała od 44 do 236 tur. Średnia arytmetyczna wyciągnięta z ilości ruchów wyniosła $133.83$
 
 \begin{table}[!h]
-\begin{tabular}{|l|l|l|} \hline
-Ilość symboli & Ilość ruchów & Czas trwania \\ \hline
-5 & 44 & 0.1 s.\\ \hline
-5 & 56 & 0.4 s.\\ \hline
-5 & 81 & 2.4 s.\\ \hline
-5 & 88 & 4.3 s.\\ \hline
-5 & 100 & 7.6 s.\\ \hline
-5 & 102 & 7.3 s.\\ \hline
-5 & 163 & 1 min. 27 s. \\ \hline
-5 & 171 & 1 min. 48 s. \\ \hline
-5 & 173 & 1 min. 59 s. \\ \hline
-5 & 193 & 4 min. \\ \hline
-5 & 199 & 3 min. 38 s.\\ \hline
-5 & 236 & 8 min. 51 s. \\ \hline
-\end{tabular}
+	\begin{tabular}{|l|l|l|} \hline
+	Ilość symboli & Ilość ruchów & Czas trwania \\ \hline
+	5 & 44 & 0.1 s.\\ \hline
+	5 & 56 & 0.4 s.\\ \hline
+	5 & 81 & 2.4 s.\\ \hline
+	5 & 88 & 4.3 s.\\ \hline
+	5 & 100 & 7.6 s.\\ \hline
+	5 & 102 & 7.3 s.\\ \hline
+	5 & 163 & 1 min. 27 s. \\ \hline
+	5 & 171 & 1 min. 48 s. \\ \hline
+	5 & 173 & 1 min. 59 s. \\ \hline
+	5 & 193 & 4 min. \\ \hline
+	5 & 199 & 3 min. 38 s.\\ \hline
+	5 & 236 & 8 min. 51 s. \\ \hline
+	\end{tabular}
+	\caption{Podsumowanie badań dla budownieczego poziomu 0 i malarza poziomu 1.}
+	\label{fig:builder0Painter1Table}
 \end{table}
 
 \hfill \break
@@ -612,20 +622,22 @@ Ilość symboli & Ilość ruchów & Czas trwania \\ \hline
 Przy poziomie budowniczego i malarza ustawionym na 1, podczas 10 prób rozgrywka trwała od 30 do 213 ruchów. Średnia arytmetyczna obliczona na podstawie rozgrywek wynosi $96.9$, a więc jest o $37.23$ niższa niż, gdy budowniczy używał algorytmu zachłannego. 
 
 \begin{table}[!h]
-\begin{tabular}{|l|l|l|} \hline
-Ilość symboli & Ilość ruchów & Czas trwania \\ \hline
-5 & 30 & 1.2 s. \\ \hline
-5 & 42 & 5.1 s. \\ \hline
-5 & 45 & 11 s. \\ \hline
-5 & 47 & 7.8 s. \\ \hline
-5 & 73 & 1 min. 17 s. \\ \hline
-5 & 104 & 9 min. 38 s. \\ \hline
-5 & 114 & 29 min. 29 s. \\ \hline
-5 & 134 & 1 godz. 30 min. 27 s.  \\ \hline
-5 & 178 & 5 godz. 11 min. 22 s. \\ \hline
-5 & 202 & 9 godz. 42 min. 15 s. \\ \hline
-5 & 213 & 13 godz. 04 min. 35 s. \\ \hline
-\end{tabular}
+	\begin{tabular}{|l|l|l|} \hline
+	Ilość symboli & Ilość ruchów & Czas trwania \\ \hline
+	5 & 30 & 1.2 s. \\ \hline	
+	5 & 42 & 5.1 s. \\ \hline
+	5 & 45 & 11 s. \\ \hline	
+	5 & 47 & 7.8 s. \\ \hline
+	5 & 73 & 1 min. 17 s. \\ \hline
+	5 & 104 & 9 min. 38 s. \\ \hline
+	5 & 114 & 29 min. 29 s. \\ \hline
+	5 & 134 & 1 godz. 30 min. 27 s.  \\ \hline
+	5 & 178 & 5 godz. 11 min. 22 s. \\ \hline
+	5 & 202 & 9 godz. 42 min. 15 s. \\ \hline
+	5 & 213 & 13 godz. 04 min. 35 s. \\ \hline
+	\end{tabular}
+	\caption{Podsumowanie badań dla budownieczego i malarza poziomu 1.}
+	\label{fig:builder1Painter1Table}
 \end{table}
 
 
@@ -738,7 +750,7 @@ malarz 1
 \fi
 
 \section{Pomiary czasów potrzebnych na podjęcie decyzji}
-Nieodłącznym elementem analizy działania aplikacji jest badanie czasu w jakim wykonuje ona swoje algorytmy. Nie inaczej jest w przypadku Longest Free Word. Najkrótrzy zbadany czas decyzji algorytmu wyniósł 0.001 sekundy, najdłuższy natomiast około 2 godzin. Czas potrzebny na decyzję jest tym dłuższy im dłuższy jest stworzony do tej pory ciąg. Naturalnie więc, na początku rozgrywki algorytm będzie działał szybko, lecz w raz z rozwojem potyczki będzie zwalniał. 
+Nieodłącznym elementem analizy działania aplikacji jest badanie czasu w jakim wykonuje ona swoje algorytmy. Nie inaczej jest w przypadku Longest Free Word. Najkrótrzy zbadany czas decyzji algorytmu wyniósł 0.001 sekundy, najdłuższy natomiast około 2 godzin. Czas potrzebny na decyzję jest tym dłuższy im dłuższy jest stworzony do tej pory ciąg. Naturalnie więc, na początku rozgrywki algorytm będzie działał szybko, lecz w raz z rozwojem potyczki będzie zwalniał. Zależność tą można zaobserwować na wykresie \ref{fig:builder0painter1}. Widoczne odchylenia to prawdopodobnie efekt działania innego procesu działającego na tej samej maszynie.
 
 \begin{figure}[H]
     \centering
@@ -746,8 +758,6 @@ Nieodłącznym elementem analizy działania aplikacji jest badanie czasu w jakim
     \caption{Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: 0, Malarz: 1.}
     \label{fig:builder0painter1}
 \end{figure}
-
-Jak widać na wykresie \ref{fig:builder0painter1}, czas na podjęcie decyzji zwiększa się wraz z długością ciągu. Widoczne odchylenia to prawdopodobnie efekt działania innego procesu na tej samej maszynie.
 
 Warto zauważyć jak ogromne różnice w wydajności istnieją pomiędzy poziomami zagnieżdżenia algorytmów.
 
@@ -767,7 +777,7 @@ Warto zauważyć jak ogromne różnice w wydajności istnieją pomiędzy pozioma
 
 Przy zagnieżdżeniu ustawionym na 2, dla ciągu długości 100 wyliczenie odpowiedniej decyzji zajęło około 170 razy więcej czasu niż przy zagnieżdżeniu równym 1.
 
-Odrobinę inaczej wyglądają analogiczne wykresy dla malarza. Algorytm malarza z zagnieżdżeniami symuluje dodawanie kolejnych symboli w wyznaczonym indeksie, jednak jeżeli w danym miejscu da się wstawić tylko 1 symbol, to przeprowadzi mniej symulacji niż jeśli dałoby się tam wstawić 5 symboli. Dzięki tej zależności na wykresie można zauważyć, przy których ruchach malarz jest w opałach, a przy których ma dostępnych wiele opcji.
+Odrobinę inaczej wyglądają analogiczne wykresy dla malarza. Algorytm malarza z zagnieżdżeniami symuluje dodawanie kolejnych symboli w wyznaczonym indeksie, jednak jeżeli w danym miejscu da się wstawić tylko 1 symbol, to przeprowadzi mniej symulacji, niż jeśli dałoby się tam wstawić 5 symboli. Dzięki tej zależności na wykresie można zauważyć, przy których ruchach malarz jest w opałach, a przy których ma dostępnych wiele opcji.
 
 Na wykresie \ref{fig:painter1builder0}, widać wzloty i spadki czasu trwania algorytmu. Jak widać zachłanny algorytm budowniczego cyklicznie redukuje liczbę opcji malarza.
 
@@ -780,7 +790,7 @@ Na wykresie \ref{fig:painter1builder0}, widać wzloty i spadki czasu trwania alg
 
 Jeśli przeanalizujemy wykres \ref{fig:painter1builder2} zauważymy, że podczas rozgrywki ze sprytniejszym algorytmem budowniczego, krzywe są o wiele bardziej spiczaste, co oznacza, że jest to trudna rozgrywka dla malarza, która ostatecznie kończy się w 82 ruchu.
 
-Ponownie możemy porównać ze sobą czasy podejmowania decyzji dla algorytmu z zagnieżdżeniem 1 poziom na wykresie \ref{fig:painter1builder2}, oraz 2 poziomu na wykresie \ref{fig:painter2builder0}. Decyzja dla ciągu długości 79 pierwszemu algorytmowi zajęła $0.061$ sekundy, natomiast temu bardziej złożonemu $17.711$. Zatem w tym konkretnym ruchu algorytm z zagnieżdżeniem o $1$ większym decydował się około $290$ razy dłużej.
+Ponownie możemy porównać ze sobą czasy podejmowania decyzji dla algorytmu z zagnieżdżeniem 1 poziomu na wykresie \ref{fig:painter1builder2}, oraz 2 poziomu na wykresie \ref{fig:painter2builder0}. Wykonanie ruchu, dla ciągu długości 79 pierwszemu algorytmowi zajęło $0.061$ sekundy, natomiast temu bardziej złożonemu $17.711$. Zatem w tym konkretnym ruchu algorytm z zagnieżdżeniem o $1$ większym decydował się około $290$ razy dłużej.
 
 \begin{figure}[h]
     \centering

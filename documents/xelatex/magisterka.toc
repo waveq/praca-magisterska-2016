@@ -17,7 +17,7 @@
 \contentsline {section}{\numberline {2.8}Longest square free word z interfejsem graficznym}{28}{section.2.8}
 \contentsline {chapter}{\numberline {3}Analiza symulowanych potyczek}{30}{chapter.3}
 \contentsline {section}{\numberline {3.1}Ilość symboli potrzebna na rozgranie partii}{30}{section.3.1}
-\contentsline {section}{\numberline {3.2}Pomiary czasów potrzebnych na podjęcie decyzji}{32}{section.3.2}
+\contentsline {section}{\numberline {3.2}Pomiary czasów potrzebnych na podjęcie decyzji}{33}{section.3.2}
 \contentsline {section}{\numberline {3.3}Obserwacja zachowań algorytmu budowniczego}{37}{section.3.3}
 \contentsline {chapter}{\numberline {4}Narzędzia i\nobreakspace {}standardy pokrewne}{38}{chapter.4}
 \contentsline {section}{\numberline {4.1}Przetwarzanie dokumentów SGML -- standard DSSSL}{38}{section.4.1}

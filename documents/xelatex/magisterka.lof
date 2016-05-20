@@ -1,7 +1,10 @@
 \select@language {polish}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Rysunek}}{26}{figure.2.1}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Działanie algorytmu szukającego kwadratów.}}{18}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Działanie algorytmu szukającego nasunięć.}}{20}{figure.2.2}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Działanie algorytmu malarza z zagnieżdżeniami.}}{27}{figure.2.3}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Longest Free Word z interfejsem graficznym}}{29}{figure.2.4}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: 0, Malarz: 1.}}{33}{figure.3.1}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: 1, Malarz: 1.}}{34}{figure.3.2}
