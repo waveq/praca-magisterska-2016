@@ -19,17 +19,10 @@
 \contentsline {section}{\numberline {3.1}Ilość symboli potrzebna na rozgranie partii}{30}{section.3.1}
 \contentsline {section}{\numberline {3.2}Pomiary czasów potrzebnych na podjęcie decyzji}{33}{section.3.2}
 \contentsline {section}{\numberline {3.3}Obserwacja zachowań algorytmu budowniczego}{37}{section.3.3}
-\contentsline {chapter}{\numberline {4}Narzędzia i\nobreakspace {}standardy pokrewne}{38}{chapter.4}
-\contentsline {section}{\numberline {4.1}Przetwarzanie dokumentów SGML -- standard DSSSL}{38}{section.4.1}
-\contentsline {section}{\numberline {4.2}Przetwarzanie dokumentów XML -- standard XSL}{39}{section.4.2}
-\contentsline {chapter}{\numberline {5}Przegląd dostępnych narzędzi}{40}{chapter.5}
-\contentsline {section}{\numberline {5.1}Narzędzia do przeglądania dokumentów SGML}{40}{section.5.1}
-\contentsline {section}{\numberline {5.2}Parsery SGML}{41}{section.5.2}
-\contentsline {section}{\numberline {5.3}Wykorzystanie języków skryptowych}{41}{section.5.3}
-\contentsline {section}{\numberline {5.4}Wykorzystanie szablonów XSL}{41}{section.5.4}
-\contentsline {chapter}{Zakończenie}{43}{chapter*.5}
-\contentsline {chapter}{\numberline {A}Tytuł załącznika jeden}{44}{appendix.A}
-\contentsline {chapter}{\numberline {B}Tytuł załącznika dwa}{45}{appendix.B}
-\contentsline {chapter}{Spis tabel}{46}{appendix*.6}
-\contentsline {chapter}{Spis rysunków}{47}{appendix*.7}
-\contentsline {chapter}{Oświadczenie}{48}{appendix*.8}
+\contentsline {chapter}{Zakończenie}{38}{chapter*.5}
+\contentsline {chapter}{\numberline {A}Tytuł załącznika jeden}{39}{appendix.A}
+\contentsline {chapter}{\numberline {B}Tytuł załącznika dwa}{40}{appendix.B}
+\contentsline {chapter}{Bibliografia}{41}{appendix*.6}
+\contentsline {chapter}{Spis tabel}{42}{appendix*.7}
+\contentsline {chapter}{Spis rysunków}{43}{appendix*.8}
+\contentsline {chapter}{Oświadczenie}{44}{appendix*.9}

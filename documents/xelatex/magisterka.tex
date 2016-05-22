@@ -17,6 +17,8 @@
 \usepackage{float}
 \usepackage[section]{placeins}
 
+
+
 \setmonofont[Scale=0.75]{Monaco}
 
 % Opcjonalnie identyfikator dokumentu
@@ -56,7 +58,7 @@
 
 Tematem niniejszej pracy jest Gra Thuego. Axel Thue był norweskim matematykiem żyjącym w latach 1863 - 1922, znanym z prac z zakresu kombinatoryki.
 
-Thue pracował nad problemami, powstałymi w wyniku badań nad sekwencjami symboli. Praca Thue [1] opisywała problem, który autor nazwał \textit{nieredukowalne słowa} (\textit{irreducible words}). Poświęca w niej szczególną uwagę dwu i trzy literowym przypadkom. W skrócie wprowadza pojęcie znane obecnie jako \textit{Thue-Morse word} i pokazuje, że nieskończone słowa bez nasunięć (\textit{Overlap-free}) są pochodnymi tej sekwencji. W swoich pracach definiuje kolejną strukturę, a mianowicie infinite \textit{Square-Free word}, oraz przedstawia sposoby generowania nieskończenie długich słów wolnych zarówno od kwadratów jak i nasunięć.
+Thue pracował nad problemami, powstałymi w wyniku badań nad sekwencjami symboli. Praca Thue \cite{repetition} opisywała problem, który autor nazwał \textit{nieredukowalne słowa} (\textit{irreducible words}). Poświęca w niej szczególną uwagę dwu i trzy literowym przypadkom. W skrócie wprowadza pojęcie znane obecnie jako \textit{Thue-Morse word} i pokazuje, że nieskończone słowa bez nasunięć (\textit{Overlap-free}) są pochodnymi tej sekwencji. W swoich pracach definiuje kolejną strukturę, a mianowicie infinite \textit{Square-Free word}, oraz przedstawia sposoby generowania nieskończenie długich słów wolnych zarówno od kwadratów jak i nasunięć.
 
 Gra która powstała na podstawie teorii Thuego w skrócie polegała będzie na utworzeniu jak najdłuższego ciągu znaków nad określonym z góry alfabetem. Zależnie od trybu gry, kończyć się ona będzie w momencie gdy pojawi się zdefiniowany na początku rodzaj powtórzenia w tworzonym przez nas, bądź algorytm ciągu. Jednym z trybów gry jest walka komputera przeciwko niemu samemu, po takiej rozgrywce przedstawione zostaną złożoności czasowe oraz wnioski wynikające z obranej przez oponentów taktyki. 
 
@@ -67,6 +69,8 @@ Zanim przejdziemy do twierdzeń, koniecznym jest wyjaśnienie podstawowych twier
 
 
 \section{Definicje}
+
+
 \begin{itemize}
 \item Alfabet jest skończonym zbiorem symboli lub liter.
 \item Słowo alfabetu $A$ jest skończoną sekwencją elementów z $A$. 
@@ -88,7 +92,7 @@ Rozważmy nieskończone słowo
 
 {\centering $01101001100101101001011001101001 ...$ \par}
 
-Zostało ono nazwane po Thue, który badał jego właściwości w referacie z 1906 roku, oraz Morsie, który odkrył je na nowo w latach 20 XIX wieku. Słowo Thue-Morse'a występuje również o wiele wcześniej w wiadomościach Prouheta[200] z Francuską Akademią Nauk w 1851 roku. Rzeczywiście Prouhet podał więcej ogólnych konstrukcji, uzyskując nie tylko słowo Thue-Morse'a, ale całą rodzinę słów na większych alfabetach mających inne interesujące właściwości. Słowa te czasami odnoszą się do ogólnych słow Thue-Morse'a lub słów Prouheta.
+Zostało ono nazwane po Thue, który badał jego właściwości w referacie z 1906 roku, oraz Morsie, który odkrył je na nowo w latach 20 XIX wieku. Słowo Thue-Morse'a występuje również o wiele wcześniej w wiadomościach  Prouheta \cite{prouhet} z Francuską Akademią Nauk w 1851 roku. Rzeczywiście Prouhet podał więcej ogólnych konstrukcji, uzyskując nie tylko słowo Thue-Morse'a, ale całą rodzinę słów na większych alfabetach mających inne interesujące właściwości. Słowa te czasami odnoszą się do ogólnych słow Thue-Morse'a lub słów Prouheta.
 
 Niech $A = \{a, b\}$ będzie dwuliterowym alfabetem. Rozważmy morfizm $\mu$ z monoidu $A*$, który definiuje się następująco:
 
@@ -172,29 +176,27 @@ W 1912 roku Axel Thue wymyślił inny sposób na generowanie nieskończonego sł
 \end{itemize}
 
 
-Po raz kolejny zastępujemy każde wystąpienie z naszych liter przez zdefiniowane sekwencje. Jest to dość skomplikowana struktura, zsumowana długość łańcuchów wynosi 18. A Carpi [7] dowiódł, że morfizm na alfabecie składającym się z trzech liter tworzący słowa wolne od kwadratów musi mieć długość równą co najmniej $18$.
+Po raz kolejny zastępujemy każde wystąpienie z naszych liter przez zdefiniowane sekwencje. Jest to dość skomplikowana struktura, zsumowana długość łańcuchów wynosi 18. A. Carpi \cite{carpi} dowiódł, że morfizm na alfabecie składającym się z trzech liter tworzący słowa wolne od kwadratów musi mieć długość równą co najmniej $18$.
 
 % - Bob wybiera indeks w ciągu, natomiast Alicja wybiera symbol z wcześniej ustalonego zbioru $A$.
 \section{Thue online}
-Praca J. Grytczuka, P. Szafrugi i M. Zmarza pod tytułem Online version of theorem of Thue[8] opisuje wersję online teorii Thuego. Jest to gra dla dwóch graczy Boba oraz Alicji. Podczas rozgrywki Alicja i Bob naprzemiennie wykonując swoje ruchy tworzą ciąg bez kwadratów. Celem Boba jest jak najszybsze skończenie rozgrywki poprzez utworzenie kwadratu, Alicja natomiast musi tego unikać.
+Praca J. Grytczuka, P. Szafrugi i M. Zmarza pod tytułem Online version of theorem of Thue {thueonline} opisuje wersję online teorii Thuego. Jest to gra dla dwóch graczy Boba oraz Alicji. Podczas rozgrywki Alicja i Bob naprzemiennie wykonując swoje ruchy tworzą ciąg bez kwadratów. Celem Boba jest jak najszybsze skończenie rozgrywki poprzez utworzenie kwadratu, Alicja natomiast musi tego unikać.
 
-Wartym wspomnienia jest uproszczony tryb gry, podczas którego mamy dwóch graczy - Alicję i Boba, tak jak zostało wspomniane, tylko Alicji zależy na tym by uniknąć kwadratów. Rozgrywka polega na tym, że Alicja i Bob wybierają na przemian symbole z ustalonego zbioru $A$, oraz dopisują je na końcu istniejącego ciągu. W momencie, gdy pojawia się kwadrat $aa$, jego druga część, czyli w naszym przypadku prawe $a$, zostaje usunięte. Zostało udowodnione w [9] J. Grytczuk, J. Kozik, P. Micek, New approach to nonrepetitive sequences. Random Structures Algorithms, DOI 10.1002/rsa.20411. , że Alicja jest wstanie stworzyć dowolnie długi ciąg bez kwadratów, nie zważając na ruchy Boba. Powyższe jest jednak możliwe pod warunkiem, że moc zbioru $A$ wynosi conajmniej $8$.
+Wartym wspomnienia jest uproszczony tryb gry, podczas którego mamy dwóch graczy - Alicję i Boba, tak jak zostało wspomniane, tylko Alicji zależy na tym by uniknąć kwadratów. Rozgrywka polega na tym, że Alicja i Bob wybierają na przemian symbole z ustalonego zbioru $A$, oraz dopisują je na końcu istniejącego ciągu. W momencie, gdy pojawia się kwadrat $aa$, jego druga część, czyli w naszym przypadku prawe $a$, zostaje usunięte. Zostało udowodnione w \cite{thueonline2}, że Alicja jest wstanie stworzyć dowolnie długi ciąg bez kwadratów, nie zważając na ruchy Boba. Powyższe jest jednak możliwe pod warunkiem, że moc zbioru $A$ wynosi conajmniej $8$.
 
-Innym typem gry przedstawionym w pracy[8] jest Online Thue game. Po raz  
+Innym typem gry przedstawionym w pracy \cite{thueonline} jest Online Thue game. Po raz  
 kolejny gracze wykonują swoje ruchy na przemian. W swojej rundzie Bob wybiera indeks w istniejącym ciągu $S$, który jest sprecyzowany przez 
 liczbę $i \in \{0, 1, ..., n\}$, następnie Alicja wybiera symbol $x \in A
 $, który jest wstawiany jedną pozycję w prawo od $s_i$, dając nam nową sekwencję $S' = s_1, ..., s_i, x, s_{i+1}, ...,s_n$ w momencie gdy $i = 0$, $x$ jest ustawiany na początku $S$. Celem Boba jest zmuszenie Alicji do stworzenia kwadratu, podczas gdy Alicja unika tego najdłużej jak to możliwe. Na przykład, jeśli ustalimy, że $A = \{a, b, c\}$ i $S = acbc$, wtedy Bob wybierając indeks $i = 1$ nie daje Alicji możliwości wybrania symbolu, który nie stworzyłby kwadratu. Rzeczywiście wybierając jakikolwiek $x \in A$ doprowadza do utworzenia kwadratu w $S'$: $\textbf{aa}cb, a\textbf{bcbc}, a\textbf{cc}bc$. W przypadku gdy Bob obierze dobrą strategię, rozgrywka na 3 symbolach skończy się na ciągu o długości $\leq 5$, nie ważne jak dobrą strategię obierze Alicja. Oczywiście im większą moc ma zbiór $A$, tym więcej ruchów, będzie potrzebował Bob, by zakończyć rozgrywkę. 
 
-[9] A. Ku ̈ndgen and M. J. Pelsmajer, Nonrepetitive colorings of graphs of bounded treewidth, Discrete Math. 308 (2008), 4473–4478. [10] J. Bara ́t, P. P. Varju ́. On square-free vertex colorings of graphs. Studia Sci. Math. Hungar. 44 (2007) 411–422. 
+Grytczuk, Szafruga i Zmarza \cite{thueonline} wysnuli teorię, że istnieje strategia dla Alicji gwarantująca jej utworzenie dowolnie długiej gry w online Thue game na zbiorze o 12 symboli. Teorię swoją oparli o prace Ku ̈ndegena i Pelsmajera \cite{first}, oraz Baráta i Varju \cite{second}, na temat niepowtarzalnych kolorowań grafów planarnych.
 
-Grytczuk, Szafruga i Zmarza[8] wysnuli teorię, że istnieje strategia dla Alicji gwarantująca jej utworzenie dowolnie długiej gry w online Thue game na zbiorze o 12 symboli. Teorię swoją oparli o prace Ku ̈ndegena i Pelsmajera[9], oraz Baráta and Varju[10], na temat niepowtarzalnych kolorowań grafów planarnych (outerplanar graphs?).
-
-Autorzy [8] nie zamkneli do końca problemu i zauważyli, że może istnieć strategia dla Alicji, która pozwoliłaby jej na dowolnie długą rozgrywkę nawet przy mocy zbioru $A$ równej 9.
+Autorzy \cite{thueonline} nie zamkneli do końca problemu i zauważyli, że może istnieć strategia dla Alicji, która pozwoliłaby jej na dowolnie długą rozgrywkę nawet przy mocy zbioru $A$ równej 9.
 
 
 \section{Komputerowa implementacja Online Thue Game}
 
-Komputerowa implementacja gry Thuego opiera się na pomyśle gry z pracy [8]. W grze dostępnych jest kilka trybów zarówno dla jednego oraz dwóch graczy jak i komputerowa symulacja, czyli gra komputera przeciwko niemu samemu.
+Komputerowa implementacja gry Thuego opiera się na pomyśle gry z pracy \cite{thueonline}. W grze dostępnych jest kilka trybów zarówno dla jednego oraz dwóch graczy jak i komputerowa symulacja, czyli gra komputera przeciwko niemu samemu.
 
 Implementacja gry Online Thue Game nazywana będzie \textbf{Longest Square-Free word}.
 Zasady pozostają niemal identyczne. Na początku gry, gracze ustalają moc zbioru symboli, oraz otrzymują swoje role. Jeden z nich staje się architektem, drugi malarzem. Rola architekta polega na wybieraniu odpowiedniego indeksu w ciągu tworzonym przez graczy, pod którym powstanie nowy element. Malarz natomiast określa symbol wstawianego elementu. Gra kończy się w momencie, gdy w ciągu tworzonym przez graczy pojawia się \textbf{kwadrat}. Indeks $i$  podawany przez architekta nie może być mniejszy od zera oraz większy niż $n$, gdzie $n$ jest równe liczbie elementów w ciągu. Na początku gry ciąg $S$ zawiera tylko jeden symbol równy 0.
@@ -809,169 +811,10 @@ Ponownie możemy porównać ze sobą czasy podejmowania decyzji dla algorytmu z 
 
 \section{Obserwacja zachowań algorytmu budowniczego}
 
-\chapter{Narzędzia i~standardy pokrewne}
-
-Systemy SGML, ze względu na mnogość funkcji jakie spełniają i~ich
-kompleksowe podejście do oznakowywania i~przetwarzania dokumentów
-tekstowych, są bardzo skomplikowane. Możemy wyróżnić dwa podejścia do
-budowy takich systemów.  Z~jednej strony, buduje się systemy
-zindywidualizowane, oparte o~specyficzne narzędzia tworzone w~takich
-językach, jak: C, C++, Perl czy Python. Edytory strukturalne, filtry
-do transformacji formatów czy parsery\index{parser} i~biblioteki
-przydatne do konstrukcji dalszych narzędzi, tworzone są według potrzeb
-określonych, pojedynczych systemów.
-
-Z~drugiej strony, twórcy oprogramowania postanowili pójść krok dalej
-i~połączyć te różne narzędzia w~jedną całość. Tą całość miał stanowić
-DSSSL lub jego XML-owy odpowiednik -- standard XSL. Ze względu na
-oferowane możliwości można twierdzić, że tworzenie i~używanie narzędzi
-implementujących standard DSSSL/XSL, jest najwłaściwszym
-podejściem. Przemawiają za tym różne argumenty, ale najważniejszym
-z~nich jest to, że mamy tu możliwość stworzenia niezależnego od
-platformy programowej i~narzędziowej zbioru szablonów -- przepisów jak
-przetwarzać dokumenty SGML.
-
-\section{Przetwarzanie dokumentów SGML -- standard DSSSL\label{s:dsssl}}
-
-DSSSL (\textit{Document Style Semantics and Specification Language\/})
--- to międzynarodowy standard ściśle związany ze standardem SGML.
-Standard ten, można podzielić na następujące części:
-
-\begin{itemize}
-\item język transformacji (\textit{transformation language\/}).  To
-  definicja języka służącego do transformacji dokumentu oznaczonego
-  znacznikami zgodnie z~pewnym DTD na dokument oznaczony zgodnie
-  z~innym~DTD.
-\item język stylu (\textit{style language\/}) opisujący sposób
-  formatowania dokumentów SGML.
-\item język zapytań (\textit{query language\/}) służy do
-  identyfikowania poszczególnych fragmentów dokumentu SGML.
-\end{itemize}
-
-Opisane główne części składowe standardu DSSSL dają obraz tego, jak
-wiele aspektów przetwarzania zostało zdefiniowanych i~jak
-skomplikowany jest to problem. Jest to głównym powodem tego, że mimo
-upływu kilku lat od zdefiniowania standardu nie powstały ani
-komercyjne ani wolnodostępne aplikacje wspierające go
-w~całości. Istnieją natomiast \emph{nieliczne\/} narzędzia realizujące
-DSSSL w~ograniczonym zakresie, głównie w~części definiującej język
-stylu, który odpowiada za opatrzenie dokumentu czysto strukturalnego
-w~informacje formatujące. Daje to możliwość publikacji dokumentów SGML
-zarówno w~postaci elektronicznej, hipertekstowej czy też drukowanej.
-
-\section{Przetwarzanie dokumentów XML -- standard XSL\label{s:xsl}}
-
-Tak jak XML jest \emph{uproszczoną\/} wersją standardu SGML, tak XSL
-jest uproszczonym odpowiednikiem standardu DSSSL. W~szczególności,
-wyróżnić można w~tym standardzie następujące części składowe:
-
-\begin{itemize}
-\item język transformacji (XSLT) To definicja języka służącego do
-  transformacji dokumentu.
-\item język zapytań (XPath) służy do identyfikowania poszczególnych
-  fragmentów dokumentu.
-\item język stylu deefiniujący sposób formatowania dokumentów XML.
-\end{itemize}
-
-\chapter{Przegląd dostępnych narzędzi\label{PRZEGLAD.NARZEDZI}}
-
-W~celu wykorzystania standardu SGML do przetwarzania dokumentów,
-niezbędne jest zebranie odpowiedniego zestawu narzędzi. Narzędzi do
-przetwarzania dokumentów SGML jest wiele. Są to zarówno całe
-systemy zintegrowane, jak i~poszczególne programy, biblioteki czy
-skrypty wspomagające.
-
-\section{Narzędzia do przeglądania dokumentów SGML}
-
-Do tej kategorii oprogramowania zaliczamy przeglądarki dokumentów
-SGML oraz serwery sieciowe wspomagające standard SGML, przy
-czym rozwiązań wspierających standard XML jest już w~chwili obecnej
-dużo więcej i~są dużo powszechniejsze.
-
-Jeżeli chodzi o~przeglądarki to zarówno Internet Explorer jak
-i~Netscape umożliwiają bezpośrednie wyświetlenie dokumentów XML;
-ponieważ jednak nie wspierają w~całości standardu XML, prowadzi to
-ciągle do wielu problemów\footnote{Z~innych mniej popularnych
-  rozwiązań można wymienić takie aplikacje, jak: HyBrick SGML
-  Browser firmy Fujitsu Limited, Panorama Publisher firmy InterLeaf
-  Inc, DynaText firmy Inso Corporation czy darmowy QWeb. W~przypadku
-  serwerów zwykle dokonują one transformacji ,,w~locie'' żądanych
-  dokumentów na format HTML (rzadziej bezpośrednio wyświetlają
-  dokumenty XML).  Ta kategoria oprogramowania ma, z~punktu widzenia
-  projektu, znaczenie drugorzędne.}.
-
-\section{Parsery SGML}
-Program \texttt{nsgmls} (z~pakietu \texttt{SP} Jamesa Clarka) jest
-doskonałym parserem\index{parser} dokumentów SGML, dostępnym
-publicznie.  Parser \texttt{nsgmls} jest dostępny w~postaci źródłowej
-oraz w~postaci programów wykonywalnych przygotowanych na platformę
-MS~Windows, Linux/Unix i~inne. Oprócz analizy poprawności dokumentu
-parser\index{parser} ten umożliwia również konwersję danych do formatu
-ESIS\index{ESIS}, który wykorzystywany jest jako dane wejściowe przez
-wiele narzędzi do przetwarzania i~formatowania dokumentów SGML.
-Dodatkowymi, bardzo przydatnymi elementami pakietu \texttt{SP} są:
-program \texttt{sgmlnorm} do normalizacji, program \texttt{sx} służący
-do konwersji dokumentu SGML na XML oraz biblioteki programistyczne,
-przydatne przy tworzeniu specjalistycznych aplikacji służących do
-przetwarzania dokumentów SGML.
-
-W~przypadku dokumentów XML publicznie dostępnych, parserów jest
-w~chwili obecnej kilkadziesiąt. Do popularniejszych zaliczyć można
-Microsoft Java XML Parser firmy Microsoft, LT XML firmy Language
-Technology Group, Exapt oraz XP (James Clark)
-
-\section{Wykorzystanie języków skryptowych}
-
-\section{Wykorzystanie szablonów XSL}
-
-Stosując wersję XML typu DocBook można wykorzystać szablony stylów
-przygotowane w~standardzie XSL (autor N.~Walsh). W~chwili obecnej
-są dostępne narzędzia umożliwiające przetworzenie dokumentów XML do
-postaci drukowanej (Adobe PDF) oraz hipertekstowej (HTML).
-
-Podobnie jak w~przypadku szablonów DSSSL, szablony stylów XSL są
-sparametryzowane i~udokumentowane i~dzięki temu łatwe w~adaptacji. Do
-zamiany dokumentu XML na postać prezentacyjną można wykorzystać jeden
-z~dostępnych publicznie procesorów XSLT
-(por.~tabela~\ref{zest:proces:xslt}).
-
-\begin{table}[!htb]
-\begin{tabular}{|l|l|l|} \hline
-Nazwa & Autor      & Adres URL \\ \hline
-\texttt{sablotron} & Ginger Alliance & \url{http://www.gingerall.com} \\ \hline
-\texttt{Xt}        & J.~Clark & \url{http://www.jclark.com} \\ \hline
-\texttt{4XSLT}     & FourThought & \url{http://www.fourthought.com} \\ \hline
-\texttt{Saxon}     & Michael Kay &  \url{http://users.iclway.co.uk/mhkay/saxon} \\ \hline
-\texttt{Xalan}     & Apache XML Project & \url{http://xml.apache.org} \\ \hline
-\end{tabular}
-\caption{Publicznie dostępne procesory XLST\label{zest:proces:xslt}}
-\source{Opracowanie własne}
-\end{table}
-
-XSL:FO jest skomplikowanym językiem o~dużych możliwościach,
-zawierającym ponad 50 różnych ,,obiektów formatujących'', począwszy od
-najprostszych, takich jak prostokątne bloki tekstu poprzez wyliczenia,
-tabele i~odsyłacze. Obiekty te można formatować wykorzystując przeszło
-200 różnych właściwości (\emph{properties\/}), takich jak: kroje,
-odmiany i~wielkości pisma, odstępy, kolory itp.
-W~tym dokumencie przedstawione jest absolutne miniumum informacji
-na temat standardu XSL:FO.
-
-Cały dokument XSL:FO zawarty jest wewnątrz elementu \texttt{fo:root}.
-Element ten zawiera (w~podanej niżej kolejności):
-
-\begin{itemize}
-\item dokładnie jeden element \texttt{fo:layout-master-set} zawierający
-  szablony określające wygląd poszczególnych stron oraz sekwencji
-  stron (te ostatnie są opcjonalne, ale typowo są definiowane);
-\item zero lub więcej elementów \texttt{fo:declarations};
-\item jeden lub więcej elementów \texttt{fo:page-sequance}
- zawierających treść formatowanego dokumentu wraz z~opisem
- jego sformatowania i~podziału na strony.
-\end{itemize}
 
 % zakończenie
 \summary
+Partl~\cite{pa} przedstawi\l \ldots
 Możliwości, jakie stoją przed archiwum prac magisterskich opartych na
 XML-u, są ograniczone jedynie czasem, jaki należy poświęcić na pełną
 implementację systemu. Nie ma przeszkód technologicznych do stworzenia
@@ -993,7 +836,19 @@ Treść załącznika dwa.
 
 % literatura (obowiązkowo):
 \bibliographystyle{unsrt}
-\bibliography{xml}
+
+\begin{thebibliography}{99}
+\bibitem{repetition} Axel Thue's work on repetitions in words
+\bibitem{narad} N. Rampersad Overlap-Free Words and Generalizations (2007)
+\bibitem{prouhet} M. E. Prouhet. M ́emoire sur quelques relations entre les puissances des nom- bres. \textit{C. R. Acad. Sci. Paris} \textbf{33} (1851), 225.
+\bibitem{carpi} A. Carpi, On the size of a squarefree morphism on a three letter alphabet, \textit{Inform. Proc. Letters} \textbf{16} (1983), 231-235.
+\bibitem{first} A. Ku ̈ndgen and M. J. Pelsmajer, Nonrepetitive colorings of graphs of bounded treewidth, \textit{Discrete Math} \textbf{308} (2008), 4473–4478
+\bibitem{thueonline2} J. Grytczuk, J. Kozik, P. Micek, New approach to nonrepetitive sequences. \textit{Random Structures Algorithms}, DOI 10.1002/rsa.20411.
+
+\bibitem{second} J. Bara ́t, P. P. Varju ́. On square-free vertex colorings of graphs. \textit{Studia Sci. Math. Hungar} \textbf{44} (2007) 411–422
+\bibitem{thueonline} J. Grytczuk, P. Szafruga, M. Zmarz, Online version of the theorem of Thue (2012)
+
+\end{thebibliography}
 
 % spis tabel (jeżeli jest potrzebny):
 \listoftables
