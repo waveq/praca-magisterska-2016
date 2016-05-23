@@ -128,6 +128,7 @@ public class ComputerOpponent {
 				winner = i;
 			}
 		}
+		System.out.print("\n\n Kolory dostępne w indeksie: " + smallestColorSize);
 		return winner;
 	}
 
@@ -153,6 +154,7 @@ public class ComputerOpponent {
 		if(ConfigRetriever.isRandomization()) {
 			return getRandomMinFromPredict(scoreList);
 		} else {
+			System.out.print("\n\n Punkty: "+Collections.min(scoreList));
 			return scoreList.indexOf(Collections.min(scoreList));
 		}
 	}

@@ -18,11 +18,11 @@
 \contentsline {chapter}{\numberline {3}Analiza symulowanych potyczek}{30}{chapter.3}
 \contentsline {section}{\numberline {3.1}Ilość symboli potrzebna na rozgranie partii}{30}{section.3.1}
 \contentsline {section}{\numberline {3.2}Pomiary czasów potrzebnych na podjęcie decyzji}{33}{section.3.2}
-\contentsline {section}{\numberline {3.3}Obserwacja zachowań algorytmu budowniczego}{37}{section.3.3}
-\contentsline {chapter}{Zakończenie}{38}{chapter*.5}
-\contentsline {chapter}{\numberline {A}Tytuł załącznika jeden}{39}{appendix.A}
-\contentsline {chapter}{\numberline {B}Tytuł załącznika dwa}{40}{appendix.B}
-\contentsline {chapter}{Bibliografia}{41}{appendix*.6}
-\contentsline {chapter}{Spis tabel}{42}{appendix*.7}
-\contentsline {chapter}{Spis rysunków}{43}{appendix*.8}
-\contentsline {chapter}{Oświadczenie}{44}{appendix*.9}
+\contentsline {section}{\numberline {3.3}Porównanie zachowań algorytmu z zagnieżdżeniami i bez zagnieżdżeń}{37}{section.3.3}
+\contentsline {chapter}{Zakończenie}{40}{chapter*.5}
+\contentsline {chapter}{\numberline {A}Tytuł załącznika jeden}{41}{appendix.A}
+\contentsline {chapter}{\numberline {B}Tytuł załącznika dwa}{42}{appendix.B}
+\contentsline {chapter}{Bibliografia}{43}{appendix*.6}
+\contentsline {chapter}{Spis tabel}{44}{appendix*.7}
+\contentsline {chapter}{Spis rysunków}{45}{appendix*.8}
+\contentsline {chapter}{Oświadczenie}{46}{appendix*.9}
