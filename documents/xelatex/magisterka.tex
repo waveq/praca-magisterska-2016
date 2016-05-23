@@ -33,7 +33,7 @@
 \date     {01.01.2016}
 \miejsce  {Gdańsk}
 
-\opiekun  {prof. dr hab. T. Dzido}
+\opiekun  {prof. UG dr hab. T. Dzido}
 
 % dodatkowe polecenia
 %\renewcommand{\filename}[1]{\texttt{#1}}
@@ -44,11 +44,11 @@
 
 % streszczenie
 \begin{abstract}
-
+Streszczonko
 \end{abstract}
 
 % słowa kluczowe
-\keywords{Thue}
+\keywords{}
 
 % tytuł i spis treści
 \maketitle
@@ -77,7 +77,7 @@ Zanim przejdziemy do twierdzeń, koniecznym jest wyjaśnienie podstawowych twier
 \item Długość słowa $\omega$ jest reprezentowana przez $|\omega|$.
 \item Puste słowo o długości $0$ jest reprezentowane przez $\varepsilon$.
 \item Czynnik (factor) słowa $\omega$ jest słowem $u$, które występuje wewnątrz $\omega$ formie $\omega = xuy$, podczas gdy $x$ oraz $y$ również są słowami tego alfabetu.
-\item Kwadrat (square) jest niepustym słowem w formie $uu$, gdzie $u$ jest niepuste.
+\item Kwadrat (square) jest słowem w formie $uu$, gdzie $u$ jest niepuste.
 \item Square-free, słowo jest wolne od kwadratów, jeśli żaden z jego czynników nie jest kwadratem.
 \item Nasunięcie (Overlap) jest słowem w formie $xuxux$, gdzie $x$ jest niepuste. Nazwa pojęcia wzięła się z tego, że $xux$ występuje dwa razy w $xuxux$. Pierwszy raz jako prefiks (początkowy czynnik) oraz jako sufiks (końcowy czynnik) i te dwa wystąpienia mają wspólną część - centralne $x$, a więc \textit{nasuwają} się na siebie.
 \item Overlap-free - słowo w którym żaden z czynników nie nasuwa się na siebie.
@@ -553,7 +553,7 @@ int findRightIndex(List<Integer> sequence) {
 Na początku metody zainicjalizowana zostaje zmienna scoreList. Do listy dodane zostają zera w ilość odpowiadającej długość ciągu plus jeden, bo właśnie na tylu indeksach możemy dodać nowy element. W 3 linii iterujemy po każdym dostępnym indeksie, natomiast od 4 linii mamy już wszystko to co w algorytmie szukającym symbolu. Na końcu metody zwracany zostaje indeks, który uzyskał najmniej punktów, czyli będzie najmniej atrakcyjny dla malarza. Tak jak poprzednio jeśli istnieje więcej niż jeden indeks z minimalna wartością, element jest wybierany losowo.
 
 \section{Longest square free word z interfejsem graficznym}
-Powstała również wersja gry, w której użytkownik nie korzysta z konsoli, lecz z graficznego interfejsu. W tej odmianie użytkownik za pomocą trzech kolorów ma stworzyć jak najdłuższy ciąg bez kwadratów. Czynności jakie gracz wykonuje to wybranie miejsca, w które zostanie wstawiony element oraz jego kolor. Jeśli w tworzonym ciągu pojawi się kwadrat rozgrywka zostaje przerwana i na ekranie zostają podświetlone powtórzenia składające się na kwadrat. Program zapisuje również najwyższy wynik, który jest równy długości utworzonego ciągu. Algorytm szukający kwadratów nie różni się w żaden sposób od algorytmu z podstawowej wersji gry.
+Napisałem również wersję gry, w której użytkownik nie korzysta z konsoli, lecz z graficznego interfejsu. W tej odmianie użytkownik za pomocą trzech kolorów ma stworzyć jak najdłuższy ciąg bez kwadratów. Czynności jakie gracz wykonuje to wybranie miejsca, w które zostanie wstawiony element oraz jego kolor. Jeśli w tworzonym ciągu pojawi się kwadrat rozgrywka zostaje przerwana i na ekranie zostają podświetlone powtórzenia składające się na kwadrat. Program zapisuje również najwyższy wynik, który jest równy długości utworzonego ciągu. Algorytm szukający kwadratów nie różni się w żaden sposób od algorytmu z podstawowej wersji gry.
 
 \begin{figure}[H]
     \centering
@@ -568,13 +568,14 @@ Aplikacja została napisana na popularnym silniku do tworzenia gier - Unity. Poz
 \chapter{Analiza symulowanych potyczek} 
 
 \section{Ilość symboli potrzebna na rozgranie partii}
-Długość gry zależna jest od dwóch czynników. Ustawionego poziomu zagnieżdżenia i ilości dostępnych symboli. Thue w swoim twierdzeniu[][], udowodnił, że jesteśmy w stanie stworzyć nieskończenie długi ciąg bez kwadratów mając do dyspozycji 3 symbole. Sytuacja zmienia się, gdy ciąg tworzony jest przez dwóch oponentów, z których jeden stara się utworzyć kwadrat. Nawet używając zachłannego algorytmu w przypadku budowniczego i algorytmu z zagnieżdżeniami 7 poziomu dla malarza, rozgrywka zawsze trwała będzie maksymalnie 5 ruchów. 
+Długość gry zależna jest od dwóch czynników. Ustawionego poziomu zagnieżdżenia i ilości dostępnych symboli. Thue w swoim twierdzeniu \cite{repetition}, udowodnił, że jesteśmy w stanie stworzyć nieskończenie długi ciąg bez kwadratów mając do dyspozycji 3 symbole. Sytuacja zmienia się, gdy ciąg tworzony jest przez dwóch oponentów, z których jeden stara się utworzyć kwadrat. Nawet używając zachłannego algorytmu w przypadku budowniczego i algorytmu z zagnieżdżeniami 7 poziomu dla malarza, rozgrywka zawsze trwała będzie maksymalnie 5 ruchów. 
 
 Dla 4 symboli, również nie jest możliwe rozegranie partii dłuższej niż 10 ruchów. Przy zachłannym algorytmie budowniczego, malarz jest w stanie utworzyć ciąg długości 10. Jeśli algorytm budowniczego używa zagnieżdżeń, liczba ta zmniejsza się do 7.
 
 Dopiero rozgrywka na 5 symbolach daje algorytmom pole do popisu, bowiem w przeprowadzonych badaniach, zależnie od ustawionych poziomów, trwała ona od 11 do conajmniej 236 ruchów.
 
 \begin{table}[!h]
+    \centering
 	\begin{tabular}{|l|l|l|l|} \hline
 	Ilość symboli & Malarz & Budowniczy & Ilość ruchów \\ \hline
 	$3$ & $\geq 0$ & $\geq 0$ & $5$\\ \hline
@@ -590,6 +591,7 @@ Dopiero rozgrywka na 5 symbolach daje algorytmom pole do popisu, bowiem w przepr
 Używanie zachłannego algorytmu malarza nadal nie skutkuje zbyt długą grą. Niezależnie od poziomu budowniczego, kwadrat pojawi się zawsze po 11 kroku. Jednak podczas prób, gdy malarz miał ustawiony poziom zagnieżdżenia równy 1, a budowniczy działał zachłannie, rozgrywka trwała od 44 do 236 tur. Średnia arytmetyczna wyciągnięta z ilości ruchów wyniosła $133.83$
 
 \begin{table}[!h]
+    \centering
 	\begin{tabular}{|l|l|l|} \hline
 	Ilość symboli & Ilość ruchów & Czas trwania \\ \hline
 	5 & 44 & 0.1 s.\\ \hline
@@ -624,6 +626,7 @@ Używanie zachłannego algorytmu malarza nadal nie skutkuje zbyt długą grą. N
 Przy poziomie budowniczego i malarza ustawionym na 1, podczas 10 prób rozgrywka trwała od 30 do 213 ruchów. Średnia arytmetyczna obliczona na podstawie rozgrywek wynosi $96.9$, a więc jest o $37.23$ niższa niż, gdy budowniczy używał algorytmu zachłannego. 
 
 \begin{table}[!h]
+    \centering
 	\begin{tabular}{|l|l|l|} \hline
 	Ilość symboli & Ilość ruchów & Czas trwania \\ \hline
 	5 & 30 & 1.2 s. \\ \hline	
@@ -763,6 +766,8 @@ Nieodłącznym elementem analizy działania aplikacji jest badanie czasu w jakim
 
 Warto zauważyć jak ogromne różnice w wydajności istnieją pomiędzy poziomami zagnieżdżenia algorytmów.
 
+Przy zagnieżdżeniu ustawionym na 2, dla ciągu długości 100 wyliczenie odpowiedniej decyzji zajęło około 170 razy więcej czasu niż przy zagnieżdżeniu równym 1. Różnice zobrazowane zostały na wykresach \ref{fig:builder1painter1} i \ref{fig:builder2painter1}.
+
 \begin{figure}[h]
     \centering
     \includegraphics[scale = 0.7]{images/timeBuilder1Painter1}
@@ -777,11 +782,11 @@ Warto zauważyć jak ogromne różnice w wydajności istnieją pomiędzy pozioma
     \label{fig:builder2painter1}
 \end{figure}
 
-Przy zagnieżdżeniu ustawionym na 2, dla ciągu długości 100 wyliczenie odpowiedniej decyzji zajęło około 170 razy więcej czasu niż przy zagnieżdżeniu równym 1.
 
-Odrobinę inaczej wyglądają analogiczne wykresy dla malarza. Algorytm malarza z zagnieżdżeniami symuluje dodawanie kolejnych symboli w wyznaczonym indeksie, jednak jeżeli w danym miejscu da się wstawić tylko 1 symbol, to przeprowadzi mniej symulacji, niż jeśli dałoby się tam wstawić 5 symboli. Dzięki tej zależności na wykresie można zauważyć, przy których ruchach malarz jest w opałach, a przy których ma dostępnych wiele opcji.
 
-Na wykresie \ref{fig:painter1builder0}, widać wzloty i spadki czasu trwania algorytmu. Jak widać zachłanny algorytm budowniczego cyklicznie redukuje liczbę opcji malarza.
+Odrobinę inaczej wyglądają analogiczne wykresy dla malarza. Algorytm malarza z zagnieżdżeniami symuluje dodawanie kolejnych symboli w wyznaczonym indeksie, jednak jeżeli w danym miejscu da się wstawić tylko jeden symbol, to przeprowadzi mniej symulacji, niż jeśli dałoby się tam wstawić pięć symboli. Dzięki tej zależności na wykresie można zauważyć, przy których ruchach malarz jest w opałach, a przy których ma dostępnych wiele opcji.
+
+Wykres \ref{fig:painter1builder0} przedstawia wzloty i spadki czasu trwania algorytmu. Jak widać zachłanny algorytm budowniczego cyklicznie redukuje liczbę opcji malarza.
 
 \begin{figure}[h]
     \centering
@@ -821,7 +826,7 @@ Przeprowadzone przeze mnie badania, przy mocy zbioru symboli równym 5, oraz poz
     \label{fig:builder0Efficiency}
 \end{figure}
 
-Ciężko jest dopatrzyć się podobnej cykliczności w algorytmie z zagnieżdżeniami, nawet pierwszego poziomu. Algorytm ten skupia się raczej na grupie indeksów będących obok siebie. Wykres \ref{fig:buildersPickedIndexes} przedstawia rozkład wybieranych indeksów przez oba algorytmy. Rozgrywki nie trwały więcej niż 115 ruchów, na rysunku można zaobserwować, że najczęściej wybierane indeksy przez algorytm z zagnieżdżeniami należały do zbioru $\leq 27$. Natomiast indeksy wybierane przez algorytm zachłanny, są w miarę równomiernie rozłożone przez wszystkie indeksy. Ponadto, mimo wyłamania się z wcześniej wspomnianej \textit{taktyki iteracyjnej}, algorytm zachłanny w dalszym ciągu działa cyklicznie, wybierając indeksy po zero, jeden lub pięć razy.
+Ciężko jest dopatrzyć się podobnej cykliczności w algorytmie z zagnieżdżeniami. Algorytm ten skupia się raczej na grupie indeksów będących obok siebie. Wykres \ref{fig:buildersPickedIndexes} przedstawia rozkład wybieranych indeksów przez oba algorytmy. Rozgrywki nie trwały więcej niż 115 ruchów, na rysunku można zaobserwować, że najczęściej wybierane indeksy przez algorytm z zagnieżdżeniami należały do zbioru $\leq 27$. Natomiast indeksy wybierane przez algorytm zachłanny, są w miarę równomiernie rozłożone przez wszystkie indeksy. Ponadto, mimo wyłamania się z wcześniej wspomnianej \textit{taktyki iteracyjnej}, algorytm zachłanny w dalszym ciągu działa cyklicznie, wybierając indeksy po zero, jeden lub pięć razy.
 
 \begin{figure}[h]
     \centering
