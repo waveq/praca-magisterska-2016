@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2016.3.5)  25 MAY 2016 23:18
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2016.3.5)  25 MAY 2016 23:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1155,7 +1155,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [37] [38]
 File: images/builder0efficiency.png Graphic file (type QTm)
  <use  "images/builder0efficiency.png" >
-Overfull \hbox (33.67996pt too wide) in paragraph at lines 719--720
+Overfull \hbox (33.67996pt too wide) in paragraph at lines 716--717
  [][] 
  []
 
@@ -1168,13 +1168,13 @@ Package Fancyhdr Warning: \headheight is too small (15.0pt):
 [39]
 File: images/buildersPickedIndexes.png Graphic file (type QTm)
  <use  "images/buildersPickedIndexes.png" >
-Overfull \hbox (24.37248pt too wide) in paragraph at lines 728--729
+Overfull \hbox (24.37248pt too wide) in paragraph at lines 725--726
  [][] 
  []
 
 [40]
 
-LaTeX Warning: Citation `pa' on page 41 undefined on input line 735.
+LaTeX Warning: Citation `pa' on page 41 undefined on input line 732.
 
 [41
 
@@ -1203,24 +1203,21 @@ Dodatek B.
 ] [47
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 779.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 779.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 784.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 784.
 
 (./magisterka.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 779.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 779.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 784.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 784.
 
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 779.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 784.
  ) 
 Here is how much of TeX's memory you used:
  23511 strings out of 493706
- 429383 string characters out of 6145770
+ 429384 string characters out of 6145770
  535304 words of memory out of 5000000
  26595 multiletter control sequences out of 15000+600000
  11548 words of font info for 82 fonts, out of 8000000 for 9000
