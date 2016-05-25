@@ -44,11 +44,15 @@
 
 % streszczenie
 \begin{abstract}
-Streszczonko
+Celem pracy było zaprogramowanie gry opierającej się na twierdzeniach Axela Thue, na temat powtórzeń oraz nasunięć wewnątrz ciągu. Głównymi funkcjonalnościami aplikacji jest potyczka między dwoma graczami oraz symulacja przeprowadzona przez konkurujące ze sobą algorytmy. 
+
+Powstały dwa warianty aplikacji, pierwszy z nich napisany został za pomocą silnika \textit{Unity3d}, posiada interfejs graficzny, nie ma jednak innego zastosowania niż bicie własnych rekordów. Drugi jest napisany w jęzku \textit{Java}, bez interfejsu graficznego, w zamian oferuje funkcjonalność dokonywania testów na serwerze zdalnym i zawiera wiele opcji konfiguracyjnych, między innymi precyzowanie poziomu \textit{inteligencji} algorytmów. 
+
+Przeprowadzone badania wykazały, że algorytmy symulujące graczy działają prawidłowo i zwiększanie ich poziomu skutkuje lepiej podejmowanymi decyzjami. Na podstawie badań ustalona została maksymalna długość rozgrywki przy odpowiedniej taktyce, dla rozgrywek zawierających określoną ilość symboli z których tworzony jest ciąg.
 \end{abstract}
 
 % słowa kluczowe
-\keywords{}
+\keywords{Thue, Java, ciąg, programowanie, Unity3d}
 
 % tytuł i spis treści
 \maketitle
@@ -62,7 +66,7 @@ Thue pracował nad problemami, powstałymi w wyniku badań nad sekwencjami symbo
 
 Gra która powstała na podstawie teorii Thuego w skrócie polegała będzie na utworzeniu jak najdłuższego ciągu znaków nad określonym z góry alfabetem. Zależnie od trybu gry, kończyć się ona będzie w momencie gdy pojawi się zdefiniowany na początku rodzaj powtórzenia w tworzonym przez nas, bądź algorytm ciągu. Jednym z trybów gry jest walka komputera przeciwko niemu samemu, po takiej rozgrywce przedstawione zostaną złożoności czasowe oraz wnioski wynikające z obranej przez oponentów taktyki. 
 
-Ostatnia część pracy poświęcona jest analizie algorytmów zarówno pod względem czasu ich wykonywania jak i zdolności do przewidywania ruchów przeciwnika.
+Ostatnia część pracy poświęcona jest analizie algorytmów zarówno pod względem czasu ich wykonywania jak i zdolności do przewidywania ruchów przeciwnika. Badany jest również aspekt tego ile symboli z których tworzony jest ciąg, jest potrzebnych na rozegranie dostatecznie długiej rozgrywki, przy możliwie najdoskonalszej taktyce.
 
 \chapter{Teorie Axela Thue na temat sekwencji symboli}
 Zanim przejdziemy do twierdzeń, koniecznym jest wyjaśnienie podstawowych twierdzeń, które w dalszej części pracy będą wielokrotnie wykorzystywane. Niżej wyjaśnione zostały sposoby generowania nieskończenie długich ciągów składających się z dwóch symboli, nie zawierających nasunięć. Po czym ukazane zostały metody tworzenia nieskończenie długich ciągów na trzech znakach, wolnych od kwadratów. Na koniec części teoretycznej przedstawiony został pomysł gry dla dwóch graczy wykorzystujący powyższe własności.
@@ -92,7 +96,7 @@ Rozważmy nieskończone słowo
 
 {\centering $01101001100101101001011001101001 ...$ \par}
 
-Zostało ono nazwane po Thue, który badał jego właściwości w referacie z 1906 roku, oraz Morsie, który odkrył je na nowo w latach 20 XIX wieku. Słowo Thue-Morse'a występuje również o wiele wcześniej w wiadomościach  Prouheta \cite{prouhet} z Francuską Akademią Nauk w 1851 roku. Rzeczywiście Prouhet podał więcej ogólnych konstrukcji, uzyskując nie tylko słowo Thue-Morse'a, ale całą rodzinę słów na większych alfabetach mających inne interesujące właściwości. Słowa te czasami odnoszą się do ogólnych słow Thue-Morse'a lub słów Prouheta.
+Jest to słowo stworzone z dwuliterowego alfabetu, które nie zawiera ani jednego nasunięcia. Zostało ono nazwane po Thue, który badał jego właściwości w referacie z 1906 roku, oraz Morsie, który odkrył je na nowo w latach 20 XIX wieku. Słowo Thue-Morse'a występuje również o wiele wcześniej w wiadomościach  Prouheta \cite{prouhet} z Francuską Akademią Nauk w 1851 roku. Prouhet podał więcej ogólnych konstrukcji, uzyskując nie tylko słowo Thue-Morse'a, ale całą rodzinę słów na większych alfabetach mających inne interesujące właściwości. Słowa te czasami odnoszą się do ogólnych słow Thue-Morse'a lub słów Prouheta.
 
 Niech $A = \{a, b\}$ będzie dwuliterowym alfabetem. Rozważmy morfizm $\mu$ z monoidu $A*$, który definiuje się następująco:
 
@@ -211,7 +215,7 @@ Różnica polega na tym, że malarz w tworzonym ciągu musi unikać \textbf{nasu
 Podobnie jak w \textbf{Longest Square-Free word} jest możliwość gry przeciwko algorytmowi, który jest w stanie przewidywać określoną ilość ruchów do przodu.
 
 \chapter{Aplikacja Longest free word}
-Program, który powstał na bazie gier Longest Square-free word oraz Longest Overlap-free word, został napisany w Javie. Umożliwia on rozgrywkę w obu wersjach gry, zarówno z drugim graczem, jak i z komputerem, oraz jest w stanie zasymulować rozgrywkę dwóch graczy komputerowych, grających przeciwko sobie z ustawionymi przez nas poziomami inteligencji. Dodatkową opcją jest uruchomienie obszernego testu, który zasymuluje rozgrywkę komputerowych graczy na wszystkich poziomach trudności, mniejszych od sprecyzowanego przez nas $n$. Komunikacja z aplikacją odbywa się poprzez wspomniany plik konfiguracyjny - przed uruchomieniem aplikacji, oraz konsolę aplikacji - po jej uruchomieniu. W programie zostało użyte narzędzie automatyzujące budowę aplikacji - Maven. Dzięki niemu, po pobraniu kodu źródłowego aplikacji jesteśmy w stanie uruchomić ją z poziomu konsoli dzięki dwóm linijkom wpisanym do terminala. Okazało się ono niezwykle pomocne podczas przeprowadzania czasochłonnych testów na maszynie zdalnej, której sterowanie odbywało się właśnie poprzez terminal.
+Program, który powstał na bazie gier Longest Square-free word oraz Longest Overlap-free word, napisałem w języku \textit{Java}. Umożliwia on rozgrywkę w obu wersjach gry, zarówno z drugim graczem, jak i z komputerem, oraz jest w stanie zasymulować rozgrywkę dwóch graczy komputerowych, grających przeciwko sobie z ustawionymi przez nas poziomami inteligencji. Dodatkową opcją jest uruchomienie obszernego testu, który zasymuluje rozgrywkę komputerowych graczy na wszystkich poziomach trudności, mniejszych od sprecyzowanego przez nas $n$. Komunikacja z aplikacją odbywa się poprzez wspomniany plik konfiguracyjny - przed uruchomieniem aplikacji, oraz konsolę aplikacji - po jej uruchomieniu. W programie zostało użyłem narzędzia automatyzującego budowę aplikacji - \textit{Maven}. Dzięki niemu, po pobraniu kodu źródłowego aplikacji jesteśmy w stanie uruchomić ją z poziomu terminala dzięki zaledwie dwóm linijkom kodu. Okazało się ono niezwykle pomocne podczas przeprowadzania czasochłonnych testów na maszynie zdalnej, której sterowanie odbywało się właśnie poprzez terminal.
 
 
 \section{Plik konfiguracyjny}
@@ -289,9 +293,7 @@ List<Integer> findSquare(List<Integer> sequence) {
 }
 \end{lstlisting}
 
-Powyższy algorytm ma za zadanie znalezienie kwadratu w sekwencji, którą reprezentuje lista Integerów przekazana w parametrze. Zmienna \textbf{maxSeqSize} jest to długość najdłuższego podciągu jaki się zmieści w sekwencji, jeśli dostawimy za nim podciąg o identycznej długości.
-
-Natomiast zmienna \textbf{minSeqSize} jest to minimalna długość podciągu, który może składać się na kwadrat, naturalnie wynosi ona 1. 
+Powyższy algorytm ma za zadanie znalezienie kwadratu w sekwencji, którą reprezentuje lista Integerów przekazana w parametrze. Zmienna \textbf{maxSeqSize} jest to długość najdłuższego podciągu jaki się zmieści w sekwencji, jeśli dostawimy za nim podciąg o identycznej długości. Zmienna \textbf{minSeqSize} jest to minimalna długość podciągu, który może składać się na kwadrat, naturalnie wynosi ona 1. 
 
 W linii 5 wykonujemy pętlę, wewnątrz, której do metody \textbf{compareSubSeq} przekazywana jest długość podciągu, który składać się będzie na kwadrat, oraz naszą sekwencję. Metoda \textbf{compareSubSeq} zwróci nam lewą część znalezionego kwadratu, lub null w przypadku, gdy taki kwadrat w sekwencji nie istnieje.
 
@@ -380,12 +382,12 @@ Metoda \textbf{compareSubSeqOverlap} również jest analogiczna do metody \textb
 \section{Komunikacja z użytkownikiem}
 Plik konfiguracyjny nie jest wystarczającym środkiem komunikacji z aplikacjią. W związku z tym, po uruchomieniu programu mamy dostęp do konsoli, służy do wyświetlania jak i wprowadzania treści.
 
-Po uruchomieniu aplikacji wypisywane w konsoli wypisywane są najważniejsze opcje konfiguracyjne, takie jak poziom budowniczego, poziom malarza oraz lista dostępnych symboli. Jeśli uruchomiliśmy grę w trybie \textbf{humanHuman}, to aplikacja w pierwszej kolejności poprosi nas o indeks. Po wpisaniu indeksu mieszczącego się w przedziale $\in \{0,...,n\}$, gdy to zrobimy zostaniemy poproszeni o podanie symbolu $\geq 0$ i $< setPower$. W momencie gdy podaliśmy prawidłowe wartości na ekran konsoli wyświetlany zostaje ciąg $S'$, który został utworzony poprzez dodanie do istniejącego ciągu odpowiedniego symbolu. Jeśli w ciągu $S'$ pojawi się kwadrat, na ekran zostanie wyświetlony czas rozgrywki, ilość ruchów jaka została do tej pory wykonana oraz indeksy wraz z symbolami, wspomnianego powtórzenia.
+Po uruchomieniu aplikacji w konsoli wypisywane są najważniejsze opcje konfiguracyjne, takie jak poziom budowniczego, poziom malarza oraz lista dostępnych symboli. Jeśli uruchomiliśmy grę w trybie \textbf{humanHuman}, to aplikacja w pierwszej kolejności poprosi nas o indeks. Po wpisaniu indeksu mieszczącego się w przedziale $\in [0,...,n]$, gdy to zrobimy zostaniemy poproszeni o podanie symbolu $\geq 0$ i $< setPower$. W momencie gdy podaliśmy prawidłowe wartości na ekran konsoli wyświetlany zostaje ciąg $S'$, który został utworzony poprzez dodanie do istniejącego ciągu odpowiedniego symbolu. Jeśli w ciągu $S'$ pojawi się kwadrat, na ekran zostanie wyświetlony czas rozgrywki, ilość ruchów jaka została do tej pory wykonana oraz indeksy wraz z symbolami, wspomnianego powtórzenia.
 
 Oto przykład prostej rozgrywki:
 
 \begin{lstlisting}
-#> W grze dostępne są następujące liczby: 
+#> W grze dostepne sa nastepujace liczby: 
 0
 1
 2
@@ -393,25 +395,25 @@ Oto przykład prostej rozgrywki:
 ## =============================================================== ##
 #> Podaj indeks: 
 1
-#> Podaj liczbę: 
+#> Podaj liczbe: 
 2
  0: { 0 }  1: { 2 }  2: {   } 
 ## =============================================================== ##
 #> Podaj indeks: 
 1
-#> Podaj liczbę: 
+#> Podaj liczbe: 
 1
  0: { 0 }  1: { 1 }  2: { 2 }  3: {   } 
 ## =============================================================== ##
 #> Podaj indeks: 
 3
-#> Podaj liczbę: 
+#> Podaj liczbe: 
 1
  0: { 0 }  1: { 1 }  2: { 2 }  3: { 1 }  4: {   } 
 ## =============================================================== ##
 #> Podaj indeks: 
 4
-#> Podaj liczbę: 
+#> Podaj liczbe: 
 2
  0: { 0 }  1: { 1 }  2: { 2 }  3: { 1 }  4: { 2 }  5: {   } 
 ## =============================================================== ##
@@ -421,13 +423,13 @@ Oto przykład prostej rozgrywki:
 
 ## =============================================================== ##
 
-#> Rozrgrywka trwała 5 ruchów i 20.339 sekund.
+#> Rozrgrywka trwała 5 ruchow i 20.339 sekund.
 \end{lstlisting}
 Jeśli uruchomimy rozgrywkę z komputerem, obok wybranego indeksu lub symbolu pojawia się również czas jaki był mu potrzebny na podjęcie decyzji.
 
 \begin{lstlisting}
-#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 24.127 s
-#> Komputer wybrał liczbę: 4 	| Czas trwania obliczeń: 0.012 s\end{lstlisting}
+#> Komputer wybral indeks: 1 	| Czas trwania obliczen: 24.127 s
+#> Komputer wybral liczbe: 4 	| Czas trwania obliczen: 0.012 s\end{lstlisting}
 
 By ułatwić późniejszą analizę wszystkie informacje zawarte w konsoli, zapisywane są do nowo utworzonego pliku w katalogu output.
 
@@ -455,7 +457,7 @@ Metoda na wejściu dostaje trzy parametry:
 \item index - indeks wybrany przez budowniczoego.
 \item power - moc zbioru symboli.
 \end{itemize}
-Zbiór symboli to liczby należące do przedziału $[0; power-1]$. W 2 linii metody rozpoczyna się pętla, która iteruje po wszystkich dostępnych symbolach. W kolejnej linii symbol dodawany jest do naszego ciągu na podanej pozycji. Metoda pickProperFind z warunku if zależnie od typu gry wywołuje wcześniej opisane metody findSquare lub findOverlap. Jeśli warunek if zostanie spełniony oznacza to, że po dodaniu aktualnego symbolu na danej pozycji nie powoduje stworzenia kwadratu/nasunięcia, algorytm zatem usuwa dodany element z ciągu i zwraca go w linii 6. Jeżeli  okaże się jednak, że dodany symbol tworzy powtórzenie w ciągu, zostaje on również usunięty, a pętla zaczyna się od początku. Metoda zwraca wartość -1 jeśli okaże się, że żaden z symboli nie jest w stanie stworzyć ciągu wolnego od kwadratów/nasunięć.
+Zbiór symboli to kolejne liczby naturalne z przedziału  $\in [0; power-1]$. W 2 linii metody rozpoczyna się pętla, która iteruje po wszystkich dostępnych symbolach. W kolejnej linii symbol dodawany jest do naszego ciągu na podanej pozycji. Metoda pickProperFind z warunku if zależnie od typu gry wywołuje wcześniej opisane metody findSquare lub findOverlap. Jeśli warunek if zostanie spełniony oznacza to, że po dodaniu aktualnego symbolu na danej pozycji nie powoduje stworzenia kwadratu/nasunięcia, algorytm zatem usuwa dodany element z ciągu i zwraca go w linii 6. Jeżeli  okaże się jednak, że dodany symbol tworzy powtórzenie w ciągu, zostaje on również usunięty, a pętla zaczyna się od początku. Metoda zwraca wartość -1 jeśli okaże się, że żaden z symboli nie jest w stanie stworzyć ciągu wolnego od kwadratów/nasunięć.
 
 \section{Zachłanny algorytm wyszukiwania indeksu}
 By można było przeprowadzić symulację gry, należy wprowadzić również algorytm budowczniego, starający się znaleźć najmniej atrakcyjny indeks dla malarza. Zachłanny algorytm realizujący to zadanie znajduje się poniżej.
@@ -562,35 +564,41 @@ Napisałem również wersję gry, w której użytkownik nie korzysta z konsoli, 
     \label{fig:thueMobile}
 \end{figure}
 
-Aplikacja została napisana na popularnym silniku do tworzenia gier - Unity. Pozwala on kompilować kod programu do plików wykonywalnych, które mogą być uruchamiane w przeglądarkach, na komputerach osobistych, konsolach i telefonach komórkowych. W tym przypadku pod uwagę brane były głównie telefony komórkowe, o czym może świadczyć wielkość przycisków i mała ilość szczegółów na ekranie.
+Aplikacja została napisana na popularnym silniku do tworzenia gier - Unity. Pozwala on kompilować kod programu do plików wykonywalnych, które mogą być uruchamiane w przeglądarkach, na komputerach osobistych, konsolach i telefonach komórkowych. W tym przypadku pod uwagę brane były głównie telefony komórkowe, o czym może świadczyć wielkość przycisków i mała ilość wyświetlonych szczegółów.
 
 
 \chapter{Analiza symulowanych potyczek} 
+Dobrym sposobem by poznać aplikację jest jej uruchomienie. Jeszcze lepszym, przeprowadzenie jej analizy oraz zobrazowanie wyników za pomocą wykresów i tabel. Rozdział ten poświęcony jest badaniu działania aplikacji Longest Free Word. Badania skupiają się na wariancie aplikacji opierającym się na tworzeniu ciągu bez kwadratów. Wszystkie testy uruchomione były na maszynie zdalnej z systemem operacyjnym Ubuntu 15.10, procesorem 2,6 Ghz Intel Core i7, pamięcią ram 16 GB 1600 MHz DDR3 i dyskiem SSD.
 
 \section{Ilość symboli potrzebna na rozgranie partii}
 Długość gry zależna jest od dwóch czynników. Ustawionego poziomu zagnieżdżenia i ilości dostępnych symboli. Thue w swoim twierdzeniu \cite{repetition}, udowodnił, że jesteśmy w stanie stworzyć nieskończenie długi ciąg bez kwadratów mając do dyspozycji 3 symbole. Sytuacja zmienia się, gdy ciąg tworzony jest przez dwóch oponentów, z których jeden stara się utworzyć kwadrat. Nawet używając zachłannego algorytmu w przypadku budowniczego i algorytmu z zagnieżdżeniami 7 poziomu dla malarza, rozgrywka zawsze trwała będzie maksymalnie 5 ruchów. 
 
 Dla 4 symboli, również nie jest możliwe rozegranie partii dłuższej niż 10 ruchów. Przy zachłannym algorytmie budowniczego, malarz jest w stanie utworzyć ciąg długości 10. Jeśli algorytm budowniczego używa zagnieżdżeń, liczba ta zmniejsza się do 7.
 
-Dopiero rozgrywka na 5 symbolach daje algorytmom pole do popisu, bowiem w przeprowadzonych badaniach, zależnie od ustawionych poziomów, trwała ona od 11 do conajmniej 236 ruchów.
-
-\begin{table}[!h]
+\begin{table}[H]
     \centering
 	\begin{tabular}{|l|l|l|l|} \hline
-	Ilość symboli & Malarz & Budowniczy & Ilość ruchów \\ \hline
-	$3$ & $\geq 0$ & $\geq 0$ & $5$\\ \hline
-	$4$ & $0$ & $0$ & $7$\\ \hline
-	$4$ & $\geq 1 $ & $\geq 1$ & $7$\\ \hline
-	$4$ & $0$ & $\geq 1$ & $10$\\ \hline
+	Ilość symboli & Poziom malarza & Poziom budowniczego & Długość rozgrywki \\ \hline
+	$3$ & $\geq 0$ & $\geq 0$ & $5$ ruchów\\ \hline
+	$4$ & $0$ & $0$ & $7$ ruchów\\ \hline
+	$4$ & $\geq 1 $ & $\geq 1$ & $7$ ruchów\\ \hline
+	$4$ & $0$ & $\geq 1$ & $10$ ruchów\\ \hline
 	\end{tabular}
 	\caption{Maksymalna ilość ruchów w stosunku do ilości dostępnych symboli.}
 	\label{fig:maxGameLength}
 \end{table}
 
-\hfill \break
-Używanie zachłannego algorytmu malarza nadal nie skutkuje zbyt długą grą. Niezależnie od poziomu budowniczego, kwadrat pojawi się zawsze po 11 kroku. Jednak podczas prób, gdy malarz miał ustawiony poziom zagnieżdżenia równy 1, a budowniczy działał zachłannie, rozgrywka trwała od 44 do 236 tur. Średnia arytmetyczna wyciągnięta z ilości ruchów wyniosła $133.83$
+Jak widać w tabeli \ref{fig:maxGameLength}, przy alfabecie o mocy 4, malarz poziomu zerowego lepiej radzi sobie  od malarza poziomu pierwszego. Dowodzi to tego, że taktyka wykorzystująca zagnieżdżenia nie jest doskonała i nie zawsze jest najlepszą opcją. Pozostałe warianty nie zostały przedstawione, gdyż rozgrywka w ich przypadku nie skutkowała stałym wynikiem. Oznacza to, że taktyka budowniczego nie była wystarczająco dobra by za każdym razem pokonać malarza w takiej samej ilości ruchów.
 
-\begin{table}[!h]
+
+Dopiero rozgrywka na 5 symbolach daje algorytmom pole do popisu, bowiem w przeprowadzonych badaniach, zależnie od ustawionych poziomów, trwała ona od 11 do conajmniej 236 ruchów.
+
+
+
+\hfill \break
+Używanie zachłannego algorytmu malarza przy alfabecie pięcioelementowym,  nie skutkuje zbyt długą grą. Niezależnie od poziomu budowniczego, kwadrat pojawi się zawsze po wspomnianym 11 kroku. Jednak podczas prób, gdy malarz miał ustawiony poziom zagnieżdżenia równy 1, a budowniczy działał zachłannie, rozgrywka trwała od 44 do 236 tur. Średnia arytmetyczna wyciągnięta z ilości ruchów wyniosła 133.83
+
+\begin{table}[H]
     \centering
 	\begin{tabular}{|l|l|l|} \hline
 	Ilość symboli & Ilość ruchów & Czas trwania \\ \hline
@@ -611,21 +619,10 @@ Używanie zachłannego algorytmu malarza nadal nie skutkuje zbyt długą grą. N
 	\label{fig:builder0Painter1Table}
 \end{table}
 
-\hfill \break
-\hfill \break
-\hfill \break
-\hfill \break
-\hfill \break
-\hfill \break
-\hfill \break
-\hfill \break
-\hfill \break
-\hfill \break
-\hfill \break
-\hfill \break
-Przy poziomie budowniczego i malarza ustawionym na 1, podczas 10 prób rozgrywka trwała od 30 do 213 ruchów. Średnia arytmetyczna obliczona na podstawie rozgrywek wynosi $96.9$, a więc jest o $37.23$ niższa niż, gdy budowniczy używał algorytmu zachłannego. 
 
-\begin{table}[!h]
+Przy poziomie budowniczego i malarza ustawionym na 1, podczas 10 prób rozgrywka trwała od 30 do 213 ruchów. Średnia arytmetyczna obliczona na podstawie rozgrywek wynosi 96.9, a więc jest o 37.23 niższa niż, gdy budowniczy używał algorytmu zachłannego. 
+
+\begin{table}[H]
     \centering
 	\begin{tabular}{|l|l|l|} \hline
 	Ilość symboli & Ilość ruchów & Czas trwania \\ \hline
@@ -651,108 +648,6 @@ Obecne zasoby sprzętowe i czasowe sprawiły, że malarz poziomu 2 okazał się 
 
 
 
-
-\iffalse
-Budowniczy 0
-Malarz 1
-Dla 3 kolorów 
-#> Rozrgrywka trwała 5 ruchów i 0.006 sekund.
-
-Budowniczy 0
-Malarz 1
-Dla 4 kolorów
-#> Rozrgrywka trwała 10 ruchów i 0.01 sekund.
-
-Budowniczy 0
-Malarz 1
-Dla 5 kolorów
-#> Rozrgrywka trwała 44 ruchów i 0.188 sekund.
-#> Rozrgrywka trwała 56 ruchów i 0.478 sekund.
-#> Rozrgrywka trwała 81 ruchów i 2.423 sekund.
-#> Rozrgrywka trwała 88 ruchów i 4.325 sekund.
-#> Rozrgrywka trwała 100 ruchów i 7.636 sekund.
-#> Rozrgrywka trwała 102 ruchów i 7.313 sekund.
-#> Rozrgrywka trwała 163 ruchów i 87.994 sekund.
-#> Rozrgrywka trwała 171 ruchów i 108.328 sekund.
-#> Rozrgrywka trwała 173 ruchów i 119.859 sekund.
-#> Rozrgrywka trwała 193 ruchów i 240.487 sekund.
-#> Rozrgrywka trwała 199 ruchów i 218.112 sekund.
-#> Rozrgrywka trwała 236 ruchów i 531.952 sekund.
-
-
-Budowniczy 0
-Malarz 2
-#> Przekroczono limit czasu oczekiwania na decyzje komputera: 1845.38 s
-#> Rozrgrywka trwała 208 ruchów i 39545.025 sekund.
-
-#> Przekroczono limit czasu oczekiwania na decyzje komputera: 1826.289 s
-#> Rozrgrywka trwała 212 ruchów i 48841.542 sekund.
-
-#> Przekroczono limit czasu oczekiwania na decyzje komputera: 595.425 s
-#> Rozrgrywka trwała 166 ruchów i 12562.789 sekund.
-
-#> Przekroczono limit czasu oczekiwania na decyzje komputera: 607.311 s
-#> Rozrgrywka trwała 170 ruchów i 13488.263 sekund.
-
-
-#> Przekroczono limit czasu oczekiwania na decyzje komputera: 9485.516 s
-#> Rozrgrywka trwała 222 ruchów i 100280.632 sekund.
-
-#> Przekroczono limit czasu oczekiwania na decyzje komputera: 7305.829 s
-#> Rozrgrywka trwała 222 ruchów i 100617.55 sekund.
-
-#> Przekroczono limit czasu oczekiwania na decyzje komputera: 11991.49 s
-#> Rozrgrywka trwała 223 ruchów i 103534.735 sekund.
-
-#> Przekroczono limit czasu oczekiwania na decyzje komputera: 7209.71 s
-#> Rozrgrywka trwała 225 ruchów i 107490.89 sekund.
-
-#> Przekroczono limit czasu oczekiwania na decyzje komputera: 7223.661 s
-#> Rozrgrywka trwała 225 ruchów i 107208.699 sekund.
-
-
-Budowniczy 1
-Malarz 0
-
-Dla 4 kolorów
-#> Rozrgrywka trwała 7 ruchów i 0.017 sekund.
-7 a nie 10
-
-
-Dla 5 kolorów
-Budowniczy 0
-Malarz 0
-#> Rozrgrywka trwała 11 ruchów i 0.015 sekund.
-
-Budowniczy 1
-Malarz 0
-
-#> Rozrgrywka trwała 11 ruchów i 0.045 sekund.
-
-
-Budowniczy 1
-Malarz 1
-#> Rozrgrywka trwała 30 ruchów i 1.238 sekund.
-#> Rozrgrywka trwała 42 ruchów i 5.1 sekund.
-#> Rozrgrywka trwała 45 ruchów i 11.982 sekund.
-#> Rozrgrywka trwała 47 ruchów i 7.898 sekund.
-#> Rozrgrywka trwała 73 ruchów i 77.12 sekund.
-#> Rozrgrywka trwała 104 ruchów i 578.538 sekund.
-#> Rozrgrywka trwała 114 ruchów i 1769.184 sekund.
-#> Rozrgrywka trwała 134 ruchów i 5427.881 sekund.
-#> Rozrgrywka trwała 178 ruchów i 18682.459 sekund.
-#> Rozrgrywka trwała 202 ruchów i 34935.922 sekund.
-#> Rozrgrywka trwała 213 ruchów i 47075.211 sekund.
-
-
-budowniczy 2
-malarz 1
-
-#> Rozrgrywka trwała 24 ruchów i 15.267 sekund.
-#> Rozrgrywka trwała 63 ruchów i 7997.669 sekund.
-#> Rozrgrywka trwała 83 ruchów i 36676.259 sekund.
-
-\fi
 
 \section{Pomiary czasów potrzebnych na podjęcie decyzji}
 Nieodłącznym elementem analizy działania aplikacji jest badanie czasu w jakim wykonuje ona swoje algorytmy. Nie inaczej jest w przypadku Longest Free Word. Najkrótrzy zbadany czas decyzji algorytmu wyniósł 0.001 sekundy, najdłuższy natomiast około 2 godzin. Czas potrzebny na decyzję jest tym dłuższy im dłuższy jest stworzony do tej pory ciąg. Naturalnie więc, na początku rozgrywki algorytm będzie działał szybko, lecz w raz z rozwojem potyczki będzie zwalniał. Zależność tą można zaobserwować na wykresie \ref{fig:builder0painter1}. Widoczne odchylenia to prawdopodobnie efekt działania innego procesu działającego na tej samej maszynie.
@@ -819,7 +714,7 @@ Jeśli przyjrzymy się dokładnie działaniu zachłannego algorytmu wyszukiwania
 
 Przeprowadzone przeze mnie badania, przy mocy zbioru symboli równym 5, oraz poziomie malarza równym 1 wykazały, że w przeciągu kilku kroków od pierwszego znalezienia indeksu, pod którym dostępne są dwa symbole, pojawia się indeks pod którym dostępny jest tylko jeden symbol. Nie wykryłem natomiast korelacji, pomiędzy pierwszym wyłamaniem się z \textit{taktyki iteracyjnej}, a długością rozgrywki. 
  
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[scale = 0.7]{images/builder0efficiency}
     \caption{Stosunek pierwszego wystąpienia indeksu z dwoma dostępnymi elementami, do pojawienia się indeksu z jednym dostępnym elementem i długości rozgrywki.}
@@ -830,7 +725,7 @@ Ciężko jest dopatrzyć się podobnej cykliczności w algorytmie z zagnieżdże
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale = 0.7]{images/buildersPickedIndexes}
+    \includegraphics[scale = 0.6]{images/buildersPickedIndexes}
     \caption{Porównanie rozkładu wybieranych indeksów przez budowniczego z zagnieżdżeniami oraz budowniczego zachłannego.}
     \label{fig:buildersPickedIndexes}
 \end{figure}

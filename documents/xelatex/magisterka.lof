@@ -6,13 +6,13 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Działanie algorytmu malarza z zagnieżdżeniami.}}{27}{figure.2.3}
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Longest Free Word z interfejsem graficznym}}{29}{figure.2.4}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: 0, Malarz: 1.}}{33}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: 1, Malarz: 1.}}{34}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: 2, Malarz: 1.}}{34}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: 0, Malarz: 1.}}{35}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: 2, Malarz: 1.}}{36}{figure.3.5}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: 0, Malarz: 2.}}{37}{figure.3.6}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Stosunek pierwszego wystąpienia indeksu z dwoma dostępnymi elementami, do pojawienia się indeksu z jednym dostępnym elementem i długości rozgrywki.}}{38}{figure.3.7}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Porównanie rozkładu wybieranych indeksów przez budowniczego z zagnieżdżeniami oraz budowniczego zachłannego.}}{39}{figure.3.8}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: 0, Malarz: 1.}}{34}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: 1, Malarz: 1.}}{35}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: 2, Malarz: 1.}}{35}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: 0, Malarz: 1.}}{36}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: 2, Malarz: 1.}}{37}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: 0, Malarz: 2.}}{38}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Stosunek pierwszego wystąpienia indeksu z dwoma dostępnymi elementami, do pojawienia się indeksu z jednym dostępnym elementem i długości rozgrywki.}}{39}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Porównanie rozkładu wybieranych indeksów przez budowniczego z zagnieżdżeniami oraz budowniczego zachłannego.}}{40}{figure.3.8}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -40,7 +40,7 @@ public class Main {
 
 	private static void executeQueue() {
 		List<ConfigHolder> executionQueue = Arrays.asList(
-				new ConfigHolder().builderLevel(0).painterLevel(0).gameType(SQUARE).gameMode(GameMode.pcPc).powLvl(10)
+				new ConfigHolder().builderLevel(0).painterLevel(1).gameType(SQUARE).gameMode(GameMode.pcPc).powLvl(5)
 			//	new ConfigHolder().builderLevel(0).painterLevel(2).gameType(SQUARE).gameMode(GameMode.pcPc).powLvl(5)
 			//	new ConfigHolder().builderLevel(0).painterLevel(2).gameType(SQUARE).gameMode(GameMode.pcPc).powLvl(5),
 			//	new ConfigHolder().builderLevel(0).painterLevel(2).gameType(SQUARE).gameMode(GameMode.pcPc).powLvl(5),
