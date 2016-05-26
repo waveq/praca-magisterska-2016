@@ -1,7 +1,7 @@
 \documentclass[document]{xmgr}
 % Jeśli nowe rozdziały mają się zaczynać na stronach
 % nieparzystych:
-%\documentclass[openright]{xmgr}
+% \documentclass[openright]{xmgr}
 
 %\defaultfontfeatures{Scale=MatchLowercase}
 %\setmainfont[Numbers=OldStyle,Ligatures=TeX]{Minion Pro}
@@ -30,7 +30,7 @@
 \email    {rekawekszymon@gmail.com}
 
 \title    {Gra Thuego}
-\date     {01.01.2016}
+\date     {2016}
 \miejsce  {Gdańsk}
 
 \opiekun  {prof. UG dr hab. T. Dzido}
@@ -62,7 +62,7 @@ Przeprowadzone badania wykazały, że algorytmy symulujące graczy działają pr
 
 Tematem niniejszej pracy jest Gra Thuego. Axel Thue był norweskim matematykiem żyjącym w latach 1863 - 1922, znanym z prac z zakresu kombinatoryki.
 
-Thue pracował nad problemami, powstałymi w wyniku badań nad sekwencjami symboli. Praca Thue \cite{repetition} opisywała problem, który autor nazwał \textit{nieredukowalne słowa} (\textit{irreducible words}). Poświęca w niej szczególną uwagę dwu i trzy literowym przypadkom. W skrócie wprowadza pojęcie znane obecnie jako \textit{Thue-Morse word} i pokazuje, że nieskończone słowa bez nasunięć (\textit{Overlap-free}) są pochodnymi tej sekwencji. W swoich pracach definiuje kolejną strukturę, a mianowicie infinite \textit{Square-Free word}, oraz przedstawia sposoby generowania nieskończenie długich słów wolnych zarówno od kwadratów jak i nasunięć.
+Thue pracował nad problemami, powstałymi w wyniku badań nad sekwencjami symboli. Prace Thue \cite{repetition} opisywały problem, który autor nazwał \textit{nieredukowalne słowa} (\textit{irreducible words}). Poświęca w nich szczególną uwagę dwu i trzy literowym przypadkom. W skrócie wprowadza pojęcie znane obecnie jako \textit{Thue-Morse word} i pokazuje, że nieskończone słowa bez nasunięć (\textit{Overlap-free}) są pochodnymi tej sekwencji. W swoich pracach definiuje kolejną strukturę, a mianowicie infinite \textit{Square-Free word}, oraz przedstawia sposoby generowania nieskończenie długich słów wolnych zarówno od kwadratów jak i nasunięć.
 
 Gra która powstała na podstawie teorii Thuego w skrócie polegała będzie na utworzeniu jak najdłuższego ciągu znaków nad określonym z góry alfabetem. Zależnie od trybu gry, kończyć się ona będzie w momencie gdy pojawi się zdefiniowany na początku rodzaj powtórzenia w tworzonym przez nas, bądź algorytm ciągu. Jednym z trybów gry jest walka komputera przeciwko niemu samemu, po takiej rozgrywce przedstawione zostaną złożoności czasowe oraz wnioski wynikające z obranej przez oponentów taktyki. 
 
@@ -81,11 +81,11 @@ Zanim przejdziemy do twierdzeń, koniecznym jest wyjaśnienie podstawowych twier
 \item Długość słowa $\omega$ jest reprezentowana przez $|\omega|$.
 \item Puste słowo o długości $0$ jest reprezentowane przez $\varepsilon$.
 \item Czynnik (factor) słowa $\omega$ jest słowem $u$, które występuje wewnątrz $\omega$ formie $\omega = xuy$, podczas gdy $x$ oraz $y$ również są słowami tego alfabetu.
-\item Kwadrat (square) jest słowem w formie $uu$, gdzie $u$ jest niepuste.
-\item Square-free, słowo jest wolne od kwadratów, jeśli żaden z jego czynników nie jest kwadratem.
-\item Nasunięcie (Overlap) jest słowem w formie $xuxux$, gdzie $x$ jest niepuste. Nazwa pojęcia wzięła się z tego, że $xux$ występuje dwa razy w $xuxux$. Pierwszy raz jako prefiks (początkowy czynnik) oraz jako sufiks (końcowy czynnik) i te dwa wystąpienia mają wspólną część - centralne $x$, a więc \textit{nasuwają} się na siebie.
-\item Overlap-free - słowo w którym żaden z czynników nie nasuwa się na siebie.
-W definicji Axela Thue słowo $\omega$ w alfabecie długości n jest nieredukowalne jeśli jakiekolwiek dwa wystąpienia tego samego słowa jako czynnik wewnątrz $\omega$ są zawsze oddzielone od siebie przez $n-2$ liter. Oznacza to, że nieredukowalne dwuliterowe słowo jest bez nasunięć i nieredukowalne trzyliterowe słowo jest bez kwadratów.
+\item Kwadrat jest słowem w formie $uu$, gdzie $u$ jest niepuste.
+\item Słowo wolne od kwadratów - słowo jest wolne od kwadratów, jeśli żaden z jego czynników nie jest kwadratem.
+\item Nasunięcie jest słowem w formie $xuxux$, gdzie $x$ jest niepuste. Nazwa pojęcia wzięła się z tego, że $xux$ występuje dwa razy w $xuxux$. Pierwszy raz jako prefiks (początkowy czynnik) oraz jako sufiks (końcowy czynnik) i te dwa wystąpienia mają wspólną część - centralne $x$, a więc \textit{nasuwają} się na siebie.
+\item Słowo wolne od nasunięć - słowo w którym żaden z czynników nie nasuwa się na siebie.
+W definicji Axela Thue słowo $\omega$ w alfabecie długości $n$ jest nieredukowalne jeśli jakiekolwiek dwa wystąpienia tego samego słowa jako czynnik wewnątrz $\omega$ są zawsze oddzielone od siebie przez $n-$2 liter. Oznacza to, że nieredukowalne dwuliterowe słowo jest bez nasunięć i nieredukowalne trzyliterowe słowo jest bez kwadratów.
 \item Morfizm - mapowanie obiektu z jednej matematycznej struktury w inną.
 \end{itemize}
 
@@ -180,11 +180,10 @@ W 1912 roku Axel Thue wymyślił inny sposób na generowanie nieskończonego sł
 \end{itemize}
 
 
-Po raz kolejny zastępujemy każde wystąpienie z naszych liter przez zdefiniowane sekwencje. Jest to dość skomplikowana struktura, zsumowana długość łańcuchów wynosi 18. A. Carpi \cite{carpi} dowiódł, że morfizm na alfabecie składającym się z trzech liter tworzący słowa wolne od kwadratów musi mieć długość równą co najmniej $18$.
+Po raz kolejny zastępujemy każde wystąpienie z naszych liter przez zdefiniowane sekwencje. Jest to dość skomplikowana struktura, zsumowana długość łańcuchów wynosi 18. A. Carpi \cite{carpi} dowiódł, że morfizm na alfabecie składającym się z trzech liter tworzący słowa wolne od kwadratów musi mieć długość równą co najmniej 18.
 
-% - Bob wybiera indeks w ciągu, natomiast Alicja wybiera symbol z wcześniej ustalonego zbioru $A$.
 \section{Thue online}
-Praca J. Grytczuka, P. Szafrugi i M. Zmarza pod tytułem Online version of theorem of Thue {thueonline} opisuje wersję online teorii Thuego. Jest to gra dla dwóch graczy Boba oraz Alicji. Podczas rozgrywki Alicja i Bob naprzemiennie wykonując swoje ruchy tworzą ciąg bez kwadratów. Celem Boba jest jak najszybsze skończenie rozgrywki poprzez utworzenie kwadratu, Alicja natomiast musi tego unikać.
+Praca J. Grytczuka, P. Szafrugi i M. Zmarza pod tytułem Online version of theorem of Thue {thueonline} opisuje wersję online teorii Thuego. Jest to gra dla dwóch graczy Boba oraz Alicji. Podczas rozgrywki Alicja i Bob naprzemiennie wykonując swoje ruchy, tworzą ciąg bez kwadratów. Celem Boba jest jak najszybsze skończenie rozgrywki poprzez utworzenie kwadratu, Alicja natomiast musi tego unikać.
 
 Wartym wspomnienia jest uproszczony tryb gry, podczas którego mamy dwóch graczy - Alicję i Boba, tak jak zostało wspomniane, tylko Alicji zależy na tym by uniknąć kwadratów. Rozgrywka polega na tym, że Alicja i Bob wybierają na przemian symbole z ustalonego zbioru $A$, oraz dopisują je na końcu istniejącego ciągu. W momencie, gdy pojawia się kwadrat $aa$, jego druga część, czyli w naszym przypadku prawe $a$, zostaje usunięte. Zostało udowodnione w \cite{thueonline2}, że Alicja jest wstanie stworzyć dowolnie długi ciąg bez kwadratów, nie zważając na ruchy Boba. Powyższe jest jednak możliwe pod warunkiem, że moc zbioru $A$ wynosi conajmniej $8$.
 
@@ -202,26 +201,26 @@ Autorzy \cite{thueonline} nie zamkneli do końca problemu i zauważyli, że moż
 
 Komputerowa implementacja gry Thuego opiera się na pomyśle gry z pracy \cite{thueonline}. W grze dostępnych jest kilka trybów zarówno dla jednego oraz dwóch graczy jak i komputerowa symulacja, czyli gra komputera przeciwko niemu samemu.
 
-Implementacja gry Online Thue Game nazywana będzie \textbf{Longest Square-Free word}.
-Zasady pozostają niemal identyczne. Na początku gry, gracze ustalają moc zbioru symboli, oraz otrzymują swoje role. Jeden z nich staje się architektem, drugi malarzem. Rola architekta polega na wybieraniu odpowiedniego indeksu w ciągu tworzonym przez graczy, pod którym powstanie nowy element. Malarz natomiast określa symbol wstawianego elementu. Gra kończy się w momencie, gdy w ciągu tworzonym przez graczy pojawia się \textbf{kwadrat}. Indeks $i$  podawany przez architekta nie może być mniejszy od zera oraz większy niż $n$, gdzie $n$ jest równe liczbie elementów w ciągu. Na początku gry ciąg $S$ zawiera tylko jeden symbol równy 0.
-Grę rozpoczyna architekt. Gracze wykonują swoje ruchy na przemian. Malarz otrzymuje punkt za każdy pomalowany element, który nie tworzy \textbf{kwadratu} wewnątrz ciągu.
-By wyłonić zwycięzcę potrzebne są dwie rundy. Każdy z graczy musi sprawdzić się zarówno jako malarz i architekt. Wygrywa osoba, która zdobyła więcej punktów jako malarz.
+Implementacja gry Online Thue Game nazywana będzie \textbf{Longest Square-Free Word}.
+Zasady pozostają niemal identyczne. Na początku gry, gracze ustalają moc zbioru symboli, oraz otrzymują swoje role. Jeden z nich staje się budowniczym, drugi malarzem. Rola budowniczego polega na wybieraniu odpowiedniego indeksu w ciągu tworzonym przez graczy, pod którym powstanie nowy element. Malarz natomiast określa symbol wstawianego elementu. Gra kończy się w momencie, gdy w ciągu tworzonym przez graczy pojawia się \textbf{kwadrat}. Indeks $i$  podawany przez budowniczego nie może być mniejszy od zera oraz większy niż $n$, gdzie $n$ jest równe liczbie elementów w ciągu. Na początku gry ciąg $S$ zawiera tylko jeden symbol - $0$.
+Grę rozpoczyna budowniczy. Gracze wykonują swoje ruchy na przemian. Malarz otrzymuje punkt za każdy pomalowany element, który nie tworzy \textbf{kwadratu} wewnątrz ciągu.
+By wyłonić zwycięzcę potrzebne są dwie rundy. Każdy z graczy musi sprawdzić się zarówno jako malarz i budowniczy. Wygrywa osoba, która zdobyła więcej punktów jako malarz.
 
 Tryb ten dostępny jest również dla jednego gracza, rolę przeciwnika otrzymuje wtedy komputer, który działa według algorytmu przewidującego określoną przez poziom trudności liczbę ruchów do przodu. Algorytm może pełnić zarówno rolę budowniczego jak i malarza.
 
-Bliźniaczym trybem gry, opierającym się na tych samych zasadach z niewielką różnicą jest \textbf{Longest Overlap-Free word}. 
+Bliźniaczym trybem gry, opierającym się na tych samych zasadach z niewielką różnicą jest \textbf{Longest Overlap-Free Word}. 
 Różnica polega na tym, że malarz w tworzonym ciągu musi unikać \textbf{nasunięcia}.
 
-Podobnie jak w \textbf{Longest Square-Free word} jest możliwość gry przeciwko algorytmowi, który jest w stanie przewidywać określoną ilość ruchów do przodu.
+Podobnie jak w \textbf{Longest Square-Free Word} jest możliwość gry przeciwko algorytmowi, który jest w stanie przewidywać określoną ilość ruchów do przodu.
 
-\chapter{Aplikacja Longest free word}
-Program, który powstał na bazie gier Longest Square-free word oraz Longest Overlap-free word, napisałem w języku \textit{Java}. Umożliwia on rozgrywkę w obu wersjach gry, zarówno z drugim graczem, jak i z komputerem, oraz jest w stanie zasymulować rozgrywkę dwóch graczy komputerowych, grających przeciwko sobie z ustawionymi przez nas poziomami inteligencji. Dodatkową opcją jest uruchomienie obszernego testu, który zasymuluje rozgrywkę komputerowych graczy na wszystkich poziomach trudności, mniejszych od sprecyzowanego przez nas $n$. Komunikacja z aplikacją odbywa się poprzez wspomniany plik konfiguracyjny - przed uruchomieniem aplikacji, oraz konsolę aplikacji - po jej uruchomieniu. W programie zostało użyłem narzędzia automatyzującego budowę aplikacji - \textit{Maven}. Dzięki niemu, po pobraniu kodu źródłowego aplikacji jesteśmy w stanie uruchomić ją z poziomu terminala dzięki zaledwie dwóm linijkom kodu. Okazało się ono niezwykle pomocne podczas przeprowadzania czasochłonnych testów na maszynie zdalnej, której sterowanie odbywało się właśnie poprzez terminal.
+\chapter{Aplikacja Longest Free Word}
+Program, który powstał na bazie gier Longest Square-Free Word oraz Longest Overlap-Free Word, napisałem w języku \textit{Java}. Umożliwia on rozgrywkę w obu wersjach gry, zarówno z drugim graczem, jak i z komputerem, oraz jest w stanie zasymulować rozgrywkę dwóch graczy komputerowych, grających przeciwko sobie z ustawionymi przez nas poziomami inteligencji. Dodatkową opcją jest uruchomienie obszernego testu, który zasymuluje rozgrywkę komputerowych graczy na wszystkich poziomach trudności, mniejszych od sprecyzowanego przez nas $n$. Komunikacja z aplikacją odbywa się poprzez wspomniany plik konfiguracyjny - przed uruchomieniem aplikacji, oraz konsolę aplikacji - po jej uruchomieniu. W programie zostało użyłem narzędzia automatyzującego budowę aplikacji - \textit{Maven}. Dzięki niemu, po pobraniu kodu źródłowego aplikacji jesteśmy w stanie uruchomić ją z poziomu terminala dzięki zaledwie dwóm linijkom kodu. Okazało się ono niezwykle pomocne podczas przeprowadzania czasochłonnych testów na maszynie zdalnej, której sterowanie odbywało się właśnie poprzez terminal.
 
 
 \section{Plik konfiguracyjny}
 Opcje dostępne wewnątrz pliku konfiguracyjnego to:
 \begin{itemize}
-\item \textbf{gameType} - wartości, jakie możemy wprowadzić to Square oraz Overlap. Jest to typ gry, którego zamierzamy użyć i precyzuje, czy zagramy w Longest Square-free word czy Longest Overlap-free word.
+\item \textbf{gameType} - wartości, jakie możemy wprowadzić to Square oraz Overlap. Jest to typ gry, którego zamierzamy użyć i precyzuje, czy zagramy w Longest Square-Free Word czy Longest Overlap-Free Word.
 \item \textbf{gameMode} - tryb gry wartości wpisywane w tym polu mają wpływ na to, czy gra odbywać się będzie z drugim człowiekiem - \textit{humanHuman}, komputerem z tym warunkiem, że to my jesteśmy budowniczym - \textit{humanBuilder}, ponownie z komputerem, jednak tym razem to on jest budowniczym - \textit{pcBuilder}, oraz walka dwóch komputerów - \textit{pcPc}.
 \item \textbf{setPower} - jest to moc zbioru elementów, do których dostęp będzie miał malarz podczas rozgrywki. Zbiór ten wypełniany jest liczbami $\in \{0, ...,n-1\}$
 \item \textbf{builderNestingLevel} i \textbf{painterNestingLevel} - poziom zagnieżdżenia na jaki komputer sobie pozwoli jako budowniczy i malarz. Zasada działania zagnieżdżeń zostanie omówiona w dalszej części pracy.
@@ -689,7 +688,7 @@ Wykres \ref{fig:painter1builder0} przedstawia wzloty i spadki czasu trwania algo
 
 Jeśli przeanalizujemy wykres \ref{fig:painter1builder2} zauważymy, że podczas rozgrywki ze sprytniejszym algorytmem budowniczego, krzywe są o wiele bardziej spiczaste, co oznacza, że jest to trudna rozgrywka dla malarza, która ostatecznie kończy się w 82 ruchu.
 
-Ponownie możemy porównać ze sobą czasy podejmowania decyzji dla algorytmu z zagnieżdżeniem 1 poziomu na wykresie \ref{fig:painter1builder2}, oraz 2 poziomu na wykresie \ref{fig:painter2builder0}. Wykonanie ruchu, dla ciągu długości 79 pierwszemu algorytmowi zajęło $0.061$ sekundy, natomiast temu bardziej złożonemu $17.711$. Zatem w tym konkretnym ruchu algorytm z zagnieżdżeniem o $1$ większym decydował się około $290$ razy dłużej.
+Ponownie możemy porównać ze sobą czasy podejmowania decyzji dla algorytmu z zagnieżdżeniem 1 poziomu na wykresie \ref{fig:painter1builder2}, oraz 2 poziomu na wykresie \ref{fig:painter2builder0}. Wykonanie ruchu, dla ciągu długości 79 pierwszemu algorytmowi zajęło 0.061 sekundy, natomiast temu bardziej złożonemu 17.711. Zatem w tym konkretnym ruchu algorytm z zagnieżdżeniem o 1 większym decydował się około 290 razy dłużej.
 
 \begin{figure}[h]
     \centering
@@ -707,7 +706,7 @@ Ponownie możemy porównać ze sobą czasy podejmowania decyzji dla algorytmu z 
 
 
 \section{Porównanie zachowań algorytmu z zagnieżdżeniami i bez zagnieżdżeń}
-Jeśli przyjrzymy się dokładnie działaniu zachłannego algorytmu wyszukiwania indeksu, to bez trudu zauważymy, że w początkowej fazie gry, kiedy malarz ma dużą swobodę w wybieraniu elementów, indeks, który jest wybierany to w przeważającej większości ostatni indeks ciągu. Spowodowane jest to tym, że indeksy $0$ oraz $n+1$, otoczone są elementami tylko z lewej lub prawej strony, dzięki temu malarz ma na nich do wyboru większą gamę symboli. Na reszcie indeksów zazwyczaj dostępne jest tyle samo symboli, zwracany jest więc ostatni z nich, dokładnie tak jak zostało to zaimplementowane. Taktyka tego typu została przeze mnie nazwana \textit{taktyką iteracyjną} i nie jest zbyt emocjonująca. Jeśli nie mamy zbyt dużej puli symboli do wyboru, to po pewnym czasie następuje wyłamanie się z tego stylu gry. Wyłamanie pojawia się zawsze w momencie, gdy budowniczy znajduje indeks z mniejszą ilością możliwości. 
+Jeśli przyjrzymy się dokładnie działaniu zachłannego algorytmu wyszukiwania indeksu, to bez trudu zauważymy, że w początkowej fazie gry, kiedy malarz ma dużą swobodę w wybieraniu elementów, indeks, który jest wybierany to w przeważającej większości ostatni indeks ciągu. Spowodowane jest to tym, że indeksy 0 oraz $n+$1, otoczone są elementami tylko z lewej lub prawej strony, dzięki temu malarz ma na nich do wyboru większą gamę symboli. Na reszcie indeksów zazwyczaj dostępne jest tyle samo symboli, zwracany jest więc ostatni z nich, dokładnie tak jak zostało to zaimplementowane. Taktyka tego typu została przeze mnie nazwana \textit{taktyką iteracyjną} i nie jest zbyt emocjonująca. Jeśli nie mamy zbyt dużej puli symboli do wyboru, to po pewnym czasie następuje wyłamanie się z tego stylu gry. Wyłamanie pojawia się zawsze w momencie, gdy budowniczy znajduje indeks z mniejszą ilością możliwości. 
 
 Przeprowadzone przeze mnie badania, przy mocy zbioru symboli równym 5, oraz poziomie malarza równym, 1 wykazały, że w przeciągu kilku kroków od pierwszego znalezienia indeksu, pod którym dostępne są dwa symbole, pojawia się indeks pod którym dostępny jest tylko jeden symbol. Nie wykryłem natomiast korelacji, pomiędzy pierwszym wyłamaniem się z \textit{taktyki iteracyjnej}, a długością rozgrywki. 
  
@@ -729,30 +728,13 @@ Ciężko jest dopatrzyć się podobnej cykliczności w algorytmie z zagnieżdże
 
 % zakończenie
 \summary
-Partl~\cite{pa} przedstawi\l \ldots
-Możliwości, jakie stoją przed archiwum prac magisterskich opartych na
-XML-u, są ograniczone jedynie czasem, jaki należy poświęcić na pełną
-implementację systemu. Nie ma przeszkód technologicznych do stworzenia
-co najmniej równie doskonałego repozytorium, jak ma to miejsce w
-przypadku ETD. Jeżeli chcemy w pełni uczestniczyć w rozwoju nowej ery
-informacji, musimy szczególną uwagę przykładać do odpowiedniej
-klasyfikacji i archiwizacji danych. Sądzę, że język XML znacznie to
-upraszcza.
+Twierdzenia Axela Thue na temat sekwencji symboli okazały się doskonałą bazą do dalszych rozważań. Wykorzystali je J. Grytczuk, P. Szafruga i M. Zmarz, tworząc grę dla dwóch graczy wykorzystującą dotychczasowe koncepcje. Stworzona przez nich praca, wprowadziła nowe problemy, które mogą być rozwiązane drogą programistyczną. Podjąłem to wyzwanie podczas pisania pracy - napisana przeze mnie aplikacja obsługuje logikę gry, wprowadza szereg funkcji ułatwiających badanie rozgrywek, a co najważniejsze jest w stanie zasymulować graczy ze sprecyzowanymi przez użytkownika poziomami inteligencji. Wprowadziłem ponad cztery rodzaje taktyk oraz sposób na modyfikację intensywności obliczeń, która skutkowała lepszymi rezultatami w rozgrywce. Mimo to nie byłem w stanie rzucić nowego światła na problem ilości symboli potrzebnej na dowolnie długą grę. Główną tego przyczyną jest brak zasobów sprzętowych, które pozwoliłyby na przeprowadzenie większej ilości obliczeń.
 
 % załączniki (opcjonalnie):
 \appendix
-\chapter{Tytuł załącznika jeden}
-
-Treść załącznika jeden.
-
-\chapter{Tytuł załącznika dwa}
-
-Treść załącznika dwa.
 
 % literatura (obowiązkowo):
 \bibliographystyle{unsrt}
-Axel Thue's papers on repetitions in words:
-a translation
 \begin{thebibliography}{99}
 
 \bibitem{repetition} Axel Thue's papers on repetitions in words: a translation, July 1994.

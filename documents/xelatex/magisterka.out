@@ -5,7 +5,7 @@
 \BOOKMARK [1][-]{section.1.3}{Square-free\040word}{chapter.1}% 5
 \BOOKMARK [1][-]{section.1.4}{Thue\040online}{chapter.1}% 6
 \BOOKMARK [1][-]{section.1.5}{Komputerowa\040implementacja\040Online\040Thue\040Game}{chapter.1}% 7
-\BOOKMARK [0][-]{chapter.2}{Aplikacja\040Longest\040free\040word}{}% 8
+\BOOKMARK [0][-]{chapter.2}{Aplikacja\040Longest\040Free\040Word}{}% 8
 \BOOKMARK [1][-]{section.2.1}{Plik\040konfiguracyjny}{chapter.2}% 9
 \BOOKMARK [1][-]{section.2.2}{Algorytm szukający powtórzeń wewnątrz ciągu}{chapter.2}% 10
 \BOOKMARK [1][-]{section.2.3}{Komunikacja z użytkownikiem}{chapter.2}% 11
@@ -19,9 +19,7 @@
 \BOOKMARK [1][-]{section.3.2}{Pomiary czasów potrzebnych na podjęcie decyzji}{chapter.3}% 19
 \BOOKMARK [1][-]{section.3.3}{Porównanie zachowań algorytmu z zagnieżdżeniami i bez zagnieżdżeń}{chapter.3}% 20
 \BOOKMARK [0][-]{chapter*.5}{Zakończenie}{}% 21
-\BOOKMARK [0][-]{appendix.A}{Tytuł załącznika jeden}{}% 22
-\BOOKMARK [0][-]{appendix.B}{Tytuł załącznika dwa}{}% 23
-\BOOKMARK [0][-]{appendix*.6}{Bibliografia}{}% 24
-\BOOKMARK [0][-]{appendix*.7}{Spis\040tabel}{}% 25
-\BOOKMARK [0][-]{appendix*.8}{Spis rysunków}{}% 26
-\BOOKMARK [0][-]{appendix*.9}{Oświadczenie}{}% 27
+\BOOKMARK [0][-]{appendix*.6}{Bibliografia}{}% 22
+\BOOKMARK [0][-]{appendix*.7}{Spis\040tabel}{}% 23
+\BOOKMARK [0][-]{appendix*.8}{Spis rysunków}{}% 24
+\BOOKMARK [0][-]{appendix*.9}{Oświadczenie}{}% 25
