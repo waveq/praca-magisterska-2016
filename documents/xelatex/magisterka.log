@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2016.3.5)  26 MAY 2016 22:21
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2016.3.5)  27 MAY 2016 23:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1061,10 +1061,10 @@ Rozdział 2.
 ] (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2014/09/06 1.5e listings language file
 )
+[15]
 LaTeX Font Info:    Font shape `EU1/Monaco(0)/m/n' will be
-(Font)              scaled to size 8.2125pt on input line 280.
-
-[15] [16]
+(Font)              scaled to size 8.2125pt on input line 281.
+ [16]
 File: images/squareFinding.png Graphic file (type QTm)
  <use  "images/squareFinding.png" >
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1076,23 +1076,14 @@ File: images/overlapFinding.png Graphic file (type QTm)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [19]
-Overfull \hbox (1.59161pt too wide) in paragraph at lines 384--385
-[]\EU1/Arial(0)/m/n/12 Po uruchomieniu aplikacji w konsoli wypisywane są najważ
-niejsze opcje
- []
-
 [20]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [21]
-[22] [23] [24]
-Underfull \vbox (badness 1189) has occurred while \output is active []
-
- [25]
+[22] [23] [24] [25]
 File: images/nestingPainter.png Graphic file (type QTm)
-
-<use  "images/nestingPainter.png" >
-Overfull \hbox (10.49783pt too wide) in paragraph at lines 527--528
+ <use  "images/nestingPainter.png" >
+Overfull \hbox (10.49783pt too wide) in paragraph at lines 528--529
  [][] 
  []
 
@@ -1103,14 +1094,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [27] [28]
 File: images/thueMobile.png Graphic file (type QTm)
  <use  "images/thueMobile.png" >
-Overfull \hbox (21.12871pt too wide) in paragraph at lines 561--562
+Overfull \hbox (21.12871pt too wide) in paragraph at lines 562--563
  [][] 
  []
 
 [29]
 Rozdział 3.
 
-Overfull \hbox (30.14069pt too wide) in paragraph at lines 579--586
+Overfull \hbox (30.14069pt too wide) in paragraph at lines 580--587
  [][] 
  []
 
@@ -1155,7 +1146,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [37] [38]
 File: images/builder0efficiency.png Graphic file (type QTm)
  <use  "images/builder0efficiency.png" >
-Overfull \hbox (33.67996pt too wide) in paragraph at lines 715--716
+Overfull \hbox (33.67996pt too wide) in paragraph at lines 716--717
  [][] 
  []
 
@@ -1168,7 +1159,7 @@ Package Fancyhdr Warning: \headheight is too small (15.0pt):
 [39]
 File: images/buildersPickedIndexes.png Graphic file (type QTm)
  <use  "images/buildersPickedIndexes.png" >
-Overfull \hbox (24.37248pt too wide) in paragraph at lines 724--725
+Overfull \hbox (24.37248pt too wide) in paragraph at lines 725--726
  [][] 
  []
 
@@ -1191,21 +1182,21 @@ Overfull \hbox (24.37248pt too wide) in paragraph at lines 724--725
 ] [45
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 766.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 766.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 769.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 769.
 
 (./magisterka.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 766.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 766.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 766.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 769.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 769.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 769.
  ) 
 Here is how much of TeX's memory you used:
- 23510 strings out of 493706
- 429380 string characters out of 6145770
- 535303 words of memory out of 5000000
- 26594 multiletter control sequences out of 15000+600000
+ 23511 strings out of 493706
+ 429393 string characters out of 6145770
+ 534365 words of memory out of 5000000
+ 26595 multiletter control sequences out of 15000+600000
  11548 words of font info for 82 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 53i,12n,72p,10400b,1235s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,12n,72p,10400b,1175s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on magisterka.pdf (45 pages).

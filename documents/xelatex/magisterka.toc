@@ -1,6 +1,6 @@
 \select@language {polish}
 \contentsline {chapter}{Wprowadzenie}{6}{chapter*.4}
-\contentsline {chapter}{\numberline {1}Teorie Axela Thue na temat sekwencji symboli}{7}{chapter.1}
+\contentsline {chapter}{\numberline {1}Opis struktur pozwalających na stworzenie gry}{7}{chapter.1}
 \contentsline {section}{\numberline {1.1}Definicje}{7}{section.1.1}
 \contentsline {section}{\numberline {1.2}Thue-Morse word}{8}{section.1.2}
 \contentsline {section}{\numberline {1.3}Square-free word}{10}{section.1.3}
@@ -8,7 +8,7 @@
 \contentsline {section}{\numberline {1.5}Komputerowa implementacja Online Thue Game}{12}{section.1.5}
 \contentsline {chapter}{\numberline {2}Aplikacja Longest Free Word}{14}{chapter.2}
 \contentsline {section}{\numberline {2.1}Plik konfiguracyjny}{14}{section.2.1}
-\contentsline {section}{\numberline {2.2}Algorytm szukający powtórzeń wewnątrz ciągu}{15}{section.2.2}
+\contentsline {section}{\numberline {2.2}Algorytm szukający powtórzeń wewnątrz ciągu}{16}{section.2.2}
 \contentsline {section}{\numberline {2.3}Komunikacja z użytkownikiem}{20}{section.2.3}
 \contentsline {section}{\numberline {2.4}Zachłanny algorytm wyszukiwania symbolu}{22}{section.2.4}
 \contentsline {section}{\numberline {2.5}Zachłanny algorytm wyszukiwania indeksu}{23}{section.2.5}
