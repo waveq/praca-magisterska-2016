@@ -16,7 +16,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage[section]{placeins}
-
+\usepackage{tabularx}
 
 
 \setmonofont[Scale=0.75]{Monaco}
@@ -316,10 +316,10 @@ Subsequence compareSubSeq(int subSeqSize, List<Integer> sequence) {
 Zmienne \texttt{left} i \texttt{right} są to podciągi, które reprezentują lewą i prawą część kwadratu $aa$. Zmienna \texttt{comparesFitInSequence} jest to ilość porównań jaka zmieści się wewnątrz naszej sekwencji. Dla przykładu, gdy nasz ciąg, jest reprezentowany przez $S = abcabaca$, a wcześniej sprecyzowana długość podciągu, składającego się na kwadrat wynosi 2, to zmienna \texttt{comparesFitInSequence} zostanie ustawiona na $(8 + 1) - (2 * 2)$ czyli 5, ponieważ możliwe są następujące porównania: $\underline{abca}baca$, $a\underline{bcab}aca$, $ab\underline{caba}ca$, $abc\underline{abac}a$, $abca\underline{baca}$
 W pętli znajdującej się w linii 5 do listy \texttt{left} oraz \texttt{right} dodawane są podciągi odpowiedniej długości, natomiast w linii 10 następuje sprawdzenie czy podciągi są identyczne. Jeśli tak, oznacza to, że w naszej sekwencji, rozpoczynając od indeksu $i$ występuje kwadrat długości $2 * \texttt{subSeqSize}$. Jeśli listy są różne to w linii 13 następuje ich wyczyszczenie, po to by pętla mogła porównać dwa kolejne podciągi.
 
-\begin{figure}[H]
+\begin{figure}[b]
     \centering
-    \includegraphics[scale = 0.2]{images/squareFinding}
-    \caption{Działanie algorytmu szukającego kwadratów.}
+    \includegraphics[width = 0.8\textwidth]{images/squareFinding}
+    \caption{Działanie algorytmu szukającego \emph{kwadratów}.}
     \label{fig:squareFinding}
 \end{figure}
 
@@ -369,10 +369,10 @@ Subsequence compareSubSeqOverlap(int subSeqSize, List<Integer> sequence) {
 
 Metoda \texttt{compareSubSeqOverlap} również jest analogiczna do metody \texttt{compareSubSeq}. Różni się tutaj wartość zmiennej \texttt{comparesFitInSequence}, jest ona większa o 1, z takiego samego powodu, co zmienna \texttt{maxSeqSize} z metody \texttt{findOverlap}. Różni się również podciąg zapisywany do zmiennej \texttt{right}, w pętli z 6 linii. Pierwszy indeks owego podciągu jest równy indeksowi ostatniego elementu, lewego podciągu, po to by stworzyć nasunięcie.
 
-\begin{figure}[H]
+\begin{figure}[tbh]
     \centering
-    \includegraphics[scale = 0.2]{images/overlapFinding}
-    \caption{Działanie algorytmu szukającego nasunięć.}
+    \includegraphics[width = 0.8\textwidth]{images/overlapFinding}
+    \caption{Działanie algorytmu szukającego \emph{nasunięć}.}
     \label{fig:overlapFinding}
 \end{figure}
 
@@ -519,7 +519,7 @@ Na początku dekrementowana zostaje ilość zagnieżdżeń na jaką chcemy się 
 
 \begin{figure}[tbh]
     \centering
-    \includegraphics[scale = 0.08]{images/nestingPainter}
+    \includegraphics[width = \textwidth]{images/nestingPainter}
     \caption{Działanie algorytmu malarza z zagnieżdżeniami.}
     \label{fig:nestingPainter}
 \end{figure}
@@ -553,8 +553,8 @@ Napisałem również wersję gry, w której użytkownik nie korzysta z konsoli, 
 
 \begin{figure}[tbh]
     \centering
-    \includegraphics[scale = 0.2]{images/thueMobile}
-    \caption{Longest Free Word z interfejsem graficznym}
+    \includegraphics[width = \textwidth]{images/thueMobile}
+    \caption{\emph{Longest Free Word} z interfejsem graficznym}
     \label{fig:thueMobile}
 \end{figure}
 
@@ -572,7 +572,7 @@ Dla 4 symboli, również nie jest możliwe rozegranie partii dłuższej niż 10 
 \begin{table}[tbh]
     \centering
 	\begin{tabular}{|l|l|l|l|} \hline
-	Ilość symboli & Poziom malarza & Poziom budowniczego & Długość rozgrywki \\ \hline
+	Ilość symboli & Poziom malarza & Poziom budowniczego & Długość gry \\ \hline
 	$3$ & $\geq 0$ & $\geq 0$ & $5$ ruchów\\ \hline
 	$4$ & $0$ & $0$ & $7$ ruchów\\ \hline
 	$4$ & $\geq 1 $ & $\geq 1$ & $7$ ruchów\\ \hline
@@ -587,7 +587,7 @@ Jak widać w tabeli \ref{fig:maxGameLength}, przy alfabecie o mocy 4, malarz poz
 
 Dopiero rozgrywka na 5 symbolach daje algorytmom pole do popisu, bowiem w przeprowadzonych badaniach, zależnie od ustawionych poziomów, trwała ona od 11 do conajmniej 236 ruchów.
 
-Używanie zachłannego algorytmu malarza przy alfabecie pięcioelementowym,  nie skutkuje zbyt długą grą. Niezależnie od poziomu budowniczego, kwadrat pojawi się zawsze po wspomnianym 11 kroku. Jednak podczas prób, gdy malarz miał ustawiony poziom zagnieżdżenia równy 1, a budowniczy działał zachłannie, rozgrywka trwała od 44 do 236 tur. Średnia arytmetyczna wyciągnięta z ilości ruchów wyniosła 133.83
+Używanie zachłannego algorytmu malarza przy alfabecie pięcioelementowym,  nie skutkuje zbyt długą grą. Niezależnie od poziomu budowniczego, kwadrat pojawi się zawsze po wspomnianym 11 kroku. Jednak podczas prób, gdy malarz miał ustawiony poziom zagnieżdżenia równy 1, a budowniczy działał zachłannie, rozgrywka trwała od 44 do 236 tur. Średnia arytmetyczna wyciągnięta z ilości ruchów wyniosła $133.83$
 
 \begin{table}[tbh]
     \centering
@@ -611,7 +611,7 @@ Używanie zachłannego algorytmu malarza przy alfabecie pięcioelementowym,  nie
 \end{table}
 
 
-Przy poziomie budowniczego i malarza ustawionym na 1, podczas 10 prób rozgrywka trwała od 30 do 213 ruchów. Średnia arytmetyczna obliczona na podstawie rozgrywek wynosi 96.9, a więc jest o 37.23 niższa niż, gdy budowniczy używał algorytmu zachłannego. 
+Przy poziomie budowniczego i malarza ustawionym na 1, podczas 10 prób rozgrywka trwała od 30 do 213 ruchów. Średnia arytmetyczna obliczona na podstawie rozgrywek wynosi $96.9$, a więc jest o $37.23$ niższa niż, gdy budowniczy używał algorytmu zachłannego. 
 
 \begin{table}[tbh]
     \centering
@@ -646,7 +646,7 @@ Nieodłącznym elementem analizy działania aplikacji jest badanie czasu w jakim
 \begin{figure}[tbh]
     \centering
     \includegraphics[width = 0.8\textwidth]{images/timeBuilder0Painter1}
-    \caption{Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: 0, Malarz: 1.}
+    \caption{Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: $0$, malarz: $1$.}
     \label{fig:builder0painter1}
 \end{figure}
 
@@ -657,14 +657,14 @@ Przy zagnieżdżeniu ustawionym na 2, dla ciągu długości 100 wyliczenie odpow
 \begin{figure}[tbh]
     \centering
     \includegraphics[width = 0.8\textwidth]{images/timeBuilder1Painter1}
-    \caption{Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: 1, Malarz: 1.}
+    \caption{Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: $1$, malarz: $1$.}
     \label{fig:builder1painter1}
 \end{figure}
 
 \begin{figure}[tbh]
     \centering
     \includegraphics[width = 0.8\textwidth]{images/timeBuilder2Painter1}
-    \caption{Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: 2, Malarz: 1.}
+    \caption{Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: $2$, malarz: $1$.}
     \label{fig:builder2painter1}
 \end{figure}
 
@@ -677,7 +677,7 @@ Wykres \ref{fig:painter1builder0} przedstawia wzloty i spadki czasu trwania algo
 \begin{figure}[tbh]
     \centering
     \includegraphics[width = 0.8\textwidth]{images/timePainter1Builder0}
-    \caption{Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: 0, Malarz: 1.}
+    \caption{Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: $0$, malarz: $1$.}
     \label{fig:painter1builder0}
 \end{figure}
 
@@ -685,17 +685,17 @@ Jeśli przeanalizujemy wykres \ref{fig:painter1builder2} zauważymy, że podczas
 
 Ponownie możemy porównać ze sobą czasy podejmowania decyzji dla algorytmu z zagnieżdżeniem 1 poziomu na wykresie \ref{fig:painter1builder2}, oraz 2 poziomu na wykresie \ref{fig:painter2builder0}. Wykonanie ruchu, dla ciągu długości 79 pierwszemu algorytmowi zajęło 0.061 sekundy, natomiast temu bardziej złożonemu 17.711. Zatem w tym konkretnym ruchu algorytm z zagnieżdżeniem o 1 większym decydował się około 290 razy dłużej.
 
-\begin{figure}[h]
+\begin{figure}[tbh]
     \centering
     \includegraphics[width = 0.8\textwidth]{images/timePainter1Builder2}
-    \caption{Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: 2, Malarz: 1.}
+    \caption{Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: $2$, malarz: $1$.}
     \label{fig:painter1builder2}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[tbh]
     \centering
     \includegraphics[width = 0.8\textwidth]{images/timePainter2Builder0}
-    \caption{Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: 0, Malarz: 2.}
+    \caption{Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: $0$, malarz: $2$.}
     \label{fig:painter2builder0}
 \end{figure}
 
@@ -705,7 +705,7 @@ Jeśli przyjrzymy się dokładnie działaniu zachłannego algorytmu wyszukiwania
 
 Przeprowadzone przeze mnie badania, przy mocy zbioru symboli równym 5, oraz poziomie malarza równym, 1 wykazały, że w przeciągu kilku kroków od pierwszego znalezienia indeksu, pod którym dostępne są dwa symbole, pojawia się indeks pod którym dostępny jest tylko jeden symbol. Nie wykryłem natomiast korelacji, pomiędzy pierwszym wyłamaniem się z \textit{taktyki iteracyjnej}, a długością rozgrywki. 
  
-\begin{figure}[h]
+\begin{figure}[tbh]
     \centering
     \includegraphics[width = 0.8\textwidth]{images/builder0efficiency}
     \caption{Stosunek pierwszego wystąpienia indeksu z dwoma dostępnymi elementami, do pojawienia się indeksu z jednym dostępnym elementem i długości rozgrywki.}
@@ -714,7 +714,7 @@ Przeprowadzone przeze mnie badania, przy mocy zbioru symboli równym 5, oraz poz
 
 Ciężko jest dopatrzyć się podobnej cykliczności w algorytmie z zagnieżdżeniami. Algorytm ten skupia się raczej na grupie indeksów będących obok siebie. Wykres \ref{fig:buildersPickedIndexes} przedstawia rozkład wybieranych indeksów przez oba algorytmy. Rozgrywki nie trwały więcej niż 115 ruchów, na rysunku można zaobserwować, że najczęściej wybierane indeksy przez algorytm z zagnieżdżeniami należały do zbioru $\leq 27$. Natomiast indeksy wybierane przez algorytm zachłanny, są w miarę równomiernie rozłożone po całej szerokości wykresu. Ponadto, mimo wyłamania się z wcześniej wspomnianej \textit{taktyki iteracyjnej}, algorytm zachłanny w dalszym ciągu działa cyklicznie, wybierając indeksy po zero, jeden lub pięć razy.
 
-\begin{figure}[h]
+\begin{figure}[tbh]
     \centering
     \includegraphics[width = 0.8\textwidth]{images/buildersPickedIndexes}
     \caption{Porównanie rozkładu wybieranych indeksów przez budowniczego z zagnieżdżeniami oraz budowniczego zachłannego.}

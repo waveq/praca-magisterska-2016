@@ -9,10 +9,10 @@
 \contentsline {chapter}{\numberline {2}Aplikacja Longest Free Word}{14}{chapter.2}
 \contentsline {section}{\numberline {2.1}Plik konfiguracyjny}{14}{section.2.1}
 \contentsline {section}{\numberline {2.2}Algorytm szukający powtórzeń wewnątrz ciągu}{16}{section.2.2}
-\contentsline {section}{\numberline {2.3}Komunikacja z użytkownikiem}{20}{section.2.3}
-\contentsline {section}{\numberline {2.4}Zachłanny algorytm wyszukiwania symbolu}{22}{section.2.4}
-\contentsline {section}{\numberline {2.5}Zachłanny algorytm wyszukiwania indeksu}{23}{section.2.5}
-\contentsline {section}{\numberline {2.6}Algorytm wyszukiwania symbolu z zagnieżdżeniami}{24}{section.2.6}
+\contentsline {section}{\numberline {2.3}Komunikacja z użytkownikiem}{21}{section.2.3}
+\contentsline {section}{\numberline {2.4}Zachłanny algorytm wyszukiwania symbolu}{23}{section.2.4}
+\contentsline {section}{\numberline {2.5}Zachłanny algorytm wyszukiwania indeksu}{24}{section.2.5}
+\contentsline {section}{\numberline {2.6}Algorytm wyszukiwania symbolu z zagnieżdżeniami}{25}{section.2.6}
 \contentsline {section}{\numberline {2.7}Algorytm wyszukiwania indeksu z zagnieżdżeniami}{28}{section.2.7}
 \contentsline {section}{\numberline {2.8}Longest square free word z interfejsem graficznym}{29}{section.2.8}
 \contentsline {chapter}{\numberline {3}Analiza symulowanych potyczek}{31}{chapter.3}
