@@ -310,7 +310,7 @@ Subsequence compareSubSeq(int subSeqSize, List<Integer> sequence) {
 	return null;
 }
 \end{lstlisting}
-Zmienne \texttt{left} i \texttt{right} są to podciągi, które reprezentują lewą i prawą część kwadratu $aa$. Zmienna \texttt{comparesFitInSequence} jest to ilość porównań jaka zmieści się wewnątrz naszej sekwencji. Dla przykładu, gdy nasz ciąg, jest reprezentowany przez $S = abcabaca$, a wcześniej sprecyzowana długość podciągu, składającego się na kwadrat wynosi 2, to zmienna \texttt{comparesFitInSequence} zostanie ustawiona na $(8 + 1) - (2 * 2)$ czyli 5, ponieważ możliwe są następujące porównania: $\underline{abca}baca$, $a\underline{bcab}aca$, $ab\underline{caba}ca$, $abc\underline{abac}a$, $abca\underline{baca}$
+Zmienne \texttt{left} i \texttt{right} są to podciągi, które reprezentują lewą i prawą część kwadratu $aa$. Zmienna \texttt{comparesFitInSequence} jest to ilość porównań jaka zmieści się wewnątrz naszej sekwencji. Dla przykładu, gdy nasz ciąg, jest reprezentowany przez $S = abcabaca$, a wcześniej sprecyzowana długość podciągu, składającego się na kwadrat wynosi 2, to zmienna \texttt{comparesFitInSequence} zostanie ustawiona na $(8 + 1) - (2 * 2)=5$, ponieważ możliwe są następujące porównania: $\underline{abca}baca$, $a\underline{bcab}aca$, $ab\underline{caba}ca$, $abc\underline{abac}a$, $abca\underline{baca}$
 W pętli znajdującej się w linii 5 do listy \texttt{left} oraz \texttt{right} dodawane są podciągi odpowiedniej długości, natomiast w linii 10 następuje sprawdzenie czy podciągi są identyczne. Jeśli tak, oznacza to, że w naszej sekwencji, rozpoczynając od indeksu $i$ występuje kwadrat długości $2 * \texttt{subSeqSize}$. Jeśli listy są różne to w linii 13 następuje ich wyczyszczenie, po to by pętla mogła porównać dwa kolejne podciągi.
 
 \begin{figure}[b]
@@ -344,7 +344,6 @@ Do zmiennej \texttt{maxSeqSize} przypisywana jest liczba o jeden większa niż d
 Wartość zmiennej \texttt{minSeqSize} wynosi 3, ponieważ jest to warunkiem stworzenia nasunięcia.
 
 \begin{lstlisting}[frame=single]
-
 Subsequence compareSubSeqOverlap(int subSeqSize, List<Integer> sequence) {
 	List<Integer> left = new ArrayList<>();
 	List<Integer> right = new ArrayList<>();
@@ -376,7 +375,7 @@ Metoda \texttt{compareSubSeqOverlap} również jest analogiczna do metody \textt
 \section{Komunikacja z użytkownikiem}
 Plik konfiguracyjny nie jest wystarczającym środkiem komunikacji z aplikacjią. W związku z tym, po uruchomieniu programu mamy dostęp do konsoli, która służy do wyświetlania jak i wprowadzania treści.
 
-Po uruchomieniu aplikacji na ekranie wypisywane są najważniejsze opcje konfiguracyjne, takie jak poziom budowniczego, poziom malarza oraz lista dostępnych symboli. Jeśli uruchomiliśmy grę w trybie \texttt{humanHuman}, to aplikacja w pierwszej kolejności poprosi nas o indeks. Po wpisaniu indeksu mieszczącego się w przedziale liczb naturalnych $\in [0,...,n]$, gdy to zrobimy zostaniemy poproszeni o podanie symbolu $\geq 0$ i $< setPower$. W momencie gdy podaliśmy prawidłowe wartości na ekran konsoli wyświetlany zostaje ciąg $S'$, który został utworzony poprzez dodanie do istniejącego ciągu odpowiedniego symbolu. Jeśli w ciągu $S'$ pojawi się kwadrat, na ekran zostanie wyświetlony czas rozgrywki, ilość ruchów jaka została do tej pory wykonana oraz indeksy wraz z symbolami, wspomnianego powtórzenia.
+Po uruchomieniu aplikacji na ekranie wypisywane są najważniejsze op\-cje konfiguracyjne, takie jak poziom budowniczego, poziom malarza oraz lista dostępnych symboli. Jeśli uruchomiliśmy grę w trybie \texttt{humanHuman}, to aplikacja w pierwszej kolejności poprosi nas o indeks. Po wpisaniu indeksu  \mbox{$\in \{0, 1, ...,n\}$}, zostaniemy poproszeni o podanie kolejnego symbolu  \mbox{$\in \{0, 1, ..., setPower-1\}$}. W momencie gdy podaliśmy prawidłowe wartości na ekran konsoli wyświetlany zostaje ciąg $S'$, który został utworzony poprzez dodanie do istniejącego ciągu odpowiedniego symbolu. Jeśli w ciągu $S'$ pojawi się kwadrat, na ekran zostanie wyświetlony czas rozgrywki, ilość ruchów jaka została do tej pory wykonana oraz indeksy wraz z symbolami, wspomnianego powtórzenia.
 
 Oto przykład prostej rozgrywki:
 
@@ -451,7 +450,7 @@ Metoda na wejściu dostaje trzy parametry:
 \item \texttt{index} -- indeks wybrany przez budowniczoego.
 \item \texttt{power} -- moc zbioru symboli.
 \end{itemize}
-Zbiór symboli to kolejne liczby naturalne z przedziału  $\in [0; power-1]$. W 2 linii metody rozpoczyna się pętla, która iteruje po wszystkich dostępnych symbolach. W kolejnej linii symbol dodawany jest do naszego ciągu na podanej pozycji. Metoda \texttt{pickProperFind} z warunku \texttt{if} zależnie od typu gry wywołuje wcześniej opisane metody \texttt{findSquare} lub \texttt{findOverlap}. Jeśli warunek \texttt{if} zostanie spełniony oznacza to, że po dodaniu aktualnego symbolu na danej pozycji nie powoduje stworzenia \emph{kwadratu}/\emph{nasunięcia}, algorytm zatem usuwa dodany element z ciągu i zwraca go w linii 6. Jeżeli  okaże się jednak, że dodany symbol tworzy powtórzenie w ciągu, zostaje on również usunięty, a pętla zaczyna się od początku. Metoda zwraca wartość -1 jeśli okaże się, że żaden z symboli nie jest w stanie stworzyć ciągu wolnego od \emph{kwadratów}/\emph{nasunięć}.
+Zbiór symboli to liczby $\in \{0, 1, ..., power-1\}$. W 2 linii metody rozpoczyna się pętla, która iteruje po wszystkich dostępnych symbolach. W kolejnej linii symbol dodawany jest do naszego ciągu na podanej pozycji. Metoda \texttt{pickProperFind} z warunku \texttt{if} zależnie od typu gry wywołuje wcześniej opisane metody \texttt{findSquare} lub \texttt{findOverlap}. Jeśli warunek \texttt{if} zostanie spełniony oznacza to, że po dodaniu aktualnego symbolu na danej pozycji nie powoduje stworzenia \emph{kwadratu}/\emph{nasunięcia}, algorytm zatem usuwa dodany element z ciągu i zwraca go w linii 6. Jeżeli  okaże się jednak, że dodany symbol tworzy powtórzenie w ciągu, zostaje on również usunięty, a pętla zaczyna się od początku. Metoda zwraca wartość -1 jeśli okaże się, że żaden z symboli nie jest w stanie stworzyć ciągu wolnego od \emph{kwadratów}/\emph{nasunięć}.
 
 \section{Zachłanny algorytm wyszukiwania indeksu}
 By można było przeprowadzić symulację gry, należy wprowadzić również algorytm budowczniego, starający się znaleźć najmniej atrakcyjny indeks dla malarza. Zachłanny algorytm realizujący to zadanie znajduje się poniżej.
