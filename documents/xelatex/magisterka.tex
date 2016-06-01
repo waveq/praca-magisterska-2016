@@ -184,7 +184,7 @@ Praca J. Grytczuka, P. Szafrugi i~M. Zmarza pod tytułem \emph{Online version of
 
 Wartym wspomnienia jest uproszczony tryb gry, podczas którego mamy dwóch graczy -- Alicję i~Boba, tak jak zostało wspomniane, tylko Alicji zależy na tym by uniknąć kwadratów. Rozgrywka polega na tym, że Alicja i~Bob wybierają na przemian symbole z~ustalonego zbioru $A$, oraz dopisują je na końcu istniejącego ciągu. W~momencie, gdy pojawia się kwadrat $aa$, jego druga część, czyli w~naszym przypadku prawe $a$, zostaje usunięte. Zostało udowodnione \cite{thueonline2}, że Alicja jest wstanie stworzyć dowolnie długi ciąg bez kwadratów, nie zważając na ruchy Boba. Powyższe jest jednak możliwe pod warunkiem, że moc zbioru $A$ wynosi conajmniej 8.
 
-Innym typem gry przedstawionym w~pracy \cite{thueonline} jest \emph{Online Thue Game}. Po raz kolejny gracze wykonują swoje ruchy na przemian. W~swojej rundzie Bob wybiera indeks w~istniejącym ciągu $S$, który jest sprecyzowany przez liczbę $i \in \{0, 1, ..., n\}$, następnie Alicja wybiera symbol $x \in A$, który jest wstawiany jedną pozycję w~prawo od $s_i$, dając nam nową sekwencję $S' = s_1, ..., s_i, x, s_{i+1}, ...,s_n$ w~momencie gdy $i = 0$, $x$ jest ustawiany na początku $S$. Celem Boba jest zmuszenie Alicji do stworzenia kwadratu, podczas gdy oponentka unika tego najdłużej jak to możliwe. Na przykład, jeśli ustalimy, że $A = \{a, b, c\}$ i~$S = acbc$, wtedy Bob wybierając indeks $i = 1$ nie daje Alicji możliwości wybrania symbolu, który nie stworzyłby kwadratu. Rzeczywiście wybierając jakikolwiek $x \in A$ doprowadza do utworzenia kwadratu w~$S'$: $\underline{aa}cb, a\underline{bcbc}, a\underline{cc}bc$. W~przypadku gdy Bob obierze dobrą strategię, rozgrywka na 3 symbolach skończy się na ciągu o~długości $\leq 5$, nie ważne jak dobrą strategię obierze Alicja. Oczywiście im większą moc ma zbiór $A$, tym więcej ruchów, będzie potrzebował Bob, by zakończyć rozgrywkę. 
+Innym typem gry przedstawionym w~pracy \cite{thueonline} jest \emph{Online Thue Game}. Po raz kolejny gracze wykonują swoje ruchy na przemian. W~swojej rundzie Bob wybiera indeks w~istniejącym ciągu $S$, który jest sprecyzowany przez liczbę $i \in \{0, 1, ..., n\}$, następnie Alicja wybiera symbol $x \in A$, który jest wstawiany jedną pozycję w~prawo od $s_i$, dając nam nową sekwencję $S' = s_1, ..., s_i, x, s_{i+1}, ...,s_n$ w~momencie gdy $i = 0$, $x$ jest ustawiany na początku $S$. Celem Boba jest zmuszenie Alicji do stworzenia kwadratu, podczas gdy oponentka unika tego najdłużej jak to możliwe. Na przykład, jeśli ustalimy, że $A = \{a, b, c\}$ i~$S=acbc$, wtedy Bob wybierając indeks $i=1$~nie daje Alicji możliwości wybrania symbolu, który nie stworzyłby kwadratu. Rzeczywiście wybierając jakikolwiek $x \in A$ doprowadza do utworzenia kwadratu w~$S'$: $\underline{aa}cb, a\underline{bcbc}, a\underline{cc}bc$. W~przypadku gdy Bob obierze dobrą strategię, rozgrywka na 3 symbolach skończy się na ciągu o~długości $\leq 5$, nie ważne jak dobrą strategię obierze Alicja. Oczywiście im większą moc ma zbiór $A$, tym więcej ruchów, będzie potrzebował Bob, by zakończyć rozgrywkę. 
 
 Grytczuk, Szafruga i~Zmarza \cite{thueonline} udowodnili, że istnieje strategia dla Alicji gwarantująca jej utworzenie dowolnie długiej gry w~\emph{Online Thue game} na zbiorze 12 symboli. Swoją definicję oparli o~prace A. Kündgena i~M. J. Pelsmajera \cite{first}, oraz J. Baráta i~P. P. Varjú. \cite{second}, na temat niepowtarzalnych kolorowań grafów planarnych.
 
@@ -196,8 +196,7 @@ Autorzy \cite{thueonline} nie zamkneli do końca problemu i~zauważyli, że moż
 Komputerowa implementacja gry Thuego opiera się na pomyśle gry z~pracy \cite{thueonline}. W~grze dostępnych jest kilka trybów zarówno dla jednego oraz dwóch graczy jak i~komputerowa symulacja, czyli gra komputera przeciwko niemu samemu.
 
 Implementacja gry Online Thue Game nazywana będzie \emph{Longest Squa\-re-Free Word}.
-Zasady pozostają niemal identyczne. Na początku gry, gracze ustalają moc zbioru symboli i~otrzymują swoje role. Jeden z~nich staje się budowniczym, drugi malarzem. Rola budowniczego polega na wybieraniu odpowiedniego indeksu w~ciągu tworzonym przez graczy, pod którym powstanie nowy element. Malarz natomiast określa symbol wstawianego elementu. Gra kończy się w~momencie, gdy w~ciągu tworzonym przez oponentów pojawia się \emph{kwadrat}. Indeks $i$  podawany przez budowniczego nie może być mniejszy od zera oraz większy niż $n$, gdzie $n$ jest równe liczbie elementów w~ciągu. Na początku gry, ciąg $S$ zawiera tylko jeden symbol -- $0$.
-Grę rozpoczyna budowniczy. Gracze wykonują swoje ruchy na przemian. Malarz otrzymuje punkt za każdy pomalowany element, który nie tworzy \emph{kwadratu} wewnątrz ciągu.
+Zasady pozostają niemal identyczne. Na początku gry, gracze ustalają moc zbioru symboli i~otrzymują swoje role. Jeden z~nich staje się budowniczym, drugi malarzem. Rola budowniczego polega na wybieraniu odpowiedniego indeksu w~ciągu tworzonym przez graczy, pod którym powstanie nowy element. Malarz natomiast określa symbol wstawianego elementu. Gra kończy się w~momencie, gdy w~ciągu tworzonym przez oponentów pojawia się \emph{kwadrat}. Indeks $i$  podawany przez budowniczego nie może być mniejszy od zera oraz większy niż $n$, gdzie $n$ jest równe liczbie elementów w~ciągu. Na początku gry, ciąg $S$ zawiera tylko jeden symbol, naturalnie jest nim $0$. Grę rozpoczyna budowniczy. Gracze wykonują swoje ruchy na przemian. Malarz otrzymuje punkt za każdy pomalowany element, który nie tworzy \emph{kwadratu} wewnątrz ciągu.
 By wyłonić zwycięzcę potrzebne są dwie rundy. Każdy z~graczy musi sprawdzić się zarówno jako malarz i~budowniczy. Wygrywa osoba, która zdobyła więcej punktów jako malarz.
 
 Tryb ten dostępny jest również dla jednego gracza, rolę przeciwnika otrzymuje wtedy komputer, który działa według algorytmu przewidującego określoną przez poziom trudności liczbę ruchów do przodu. Algorytm może pełnić zarówno rolę budowniczego jak i~malarza.
@@ -214,12 +213,12 @@ Program, który powstał na bazie gier Longest Square-Free Word oraz Longest Ove
 \section{Plik konfiguracyjny}
 Opcje dostępne wewnątrz pliku konfiguracyjnego to:
 \begin{itemize}
-\item \emph{gameType} -- wartości, jakie możemy wprowadzić to \texttt{Square} oraz \texttt{Overlap}. Jest to typ gry, którego zamierzamy użyć i~precyzuje, czy zagramy w~\emph{Longest Square-Free Word} czy \emph{Longest Overlap-Free Word}.
+\item \emph{gameType} -- wartości, które zmienna akceptuje to \texttt{Square} oraz \mbox{\texttt{Overlap}}. Jest to typ gry, którego zamierzamy użyć i~precyzuje, czy zagramy w~\emph{Longest Square-Free Word} czy \emph{Longest Overlap-Free Word}.
 \item \emph{gameMode} -- tryb gry wartości wpisywane w~tym polu mają wpływ na to, czy gra odbywać się będzie z~drugim człowiekiem - \texttt{humanHuman}, komputerem z~tym warunkiem, że to my jesteśmy budowniczym -- \texttt{humanBuilder}, ponownie z~komputerem, jednak tym razem to on jest budowniczym -- \texttt{pcBuilder}, oraz walka dwóch komputerów -- \texttt{pcPc}.
 \item \emph{setPower} -- jest to moc zbioru elementów, do których dostęp będzie miał malarz podczas rozgrywki. Zbiór ten wypełniany jest liczbami  $\in \{0, 1, ...,n-1\}$
 \item \emph{builderNestingLevel} i~\emph{painterNestingLevel} -- poziom zagnieżdżenia na jaki komputer sobie pozwoli jako budowniczy i~malarz. Zasada działania zagnieżdżeń zostanie omówiona w~dalszej części pracy.
 \item \emph{maxThinkTime} -- podczas przeprowadzania testów z~udziałem komputerowych graczy, czasami nie chcemy by przeciwnik myślał nad swoim ruchem 17 godzin. Właśnie dlatego została wprowadzona ta opcja konfiguracyjna. Jeśli czas jaki komputer spędził nad wyliczeniem kolejnej pozycji lub symbolu, będzie większy niż ustalona przez nas liczba nanosekund rozgrywka zostaje przerwana.
-\item \emph{makeOverallTest} -- gdy opcja ta zostanie ustawiona na \texttt{true}, po uruchomieniu aplikacji zostanie przeprowadzony obszerny test, zawierający w~sobie kombinacje rozgrywek komputerów o~wszystkich poziomach zagnieżdżeń $\leq 6$ na wszystkich mocach zbiorów $>0 $ i~$\leq 7$. Czyli zostanie wykonanych $6*6*6$ rozgrywek. Warto wspomnieć, że podczas tego testu opcja maxThinkTime okazała się niezwykle pomocna.
+\item \emph{makeOverallTest} -- gdy opcja ta zostanie ustawiona na \texttt{true}, po uruchomieniu aplikacji zostanie przeprowadzony obszerny test, zawierający w~sobie kombinacje rozgrywek komputerów o~wszystkich poziomach zagnieżdżeń $\leq 6$ na wszystkich mocach zbiorów $>0 $ i~$\leq 7$. Czyli zostanie wykonanych $6*6*6$ rozgrywek. Warto wspomnieć, że podczas tego testu opcja \texttt{maxThinkTime} okazała się niezwykle pomocna.
 \item \emph{randomization} -- po ustawieniu tej flagi na \texttt{true}, algorytmy z~zagnieżdżeniami będą losować swoją decyzję spośród opcji, które wydają im się tak samo atrakcyjne. Dzięki temu komputerowi oponenci zachowują się nieprzewidywalnie i~ciężko jest rozegrać dwie identyczne partie.
 \end{itemize}
 
@@ -363,7 +362,7 @@ Subsequence compareSubSeqOverlap(int subSeqSize, List<Integer> sequence) {
 } 
 \end{lstlisting}
 
-Metoda \texttt{compareSubSeqOverlap} również jest analogiczna do metody \texttt{compareSubSeq}. Różni się tutaj wartość zmiennej \texttt{comparesFitInSequence}, jest ona większa o~$1$, z~takiego samego powodu, co zmienna \texttt{maxSeqSize} z~metody \texttt{findOverlap}. Różni się również podciąg zapisywany do zmiennej \texttt{right}, w~pętli z~6 linii. Pierwszy indeks owego podciągu jest równy indeksowi ostatniego elementu, lewego podciągu, po to by stworzyć nasunięcie.
+Metoda \texttt{compareSubSeqOverlap} działa na tej samej zaszadzie co metoda \mbox{\texttt{compareSubSeq}}. Różni się tutaj wartość zmiennej \texttt{comparesFitInSequence}, jest ona większa o~$1$, z~takiego samego powodu, co zmienna \texttt{maxSeqSize} z~metody \mbox{\texttt{findOverlap}}. Różni się również podciąg zapisywany do zmiennej \mbox{\texttt{right}}, w~pętli z~6 linii. Pierwszy indeks owego podciągu jest równy indeksowi ostatniego elementu, lewego podciągu, po to by stworzyć nasunięcie.
 
 \begin{figure}[tbh]
     \centering
@@ -583,7 +582,7 @@ Jak widać w~tabeli \ref{fig:maxGameLength}, przy alfabecie o~mocy 4, malarz poz
 
 Dopiero rozgrywka na 5 symbolach daje algorytmom pole do popisu, bowiem w~przeprowadzonych badaniach, zależnie od ustawionych poziomów, trwała ona od 11 do conajmniej 236 ruchów.
 
-Używanie zachłannego algorytmu malarza przy alfabecie pięcioelementowym,  nie skutkuje zbyt długą grą. Niezależnie od poziomu budowniczego, kwadrat pojawi się zawsze po wspomnianym 11 kroku. Jednak podczas prób, gdy malarz miał ustawiony poziom zagnieżdżenia na 1, a~budowniczy działał zachłannie, rozgrywka trwała od 44 do 236 tur. Średnia arytmetyczna wyciągnięta z~ilości ruchów wyniosła $133.83$
+Używanie zachłannego algorytmu malarza przy alfabecie pięcioelementowym,  nie skutkuje zbyt długą grą. Niezależnie od poziomu budowniczego, kwadrat pojawi się zawsze po wspomnianym 11 kroku. Jednak podczas prób, gdy malarz miał ustawiony poziom zagnieżdżenia na 1, a~budowniczy działał zachłannie, rozgrywka trwała od 44 do 236 tur. Średnia arytmetyczna wyciągnięta z~ilości ruchów wyniosła $133,83$
 
 \begin{table}[tbh]
     \centering
@@ -607,7 +606,7 @@ Używanie zachłannego algorytmu malarza przy alfabecie pięcioelementowym,  nie
 \end{table}
 
 
-Przy poziomie budowniczego i~malarza ustawionym na 1, podczas 10 prób rozgrywka trwała od 30 do 213 ruchów. Średnia arytmetyczna obliczona na podstawie rozgrywek wynosi $96.9$, a~więc jest o~$37.23$ niższa, niż gdy budowniczy używał algorytmu zachłannego. 
+Przy poziomie budowniczego i~malarza ustawionym na 1, podczas 10 prób rozgrywka trwała od 30 do 213 ruchów. Średnia arytmetyczna obliczona na podstawie rozgrywek wynosi $96,9$, a~więc jest o~$37,23$ niższa, niż gdy budowniczy używał algorytmu zachłannego. 
 
 \begin{table}[tbh]
     \centering
@@ -637,7 +636,7 @@ Obecne zasoby sprzętowe i~czasowe sprawiły, że malarz poziomu 2 okazał się 
 
 
 \section{Pomiary czasów potrzebnych na podjęcie decyzji}
-Nieodłącznym elementem analizy działania aplikacji jest badanie czasu w~jakim wykonuje ona swoje algorytmy. Nie inaczej jest w~przypadku \emph{Longest Free Word}. Najkrótrzy zbadany czas decyzji algorytmu wyniósł 0.001 sekundy, najdłuższy natomiast około 2 godzin. Czas potrzebny na decyzję jest tym dłuższy, im dłuższy jest stworzony do tej pory ciąg. Naturalnie więc, na początku rozgrywki algorytm będzie działał szybko, lecz w~raz z~rozwojem potyczki będzie zwalniał. Zależność tą można zaobserwować na wykresie \ref{fig:builder0painter1}. Widoczne odchylenia to prawdopodobnie efekt działania innego procesu działającego na tej samej maszynie.
+Nieodłącznym elementem analizy działania aplikacji jest badanie czasu w~jakim wykonuje ona swoje algorytmy. Nie inaczej jest w~przypadku \emph{Longest Free Word}. Najkrótrzy zbadany czas decyzji algorytmu wyniósł jedną tysięczną sekundy, najdłuższy natomiast około dwóch godzin. Czas potrzebny na decyzję jest tym dłuższy, im dłuższy jest stworzony do tej pory ciąg. Naturalnie więc, na początku rozgrywki algorytm będzie działał szybko, lecz w~raz z~rozwojem potyczki będzie zwalniał. Zależność tą można zaobserwować na wykresie \ref{fig:builder0painter1}. Widoczne odchylenia to prawdopodobnie efekt działania innego procesu działającego na tej samej maszynie.
 
 \begin{figure}[tbh]
     \centering
