@@ -221,7 +221,7 @@ Opcje dostępne wewnątrz pliku konfiguracyjnego to:
 \item \emph{makeOverallTest} -- gdy opcja ta zostanie ustawiona na \texttt{true}, po uruchomieniu aplikacji zostanie przeprowadzony obszerny test, zawierający w~sobie kombinacje rozgrywek komputerów o~wszystkich poziomach zagnieżdżeń $\leq 6$ na wszystkich mocach zbiorów $>0 $ i~$\leq 7$. Czyli zostanie wykonanych $6*6*6$ rozgrywek. Warto wspomnieć, że podczas tego testu opcja \texttt{maxThinkTime} okazała się niezwykle pomocna.
 \item \emph{randomization} -- po ustawieniu tej flagi na \texttt{true}, algorytmy z~zagnieżdżeniami będą losować swoją decyzję spośród opcji, które wydają im się tak samo atrakcyjne. Dzięki temu komputerowi oponenci zachowują się nieprzewidywalnie i~ciężko jest rozegrać dwie identyczne partie.
 \end{itemize}
-
+\newpage
 \section{Algorytm szukający powtórzeń wewnątrz ciągu}
 
 
@@ -371,7 +371,7 @@ Metoda \texttt{compareSubSeqOverlap} działa na tej samej zaszadzie co metoda \m
     \label{fig:overlapFinding}
 \end{figure}
 
-\section{Komunikacja z użytkownikiem}
+\section{Komunikacja z~użytkownikiem}
 Plik konfiguracyjny nie jest wystarczającym środkiem komunikacji z~aplikacjią. W~związku z~tym, po uruchomieniu programu mamy dostęp do konsoli, która służy do wyświetlania jak i~wprowadzania treści.
 
 Po uruchomieniu aplikacji na ekranie wypisywane są najważniejsze op\-cje konfiguracyjne, takie jak poziom budowniczego, poziom malarza oraz lista dostępnych symboli. Jeśli uruchomiliśmy grę w~trybie \texttt{humanHuman}, to aplikacja w~pierwszej kolejności poprosi nas o~indeks. Po wpisaniu indeksu  \mbox{$\in \{0, 1, ...,n\}$}, program zażąda o~podanie symbolu, powinien on należeć do naszego alfabetu, czyli symbol musi \mbox{$\in \{0, 1, ..., setPower-1\}$}. W~momencie gdy podaliśmy prawidłowe wartości na ekran konsoli wyświetlany zostaje ciąg $S'$, który został utworzony poprzez dodanie do istniejącego ciągu odpowiedniego symbolu. Jeśli w~ciągu $S'$ pojawi się kwadrat, na ekran zostanie wyświetlony czas rozgrywki, ilość ruchów jaka została do tej pory wykonana oraz indeksy wraz z~symbolami, wspomnianego powtórzenia.
@@ -471,7 +471,7 @@ int findRightIndexGreedy(List<Integer> sequence, int power) {
 
 Algorytm jako parametry, otrzymuje stworzony wcześniej ciąg, oraz moc zbioru symboli. Zmienna \texttt{winner} ustawiona początkowo na $-1$, reprezentuje indeks, który zostanie zwrócony jako ten, pod którym jest najmniejsza dowolność wyboru symboli, bez tworzenia powtórzeń. Metoda iteruje po każdym indeksie ciągu i~zapisuje do listy symbole, po których wstawieniu w~dane miejsce nie utworzy się \emph{kwadrat}/\emph{nasunięcie}. Następnie w~warunku \texttt{if} z~6 linii sprawdzane jest, czy aktualna lista symboli jest mniejsza lub równa, niż ta zarejestrowana wcześniej. Jeśli tak, do zmiennej \texttt{winner} zapisany zostaje aktualny indeks.
 
-\section{Algorytm wyszukiwania symbolu z zagnieżdżeniami}
+\section{Algorytm wyszukiwania symbolu z~zagnieżdżeniami}
 Algorytm zachłanny nie jest wystarczająco sprytny, żeby przeciwstawić się człowiekowi mającemu odrobinę doświadczenia w~\emph{Longest Free Word}. Wobec tego powstał algorytm nie działający zachłannie, lecz starający się przewidzieć, jakie konsekwencje w~kolejnych turach może nieść ze sobą dany wybór.
 
 Poniższy algorytm wprowadza pojęcie punktacji. Podczas jego działania, dla możliwych wyborów nadawane są punkty. Im więcej punktów uzyska dany symbol, tym atrakcyjniejszym staje się on wyborem. Algorytm sprawdza jakie symbole można dodać w~predefiniowanym indeksie, następnie iterując w~pętli, dodaje każdy z~symboli i~sprawdza, ile możliwości będzie miał w~kolejnej lub kolejnych turach, biorąc pod uwagę wszystkie dostępne indeksy. Każda dodatkowa możliwość to dodatkowy punkt dla wybranego koloru. Sam algorytm składa się z~dwóch głownych części: \mbox{\texttt{findRightColorPredicting}} oraz \texttt{simulation}.
@@ -523,7 +523,7 @@ Mamy ciąg $S = ab$, budowniczy wybrał indeks $2$, czyli malarz wybiera symbol 
 
 Już przy pierwszym zagnieżdżeniu widać, że literka $c$ jest atrakcyjniejsza, ponieważ wstawienie jej zapewnia malarzowi więcej możliwości w~kolejnych rundach. Jednak sprawdzenie jednego ruchu do przodu nie zawsze jest wystarczające i~zdarza się, że z~pozoru nieatrakcyjny symbol w~perspektywie kolejnych, tur jest najlepszą opcją.
 
-\section{Algorytm wyszukiwania indeksu z zagnieżdżeniami}
+\section{Algorytm wyszukiwania indeksu z~zagnieżdżeniami}
 Sposób działania algorytmu z~zagnieżdżeniami szukającego indeksu, który ma największą szansę na stworzenie powtórzenia, działa na podobnej zasadzie, co algorytm wyszukiwania symbolu. Różnica polega na tym, że w~jego pierwszej części, iterujemy po wszystkich dostępnych symbolach, a~nie jednym predefiniowanym, oraz punkty nadawane zostają indeksom i~zwracamy ten, który uzyska ich najmniej. Druga część algorytmu czyli metoda \texttt{simulation} pozostaje bez zmian.
 
 \begin{lstlisting}[frame=single]
@@ -693,7 +693,7 @@ Ponownie możemy porównać ze sobą czasy podejmowania decyzji dla algorytmu z~
 \end{figure}
 
 
-\section{Porównanie zachowań algorytmu z zagnieżdżeniami i bez zagnieżdżeń}
+\section{Porównanie zachowań algorytmu z~zagnieżdżeniami i~bez zagnieżdżeń}
 Jeśli przyjrzymy się dokładnie działaniu zachłannego algorytmu wyszukiwania indeksu, to bez trudu zauważymy, że w~początkowej fazie gry, kiedy malarz ma dużą swobodę w~wybieraniu elementów, indeks, który jest wybierany to w~przeważającej większości ostatni indeks ciągu. Spowodowane jest to tym, że indeksy $0$ oraz $n+1$, otoczone są elementami tylko z~lewej lub prawej strony, dzięki temu malarz ma na nich do wyboru większą gamę symboli. Na reszcie indeksów zazwyczaj dostępne jest tyle samo symboli, zwracany jest więc ostatni z~nich, dokładnie tak jak zostało to zaimplementowane. Taktyka tego typu została przeze mnie nazwana \emph{taktyką iteracyjną} i~nie jest zbyt emocjonująca. Jeśli nie mamy zbyt dużej puli symboli do wyboru, to po pewnym czasie następuje wyłamanie się z~tego stylu gry. Wyłamanie pojawia się zawsze w~momencie, gdy budowniczy znajduje indeks z~mniejszą ilością możliwości. 
 
 Przeprowadzone przeze mnie badania, przy mocy zbioru symboli równym 5, oraz poziomie malarza równym, 1 wykazały, że w~przeciągu kilku kroków od pierwszego znalezienia indeksu, pod którym dostępne są dwa symbole, pojawia się indeks pod którym dostępny jest tylko jeden symbol. Nie wykryłem natomiast korelacji, pomiędzy pierwszym wyłamaniem się z~\emph{taktyki iteracyjnej}, a~długością rozgrywki. 
