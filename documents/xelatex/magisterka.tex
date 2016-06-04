@@ -17,8 +17,7 @@
 \usepackage{float}
 \usepackage[section]{placeins}
 \usepackage{tabularx}
-
-
+\PolyglossiaSetup{polish}{indentfirst=true}
 \setmonofont[Scale=0.75]{Monaco}
 
 % Opcjonalnie identyfikator dokumentu
@@ -33,22 +32,31 @@
 \date     {2016}
 \miejsce  {Gdańsk}
 
-\opiekun  {prof. UG dr hab. T. Dzido}
+\opiekun  {prof. UG dr, hab. T. Dzido}
 
 % dodatkowe polecenia
 %\renewcommand{\filename}[1]{\texttt{#1}}
 \definecolor{stress}{cmyk}{0,1,0.13,0} % RubineRed
 \definecolor{topic}{cmyk}{0.98,0.13,0,0.43} % MidnightBlue
 
+%\renewcommand{\lstlistingname}{Metoda}
+%\renewcommand{\lstlistlistingname}{Spis metod}
+
+
+
 \begin{document}
 
 % streszczenie
 \begin{abstract}
-Celem pracy było zaprogramowanie gry opierającej się na twierdzeniach Axela Thue, na temat powtórzeń oraz nasunięć wewnątrz ciągu. Głównymi funkcjonalnościami aplikacji jest potyczka między dwoma graczami oraz symulacja przeprowadzona przez konkurujące ze sobą algorytmy. 
 
-Powstały dwa warianty aplikacji, pierwszy z~nich napisany został za pomocą silnika \emph{Unity3d}, posiada interfejs graficzny, nie ma jednak innego zastosowania niż bicie własnych rekordów. Drugi jest napisany w~jęzku \emph{Java}, bez interfejsu graficznego, w~zamian oferuje funkcjonalność dokonywania testów na serwerze zdalnym i~zawiera wiele opcji konfiguracyjnych, między innymi precyzowanie poziomu \emph{inteligencji} algorytmów. 
 
-Przeprowadzone testy wykazały, że algorytmy symulujące graczy działają prawidłowo i~zwiększanie ich poziomu skutkuje lepiej podejmowanymi decyzjami. Na podstawie badań ustalona została maksymalna długość rozgrywki przy odpowiedniej taktyce, dla rozgrywek zawierających określoną ilość symboli z~których tworzony jest ciąg.
+\nocite{rampersad2007overlap}
+
+Celem pracy było zaprogramowanie i analiza wyników gry opartej na twierdzeniach Axela Thue, związanej z powtórzeniami oraz nasunięciami wewnątrz ciągu znaków. Głównymi funkcjonalnościami aplikacji jest rozgrywka między dwoma graczami oraz symulacja przeprowadzona przez konkurujące ze sobą algorytmy. 
+
+Powstały dwa warianty aplikacji, pierwszy z~nich napisany został za pomocą silnika \emph{Unity3d}, posiada interfejs graficzny, nie ma jednak innego zastosowania niż poprawianie własnych rekordów. Drugi jest napisany w~jęzku \emph{Java}, bez interfejsu graficznego, w~zamian oferuje funkcjonalność dokonywania testów na serwerze zdalnym i~zawiera wiele opcji konfiguracyjnych, między innymi precyzowanie poziomu rekurencji, którego używają algorytmy.
+
+Przeprowadzone testy wykazały, że algorytmy symulujące graczy działają prawidłowo i~zwiększanie ich poziomu rekurencji skutkuje lepiej podejmowanymi decyzjami. Na podstawie badań ustalona została maksymalna długość rozgrywki przy odpowiedniej taktyce, dla rozgrywek zawierających określoną ilość symboli z~których tworzony jest ciąg.
 \end{abstract}
 
 % słowa kluczowe
@@ -62,11 +70,11 @@ Przeprowadzone testy wykazały, że algorytmy symulujące graczy działają praw
 
 Tematem niniejszej pracy jest Gra Thuego. Axel Thue był norweskim matematykiem żyjącym w~latach 1863 -- 1922, znanym z~prac z~zakresu kombinatoryki.
 
-Thue pracował nad problemami, powstałymi w~wyniku badań nad sekwencjami symboli. Prace Thue \cite{repetition} opisywały problem, który autor nazwał \emph{nieredukowalne słowa} (\emph{irreducible words}). Poświęca w~nich szczególną uwagę dwu i~trzy literowym przypadkom. W~skrócie wprowadza pojęcie znane obecnie jako \emph{Thue-Morse word} i~pokazuje, że nieskończone \emph{słowa bez nasunięć} (\emph{infinite overlap-free words}), są pochodnymi tej sekwencji. W~swoich pracach definiuje kolejną strukturę, a~mianowicie \emph{nieskończone słowo wolne od kwadratów}  (\emph{infinite square-free word}), oraz przedstawia sposoby generowania nieskończenie długich słów wolnych zarówno od \emph{kwadratów} jak i~\emph{nasunięć}.
+Thue pracował nad problemami, powstałymi w~wyniku badań nad sekwencjami symboli. Prace Thue \cite{repetition} opisywały problem, który autor nazwał \emph{nieredukowalnymi słowami}. Poświęca w~nich szczególną uwagę dwu i~trzy literowym przypadkom. W~skrócie wprowadza pojęcie znane obecnie jako \emph{Thue-Morse word} i~pokazuje, że nieskończone \emph{słowa bez nasunięć}, są pochodnymi tej sekwencji. W~swoich pracach definiuje kolejną strukturę, a~mianowicie \emph{nieskończone słowo wolne od kwadratów}, oraz przedstawia sposoby generowania nieskończenie długich słów wolnych zarówno od \emph{kwadratów} jak i~\emph{nasunięć}.
 
-Gra która powstała na podstawie twierdzeń Thuego, w~skrócie polegała będzie na utworzeniu jak najdłuższego ciągu znaków nad określonym z~góry alfabetem. Zależnie od trybu gry, kończyć się ona będzie w~momencie gdy pojawi się zdefiniowany na początku rodzaj powtórzenia w~tworzonym przez nas, bądź algorytm ciągu. Jednym z~trybów gry jest walka komputera przeciwko niemu samemu, po takiej rozgrywce przedstawione zostaną złożoności czasowe oraz wnioski wynikające z~obranej przez oponentów taktyki. 
+Gra która powstała na podstawie twierdzeń Thuego, w~skrócie polegała będzie na utworzeniu jak najdłuższego ciągu znaków nad określonym z~góry alfabetem. Zależnie od trybu gry, kończyć się będzie ona w~momencie, gdy pojawi się zdefiniowany na początku rodzaj powtórzenia w~tworzonym przez nas, bądź algorytm ciągu. Jednym z~trybów gry jest rozgrywka komputera przeciwko niemu samemu, po jej zakończeniu przedstawiony zostanie czas trwania rozgrywki i~każdego wykonanego ruchu.
 
-Ostatnia część pracy poświęcona jest analizie algorytmów zarówno pod względem czasu ich wykonywania jak i~zdolności do przewidywania ruchów przeciwnika. Badany jest również aspekt tego ile symboli z~których tworzony jest ciąg, jest potrzebnych na rozegranie dostatecznie długiej rozgrywki, przy możliwie najdoskonalszej taktyce.
+Ostatnia część pracy poświęcona jest analizie algorytmów zarówno pod względem czasu ich wykonywania jak i~zdolności do przewidywania ruchów przeciwnika. Badany jest również aspekt tego, ile symboli z~których tworzony jest ciąg, jest potrzebnych na rozegranie dostatecznie długiej rozgrywki, przy możliwie najdoskonalszej taktyce.
 
 \chapter{Opis struktur pozwalających na stworzenie gry}
 Zanim przejdziemy do twierdzeń, koniecznym jest wyjaśnienie podstawowych definicji, które w~dalszej części pracy będą wielokrotnie wykorzystywane. Niżej wyjaśnione zostały sposoby generowania nieskończenie długich ciągów składających się z~dwóch symboli, nie zawierających \emph{nasunięć}. Po czym ukazane zostały metody tworzenia nieskończenie długich ciągów na trzech znakach, \emph{wolnych od kwadratów}. Na koniec części teoretycznej przedstawiony został pomysł gry dla dwóch graczy wykorzystujący powyższe własności.
@@ -83,7 +91,7 @@ Zanim przejdziemy do twierdzeń, koniecznym jest wyjaśnienie podstawowych defin
 \item Czynnik słowa $\omega$ jest słowem $u$, które występuje wewnątrz $\omega$ formie $\omega = xuy$, podczas gdy $x$ oraz $y$ również są słowami tego alfabetu.
 \item \emph{Kwadrat} jest słowem w~formie $uu$, gdzie $u$ jest niepuste.
 \item Słowo jest \emph{wolne od kwadratów}, jeśli żaden z~jego czynników nie jest \emph{kwadratem}.
-\item \emph{Nasunięcie} jest słowem w~formie $xuxux$, gdzie $x$ jest niepuste. Nazwa pojęcia wzięła się z~tego, że $xux$ występuje dwa razy w~$xuxux$. Pierwszy raz jako \emph{prefiks} (początkowy czynnik) oraz jako \emph{sufiks} (końcowy czynnik) i~te dwa wystąpienia mają wspólną część -- centralne $x$, a~więc \emph{nasuwają} się na siebie.
+\item \emph{Nasunięcie} jest słowem w~formie $xuxux$, gdzie $x$ jest niepuste. Nazwa pojęcia wzięła się z~tego, że $xux$ występuje dwa razy w~$xuxux$. Jako \emph{prefiks} oraz jako \emph{sufiks}, oba wystąpienia mają wspólną część -- centralne $x$, a~więc \emph{nasuwają} się na siebie.
 \item Słowo jest \emph{wolne od nasunięć} jeśli żaden z~jego czynników nie nasuwa się na siebie.
 \item W~definicji Axela Thue słowo $\omega$ w~alfabecie długości $n$ jest \emph{nieredukowalne}, jeśli jakiekolwiek dwa wystąpienia tego samego słowa jako czynnik wewnątrz $\omega$ są zawsze oddzielone od siebie przez $n-2$ liter. Oznacza to, że nieredukowalne dwuliterowe słowo jest bez \emph{nasunięć} i~nieredukowalne trzyliterowe słowo jest bez \emph{kwadratów}.
 \item \emph{Morfizm} -- mapowanie obiektu matematycznego z~jednej struktury w~inną.
@@ -92,15 +100,11 @@ Zanim przejdziemy do twierdzeń, koniecznym jest wyjaśnienie podstawowych defin
 
 
 \section{Thue-Morse word}
-Rozważmy nieskończone słowo
+Słowo Thue-Morse'a jest nieskończonym ciągiem znaków utworzonym z~dwuliterowego alfabetu,  nie zawierającym ani jednego nasunięcia. Zostało ono nazwane po Thue, który badał jego właściwości w~pracy z~1906 roku \cite{nagell1977selected}, oraz Morsie, który pracował nad nim w~latach 20 XX wieku. Konstrukcja zwana obecnie słowem Thue-Morse'a występuje również o~wiele wcześniej w~korespondencji Prouheta \cite{prouhet} z~Francuską Akademią Nauk w~1851 roku. Prouhet podał więcej ogólnych konstrukcji, uzyskując nie tylko to słowo, ale całą rodzinę słów na większych alfabetach mających inne interesujące właściwości. Słowa te czasami odnoszą się do ogólnych słów Thue-Morse'a lub słów Prouheta. Dla alfabetu $A = \{0, 1\}$ słowo to może wyglądać w następujący sposób:
 
-{\centering $01101001100101101001011001101001 ...$ \par}
+{\centering $01101001100101101001011001101001\ldots$ \par}
 
-Jest to słowo stworzone z~dwuliterowego alfabetu, które nie zawiera ani jednego nasunięcia. Zostało ono nazwane po Thue, który badał jego właściwości w~referacie z~1906 roku \cite{repetition2}, oraz Morsie, który odkrył je na nowo w~latach 20 XIX wieku. Słowo Thue-Morse'a występuje również o~wiele wcześniej w~wiadomościach  Prouheta \cite{prouhet} z~Francuską Akademią Nauk w~1851 roku. Prouhet podał więcej ogólnych konstrukcji, uzyskując nie tylko słowo Thue-Morse'a, ale całą rodzinę słów na większych alfabetach mających inne interesujące właściwości. Słowa te czasami odnoszą się do ogólnych słow Thue-Morse'a lub słów Prouheta.
-
-Niech $A = \{a, b\}$ będzie dwuliterowym alfabetem. Rozważmy morfizm $\mu$ z~monoidu $A*$, który definiuje się następująco:
-
-
+\noindent Jednym ze sposobów generowania słowa Thue-Morse'a jest zastosowanie się do poniższego wzoru.
 
 \begin{tabbing}
 
@@ -118,31 +122,29 @@ oraz:\\
 \> $u_n = \overline{v}_n,$ \> $v_n = \overline{u}_n$
 \end{tabbing}
 
-gdzie $\overline{\omega}$ jest uzyskiwane z~$\omega$ przez zamianę $a$ oraz $b$. Słowa $u_n$ i~$v_n$ są często nazywane \emph{Blokami morsa}. Można łatwo zauważyc że $u_{2n}$ oraz $v_{2n}$ są palindromami oraz to że $u_{2n+1} = \neg v_{2n+1}$, gdzie $\neg w$ jest negacją $w$. Morfizm $\mu$ może być rozszerzony do nieskończonych słow, które mają dwa stałe punkty:
+gdzie $\overline{\omega}$ jest uzyskiwane z~$\omega$ przez zamianę $a$ oraz $b$. Słowa $u_n$ i~$v_n$ są często nazywane \emph{blokami Morsa}. Można łatwo zauważyc że $u_{2n}$ oraz $v_{2n}$ są palindromami oraz to że $u_{2n+1} =  v^{\sim}_{2n+1}$, gdzie $w^{\sim}$ jest odwróceniem $w$. Morfizm $\mu$ może być rozszerzony do nieskończonych słów, które mają dwa stałe punkty:
 
 {\centering 
-$t = abbabaabbaababbabaab... = \mu(t)$ \\
-$~t = baababbaabbabaababba... = \mu(~t)$
+$t = abbabaabbaababbabaab\ldots = \mu(t)$ \\
+$ \overline{t} = baababbaabbabaababba\ldots = \mu(\overline{t})$
 \par}
 
-Przedstawione powyżej słowo $t$ jest sekwencją Thue-Morse'a. Jest wiele innych sposobów na stworzenie tego słowa. Niech $t_n$ będzie n-tym symbolem w~$t$, zaczynając od $n =$ 0. Wtedy można pokazać, że:
+\noindent Przedstawione powyżej słowo $t$ jest sekwencją Thue-Morse'a. Jest wiele innych sposobów na stworzenie tego słowa. Niech $t_n$ będzie $n$-tym symbolem w~$t$, zaczynając od $n =$ 0. Wtedy można pokazać, że:
 
 \[
 t_n=
 \left \{
 \begin{tabular}{ccc}
-$a\ if\ d_1(n) \equiv (mod\ 2)$ \\
-$a\ if\ d_1(n) \equiv (mod\ 2)$
+$a$\ if$\ d_1(n) \equiv 0$ (mod $2$) \\
+$b$\ if$\ d_1(n) \equiv 1$ (mod $2$)
 \end{tabular}
 \right \}
 \]
 
-\begin{align*}
-  &\phantom{{}\leq{}} \text{gdzie } d_1(n) \text{ jest liczbą bitów równych 1 w binarnej reprezentacji } n \text{.}  \\
-  & \text{Dla } n \leq 12 \text{ oraz } n \in \mathbb{N} \text{ generowane jest następujące słowo:}  \\
-\end{align*}
+\noindent gdzie $d_1(n)$ jest liczbą bitów równych $1$ w binarnej rozbudowie $bin(n)$ z $n$. Na przykład dla $n \leq 12$ oraz $n \in \mathbb{N}$ generowane jest następujące słowo:
 
 \begin{tabbing}
+\centering
 $bin(0)$\hspace{1em} \= $= 0,$\hspace{7em} \= $d_1 (0)$\hspace{1em} \= $= 0\ mod\ 2 = 0 \to a$ \\
 $bin(1)$ \> $= 1,$ \> $d_1 (1)$ \> $= 1\ mod\ 2 = 1 \to b$\\
 $bin(2)$ \> $= 10,$ \> $d_1 (2)$ \> $= 1\ mod\ 2 = 1 \to b$\\
@@ -160,16 +162,15 @@ $bin(12)$ \> $= 1100,$ 	\> $d_1 (12)$ \> $= 2\ mod\ 2 = 0 \to a$
 
 {\centering $t = abbabaabbaaba$ \par}
 
-W konsekwencji istnieje skończony automat obliczający wartości $t_n$. Automat ten ma dwa stany końcowe $0$ oraz $1$. Na początku czyta łańcuch znaków $bin(n)$ od lewej do prawej, zaczynając od $n=0$. Ostateczny stan równy jest $0$ lub $1$ i~definiuje czy $t_n$ jest równe $a$ lub $b$. W~skrócie obliczenie jakie wykonuje automat to $d_1(n)\ modulo\ 2$.
+W konsekwencji istnieje skończony automat obliczający wartości $t_n$. Automat ten ma dwa stany końcowe $0$ oraz $1$. Na początku czyta łańcuch znaków $bin(n)$ od lewej do prawej, zaczynając od $n=0$. Ostateczny stan równy jest $0$ lub $1$ i~definiuje czy $t_n$ jest równe $a$ czy $b$. W~skrócie obliczenie jakie wykonuje automat to $d_1(n)\ modulo\ 2$.
 
 
 \section{Square-free word}
-Łatwo można zauważyc, że jedynymi słowami bez kwadratów w~alfabecie $A = \{a, b\}$ są: $a, b, ab, ba, aba, bab$. Istnieje jednak dowolnie długi ciąg znaków wolny od kwadratów, dla słów nad alfabetem trzyliterowym. By stworzyć dowolne słowo wolne od kwadratów, Thue wymyślił następujący algorytm.\\
-Mając alfabet $A = \{a, b, c\}$ należy zastąpić każde wystąpienie litery $a$ przez $abac$,  $b$ przez $babc$ oraz $c$ przez $bcac$, jeśli jest poprzedzone przez $a$ lub $acbc$, jeśli jest poprzedzone przez $b$. Zaczynając od litery $a$ otrzymujemy nieskończone słowo które nie zawiera kwadratów.
+Łatwo można zauważyc, że jedynymi słowami bez kwadratów w~alfabecie $A = \{a, b\}$ są: $a, b, ab, ba, aba, bab$. Istnieje jednak dowolnie długi ciąg znaków wolny od kwadratów, dla słów nad alfabetem trzyliterowym. By stworzyć dowolne słowo wolne od kwadratów, Thue wymyślił następujący algorytm. Mając alfabet $A = \{a, b, c\}$ należy zastąpić każde wystąpienie litery $a$ przez $abac$,  $b$ przez $babc$ oraz $c$ przez $bcac$, jeśli jest poprzedzone przez $a$ lub $acbc$, jeśli jest poprzedzone przez $b$. Zaczynając od litery $a$ otrzymujemy nieskończone słowo które nie zawiera kwadratów.
 
 {\centering $abacbabcabacbcacbabcabacbabcacbcabacbabc...$ \par}
 
-W 1912 roku Axel Thue wymyślił inny sposób na generowanie nieskończonego słowa bez kwadratów na trzech literach z użyciem następującego morfizmu. 
+W 1912 roku Axel Thue wymyślił kolejną metodę generowanie nieskończonego słowa bez kwadratów na trzech literach z użyciem następującego morfizmu. 
 \begin{itemize}
 \item $a \to abcab$
 \item $b \to acabcb$
@@ -177,49 +178,41 @@ W 1912 roku Axel Thue wymyślił inny sposób na generowanie nieskończonego sł
 \end{itemize}
 
 
-Po raz kolejny zastępujemy każde wystąpienie z~naszych liter przez zdefiniowane sekwencje. Jest to dość skomplikowana struktura, zsumowana długość łańcuchów wynosi $18$. A. Carpi \cite{carpi} dowiódł, że morfizm na alfabecie składającym się z~trzech liter tworzący słowa wolne od kwadratów musi mieć długość równą co najmniej $18$.
+\noindent Po raz kolejny zastępujemy każde wystąpienie z~naszych liter przez zdefiniowane sekwencje. Jest to dość skomplikowana struktura, zsumowana długość łańcuchów wynosi $18$. A. Carpi \cite{carpi} w 1983 roku dowiódł, że morfizm na alfabecie składającym się z~trzech liter tworzący słowa wolne od kwadratów musi mieć długość równą co najmniej $18$.
 
 \section{Thue online}
-Praca J. Grytczuka, P. Szafrugi i~M. Zmarza pod tytułem \emph{Online version of theorem of Thue} \cite{thueonline} opisuje grę online bazującą na twierdzeniach Thuego. Jest to gra dla dwóch graczy Boba oraz Alicji. Podczas rozgrywki Alicja i~Bob naprzemiennie wykonując swoje ruchy, tworzą ciąg bez kwadratów. Celem Boba jest jak najszybsze skończenie rozgrywki poprzez utworzenie kwadratu, Alicja natomiast musi tego unikać.
+Praca J. Grytczuka, P. Szafrugi i~M. Zmarza pod tytułem \emph{Online version of theorem of Thue} \cite{thueonline} opisuje grę online bazującą na twierdzeniach Thuego. Podczas rozgrywki dwaj gracze  naprzemiennie wykonując swoje ruchy, tworzą  ciąg bez kwadratów. Celem pierwszego gracza jest jak najszybsze skończenie rozgrywki poprzez utworzenie kwadratu, drugi natomiast musi tego unikać.
 
-Wartym wspomnienia jest uproszczony tryb gry, podczas którego mamy dwóch graczy -- Alicję i~Boba, tak jak zostało wspomniane, tylko Alicji zależy na tym by uniknąć kwadratów. Rozgrywka polega na tym, że Alicja i~Bob wybierają na przemian symbole z~ustalonego zbioru $A$, oraz dopisują je na końcu istniejącego ciągu. W~momencie, gdy pojawia się kwadrat $aa$, jego druga część, czyli w~naszym przypadku prawe $a$, zostaje usunięte. Zostało udowodnione \cite{thueonline2}, że Alicja jest wstanie stworzyć dowolnie długi ciąg bez kwadratów, nie zważając na ruchy Boba. Powyższe jest jednak możliwe pod warunkiem, że moc zbioru $A$ wynosi conajmniej 8.
+Wartym wspomnienia jest uproszczony tryb gry, podczas którego mamy graczy -- Alicję i~Boba, tylko Alicji zależy na tym by uniknąć kwadratów. Rozgrywka polega na tym, że Alicja i~Bob wybierają na przemian symbole z~ustalonego alfabetu $A$, oraz dopisują je na końcu istniejącego ciągu. W~momencie, gdy pojawia się kwadrat $aa$, jego druga część, czyli w~naszym przypadku prawe $a$, zostaje usunięte. Zostało udowodnione w pracy \cite{thueonline2}, że Alicja jest w~stanie stworzyć dowolnie długi ciąg bez kwadratów, nie zważając na ruchy Boba. Powyższe jest jednak możliwe pod warunkiem, że moc zbioru $A$ wynosi conajmniej $8$.
 
-Innym typem gry przedstawionym w~pracy \cite{thueonline} jest \emph{Online Thue Game}. Po raz kolejny gracze wykonują swoje ruchy na przemian. W~swojej rundzie Bob wybiera indeks w~istniejącym ciągu $S$, który jest sprecyzowany przez liczbę $i \in \{0, 1, ..., n\}$, następnie Alicja wybiera symbol $x \in A$, który jest wstawiany jedną pozycję w~prawo od $s_i$, dając nam nową sekwencję $S' = s_1, ..., s_i, x, s_{i+1}, ...,s_n$ w~momencie gdy $i = 0$, $x$ jest ustawiany na początku $S$. Celem Boba jest zmuszenie Alicji do stworzenia kwadratu, podczas gdy oponentka unika tego najdłużej jak to możliwe. Na przykład, jeśli ustalimy, że $A = \{a, b, c\}$ i~$S=acbc$, wtedy Bob wybierając indeks $i=1$~nie daje Alicji możliwości wybrania symbolu, który nie stworzyłby kwadratu. Rzeczywiście wybierając jakikolwiek $x \in A$ doprowadza do utworzenia kwadratu w~$S'$: $\underline{aa}cb, a\underline{bcbc}, a\underline{cc}bc$. W~przypadku gdy Bob obierze dobrą strategię, rozgrywka na 3 symbolach skończy się na ciągu o~długości $\leq 5$, nie ważne jak dobrą strategię obierze Alicja. Oczywiście im większą moc ma zbiór $A$, tym więcej ruchów, będzie potrzebował Bob, by zakończyć rozgrywkę. 
+Innym typem gry przedstawionym w~pracy \cite{thueonline} jest \emph{Online Thue Game}. Po raz kolejny gracze wykonują swoje ruchy na przemian. W~swojej rundzie Bob wybiera pozycję $s_i$ w~ciągu $S$, gdzie $i \in \{0, 1,\ldots , n\}$, a $n$ to aktualna długość ciągu. Następnie Alicja wybiera symbol $x$ z alfabetu $A$, który jest wstawiany pomiędzy pozycją $s_{i}$ i $s_{i+1}$, tworząc nowy ciąg $S'=s_1, \ldots, s_i, x, s_{i+1}, \ldots, s_n$. Celem Boba jest wybieranie takich pozycji, by w~sekwencji pojawił się \emph{kwadrat}; Alicja musi wybierać takie symbole by \emph{kwadratu} nie utworzyć. Na przykład, jeśli ustalimy, że alfabet $A = \{0, 1, 2\}$, a~sekwencja $S=0212$, wtedy Bob wybierając pozycję $i=1$,~zmusza Alicję do stworzenia kwadratu w kolejnym ruchu. Każdy z symboli należących do alfabetu $A$, wstawiony na pozycję $i=1$ skutkuje jego utworzeniem: $S^0 = \underline{00}21, S^1=0\underline{1212}, S^2=0\underline{22}12$. W~przypadku gdy Bob obierze dobrą strategię, rozgrywka na $3$ symbolach skończy się na ciągu o~długości $\leq 5$, nie ważne jaką strategię obierze Alicja. Oczywiście im więcej elementów znajduje się w alfabecie $A$, tym więcej ruchów, będzie potrzebował Bob, by wygrać 
 
-Grytczuk, Szafruga i~Zmarza \cite{thueonline} udowodnili, że istnieje strategia dla Alicji gwarantująca jej utworzenie dowolnie długiej gry w~\emph{Online Thue game} na zbiorze 12 symboli. Swoją definicję oparli o~prace A. Kündgena i~M. J. Pelsmajera \cite{first}, oraz J. Baráta i~P. P. Varjú. \cite{second}, na temat niepowtarzalnych kolorowań grafów planarnych.
-
-Autorzy \cite{thueonline} nie zamkneli do końca problemu i~zauważyli, że może istnieć strategia dla Alicji, która pozwoliłaby jej na dowolnie długą rozgrywkę nawet przy mocy zbioru $A$ równej 9.
-
+Grytczuk, Szafruga i~Zmarza \cite{thueonline} udowodnili, że istnieje strategia dla Alicji gwarantująca jej rozegranie dowolnie długiej gry w~\emph{Online Thue game} na zbiorze 12 symboli. Swoją definicję oparli o~prace A. Kündgena i~M. J. Pelsmajera \cite{first}, oraz J. Baráta i~P. P. Varjú. \cite{second}, na temat niepowtarzalnych kolorowań grafów planarnych. 
 
 \section{Komputerowa implementacja Online Thue Game}
 
-Komputerowa implementacja gry Thuego opiera się na pomyśle gry z~pracy \cite{thueonline}. W~grze dostępnych jest kilka trybów zarówno dla jednego oraz dwóch graczy jak i~komputerowa symulacja, czyli gra komputera przeciwko niemu samemu.
+Komputerowa implementacja gry Thuego opiera się na pomyśle gry z~pracy \cite{thueonline}. W~grze dostępne są dwa typy gry, zarówno dla jednego oraz dwóch graczy jak i~komputerowa symulacja, czyli gra komputera przeciwko niemu samemu.
 
-Implementacja gry Online Thue Game nazywana będzie \emph{Longest Squa\-re-Free Word}.
-Zasady pozostają niemal identyczne. Na początku gry, gracze ustalają moc zbioru symboli i~otrzymują swoje role. Jeden z~nich staje się budowniczym, drugi malarzem. Rola budowniczego polega na wybieraniu odpowiedniego indeksu w~ciągu tworzonym przez graczy, pod którym powstanie nowy element. Malarz natomiast określa symbol wstawianego elementu. Gra kończy się w~momencie, gdy w~ciągu tworzonym przez oponentów pojawia się \emph{kwadrat}. Indeks $i$  podawany przez budowniczego nie może być mniejszy od zera oraz większy niż $n$, gdzie $n$ jest równe liczbie elementów w~ciągu. Na początku gry, ciąg $S$ zawiera tylko jeden symbol, naturalnie jest nim $0$. Grę rozpoczyna budowniczy. Gracze wykonują swoje ruchy na przemian. Malarz otrzymuje punkt za każdy pomalowany element, który nie tworzy \emph{kwadratu} wewnątrz ciągu.
-By wyłonić zwycięzcę potrzebne są dwie rundy. Każdy z~graczy musi sprawdzić się zarówno jako malarz i~budowniczy. Wygrywa osoba, która zdobyła więcej punktów jako malarz.
+Implementacja gry \emph{Online Thue Game} nazywana będzie \emph{Longest Free Word}. W grze dostępne są dwa typy gry, pierwszy z nich to \emph{Longest Square-Free Word}, a jego zasady są następujące. Na początku gry, gracze ustalają liczbę symboli wchodzących w~skład alfabetu $A$ i~otrzymują swoje role. Jeden z~nich staje się \emph{budowniczym}, drugi \emph{malarzem}. Rola \emph{budowniczego} polega na wybieraniu pozycji w~tworzonym ciągu, na którą wstawiony zostanie wybrany przez \emph{malarza} symbol z~alfabetu $A$. Gra kończy się w~momencie, gdy w~tworzonym przez graczy ciągu pojawi się \emph{kwadrat}. Numer pozycji $i$ podawanej przez \emph{budowniczego} musi spełniać warunek $0 \leq i \leq n$, przy czym $n$ to aktualna ilość elementów w ciągu. Na początku gry sekwencja $S$ zawiera jeden losowy symbol, z alfabetu $A$. Grę rozpoczyna \emph{budowniczy}, a gracze wykonują swoje ruchy na przemian. \emph{Malarz} otrzymuje punkt za każdy wstawiony element, który nie tworzy \emph{kwadratu}. By wyłonić zwycięzcę potrzebne są dwie rundy. Każdy z~graczy musi sprawdzić się w obu rolach. Wygrywa osoba, która zdobyła więcej punktów jako \emph{malarz}.
 
-Tryb ten dostępny jest również dla jednego gracza, rolę przeciwnika otrzymuje wtedy komputer, który działa według algorytmu przewidującego określoną przez poziom trudności liczbę ruchów do przodu. Algorytm może pełnić zarówno rolę budowniczego jak i~malarza.
+Gra dostępna jest też dla jednego gracza, rolę przeciwnika otrzymuje wtedy algorytm, który działa według ustawionej w pliku konfiguracyjnym taktyki. Może on zarówno pełnić rolę budowniczego jak i~malarza. Dodatkową możliwością jest przeprowadzenie rozgrywki pomiędzy dwoma algorytmami.
 
-Bliźniaczym trybem gry, opierającym się na tych samych zasadach z~niewielką różnicą jest \emph{Longest Overlap-Free Word}. 
-Różnica polega na tym, że malarz w~tworzonym ciągu musi unikać \emph{nasunięcia}.
-
-Podobnie jak w~\emph{Longest Square-Free Word} jest możliwość gry przeciwko algorytmowi, który jest w~stanie przewidywać określoną ilość ruchów do przodu.
+Bliźniaczym typem gry, opierającym się na tych samych zasadach z~niewielką różnicą jest \emph{Longest Overlap-Free Word}. Różnica polega na tym, że malarz w~tworzonym ciągu musi unikać \emph{nasunięcia}. Tutaj podobnie jak w~\emph{Longest Square-Free Word} jest możliwość gry przeciwko algorytmowi, oraz przeprowadzenie rozgrywki dwóch algorytmów.
 
 \chapter{Aplikacja Longest Free Word}
-Program, który powstał na bazie gier Longest Square-Free Word oraz Longest Overlap-Free Word, napisałem w~języku \emph{Java}. Umożliwia on rozgrywkę w~obu wersjach gry, zarówno z~drugim graczem, jak i~z komputerem, oraz jest w~stanie zasymulować rozgrywkę dwóch graczy komputerowych, grających przeciwko sobie z~ustawionymi przez nas poziomami inteligencji. Dodatkową opcją jest uruchomienie obszernego testu, który zasymuluje rozgrywkę komputerowych graczy na wielu kombinacjach poziomów zaawansowania i~mocy zbioru symboli. Komunikacja z~grą odbywa się poprzez wspomniany plik konfiguracyjny -- przed uruchomieniem programu, oraz konsolę -- po jej uruchomieniu. W~programie użyłem narzędzia automatyzującego budowę aplikacji -- \emph{Maven}. Dzięki niemu, po pobraniu kodu źródłowego, jesteśmy w~stanie uruchomić ją z~poziomu terminala dzięki wprowadzeniu zaledwie dwóch krótkich instrukcji. Okazało się ono niezwykle pomocne podczas przeprowadzania czasochłonnych testów na maszynie zdalnej, której sterowanie odbywało się właśnie poprzez terminal.
+Stworzony przeze mnie program, który powstał na bazie gry \emph{Longest Free Word}, napisany jest w~języku \emph{Java}. Umożliwia on rozgrywkę w~obu wersjach gry, zarówno z~drugim graczem, jak i~z komputerem, oraz jest w~stanie zasymulować rozgrywkę dwóch graczy komputerowych, grających przeciwko sobie z~wybranymi przez użytkownika taktykami. Dodatkową opcją jest uruchomienie obszernego testu, który zasymuluje rozgrywkę komputerowych graczy na wielu kombinacjach poziomów zaawansowania i~alfabetów o różnych rozmiarach. Komunikacja z~grą odbywa się poprzez plik konfiguracyjny -- przed uruchomieniem programu, oraz konsolę -- po jego uruchomieniu. Dzięki użyciu narzędzia automatyzującego budowę aplikacji -- \emph{Maven}, po pobraniu kodu źródłowego, jesteśmy w~stanie uruchomić ją z~poziomu terminala dzięki wprowadzeniu zaledwie dwóch krótkich instrukcji. Okazało się ono niezwykle pomocne podczas przeprowadzania czasochłonnych testów na maszynie zdalnej, której sterowanie odbywało się właśnie poprzez terminal.
 
 
 \section{Plik konfiguracyjny}
 Opcje dostępne wewnątrz pliku konfiguracyjnego to:
 \begin{itemize}
 \item \emph{gameType} -- wartości, które zmienna akceptuje to \texttt{Square} oraz \mbox{\texttt{Overlap}}. Jest to typ gry, którego zamierzamy użyć i~precyzuje, czy zagramy w~\emph{Longest Square-Free Word} czy \emph{Longest Overlap-Free Word}.
-\item \emph{gameMode} -- tryb gry wartości wpisywane w~tym polu mają wpływ na to, czy gra odbywać się będzie z~drugim człowiekiem - \texttt{humanHuman}, komputerem z~tym warunkiem, że to my jesteśmy budowniczym -- \texttt{humanBuilder}, ponownie z~komputerem, jednak tym razem to on jest budowniczym -- \texttt{pcBuilder}, oraz walka dwóch komputerów -- \texttt{pcPc}.
-\item \emph{setPower} -- jest to moc zbioru elementów, do których dostęp będzie miał malarz podczas rozgrywki. Zbiór ten wypełniany jest liczbami  $\in \{0, 1, ...,n-1\}$
-\item \emph{builderNestingLevel} i~\emph{painterNestingLevel} -- poziom zagnieżdżenia na jaki komputer sobie pozwoli jako budowniczy i~malarz. Zasada działania zagnieżdżeń zostanie omówiona w~dalszej części pracy.
-\item \emph{maxThinkTime} -- podczas przeprowadzania testów z~udziałem komputerowych graczy, czasami nie chcemy by przeciwnik myślał nad swoim ruchem 17 godzin. Właśnie dlatego została wprowadzona ta opcja konfiguracyjna. Jeśli czas jaki komputer spędził nad wyliczeniem kolejnej pozycji lub symbolu, będzie większy niż ustalona przez nas liczba nanosekund rozgrywka zostaje przerwana.
-\item \emph{makeOverallTest} -- gdy opcja ta zostanie ustawiona na \texttt{true}, po uruchomieniu aplikacji zostanie przeprowadzony obszerny test, zawierający w~sobie kombinacje rozgrywek komputerów o~wszystkich poziomach zagnieżdżeń $\leq 6$ na wszystkich mocach zbiorów $>0 $ i~$\leq 7$. Czyli zostanie wykonanych $6*6*6$ rozgrywek. Warto wspomnieć, że podczas tego testu opcja \texttt{maxThinkTime} okazała się niezwykle pomocna.
-\item \emph{randomization} -- po ustawieniu tej flagi na \texttt{true}, algorytmy z~zagnieżdżeniami będą losować swoją decyzję spośród opcji, które wydają im się tak samo atrakcyjne. Dzięki temu komputerowi oponenci zachowują się nieprzewidywalnie i~ciężko jest rozegrać dwie identyczne partie.
+\item \emph{gameMode} -- wartości wpisywane w~tym polu mają wpływ na to, czy gra odbywać się będzie z~drugim człowiekiem - \texttt{humanHuman}, komputerem z~tym warunkiem, że to my jesteśmy budowniczym -- \texttt{humanBuilder}, ponownie z~komputerem, jednak tym razem to on jest budowniczym -- \texttt{pcBuilder}, oraz walka dwóch komputerów -- \texttt{pcPc}.
+\item \emph{setPower} -- jest to liczba symboli, do których dostęp będzie miał malarz podczas rozgrywki. Zbiór ten wypełniany jest liczbami  należącymi do zbioru $\{0, 1, ...,n-1\}$.
+\item \emph{builderNestingLevel} i~\emph{painterNestingLevel} -- liczba wywołań rekurencyjnej funkcji podczas podejmowania decyzji jako \emph{budowniczy} i~\emph{malarz}. Po ustawieniu tych zmiennych na $0$ algorytmy działają zachłannie. 
+\item \emph{maxThinkTime} -- podczas przeprowadzania testów z~udziałem komputerowych graczy, czasami nie chcemy by przeciwnik myślał nad swoim ruchem 17 godzin. Właśnie dlatego została wprowadzona ta opcja konfiguracyjna. Jeśli czas jaki komputer spędził nad wyliczeniem kolejnej pozycji lub symbolu, będzie większy niż ustalona przez nas liczba nanosekund, to rozgrywka zostaje przerwana.
+\item \emph{makeOverallTest} -- gdy opcja ta zostanie ustawiona na \texttt{true}, po uruchomieniu aplikacji zostanie przeprowadzony obszerny test, zawierający w~sobie kombinacje rozgrywek algorytmów z~róznymi wartościami zmiennych \emph{builderNestingLevel}, \emph{painterNestingLevel}, \emph{setPower} i \emph{gameType}. Warto wspomnieć, że podczas tego testu opcja \emph{max\-ThinkTime} okazała się niezwykle pomocna.
+\item \emph{randomization} -- po ustawieniu tej flagi na \texttt{true}, algorytmy używające rekurencji będą losować swoją decyzję spośród opcji, które wydają im się tak samo atrakcyjne. Dzięki temu komputerowi oponenci zachowują się nieprzewidywalnie i~ciężko jest rozegrać dwie identyczne partie.
 \end{itemize}
 \newpage
 \section{Algorytm szukający powtórzeń wewnątrz ciągu}
@@ -271,7 +264,9 @@ Opcje dostępne wewnątrz pliku konfiguracyjnego to:
     {Ń}{{\'N}}1
 }
 
-\begin{lstlisting}[frame=single]
+Metoda \ref{lst:findSquare} ma za zadanie znalezienie kwadratu w~sekwencji, którą reprezentuje przekazana w~parametrze lista obiektów typu \texttt{Integer}. Zmienna \mbox{\texttt{maxSeqSize}} reprezentuje długość najdłuższego podciągu jaki się zmieści w~sekwencji, jeśli dostawimy za nim podciąg o~identycznej długości. Zmienna \mbox{\texttt{minSeqSize}} jest to minimalna długość podciągu, który może składać się na \emph{kwadrat}, naturalnie jest równa $1$. W linii 5 wykonujemy pętlę, wewnątrz, której do metody \texttt{compareSubSeq} przekazywana jest długość podciągu, który składać się będzie na kwadrat, oraz naszą sekwencję. Metoda \texttt{compareSubSeq} zwróci nam lewą część znalezionego \emph{kwadratu}, lub \texttt{null} w~przypadku, gdy taki kwadrat w~sekwencji nie istnieje.
+
+\begin{lstlisting}[caption={Metoda szukająca \emph{kwadratów} wewnątrz listy.},label=lst:findSquare]
 List<Integer> findSquare(List<Integer> sequence) {
 	List<Integer> squareSeq = null;
 	int maxSeqSize = sequence.size()/2;
@@ -286,11 +281,10 @@ List<Integer> findSquare(List<Integer> sequence) {
 }
 \end{lstlisting}
 
-Powyższy algorytm ma za zadanie znalezienie kwadratu w~sekwencji, którą reprezentuje lista Integerów przekazana w~parametrze. \mbox{\texttt{maxSeqSize}} jest to zmienna reprezentująca długość najdłuższego podciągu jaki się zmieści w~sekwencji, jeśli dostawimy za nim podciąg o~identycznej długości. Zmienna \mbox{\texttt{minSeqSize}} jest to minimalna długość podciągu, który może składać się na kwadrat, naturalnie jest równa 1. 
+Metoda \ref{lst:compareSubSeq}, porównuje sąsiadujące ze sobą podciągi i sprawdza czy są takie same. Zmienne \texttt{left} i~\texttt{right} są to podciągi, które reprezentują lewą i~prawą część kwadratu $aa$. Zmienna \texttt{comparesFitInSequence} jest to ilość porównań jaka zmieści się wewnątrz naszej sekwencji. Dla przykładu, gdy nasz ciąg, jest reprezentowany przez $S=01201020$, a~wcześniej sprecyzowana długość podciągu, składającego się na kwadrat wynosi $2$, to wartość jaka zostanie przypisana do zmiennej \mbox{\texttt{comparesFitInSequence}} wyniesie $(8 + 1) - (2 * 2)=5$, ponieważ możliwe są następujące porównania: $\underline{0120}1020$, $0\underline{1201}020$, $01\underline{2010}20$, $012\underline{0102}0$, $0120\underline{1020}$
+W pętli znajdującej się w~linii 5 do lis\-ty \texttt{left} oraz \mbox{\texttt{right}} dodawane są podciągi odpowiedniej długości, natomiast w~linii 10 następuje sprawdzenie czy podciągi są identyczne. Jeśli tak, oznacza to, że w~naszej sekwencji, rozpoczynając od indeksu $i$ występuje kwadrat długości $2 * \texttt{subSeqSize}$. Jeśli listy są różne to w~linii 13 następuje ich wyczyszczenie, po to by pętla mogła porównać dwa kolejne podciągi.
 
-W linii 5 wykonujemy pętlę, wewnątrz, której do metody \texttt{compareSubSeq} przekazywana jest długość podciągu, który składać się będzie na kwadrat, oraz naszą sekwencję. Metoda \texttt{compareSubSeq} zwróci nam lewą część znalezionego kwadratu, lub \texttt{null} w~przypadku, gdy taki kwadrat w~sekwencji nie istnieje.
-
-\begin{lstlisting}[frame=single]
+\begin{lstlisting}[caption={Metoda pomocnicza przy szukaniu \emph{kwadratów} wewnątrz listy.},label=lst:compareSubSeq]
 Subsequence compareSubSeq(int subSeqSize, List<Integer> sequence) {
 	List<Integer> left = new ArrayList<>();
 	List<Integer> right = new ArrayList<>();
@@ -309,19 +303,21 @@ Subsequence compareSubSeq(int subSeqSize, List<Integer> sequence) {
 	return null;
 }
 \end{lstlisting}
-Zmienne \texttt{left} i~\texttt{right} są to podciągi, które reprezentują lewą i~prawą część kwadratu $aa$. Zmienna \texttt{comparesFitInSequence} jest to ilość porównań jaka zmieści się wewnątrz naszej sekwencji. Dla przykładu, gdy nasz ciąg, jest reprezentowany przez $S = abcabaca$, a~wcześniej sprecyzowana długość podciągu, składającego się na kwadrat wynosi 2, to wartość jaka zostanie przypisana do zmiennej \mbox{\texttt{comparesFitInSequence}} wyniesie $(8 + 1) - (2 * 2)=5$, ponieważ możliwe są następujące porównania: $\underline{abca}baca$, $a\underline{bcab}aca$, $ab\underline{caba}ca$, $abc\underline{abac}a$, $abca\underline{baca}$
-W pętli znajdującej się w~linii 5 do listy \texttt{left} oraz \mbox{\texttt{right}} dodawane są podciągi odpowiedniej długości, natomiast w~linii 10 następuje sprawdzenie czy podciągi są identyczne. Jeśli tak, oznacza to, że w~naszej sekwencji, rozpoczynając od indeksu $i$ występuje kwadrat długości $2 * \texttt{subSeqSize}$. Jeśli listy są różne to w~linii 13 następuje ich wyczyszczenie, po to by pętla mogła porównać dwa kolejne podciągi.
 
-\begin{figure}[b]
+Działanie algorytmu szukającego \emph{kwadratów} zilustrowane zostało na rysunku \ref{fig:squareFinding}. Alfabet symboli składa się w tym przypadku ze zbioru liter $\{a, b, c\}$, zamiast ze zbioru cyfr, po to by rysunek był bardziej czytelny. Ciąg w którym szukamy \emph{kwadratu} to $S=abcbc$, kolumny na rysunku reprezentują pierwszą i~drugą iterację pętli z metody \ref{lst:findSquare}. Wiersze natomiast odpowiadają iteracjom pętli z metody \ref{lst:compareSubSeq}. Kolorowe symbole na które wskazują strzałki mówią nam o tym, które podciągi są ze sobą porównywane. Jak widzimy w ciągu nie ma \emph{kwadratu} składającego się z podciągów długości $1$. Algorytm przechodzi więc do drugiej iteracji i~porównuje ze sobą podciągi długości $2$. W drugim wierszu, czyli drugiej iteracji pętli z~metody \ref{lst:compareSubSeq} zostały znalezione dwa takie same podciągi,  w tym momencie algorytm kończy swoją pracę i~zwraca podciąg $bc$.
+
+\begin{figure}[tbh]
     \centering
-    \includegraphics[width = 0.8\textwidth]{images/squareFinding}
     \caption{Działanie algorytmu szukającego \emph{kwadratów}.}
+    \includegraphics[width = 0.8\textwidth]{images/squareFinding}
     \label{fig:squareFinding}
 \end{figure}
 
-Dla typu gry w~którym unikamy nasunięć powstały osobne metody.
+Dla typu gry \emph{Longest Overlap-Free Word} potrzebny jest osobny algorytm wyszukujący  \emph{nasunięcia}. Metoda \ref{lst:findOverlap}, działa w~sposób analogiczny do metody \ref{lst:findSquare}. Różnice to inne wartości zmiennych \texttt{maxSeqSize} i~\texttt{minSeqSize} oraz metoda porównująca podciągi wywoływana w~pętli.
 
-\begin{lstlisting}[frame=single]
+Do zmiennej \texttt{maxSeqSize} przypisywana jest liczba o~jeden większa niż długość sekwencji, ponieważ szukamy nasunięcia, a~więc podciągi będą ze sobą dzieliły jeden znak. Wobec tego dla ciągu $S = 0120121$, najdłuższy porównywany ciąg będzie długości $4$, ponieważ w~ostatniej iteracji pętli będziemy ze sobą porównywali podciągi $0120$ oraz $0121$, które dzielą ze sobą symbol $0$. Wartość zmiennej \texttt{minSeqSize} wynosi $3$, ponieważ jest to warunkiem stworzenia nasunięcia.
+
+\begin{lstlisting}[caption={Metoda szukająca \emph{nasunięć} wewnątrz listy.},label=lst:findOverlap]
 Subsequence findOverlap(List<Integer> sequence) {
 	Subsequence repeatedSequence = null;
 	int maxSeqSize = (sequence.size()/2)+1;
@@ -336,13 +332,9 @@ Subsequence findOverlap(List<Integer> sequence) {
 }
 \end{lstlisting}
 
-Metoda \texttt{findOverlap}, działa w~sposób podobny do metody \texttt{findSquare}. Różnice to inne wartości zmiennych \texttt{maxSeqSize}, \texttt{minSeqSize} oraz metoda wywoływana w~pętli.
+Metoda \ref{lst:compareSubSeqOverlap} działa na tej samej zasadzie co metoda \ref{lst:compareSubSeq}. Różni się tutaj wartość zmiennej \texttt{comparesFitInSequence}, jest ona większa o~$1$, z~takiego samego powodu, co zmienna \texttt{maxSeqSize} z~metody \ref{lst:findOverlap}. Inny jest również podciąg zapisywany do zmiennej \mbox{\texttt{right}}, w~pętli w~6 linii. Pierwszy indeks owego podciągu jest równy indeksowi ostatniego elementu lewego podciągu, po to by stworzyć nasunięcie.
 
-Do zmiennej \texttt{maxSeqSize} przypisywana jest liczba o~jeden większa niż długość sekwencji, ponieważ szukamy nasunięcia, a~więc podciągi będą ze sobą dzieliły jeden znak. Wobec tego dla ciągu $S = abcabcb$, najdłuższy porównywany ciąg będzie długości $4$, ponieważ w~ostatniej iteracji pętli będziemy ze sobą porównywali podciągi $abca$ oraz $abcb$, które dzielą ze sobą literę $a$.
-
-Wartość zmiennej \texttt{minSeqSize} wynosi $3$, ponieważ jest to warunkiem stworzenia nasunięcia.
-
-\begin{lstlisting}[frame=single]
+\begin{lstlisting}[caption={Metoda pomocnicza przy szukaniu \emph{nasunięć} wewnątrz listy.},label=lst:compareSubSeqOverlap]
 Subsequence compareSubSeqOverlap(int subSeqSize, List<Integer> sequence) {
 	List<Integer> left = new ArrayList<>();
 	List<Integer> right = new ArrayList<>();
@@ -362,23 +354,21 @@ Subsequence compareSubSeqOverlap(int subSeqSize, List<Integer> sequence) {
 } 
 \end{lstlisting}
 
-Metoda \texttt{compareSubSeqOverlap} działa na tej samej zaszadzie co metoda \mbox{\texttt{compareSubSeq}}. Różni się tutaj wartość zmiennej \texttt{comparesFitInSequence}, jest ona większa o~$1$, z~takiego samego powodu, co zmienna \texttt{maxSeqSize} z~metody \mbox{\texttt{findOverlap}}. Różni się również podciąg zapisywany do zmiennej \mbox{\texttt{right}}, w~pętli z~6 linii. Pierwszy indeks owego podciągu jest równy indeksowi ostatniego elementu, lewego podciągu, po to by stworzyć nasunięcie.
+Działanie algorytmu ilustruje rysunek \ref{fig:overlapFinding}. Tutaj również alfabet symboli składa się ze zbioru liter $\{a, b, c\}$, by poprawić czytelność rysunku. Ciąg wewnątrz, którego szukamy \emph{nasunięcia} to $S=abaabaa$. Kolumny reprezentują pierwszą i~drugą iteracjię pętli z~metody \ref{lst:findOverlap}, wiersze odpowiadają iteracjom pętli z~metody \ref{lst:compareSubSeqOverlap}. Czerwone i niebieskie symbole wskazywane przez strzałki to porównywane podciągi, różowy symbol to element wspólny obu podciągów. \emph{Nasunięcie} znaleziono w drugiej iteracji metody \ref{lst:findOverlap}, przy pierwszym porównaniu -- podciągi $abaa$ dzielą ze sobą symbol $a$. Po znalezieniu \emph{nasunięcia} algorytm zwraca podciąg $abaa$.
 
 \begin{figure}[tbh]
     \centering
-    \includegraphics[width = 0.8\textwidth]{images/overlapFinding}
     \caption{Działanie algorytmu szukającego \emph{nasunięć}.}
+    \includegraphics[width = 0.8\textwidth]{images/overlapFinding}
     \label{fig:overlapFinding}
 \end{figure}
 
 \section{Komunikacja z~użytkownikiem}
-Plik konfiguracyjny nie jest wystarczającym środkiem komunikacji z~aplikacjią. W~związku z~tym, po uruchomieniu programu mamy dostęp do konsoli, która służy do wyświetlania jak i~wprowadzania treści.
+Plik konfiguracyjny nie jest wystarczającym środkiem komunikacji z~aplikacją. W~związku z~tym, po uruchomieniu programu mamy dostęp do konsoli, która służy do wyświetlania jak i~wprowadzania treści.
 
-Po uruchomieniu aplikacji na ekranie wypisywane są najważniejsze op\-cje konfiguracyjne, takie jak poziom budowniczego, poziom malarza oraz lista dostępnych symboli. Jeśli uruchomiliśmy grę w~trybie \texttt{humanHuman}, to aplikacja w~pierwszej kolejności poprosi nas o~indeks. Po wpisaniu indeksu  \mbox{$\in \{0, 1, ...,n\}$}, program zażąda o~podanie symbolu, powinien on należeć do naszego alfabetu, czyli symbol musi \mbox{$\in \{0, 1, ..., setPower-1\}$}. W~momencie gdy podaliśmy prawidłowe wartości na ekran konsoli wyświetlany zostaje ciąg $S'$, który został utworzony poprzez dodanie do istniejącego ciągu odpowiedniego symbolu. Jeśli w~ciągu $S'$ pojawi się kwadrat, na ekran zostanie wyświetlony czas rozgrywki, ilość ruchów jaka została do tej pory wykonana oraz indeksy wraz z~symbolami, wspomnianego powtórzenia.
+Po uruchomieniu aplikacji na ekranie wypisywane są najważniejsze op\-cje konfiguracyjne, takie jak poziom budowniczego, poziom malarza oraz lista dostępnych symboli. Jeśli uruchomiliśmy grę w~trybie \texttt{humanHuman}, to aplikacja w~pierwszej kolejności poprosi nas o~indeks. Po wpisaniu indeksu należącego do zbioru \mbox{$\{0, 1, \ldots,n\}$}, program zażąda podania symbolu, powinien on należeć do naszego alfabetu, czyli symbol musi należeć do zbioru \mbox{$\{0, 1, \ldots, setPower-1\}$}. W~momencie gdy podaliśmy prawidłowe wartości na ekran konsoli wyświetlany zostaje ciąg $S'$, który został utworzony poprzez dodanie do istniejącego ciągu odpowiedniego symbolu. Jeśli w~ciągu $S'$ pojawi się kwadrat, wyświetlony zostanie czas rozgrywki, ilość ruchów jaka została do tej pory wykonana oraz indeksy wraz z~symbolami, wspomnianego powtórzenia. Przykład rozgrywki przedstawia kod \ref{lst:gameExample}.
 
-Oto przykład prostej rozgrywki:
-
-\begin{lstlisting}[frame=single]
+\begin{lstlisting}[caption={Rozgrywka dwóch graczy wypisana w konsoli.},label=lst:gameExample]
 #> W grze dostepne sa nastepujace liczby: 
 0
 1
@@ -417,18 +407,24 @@ Oto przykład prostej rozgrywki:
 
 #> Rozrgrywka trwala 5 ruchow i 20.339 sekund.
 \end{lstlisting}
-Jeśli uruchomimy rozgrywkę z~komputerem, obok wybranego indeksu lub symbolu pojawia się również czas jaki był mu potrzebny na podjęcie decyzji.
+Jeśli uruchomimy rozgrywkę z~komputerem, obok wybranego indeksu lub symbolu pojawia się również czas jaki był mu potrzebny na podjęcie decyzji(kod \ref{lst:pcPcExample}).
 
-\begin{lstlisting}[frame=single]
+\begin{lstlisting}[caption={Sposób wyświetlania podjętych decyzji algorytmu.},label=lst:pcPcExample]
 #> Komputer wybral indeks: 1 	| Czas trwania obliczen: 24.127 s
-#> Komputer wybral liczbe: 4 	| Czas trwania obliczen: 0.012 s\end{lstlisting}
-
-By ułatwić późniejszą analizę wszystkie informacje zawarte w~konsoli, zapisywane są do nowo utworzonego pliku w~katalogu output.
+#> Komputer wybral liczbe: 4 	| Czas trwania obliczen: 0.012 s
+\end{lstlisting}
+\noindent By ułatwić późniejszą analizę wszystkie informacje zawarte w~konsoli, zapisywane są do nowo utworzonego pliku w~katalogu \underline{output}.
 
 \section{Zachłanny algorytm wyszukiwania symbolu}
-Jak zostało wcześniej wspomniane można sterować poziomem inteligencji komputerowych oponentów za pomocą zmiennych konfiguracyjnych. Jeśli ustawimy poziom zagnieżdżeń na 0, algorytm będzie działał zachłannie, wybierając opcje, która jest najatrakcyjniejsza w~danym momencie, nie zważając na to, co może wydarzyć się w~kolejnej turze. Obrazuje to poniższy algorytm szukający pasującego symbolu na wskazanym wcześniej indeksie.
+Jak zostało wcześniej wspomniane można sterować rodzajami taktyk komputerowych graczy za pomocą zmiennych konfiguracyjnych. Jeśli zmienną \emph{painterNestingLevel} ustawimy na $0$, algorytm \emph{malarza} działał będzie zachłannie, wybierając opcje, która jest najatrakcyjniejsza w~danym momencie, nie zważając na to, co może wydarzyć się w~kolejnej turze. Zasada działania zachłannego algorytmu \emph{malarza} zapisana jest w metodzie \ref{lst:findRightColorGreedy}. Definicja metody mówi nam o trzech parametrach jakie są do niej przekazywane:
+\begin{itemize}
+\item \texttt{sequence} -- utworzony wcześniej ciąg,
+\item \texttt{index} -- indeks wybrany przez budowniczoego,
+\item \texttt{power} -- moc alfabetu.
+\end{itemize}
+Na alfabet, z którego może korzystać \emph{malarz} składają się liczby należące do zbioru $\{0, 1, ..., power-1\}$. W~2 linii metody rozpoczyna się pętla, która iteruje po wszystkich dostępnych symbolach. W~kolejnej linii symbol dodawany jest do naszego ciągu na podanej pozycji. Metoda \texttt{pickProperFind} z~warunku \texttt{if} zależnie od typu gry wywołuje wcześniej opisane metody \texttt{findSquare} lub \texttt{findOverlap}. Jeśli warunek \texttt{if} zostanie spełniony oznacza to, że po dodaniu aktualnego symbolu na danej pozycji nie powoduje stworzenia \emph{kwadratu}/\emph{nasunięcia}, algorytm zatem usuwa dodany element z~ciągu i~zwraca go w~linii 6. Jeżeli  okaże się jednak, że dodany symbol tworzy powtórzenie w~ciągu, zostaje on również usunięty, a~pętla zaczyna się od początku. Metoda zwraca wartość $-1$, jeśli okaże się, że żaden z~symboli nie jest w~stanie stworzyć ciągu wolnego od \emph{kwadratów}/\emph{nasunięć}.
 
-\begin{lstlisting}[frame=single]
+\begin{lstlisting}[caption={Metoda zachłannie szukająca symbolu.},label=lst:findRightColorGreedy]
 int findRightColorGreedy(List<Integer> sequence, int index, int power) {
 		for(int symbol=0;symbol<power; symbol++) {
 			sequence.add(index, symbol);
@@ -443,18 +439,10 @@ int findRightColorGreedy(List<Integer> sequence, int index, int power) {
 	}
 \end{lstlisting}
 
-Metoda na wejściu dostaje trzy parametry:
-\begin{itemize}
-\item \texttt{sequence} -- utworzony wcześniej ciąg.
-\item \texttt{index} -- indeks wybrany przez budowniczoego.
-\item \texttt{power} -- moc zbioru symboli.
-\end{itemize}
-Zbiór symboli to liczby $\in \{0, 1, ..., power-1\}$. W~2 linii metody rozpoczyna się pętla, która iteruje po wszystkich dostępnych symbolach. W~kolejnej linii symbol dodawany jest do naszego ciągu na podanej pozycji. Metoda \texttt{pickProperFind} z~warunku \texttt{if} zależnie od typu gry wywołuje wcześniej opisane metody \texttt{findSquare} lub \texttt{findOverlap}. Jeśli warunek \texttt{if} zostanie spełniony oznacza to, że po dodaniu aktualnego symbolu na danej pozycji nie powoduje stworzenia \emph{kwadratu}/\emph{nasunięcia}, algorytm zatem usuwa dodany element z~ciągu i~zwraca go w~linii 6. Jeżeli  okaże się jednak, że dodany symbol tworzy powtórzenie w~ciągu, zostaje on również usunięty, a~pętla zaczyna się od początku. Metoda zwraca wartość $-1$, jeśli okaże się, że żaden z~symboli nie jest w~stanie stworzyć ciągu wolnego od \emph{kwadratów}/\emph{nasunięć}.
-
 \section{Zachłanny algorytm wyszukiwania indeksu}
-By można było przeprowadzić symulację gry, należy wprowadzić również algorytm budowczniego, starający się znaleźć najmniej atrakcyjny indeks dla malarza. Zachłanny algorytm realizujący to zadanie znajduje się poniżej.
+By można było przeprowadzić symulację gry, należy wprowadzić również algorytm \emph{budowniczego}, starający się znaleźć najmniej atrakcyjny indeks dla \emph{malarza}. Zachłanny algorytm realizujący to zadanie znajduje się w metodzie \ref{lst:findRightIndexGreedy}. Metoda jako parametry, otrzymuje stworzony wcześniej ciąg oraz moc zbioru symboli. Zmienna \texttt{winner} ustawiona początkowo na $-1$, reprezentuje indeks, który zostanie zwrócony jako ten, pod którym jest najmniejsza dowolność wyboru symboli, bez tworzenia powtórzeń. Metoda iteruje po każdym indeksie ciągu i~zapisuje do listy symbole, po których wstawieniu w~dane miejsce nie utworzy się \emph{kwadrat}/\emph{nasunięcie}. Następnie w~warunku \texttt{if} z~6 linii sprawdzane jest, czy aktualna lista symboli jest mniejsza lub równa, niż ta zarejestrowana wcześniej. Jeśli tak, do zmiennej \texttt{winner} zapisany zostaje aktualny indeks.
 
-\begin{lstlisting}[frame=single]
+\begin{lstlisting}[caption={Metoda zachłannie szukająca indeksu.},label=lst:findRightIndexGreedy]
 int findRightIndexGreedy(List<Integer> sequence, int power) {
 	int winner = -1;
 	int smallestSymbolSize = power;
@@ -469,14 +457,14 @@ int findRightIndexGreedy(List<Integer> sequence, int power) {
 }
 \end{lstlisting}
 
-Algorytm jako parametry, otrzymuje stworzony wcześniej ciąg, oraz moc zbioru symboli. Zmienna \texttt{winner} ustawiona początkowo na $-1$, reprezentuje indeks, który zostanie zwrócony jako ten, pod którym jest najmniejsza dowolność wyboru symboli, bez tworzenia powtórzeń. Metoda iteruje po każdym indeksie ciągu i~zapisuje do listy symbole, po których wstawieniu w~dane miejsce nie utworzy się \emph{kwadrat}/\emph{nasunięcie}. Następnie w~warunku \texttt{if} z~6 linii sprawdzane jest, czy aktualna lista symboli jest mniejsza lub równa, niż ta zarejestrowana wcześniej. Jeśli tak, do zmiennej \texttt{winner} zapisany zostaje aktualny indeks.
-
 \section{Algorytm wyszukiwania symbolu z~zagnieżdżeniami}
 Algorytm zachłanny nie jest wystarczająco sprytny, żeby przeciwstawić się człowiekowi mającemu odrobinę doświadczenia w~\emph{Longest Free Word}. Wobec tego powstał algorytm nie działający zachłannie, lecz starający się przewidzieć, jakie konsekwencje w~kolejnych turach może nieść ze sobą dany wybór.
 
-Poniższy algorytm wprowadza pojęcie punktacji. Podczas jego działania, dla możliwych wyborów nadawane są punkty. Im więcej punktów uzyska dany symbol, tym atrakcyjniejszym staje się on wyborem. Algorytm sprawdza jakie symbole można dodać w~predefiniowanym indeksie, następnie iterując w~pętli, dodaje każdy z~symboli i~sprawdza, ile możliwości będzie miał w~kolejnej lub kolejnych turach, biorąc pod uwagę wszystkie dostępne indeksy. Każda dodatkowa możliwość to dodatkowy punkt dla wybranego koloru. Sam algorytm składa się z~dwóch głownych części: \mbox{\texttt{findRightColorPredicting}} oraz \texttt{simulation}.
+Algorytm z metody rekurencyjnie wyszukujący symbolu wprowadza pojęcie punktacji. Podczas jego działania, dla możliwych wyborów nadawane są punkty. Im więcej punktów uzyska dany symbol, tym atrakcyjniejszym staje się on wyborem. Algorytm sprawdza jakie symbole można dodać na predefiniowanej pozycji, następnie iterując w~pętli, dodaje każdy z~symboli i~sprawdza, ile możliwości będzie miał w~kolejnej lub kolejnych turach, biorąc pod uwagę wszystkie dostępne pozycje. Każda dodatkowa możliwość to dodatkowy punkt dla wybranego koloru. Sam algorytm składa się z~dwóch metod głównych \mbox{\texttt{findRightColorPredicting}} (\ref{lst:findRightColorPredicting}) oraz \texttt{simulation} (\ref{lst:simulation}).
 
-\begin{lstlisting}[frame=single]
+Na początku algorytm inicjalizuje listy \texttt{scoreList} oraz \texttt{symbolList}. Tę pierwszą tyloma zerami ile jest w~grze dostępnych symboli, drugą natomiast symbolami, jakie możemy wstawić na zdefiniowanej przez \emph{budowniczego} pozycji. Linia 4 rozpoczyna pętlę, która iterując po liście \texttt{symbolList}, dodaje jej element, wywołuje metodę \texttt{simulation}, przekazując utworzony \emph{ciąg}, dodany \emph{symbol}, \texttt{scoreList} oraz \emph{poziom zagnieżdżenia malarza}, po czym usuwa dodany \emph{symbol} sprawiając, że ciąg pozostaje bez zmian. Na końcu zwraca element, który miał największą liczbę punktów. Jeśli kilka symboli otrzymało ich tyle samo, a~flaga \texttt{randomization} ma wartość \texttt{true} program wybiera losowy z~nich. Dzięki temu w~grze występuje przypadkowość, oraz jest mała szansa na powtórzenie dwóch identycznych rozgrywek przy odpowiednio długim ciągu.
+
+\begin{lstlisting}[caption={Metoda szukająca symbolu, wykorzystująca rekurencję.},label=lst:findRightColorPredicting]
 int findRightColorPredicting(List<Integer> sequence, int index) {
 	List<Integer> scoreList = initScoreList(power);
 	List<Integer> symbolList = getFitableSymbolList(sequence, index);
@@ -488,12 +476,10 @@ int findRightColorPredicting(List<Integer> sequence, int index) {
 	return getRandomFromScoreList(scoreList);
 }
 \end{lstlisting}
- 
-Na początku algorytm inicjalizuje listy \texttt{scoreList} oraz \texttt{symbolList}. Tę pierwszą tyloma zerami ile jest w~grze dostępnych symboli, drugą natomiast symbolami, jakie możemy wstawić w~zdefiniowany przez budowniczego indeks. Linia 4 rozpoczyna pętlę, która iterując po liście \texttt{symbolList}, dodaje jej element, wywołuje metodę \texttt{simulation}, przekazując utworzony \emph{ciąg}, dodany \emph{symbol}, \texttt{scoreList} oraz \emph{poziom zagnieżdżenia malarza}, po czym usuwa dodany \emph{symbol} sprawiając, że ciąg pozostaje bez zmian. Na końcu zwraca element, który miał największą liczbę punktów. Jeśli kilka symboli otrzymało ich tyle samo, a~flaga \texttt{randomization} ma wartość \texttt{true} program wybiera losowy z~nich. Dzięki temu w~grze występuje przypadkowość, oraz jest mała szansa na powtórzenie dwóch identycznych rozgrywek przy odpowiednio długim ciągu.
 
-Wewnątrz metody \texttt{simulation} nadawane są punkty, oraz za pomocą rekurencji wykonywana jest symulacja kolejnych iteracji gry.
+Wewnątrz metody \texttt{simulation} nadawane są punkty oraz za pomocą rekurencji wykonywana jest symulacja kolejnych iteracji gry. Na początku dekrementowana zostaje zmienna \texttt{invokes} mówiąca o tym, na ile poziomów rekurencji algorytm ma się jeszcze zagłębić. Oznacza to, że jeśli przekazana zmienna \texttt{invokes} ustawiona jest na $1$,~to metoda \texttt{simulation} zostanie wywołana tylko raz. Pętla w~3 linii iteruje po pozycjach, na których możliwe jest dodanie symbolu. W~4 linii do listy zapisywane są symbole, które można wstawić na aktualnej pozycji, nie powodując \emph{kwadratu/nasunięcia}. Metoda \texttt{updateScoreList} zwiększa ilość punktów symbolu przekazanemu z~poprzedniej metody. Ilość punktów jest równa liczbie elementów, zmiennej \texttt{symbolList}. Pętla w~6 linii iterując po liście pasujących symboli, dodaje element, następnie pod warunkiem, że \mbox{\texttt{invokes}} jest większe od $0$, wywołuje samą siebie ze zmodyfikowanym ciągiem, tym samym indeksem, który został przekazany na początku, listą punktową oraz pozostałą liczbą wywołań. Na końcu pętli element zostaje usunięty, po to, by ciąg wrócił do pierwotnego stanu.
 
-\begin{lstlisting}[frame=single]
+\begin{lstlisting}[caption={Metoda rekurencyjnie wykonująca symulacje kolejnych ruchów.},label=lst:simulation]
 void simulation(List<Integer> sequence, int indexInScoreList, List<Integer> scoreList, int invokes) {
 	invokes--;
 	for(int j=0;j<sequence.size()+1;j++) {
@@ -510,23 +496,24 @@ void simulation(List<Integer> sequence, int indexInScoreList, List<Integer> scor
 }
 \end{lstlisting}
 
-Na początku dekrementowana zostaje ilość zagnieżdżeń na jaką chcemy się zagłębić. Oznacza to, że jeśli poziom zagnieżdżenia ustawiony jest na $1$,~to metoda \texttt{simulation} zostanie wywołana tylko raz. Pętla z~3 linii iteruje po indeksach pod którymi możliwe jest dodanie symbolu. W~4 linii do listy zapisywane są symbole, które można wcisnąć pod aktualny indeks, nie powodując powtórzenia. Metoda \texttt{updateScoreList} zwiększa ilość punktów symbolu przekazanemu z~poprzedniej metody. Ilość punktów jest równa liczbie elementów, zmiennej \texttt{symbolList}. Pętla z~6 linii iterując po liście pasujących symboli, dodaje element, następnie pod warunkiem, że \mbox{\texttt{invokes}} jest większe od $0$, wywołuje samą siebie ze zmodyfikowanym ciągiem, tym samym indeksem, który został przekazany na początku, listą punktową oraz pozostałą liczbą wywołań. Na końcu pętli element zostaje usunięty, po to, by ciąg wrócił do pierwotnego stanu. Algorytm obrazuje rysunek \ref{fig:nestingPainter}.
+Działanie algorytmu przedstawione zostało na rysunku \ref{fig:nestingPainter}. Po raz kolejny w celu zwiększenia przejrzystości rysunku alfabet symboli składa się ze zbioru liter $\{a, b, c\}$, a~nie z~liczb jak ma to miejsce podczas zwykłej rozgrywki. Mamy ciąg $S = ab$, \emph{budowniczy} wybrał indeks $2$, zatem \emph{malarz} wybiera symbol jaki zostanie wstawiony za literką $b$. Typ gry to \emph{Longest Square-Free Word}. Wstawienie symbolu $b$, stworzyłoby kwadrat, dlatego algorytm rozważa literki $a$ oraz $c$. Zmienna $n$ jest to poziom rekurencji, natomiast liczby przy pasujących symbolach oznaczają punkty, jakie zostają przypisane symbolowi $a$ lub $c$. 
 
+Już przy pierwszym poziomie rekurencji widać, że literka $c$ jest atrakcyjniejsza, ponieważ wstawienie jej zapewnia \emph{malarzowi} $6$ możliwości w~kolejnych rundach, podczas gdy literka $a$ osiągnęła wynik $4$. Jednak sprawdzenie jednego ruchu do przodu nie zawsze jest wystarczające i~zdarza się, że z~pozoru nieatrakcyjny symbol w~perspektywie kolejnych tur jest najlepszą opcją.
 \begin{figure}[tbh]
     \centering
+    \caption{Działanie algorytmu rekurencyjnego \emph{malarza}.}
     \includegraphics[width = \textwidth]{images/nestingPainter}
-    \caption{Działanie algorytmu malarza z zagnieżdżeniami.}
     \label{fig:nestingPainter}
 \end{figure}
 
-Mamy ciąg $S = ab$, budowniczy wybrał indeks $2$, czyli malarz wybiera symbol jaki zostanie wstawiony za literką $b$. Typ gry to \emph{Longest Square-Free Word}. Moc zbioru równa jest $3$, więc do wyboru są dostępne symbole $a$, $b$, $c$. Wstawienie symbolu $b$, stworzyłoby kwadrat, dlatego algorytm rozważa literki $a$ oraz $c$. Zmienna $n$ jest to poziom zagnieżdżenia algorytmu, natomiast liczby przy pasujących symbolach oznaczają punkty, jakie zostają przypisane symbolowi $a$ lub $c$. 
 
-Już przy pierwszym zagnieżdżeniu widać, że literka $c$ jest atrakcyjniejsza, ponieważ wstawienie jej zapewnia malarzowi więcej możliwości w~kolejnych rundach. Jednak sprawdzenie jednego ruchu do przodu nie zawsze jest wystarczające i~zdarza się, że z~pozoru nieatrakcyjny symbol w~perspektywie kolejnych, tur jest najlepszą opcją.
 
 \section{Algorytm wyszukiwania indeksu z~zagnieżdżeniami}
-Sposób działania algorytmu z~zagnieżdżeniami szukającego indeksu, który ma największą szansę na stworzenie powtórzenia, działa na podobnej zasadzie, co algorytm wyszukiwania symbolu. Różnica polega na tym, że w~jego pierwszej części, iterujemy po wszystkich dostępnych symbolach, a~nie jednym predefiniowanym, oraz punkty nadawane zostają indeksom i~zwracamy ten, który uzyska ich najmniej. Druga część algorytmu czyli metoda \texttt{simulation} pozostaje bez zmian.
+Sposób działania algorytmu rekurencyjnego szukającego indeksu, który ma największą szansę na stworzenie powtórzenia, działa na podobnej zasadzie, co algorytm wyszukiwania symbolu. Różnica polega na tym, że w~jego pierwszej części, ustalamy punktację iterując po wszystkich dostępnych pozycjach, zamiast sprawdzać ją dla jednej ustalonej przez przeciwnika, oraz punkty nadawane zostają pozycjom i~zwracamy tą, która uzyska ich najmniej. Druga część algorytmu czyli metoda \texttt{simulation} (\ref{lst:simulation}) pozostaje bez zmian.
 
-\begin{lstlisting}[frame=single]
+Na początku metody \ref{lst:findRightIndex} zainicjalizowana zostaje zmienna \texttt{scoreList}. Do listy dodane zostają zera w~ilości odpowiadającej długości ciągu plus jeden, bo właśnie na tylu pozycjach możemy dodać nowy element. W~3 linii iterujemy po każdej dostępnej pozycji, natomiast od 4 linii mamy już wszystko to co w~algorytmie szukającym symbolu. Na końcu metody zwracana zostaje pozycja, która uzyskała najmniej punktów, czyli będzie najmniej atrakcyjna dla \emph{malarza}. Tak jak poprzednio jeśli istnieje więcej niż jedna pozycją z~minimalną wartością, a~flaga \texttt{randomization} ustawiona jest na \texttt{true}, to element jest wybierany losowo.
+
+\begin{lstlisting}[caption={Metoda szukająca pozycji, wykorzystująca rekurencję.},label=lst:findRightIndex]
 int findRightIndex(List<Integer> sequence) {
 	List<Integer> scoreList = initScoreList(sequence.size() + 1);
 	for (int i = 0; i<sequence.size() + 1; i++) {
@@ -540,8 +527,6 @@ int findRightIndex(List<Integer> sequence) {
 	return getRandomMinFromPredict(scoreList);
 }
 \end{lstlisting}
-
-Na początku metody zainicjalizowana zostaje zmienna \texttt{scoreList}. Do listy dodane zostają zera w~ilość odpowiadającej długość ciągu plus jeden, bo właśnie na tylu indeksach możemy dodać nowy element. W~3 linii iterujemy po każdym dostępnym indeksie, natomiast od 4 linii mamy już wszystko to co w~algorytmie szukającym symbolu. Na końcu metody zwracany zostaje indeks, który uzyskał najmniej punktów, czyli będzie najmniej atrakcyjny dla malarza. Tak jak poprzednio jeśli istnieje więcej niż jeden indeks z~minimalna wartością, a~flaga \texttt{randomization} ustawiona jest na \texttt{true}, element jest wybierany losowo.
 
 \section{Longest square free word z interfejsem graficznym}
 Napisałem również wersję gry, w~której użytkownik nie korzysta z~konsoli, lecz z~graficznego interfejsu. W~tej odmianie gracz za pomocą trzech kolorów ma stworzyć jak najdłuższy ciąg bez kwadratów. Czynności jakie gracz wykonuje to wybranie miejsca, w~które zostanie wstawiony element oraz jego kolor. Jeśli w~tworzonym ciągu pojawi się kwadrat rozgrywka zostaje przerwana i~na ekranie zostają podświetlone powtórzenia składające się na kwadrat. Program zapisuje również najwyższy wynik, który jest równy długości utworzonego ciągu. Algorytm szukający kwadratów nie różni się w~żaden sposób od tego z~podstawowej wersji gry. Wygląd aplikacji został ukazany na rysunku \ref{fig:thueMobile}.
@@ -559,7 +544,7 @@ Aplikacja została napisana na popularnym silniku do tworzenia gier -- \emph{Uni
 \chapter{Analiza symulowanych potyczek} 
 Dobrym sposobem by poznać aplikację jest jej uruchomienie. Jeszcze lepszym, przeprowadzenie jej analizy oraz zobrazowanie wyników za pomocą wykresów i~tabel. Rozdział ten poświęcony jest badaniu działania aplikacji \emph{Longest Free Word}. Badania skupiają się na wariancie aplikacji opierającym się na tworzeniu ciągu bez kwadratów, a~flaga \texttt{randomization} ustawiona została na \texttt{true}. Wszystkie testy uruchomione były na zdalnym serwerze, stworzonym za pośrednictwem serwisu \emph{digitalocean.com}. Podzespoły maszyny to system operacyjny Ubuntu 15.10, procesor 2,6 Ghz Intel Core i7, pamięć ram 16 GB 1600 MHz DDR3 i~dysk SSD.
 
-\section{Ilość symboli potrzebna na rozgranie partii}
+\section{Ilość symboli potrzebna na rozegranie partii}
 Długość gry zależna jest od dwóch czynników. Ustawionego poziomu zagnieżdżenia i~ilości dostępnych symboli. Thue w~swoim twierdzeniu \cite{repetition}, udowodnił, że jesteśmy w~stanie stworzyć nieskończenie długi ciąg bez kwadratów, mając do dyspozycji 3 symbole. Sytuacja zmienia się, gdy ciąg tworzony jest przez dwóch oponentów, z~których jeden stara się utworzyć kwadrat. Nawet używając zachłannego algorytmu w~przypadku budowniczego i~algorytmu z~zagnieżdżeniami 7 poziomu malarza, rozgrywka zawsze trwała będzie maksymalnie 5 ruchów. 
 
 Dla 4 symboli, również nie jest możliwe rozegranie partii dłuższej niż 10 ruchów. Przy zachłannym algorytmie budowniczego, malarz jest w~stanie utworzyć ciąg długości 10. Jeśli algorytm budowniczego używa zagnieżdżeń, liczba ta zmniejsza się do 7.
@@ -722,28 +707,10 @@ Twierdzenia Axela Thue na temat sekwencji symboli okazały się doskonałą baz�
 \appendix
 
 % literatura (obowiązkowo):
-\bibliographystyle{unsrt}
-\begin{thebibliography}{99}
+\bibliography{mybibfile}
+\bibliographystyle{plain}
 
-\bibitem{repetition} J. Berstel Axel Thue's papers on repetitions in words: a translation, July 1994.
 
-\bibitem{repetition2} A. Thue Über unendliche Zeichenreihen. 1906. Reprinted in Selected Mathematical Papers of Axel Thue, T. Nagell, 1977.
-
-\bibitem{narad} N. Rampersad Overlap-Free Words and Generalizations, June 2008.
-
-\bibitem{prouhet} M. E. Prouhet. Memoire sur Quelques Relations Entre les Puissances des Nombres, January 1851.
-
-\bibitem{carpi} A. Carpi, On the size of a squarefree morphism on a three letter alphabet, June 1983.
-
-\bibitem{first} A. Kündgen and M. J. Pelsmajer, Nonrepetitive colorings of graphs of bounded treewidth, August 2007.
-
-\bibitem{thueonline2} J. Grytczuk, J. Kozik, P. Micek, New approach to nonrepetitive sequences, November 2011.
-
-\bibitem{second} J. Barát, P. P. Varjú. On square-free vertex colorings of graphs, April 2006.
-
-\bibitem{thueonline} J. Grytczuk, P. Szafruga, M. Zmarz, Online version of the theorem of Thue, April 2012.
-
-\end{thebibliography}
 
 % spis tabel (jeżeli jest potrzebny):
 \listoftables
@@ -751,6 +718,10 @@ Twierdzenia Axela Thue na temat sekwencji symboli okazały się doskonałą baz�
 % spis rysunków (jeżeli jest potrzebny):
 \listoffigures
 
+% spis listingów
+\lstlistoflistings
+
 \oswiadczenie
+
 
 \end{document}

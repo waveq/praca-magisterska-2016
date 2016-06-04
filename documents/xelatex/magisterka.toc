@@ -13,14 +13,15 @@
 \contentsline {section}{\numberline {2.4}Zachłanny algorytm wyszukiwania symbolu}{23}{section.2.4}
 \contentsline {section}{\numberline {2.5}Zachłanny algorytm wyszukiwania indeksu}{24}{section.2.5}
 \contentsline {section}{\numberline {2.6}Algorytm wyszukiwania symbolu z\nobreakspace {}zagnieżdżeniami}{25}{section.2.6}
-\contentsline {section}{\numberline {2.7}Algorytm wyszukiwania indeksu z\nobreakspace {}zagnieżdżeniami}{28}{section.2.7}
-\contentsline {section}{\numberline {2.8}Longest square free word z interfejsem graficznym}{29}{section.2.8}
-\contentsline {chapter}{\numberline {3}Analiza symulowanych potyczek}{31}{chapter.3}
-\contentsline {section}{\numberline {3.1}Ilość symboli potrzebna na rozgranie partii}{31}{section.3.1}
-\contentsline {section}{\numberline {3.2}Pomiary czasów potrzebnych na podjęcie decyzji}{34}{section.3.2}
-\contentsline {section}{\numberline {3.3}Porównanie zachowań algorytmu z\nobreakspace {}zagnieżdżeniami i\nobreakspace {}bez zagnieżdżeń}{38}{section.3.3}
-\contentsline {chapter}{Zakończenie}{40}{chapter*.5}
-\contentsline {chapter}{Bibliografia}{41}{appendix*.6}
-\contentsline {chapter}{Spis tabel}{42}{appendix*.7}
-\contentsline {chapter}{Spis rysunków}{43}{appendix*.8}
-\contentsline {chapter}{Oświadczenie}{44}{appendix*.9}
+\contentsline {section}{\numberline {2.7}Algorytm wyszukiwania indeksu z\nobreakspace {}zagnieżdżeniami}{29}{section.2.7}
+\contentsline {section}{\numberline {2.8}Longest square free word z interfejsem graficznym}{30}{section.2.8}
+\contentsline {chapter}{\numberline {3}Analiza symulowanych potyczek}{32}{chapter.3}
+\contentsline {section}{\numberline {3.1}Ilość symboli potrzebna na rozegranie partii}{32}{section.3.1}
+\contentsline {section}{\numberline {3.2}Pomiary czasów potrzebnych na podjęcie decyzji}{35}{section.3.2}
+\contentsline {section}{\numberline {3.3}Porównanie zachowań algorytmu z\nobreakspace {}zagnieżdżeniami i\nobreakspace {}bez zagnieżdżeń}{39}{section.3.3}
+\contentsline {chapter}{Zakończenie}{41}{chapter*.5}
+\contentsline {chapter}{Bibliografia}{42}{appendix*.6}
+\contentsline {chapter}{Spis tabel}{43}{appendix*.7}
+\contentsline {chapter}{Spis rysunków}{44}{appendix*.8}
+\contentsline {chapter}{Spis kodów źródłowych}{45}{appendix*.9}
+\contentsline {chapter}{Oświadczenie}{46}{appendix*.10}

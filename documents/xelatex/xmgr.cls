@@ -23,6 +23,7 @@
 \RequirePackage{color}
 \definecolor{xmgrBrickRed}{cmyk}{0,0.89,0.94,0.28}
 \usepackage{hyperref}
+\usepackage{listings}
 \hypersetup{colorlinks=true,linkcolor=xmgrBrickRed,bookmarks=true}
 %
 \RequirePackage{url}
@@ -299,6 +300,20 @@ i~materialnych innych osób.\endgraf }
     \@starttoc{lot}%
     \addcontentsline{toc}{chapter}{\listtablename}}
 %
+
+\renewcommand{\lstlistlistingname}{Spis kodów źródłowych}
+\renewcommand{\lstlistingname}{Kod}
+
+\renewcommand\lstlistoflistings{%
+    \chapter*{\lstlistlistingname
+      \@mkboth{\MakeUppercase\lstlistlistingname}
+              {\MakeUppercase\lstlistlistingname}}
+    \@starttoc{lol}%
+    \addcontentsline{toc}{chapter}{\lstlistlistingname}}
+
+%addcontentsline{toc}{chapter}{\lstlistlistingname}
+%
+
 \renewenvironment{thebibliography}[1]
      {\chapter*{\bibname}%
       \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
