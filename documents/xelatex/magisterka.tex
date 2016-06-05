@@ -54,9 +54,9 @@
 
 Celem pracy było zaprogramowanie i analiza wyników gry opartej na twierdzeniach Axela Thue, związanej z powtórzeniami oraz nasunięciami wewnątrz ciągu znaków. Głównymi funkcjonalnościami aplikacji jest rozgrywka między dwoma graczami oraz symulacja przeprowadzona przez konkurujące ze sobą algorytmy. 
 
-Powstały dwa warianty aplikacji, pierwszy z~nich napisany został za pomocą silnika \emph{Unity3d}, posiada interfejs graficzny, nie ma jednak innego zastosowania niż poprawianie własnych rekordów. Drugi jest napisany w~jęzku \emph{Java}, bez interfejsu graficznego, w~zamian oferuje funkcjonalność dokonywania testów na serwerze zdalnym i~zawiera wiele opcji konfiguracyjnych, między innymi precyzowanie poziomu rekurencji, którego używają algorytmy.
+Powstały dwa warianty aplikacji, pierwszy z~nich napisany został za pomocą silnika \emph{Unity3d}, posiada interfejs graficzny, nie ma jednak innego zastosowania niż poprawianie własnych rekordów. Drugi jest napisany w~jęzku \emph{Java}, bez interfejsu graficznego, w~zamian oferuje funkcjonalność dokonywania testów na serwerze zdalnym i~zawiera wiele opcji konfiguracyjnych, między innymi ustawianie poziomu rekurencji, którego używają algorytmy.
 
-Przeprowadzone testy wykazały, że algorytmy symulujące graczy działają prawidłowo i~zwiększanie ich poziomu rekurencji skutkuje lepiej podejmowanymi decyzjami. Na podstawie badań ustalona została maksymalna długość rozgrywki przy odpowiedniej taktyce, dla rozgrywek zawierających określoną ilość symboli z~których tworzony jest ciąg.
+Przeprowadzone testy wykazały, że algorytmy symulujące graczy działają prawidłowo i~zwiększanie poziomu wykorzystywanej przez nich rekurencji skutkuje lepiej podejmowanymi decyzjami. Na podstawie badań ustalona została maksymalna długość rozgrywki przy odpowiedniej taktyce, dla rozgrywek zawierających określoną ilość symboli z~których tworzony jest ciąg.
 \end{abstract}
 
 % słowa kluczowe
@@ -70,7 +70,7 @@ Przeprowadzone testy wykazały, że algorytmy symulujące graczy działają praw
 
 Tematem niniejszej pracy jest Gra Thuego. Axel Thue był norweskim matematykiem żyjącym w~latach 1863 -- 1922, znanym z~prac z~zakresu kombinatoryki.
 
-Thue pracował nad problemami, powstałymi w~wyniku badań nad sekwencjami symboli. Prace Thue \cite{repetition} opisywały problem, który autor nazwał \emph{nieredukowalnymi słowami}. Poświęca w~nich szczególną uwagę dwu i~trzy literowym przypadkom. W~skrócie wprowadza pojęcie znane obecnie jako \emph{Thue-Morse word} i~pokazuje, że nieskończone \emph{słowa bez nasunięć}, są pochodnymi tej sekwencji. W~swoich pracach definiuje kolejną strukturę, a~mianowicie \emph{nieskończone słowo wolne od kwadratów}, oraz przedstawia sposoby generowania nieskończenie długich słów wolnych zarówno od \emph{kwadratów} jak i~\emph{nasunięć}.
+Thue pracował nad problemami, powstałymi w~wyniku badań nad sekwencjami symboli. Jego prace \cite{repetition} opisywały pojęcie, które autor nazwał \emph{nieredukowalnymi słowami}. Poświęca w~nich szczególną uwagę dwu i~trzy literowym przypadkom. W~skrócie wprowadza pojęcie znane obecnie jako \emph{Thue-Morse word} i~pokazuje, że nieskończone \emph{słowa bez nasunięć}, są pochodnymi tej sekwencji. W~swoich pracach definiuje kolejną strukturę, a~mianowicie \emph{nieskończone słowo wolne od kwadratów}, oraz przedstawia sposoby generowania nieskończenie długich słów wolnych zarówno od \emph{kwadratów} jak i~\emph{nasunięć}.
 
 Gra która powstała na podstawie twierdzeń Thuego, w~skrócie polegała będzie na utworzeniu jak najdłuższego ciągu znaków nad określonym z~góry alfabetem. Zależnie od trybu gry, kończyć się będzie ona w~momencie, gdy pojawi się zdefiniowany na początku rodzaj powtórzenia w~tworzonym przez nas, bądź algorytm ciągu. Jednym z~trybów gry jest rozgrywka komputera przeciwko niemu samemu, po jej zakończeniu przedstawiony zostanie czas trwania rozgrywki i~każdego wykonanego ruchu.
 
@@ -129,7 +129,7 @@ $t = abbabaabbaababbabaab\ldots = \mu(t)$ \\
 $ \overline{t} = baababbaabbabaababba\ldots = \mu(\overline{t})$
 \par}
 
-\noindent Przedstawione powyżej słowo $t$ jest sekwencją Thue-Morse'a. Jest wiele innych sposobów na stworzenie tego słowa. Niech $t_n$ będzie $n$-tym symbolem w~$t$, zaczynając od $n =$ 0. Wtedy można pokazać, że:
+\noindent Przedstawione powyżej słowo $t$ jest sekwencją Thue-Morse'a. Jest wiele innych sposobów na stworzenie tego słowa. Niech $t_n$ będzie $n$-tym symbolem w~$t$, zaczynając od $n=0$. Wtedy można pokazać, że:
 
 \[
 t_n=
@@ -166,11 +166,11 @@ W konsekwencji istnieje skończony automat obliczający wartości $t_n$. Automat
 
 
 \section{Square-free word}
-Łatwo można zauważyc, że jedynymi słowami bez kwadratów w~alfabecie $A = \{a, b\}$ są: $a, b, ab, ba, aba, bab$. Istnieje jednak dowolnie długi ciąg znaków wolny od kwadratów, dla słów nad alfabetem trzyliterowym. By stworzyć dowolne słowo wolne od kwadratów, Thue wymyślił następujący algorytm. Mając alfabet $A = \{a, b, c\}$ należy zastąpić każde wystąpienie litery $a$ przez $abac$,  $b$ przez $babc$ oraz $c$ przez $bcac$, jeśli jest poprzedzone przez $a$ lub $acbc$, jeśli jest poprzedzone przez $b$. Zaczynając od litery $a$ otrzymujemy nieskończone słowo które nie zawiera kwadratów.
+Łatwo można zauważyc, że jedynymi słowami bez kwadratów w~alfabecie $A = \{a, b\}$ są: $a, b, ab, ba, aba, bab$. Istnieje jednak dowolnie długi ciąg znaków \emph{wolny od kwadratów}, dla słów nad alfabetem trzyliterowym. By stworzyć dowolne słowo \emph{wolne od kwadratów}, Thue wymyślił następujący algorytm. Mając alfabet $A = \{a, b, c\}$ należy zastąpić każde wystąpienie litery $a$ przez $abac$,  $b$ przez $babc$ oraz $c$ przez $bcac$, jeśli jest poprzedzone przez $a$ lub $acbc$, jeśli jest poprzedzone przez $b$. Zaczynając od litery $a$ otrzymujemy nieskończone słowo które nie zawiera kwadratów.
 
 {\centering $abacbabcabacbcacbabcabacbabcacbcabacbabc...$ \par}
 
-W 1912 roku Axel Thue wymyślił kolejną metodę generowanie nieskończonego słowa bez kwadratów na trzech literach z użyciem następującego morfizmu. 
+W 1912 roku Axel Thue wymyślił kolejną metodę generowanie nieskończonego słowa bez \emph{kwadratów} na trzech literach z użyciem poniższego morfizmu. 
 \begin{itemize}
 \item $a \to abcab$
 \item $b \to acabcb$
@@ -178,12 +178,12 @@ W 1912 roku Axel Thue wymyślił kolejną metodę generowanie nieskończonego s�
 \end{itemize}
 
 
-\noindent Po raz kolejny zastępujemy każde wystąpienie z~naszych liter przez zdefiniowane sekwencje. Jest to dość skomplikowana struktura, zsumowana długość łańcuchów wynosi $18$. A. Carpi \cite{carpi} w 1983 roku dowiódł, że morfizm na alfabecie składającym się z~trzech liter tworzący słowa wolne od kwadratów musi mieć długość równą co najmniej $18$.
+\noindent Po raz kolejny zastępujemy każde wystąpienie liter przez zdefiniowane sekwencje. Jest to dość skomplikowana struktura, zsumowana długość łańcuchów wynosi $18$. A. Carpi \cite{carpi} w 1983 roku dowiódł, że morfizm na alfabecie składającym się z~trzech liter tworzący słowa wolne od kwadratów musi mieć długość równą co najmniej $18$.
 
 \section{Thue online}
-Praca J. Grytczuka, P. Szafrugi i~M. Zmarza pod tytułem \emph{Online version of theorem of Thue} \cite{thueonline} opisuje grę online bazującą na twierdzeniach Thuego. Podczas rozgrywki dwaj gracze  naprzemiennie wykonując swoje ruchy, tworzą  ciąg bez kwadratów. Celem pierwszego gracza jest jak najszybsze skończenie rozgrywki poprzez utworzenie kwadratu, drugi natomiast musi tego unikać.
+Praca J. Grytczuka, P. Szafrugi i~M. Zmarza pod tytułem \emph{Online version of theorem of Thue} \cite{thueonline} opisuje grę online bazującą na twierdzeniach Thuego. Podczas rozgrywki dwaj gracze  naprzemiennie wykonując swoje ruchy, tworzą  ciąg bez \emph{kwadratów}. Celem pierwszego gracza jest jak najszybsze skończenie rozgrywki poprzez utworzenie \emph{kwadratu}, drugi natomiast musi tego unikać.
 
-Wartym wspomnienia jest uproszczony tryb gry, podczas którego mamy graczy -- Alicję i~Boba, tylko Alicji zależy na tym by uniknąć kwadratów. Rozgrywka polega na tym, że Alicja i~Bob wybierają na przemian symbole z~ustalonego alfabetu $A$, oraz dopisują je na końcu istniejącego ciągu. W~momencie, gdy pojawia się kwadrat $aa$, jego druga część, czyli w~naszym przypadku prawe $a$, zostaje usunięte. Zostało udowodnione w pracy \cite{thueonline2}, że Alicja jest w~stanie stworzyć dowolnie długi ciąg bez kwadratów, nie zważając na ruchy Boba. Powyższe jest jednak możliwe pod warunkiem, że moc zbioru $A$ wynosi conajmniej $8$.
+Wartym wspomnienia jest uproszczony tryb gry, podczas którego mamy graczy -- Alicję i~Boba, tylko Alicji zależy na tym by uniknąć \emph{kwadratów}. Rozgrywka polega na tym, że Alicja i~Bob wybierają na przemian symbole z~ustalonego alfabetu $A$, oraz dopisują je na końcu istniejącego ciągu. W~momencie, gdy pojawia się \emph{kwadrat} $aa$, jego druga część, czyli w~naszym przypadku prawe $a$, zostaje usunięte. Zostało udowodnione w pracy \cite{thueonline2}, że Alicja jest w~stanie stworzyć dowolnie długi ciąg bez \emph{kwadratów}, nie zważając na ruchy Boba. Powyższe jest jednak możliwe pod warunkiem, że moc zbioru $A$ wynosi conajmniej $8$.
 
 Innym typem gry przedstawionym w~pracy \cite{thueonline} jest \emph{Online Thue Game}. Po raz kolejny gracze wykonują swoje ruchy na przemian. W~swojej rundzie Bob wybiera pozycję $s_i$ w~ciągu $S$, gdzie $i \in \{0, 1,\ldots , n\}$, a $n$ to aktualna długość ciągu. Następnie Alicja wybiera symbol $x$ z alfabetu $A$, który jest wstawiany pomiędzy pozycją $s_{i}$ i $s_{i+1}$, tworząc nowy ciąg $S'=s_1, \ldots, s_i, x, s_{i+1}, \ldots, s_n$. Celem Boba jest wybieranie takich pozycji, by w~sekwencji pojawił się \emph{kwadrat}; Alicja musi wybierać takie symbole by \emph{kwadratu} nie utworzyć. Na przykład, jeśli ustalimy, że alfabet $A = \{0, 1, 2\}$, a~sekwencja $S=0212$, wtedy Bob wybierając pozycję $i=1$,~zmusza Alicję do stworzenia kwadratu w kolejnym ruchu. Każdy z symboli należących do alfabetu $A$, wstawiony na pozycję $i=1$ skutkuje jego utworzeniem: $S^0 = \underline{00}21, S^1=0\underline{1212}, S^2=0\underline{22}12$. W~przypadku gdy Bob obierze dobrą strategię, rozgrywka na $3$ symbolach skończy się na ciągu o~długości $\leq 5$, nie ważne jaką strategię obierze Alicja. Oczywiście im więcej elementów znajduje się w alfabecie $A$, tym więcej ruchów, będzie potrzebował Bob, by wygrać 
 
@@ -193,7 +193,7 @@ Grytczuk, Szafruga i~Zmarza \cite{thueonline} udowodnili, że istnieje strategia
 
 Komputerowa implementacja gry Thuego opiera się na pomyśle gry z~pracy \cite{thueonline}. W~grze dostępne są dwa typy gry, zarówno dla jednego oraz dwóch graczy jak i~komputerowa symulacja, czyli gra komputera przeciwko niemu samemu.
 
-Implementacja gry \emph{Online Thue Game} nazywana będzie \emph{Longest Free Word}. W grze dostępne są dwa typy gry, pierwszy z nich to \emph{Longest Square-Free Word}, a jego zasady są następujące. Na początku gry, gracze ustalają liczbę symboli wchodzących w~skład alfabetu $A$ i~otrzymują swoje role. Jeden z~nich staje się \emph{budowniczym}, drugi \emph{malarzem}. Rola \emph{budowniczego} polega na wybieraniu pozycji w~tworzonym ciągu, na którą wstawiony zostanie wybrany przez \emph{malarza} symbol z~alfabetu $A$. Gra kończy się w~momencie, gdy w~tworzonym przez graczy ciągu pojawi się \emph{kwadrat}. Numer pozycji $i$ podawanej przez \emph{budowniczego} musi spełniać warunek $0 \leq i \leq n$, przy czym $n$ to aktualna ilość elementów w ciągu. Na początku gry sekwencja $S$ zawiera jeden losowy symbol, z alfabetu $A$. Grę rozpoczyna \emph{budowniczy}, a gracze wykonują swoje ruchy na przemian. \emph{Malarz} otrzymuje punkt za każdy wstawiony element, który nie tworzy \emph{kwadratu}. By wyłonić zwycięzcę potrzebne są dwie rundy. Każdy z~graczy musi sprawdzić się w obu rolach. Wygrywa osoba, która zdobyła więcej punktów jako \emph{malarz}.
+Implementacja gry \emph{Online Thue Game} nazywana będzie \emph{Longest Free Word}. W grze dostępne są dwa typy gry, pierwszy z nich to \emph{Longest Square-Free Word}, a jego zasady są następujące. Na początku gry, gracze ustalają liczbę symboli wchodzących w~skład alfabetu $A$ i~otrzymują swoje role. Jeden z~nich staje się \emph{budowniczym}, drugi \emph{malarzem}. Rola \emph{budowniczego} polega na wybieraniu pozycji w~tworzonym ciągu, na którą wstawiony zostanie wybrany przez \emph{malarza} symbol z~alfabetu $A$. Gra kończy się w~momencie, gdy w~tworzonym przez graczy ciągu pojawi się \emph{kwadrat}. Numer pozycji $i$ podawanej przez \emph{budowniczego} musi należeć do zbioru $\{0, 1, \ldots, n\}$, gdzie $n$ to aktualna ilość elementów w ciągu. Na początku gry sekwencja $S$ zawiera jeden losowy symbol, z alfabetu $A$. Grę rozpoczyna \emph{budowniczy}, a gracze wykonują swoje ruchy na przemian. \emph{Malarz} otrzymuje punkt za każdy wstawiony element, który nie tworzy \emph{kwadratu}. By wyłonić zwycięzcę potrzebne są dwie rundy. Każdy z~graczy musi sprawdzić się w obu rolach. Wygrywa osoba, która zdobyła więcej punktów jako \emph{malarz}.
 
 Gra dostępna jest też dla jednego gracza, rolę przeciwnika otrzymuje wtedy algorytm, który działa według ustawionej w pliku konfiguracyjnym taktyki. Może on zarówno pełnić rolę budowniczego jak i~malarza. Dodatkową możliwością jest przeprowadzenie rozgrywki pomiędzy dwoma algorytmami.
 
@@ -457,7 +457,7 @@ int findRightIndexGreedy(List<Integer> sequence, int power) {
 }
 \end{lstlisting}
 
-\section{Algorytm wyszukiwania symbolu z~zagnieżdżeniami}
+\section{Algorytm wyszukiwania symbolu wykorzystujący rekurencję}
 Algorytm zachłanny nie jest wystarczająco sprytny, żeby przeciwstawić się człowiekowi mającemu odrobinę doświadczenia w~\emph{Longest Free Word}. Wobec tego powstał algorytm nie działający zachłannie, lecz starający się przewidzieć, jakie konsekwencje w~kolejnych turach może nieść ze sobą dany wybór.
 
 Algorytm z metody rekurencyjnie wyszukujący symbolu wprowadza pojęcie punktacji. Podczas jego działania, dla możliwych wyborów nadawane są punkty. Im więcej punktów uzyska dany symbol, tym atrakcyjniejszym staje się on wyborem. Algorytm sprawdza jakie symbole można dodać na predefiniowanej pozycji, następnie iterując w~pętli, dodaje każdy z~symboli i~sprawdza, ile możliwości będzie miał w~kolejnej lub kolejnych turach, biorąc pod uwagę wszystkie dostępne pozycje. Każda dodatkowa możliwość to dodatkowy punkt dla wybranego koloru. Sam algorytm składa się z~dwóch metod głównych \mbox{\texttt{findRightColorPredicting}} (\ref{lst:findRightColorPredicting}) oraz \texttt{simulation} (\ref{lst:simulation}).
@@ -508,7 +508,7 @@ Już przy pierwszym poziomie rekurencji widać, że literka $c$ jest atrakcyjnie
 
 
 
-\section{Algorytm wyszukiwania indeksu z~zagnieżdżeniami}
+\section{Algorytm wyszukiwania indeksu wykorzystujący rekurencję}
 Sposób działania algorytmu rekurencyjnego szukającego indeksu, który ma największą szansę na stworzenie powtórzenia, działa na podobnej zasadzie, co algorytm wyszukiwania symbolu. Różnica polega na tym, że w~jego pierwszej części, ustalamy punktację iterując po wszystkich dostępnych pozycjach, zamiast sprawdzać ją dla jednej ustalonej przez przeciwnika, oraz punkty nadawane zostają pozycjom i~zwracamy tą, która uzyska ich najmniej. Druga część algorytmu czyli metoda \texttt{simulation} (\ref{lst:simulation}) pozostaje bez zmian.
 
 Na początku metody \ref{lst:findRightIndex} zainicjalizowana zostaje zmienna \texttt{scoreList}. Do listy dodane zostają zera w~ilości odpowiadającej długości ciągu plus jeden, bo właśnie na tylu pozycjach możemy dodać nowy element. W~3 linii iterujemy po każdej dostępnej pozycji, natomiast od 4 linii mamy już wszystko to co w~algorytmie szukającym symbolu. Na końcu metody zwracana zostaje pozycja, która uzyskała najmniej punktów, czyli będzie najmniej atrakcyjna dla \emph{malarza}. Tak jak poprzednio jeśli istnieje więcej niż jedna pozycją z~minimalną wartością, a~flaga \texttt{randomization} ustawiona jest na \texttt{true}, to element jest wybierany losowo.
