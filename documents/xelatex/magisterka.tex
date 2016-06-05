@@ -529,12 +529,12 @@ int findRightIndex(List<Integer> sequence) {
 \end{lstlisting}
 
 \section{Longest square free word z interfejsem graficznym}
-Napisałem również wersję gry, w~której użytkownik nie korzysta z~konsoli, lecz z~graficznego interfejsu. W~tej odmianie gracz za pomocą trzech kolorów ma stworzyć jak najdłuższy ciąg bez kwadratów. Czynności jakie gracz wykonuje to wybranie miejsca, w~które zostanie wstawiony element oraz jego kolor. Jeśli w~tworzonym ciągu pojawi się kwadrat rozgrywka zostaje przerwana i~na ekranie zostają podświetlone powtórzenia składające się na kwadrat. Program zapisuje również najwyższy wynik, który jest równy długości utworzonego ciągu. Algorytm szukający kwadratów nie różni się w~żaden sposób od tego z~podstawowej wersji gry. Wygląd aplikacji został ukazany na rysunku \ref{fig:thueMobile}.
+Napisana została przeze mnie również druga wersja gry. Użytkownik nie korzysta w~niej z~konsoli, lecz z~graficznego interfejsu. W~tej odmianie gracz za pomocą trzech kolorów ma stworzyć jak najdłuższy ciąg bez \emph{kwadratów}. Czynności jakie należy wykonywać podczas rozgrywki to wybranie miejsca, w~które zostanie wstawiony element oraz wybranie jego koloru. Jeśli w~tworzonym ciągu pojawi się \emph{kwadrat} rozgrywka zostaje przerwana i~na ekranie zostają podświetlone powtórzenia składające się na \emph{kwadrat}. Program zapisuje również najwyższy wynik, który jest równy długości utworzonego ciągu. Algorytm szukający \emph{kwadratów} nie różni się w~żaden sposób od tego z~podstawowej wersji gry. Wygląd aplikacji został przedstawiony na rysunku \ref{fig:thueMobile}.
 
 \begin{figure}[tbh]
     \centering
-    \includegraphics[width = \textwidth]{images/thueMobile}
-    \caption{\emph{Longest Free Word} z interfejsem graficznym}
+    \caption{\emph{Longest Free Word} z interfejsem graficznym.}
+    \includegraphics[width = 0.9\textwidth]{images/thueMobile}
     \label{fig:thueMobile}
 \end{figure}
 
@@ -542,166 +542,166 @@ Aplikacja została napisana na popularnym silniku do tworzenia gier -- \emph{Uni
 
 
 \chapter{Analiza symulowanych potyczek} 
-Dobrym sposobem by poznać aplikację jest jej uruchomienie. Jeszcze lepszym, przeprowadzenie jej analizy oraz zobrazowanie wyników za pomocą wykresów i~tabel. Rozdział ten poświęcony jest badaniu działania aplikacji \emph{Longest Free Word}. Badania skupiają się na wariancie aplikacji opierającym się na tworzeniu ciągu bez kwadratów, a~flaga \texttt{randomization} ustawiona została na \texttt{true}. Wszystkie testy uruchomione były na zdalnym serwerze, stworzonym za pośrednictwem serwisu \emph{digitalocean.com}. Podzespoły maszyny to system operacyjny Ubuntu 15.10, procesor 2,6 Ghz Intel Core i7, pamięć ram 16 GB 1600 MHz DDR3 i~dysk SSD.
+Dobrym sposobem by poznać aplikację jest jej uruchomienie. Jeszcze lepszym, przeprowadzenie jej analizy oraz zobrazowanie wyników za pomocą wykresów i~tabel. Rozdział ten poświęcony jest badaniu działania aplikacji \emph{Longest Free Word}. Badania skupiają się na wariancie aplikacji opierającym się na tworzeniu ciągu bez \emph{kwadratów}, a~flaga \emph{randomization} ustawiona została na \texttt{true}. Wszystkie testy uruchomione były na zdalnym serwerze, stworzonym za pośrednictwem serwisu \emph{digitalocean.com}. Podzespoły maszyny to system operacyjny Ubuntu 15.10, procesor 2,6 Ghz Intel Core i7, pamięć ram 16 GB 1600 MHz DDR3 i~dysk SSD.
+
+
 
 \section{Ilość symboli potrzebna na rozegranie partii}
-Długość gry zależna jest od dwóch czynników. Ustawionego poziomu zagnieżdżenia i~ilości dostępnych symboli. Thue w~swoim twierdzeniu \cite{repetition}, udowodnił, że jesteśmy w~stanie stworzyć nieskończenie długi ciąg bez kwadratów, mając do dyspozycji 3 symbole. Sytuacja zmienia się, gdy ciąg tworzony jest przez dwóch oponentów, z~których jeden stara się utworzyć kwadrat. Nawet używając zachłannego algorytmu w~przypadku budowniczego i~algorytmu z~zagnieżdżeniami 7 poziomu malarza, rozgrywka zawsze trwała będzie maksymalnie 5 ruchów. 
+Długość gry zależna jest od dwóch czynników. Ustawionego poziomu zagnieżdżenia i~ilości dostępnych symboli. Thue w~swoim twierdzeniu \cite{repetition}, udowodnił, że jesteśmy w~stanie stworzyć nieskończenie długi ciąg bez \emph{kwadratów}, mając do dyspozycji alfabet składający się z $3$ symboli. Sytuacja zmienia się, gdy ciąg tworzony jest przez dwóch graczy, z~których jeden stara się utworzyć \emph{kwadrat}. Jeśli  rolę \emph{budowniczego} pełnił będzie zachłanny algorytm, a rolę \emph{malarza} przejmie algorytm wykorzystujący siedmiopoziomową rekurencję, to przy takim alfabecie, rozgrywka i tak zawsze trwała będzie maksymalnie $5$ ruchów. 
 
-Dla 4 symboli, również nie jest możliwe rozegranie partii dłuższej niż 10 ruchów. Przy zachłannym algorytmie budowniczego, malarz jest w~stanie utworzyć ciąg długości 10. Jeśli algorytm budowniczego używa zagnieżdżeń, liczba ta zmniejsza się do 7.
+Dla alfabetu składającego się z $4$ symboli, algorytmy również nie są w~stanie rozegrać zbyt długiej partii. Przy rozgrywce, w~której udział bierze zachłanny algorytm pełniący rolę \emph{budowniczego}, niezależnie taktyki wybranej przez algorytm \emph{malarza}, rozgrywka zakończy się maksymalnie po $10$ ruchu.
+
+Tabela \ref{fig:maxGameLength}, przedstawia jakim wynikiem kończy się każda z~rozgrywek po przypisaniu odpowiednich wartości zmiennym konfiguracyjnym \emph{setPower}, \emph{builderNestingLevel} i~\emph{painterNestingLevel}. Wartym zauważenia jest, że przy alfabecie o~mocy $4$, zachłanny algorytm pełniący rolę \emph{malarza} (\emph{painterNestingLevel} $=0$), jest w stanie rozegrać partię na $10$ ruchów, a~rozgrywka algorytmów rekurencyjnych \mbox{(\emph{painterNestingLevel} $\geq 1$)}, kończy się po $7$ ruchach. Dowodzi to tego, że taktyka wykorzystująca rekurencje nie jest doskonała i~nie zawsze jest najlepszą opcją. Pozostałe warianty nie zostały przedstawione, gdyż rozgrywka w~ich przypadku nie skutkowała stałym wynikiem. Oznacza to, że taktyka \emph{budowniczego} nie była wystarczająco dobra by za każdym razem pokonać \emph{malarza} w~takiej samej ilości ruchów.
 
 \begin{table}[tbh]
     \centering
+	\caption{Maksymalna ilość ruchów w stosunku do ilości dostępnych symboli.}
 	\begin{tabular}{|l|l|l|l|} \hline
-	Ilość symboli & Poziom malarza & Poziom budowniczego & Długość gry \\ \hline
+	\emph{setPower} & \emph{painterNestingLevel} & \emph{builderNestingLevel} & Długość gry \\ \hline
 	$3$ & $\geq 0$ & $\geq 0$ & $5$ ruchów\\ \hline
 	$4$ & $0$ & $0$ & $7$ ruchów\\ \hline
 	$4$ & $\geq 1 $ & $\geq 1$ & $7$ ruchów\\ \hline
 	$4$ & $0$ & $\geq 1$ & $10$ ruchów\\ \hline
 	\end{tabular}
-	\caption{Maksymalna ilość ruchów w stosunku do ilości dostępnych symboli.}
 	\label{fig:maxGameLength}
 \end{table}
 
-Jak widać w~tabeli \ref{fig:maxGameLength}, przy alfabecie o~mocy 4, malarz poziomu zerowego lepiej radzi sobie  od malarza poziomu pierwszego. Dowodzi to tego, że taktyka wykorzystująca zagnieżdżenia nie jest doskonała i~nie zawsze jest najlepszą opcją. Pozostałe warianty nie zostały przedstawione, gdyż rozgrywka w~ich przypadku nie skutkowała stałym wynikiem. Oznacza to, że taktyka budowniczego nie była wystarczająco dobra by za każdym razem pokonać malarza w~takiej samej ilości ruchów.
 
 
-Dopiero rozgrywka na 5 symbolach daje algorytmom pole do popisu, bowiem w~przeprowadzonych badaniach, zależnie od ustawionych poziomów, trwała ona od 11 do conajmniej 236 ruchów.
 
-Używanie zachłannego algorytmu malarza przy alfabecie pięcioelementowym,  nie skutkuje zbyt długą grą. Niezależnie od poziomu budowniczego, kwadrat pojawi się zawsze po wspomnianym 11 kroku. Jednak podczas prób, gdy malarz miał ustawiony poziom zagnieżdżenia na 1, a~budowniczy działał zachłannie, rozgrywka trwała od 44 do 236 tur. Średnia arytmetyczna wyciągnięta z~ilości ruchów wyniosła $133,83$
+Dopiero rozgrywka na $5$ symbolach daje algorytmom pole do popisu, bowiem w~przeprowadzonych badaniach, zależnie od ustawionych wartości zmiennych \emph{builderNestingLevel} i~\emph{painterNestingLevel}, trwała ona od $11$ do conajmniej $236$ ruchów. Wykorzystywanie zachłannego algorytmu do pełnienia roli \emph{malarza} (\emph{painterNestingLevel} $=0$) przy alfabecie pięcioelementowym, nie skutkuje zbyt długą grą. Niezależnie od wartości zmiennej \emph{builderNestingLevel}, \emph{kwadrat} pojawi się zawsze po $11$ kroku. Jednak podczas prób, gdy wartość zmiennej \emph{painterNestingLevel} ustawiona była na $1$, a~algorytm \emph{budowniczego} działał zachłannie (\emph{builderNestingLevel} $=0$), rozgrywka trwała od $44$ do $236$ tur. Średnia arytmetyczna obliczona z~ilości ruchów w badanych rozgrywkach wyniosła $133,83$. Dane analizowanych rozgrywek znajdują się w tabeli \ref{fig:builder0Painter1Table}.
 
 \begin{table}[tbh]
     \centering
-	\begin{tabular}{|l|l|l|} \hline
-	Ilość symboli & Ilość ruchów & Czas trwania \\ \hline
-	5 & 44 & 0.1 s.\\ \hline
-	5 & 56 & 0.4 s.\\ \hline
-	5 & 81 & 2.4 s.\\ \hline
-	5 & 88 & 4.3 s.\\ \hline
-	5 & 100 & 7.6 s.\\ \hline
-	5 & 102 & 7.3 s.\\ \hline
-	5 & 163 & 1 min. 27 s. \\ \hline
-	5 & 171 & 1 min. 48 s. \\ \hline
-	5 & 173 & 1 min. 59 s. \\ \hline
-	5 & 193 & 4 min. \\ \hline
-	5 & 199 & 3 min. 38 s.\\ \hline
-	5 & 236 & 8 min. 51 s. \\ \hline
+    	\caption{Podsumowanie badanych rozgrywek, przy konfiguracji: \emph{setPower}~$=5$, \emph{builderNestingLevel}~$=0$, \emph{painterNestingLevel}~$=1$.}
+	\begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|} \hline
+	Ilość ruchów & Czas trwania \\ \hline
+	44 & 0.1 s.\\ \hline
+	56 & 0.4 s.\\ \hline
+	81 & 2.4 s.\\ \hline
+	88 & 4.3 s.\\ \hline
+	100 & 7.6 s.\\ \hline
+	102 & 7.3 s.\\ \hline
+	163 & 1 min. 27 s. \\ \hline
+	171 & 1 min. 48 s. \\ \hline
+	173 & 1 min. 59 s. \\ \hline
+	193 & 4 min. \\ \hline
+	199 & 3 min. 38 s.\\ \hline
+	236 & 8 min. 51 s. \\ \hline
 	\end{tabular}
-	\caption{Podsumowanie badań dla budownieczego poziomu 0 i malarza poziomu 1.}
 	\label{fig:builder0Painter1Table}
 \end{table}
 
-
-Przy poziomie budowniczego i~malarza ustawionym na 1, podczas 10 prób rozgrywka trwała od 30 do 213 ruchów. Średnia arytmetyczna obliczona na podstawie rozgrywek wynosi $96,9$, a~więc jest o~$37,23$ niższa, niż gdy budowniczy używał algorytmu zachłannego. 
+Przy wartości zmiennej \emph{builderNestingLevel} równej $0$ i zmiennej \emph{painterNestingLevel} równej $1$, podczas $10$ prób rozgrywka trwała od $30$ do $213$ ruchów. Średnia arytmetyczna obliczona z~ilości ruchów w analizowanych rozgrywkach wyniosła $96,9$, a~więc jest o~$37,23$ niższa, niż gdy rolę \emph{budowniczego} pełnił algorytm zachłanny. Dane analizowanych rozgrywek znajdują się w tabeli \ref{fig:builder1Painter1Table}.
 
 \begin{table}[tbh]
     \centering
-	\begin{tabular}{|l|l|l|} \hline
-	Ilość symboli & Ilość ruchów & Czas trwania \\ \hline
-	5 & 30 & 1.2 s. \\ \hline	
-	5 & 42 & 5.1 s. \\ \hline
-	5 & 45 & 11 s. \\ \hline	
-	5 & 47 & 7.8 s. \\ \hline
-	5 & 73 & 1 min. 17 s. \\ \hline
-	5 & 104 & 9 min. 38 s. \\ \hline
-	5 & 114 & 29 min. 29 s. \\ \hline
-	5 & 134 & 1 godz. 30 min. 27 s.  \\ \hline
-	5 & 178 & 5 godz. 11 min. 22 s. \\ \hline
-	5 & 202 & 9 godz. 42 min. 15 s. \\ \hline
-	5 & 213 & 13 godz. 04 min. 35 s. \\ \hline
+    	\caption{Podsumowanie badanych rozgrywek, przy konfiguracji: \emph{setPower}~$=5$, \emph{builderNestingLevel}~$=1$, \emph{painterNestingLevel}~$=1$.}
+	\begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|} \hline
+	Ilość ruchów & Czas trwania \\ \hline
+	30 & 1.2 s. \\ \hline	
+	42 & 5.1 s. \\ \hline
+	45 & 11 s. \\ \hline	
+	47 & 7.8 s. \\ \hline
+	73 & 1 min. 17 s. \\ \hline
+	104 & 9 min. 38 s. \\ \hline
+	114 & 29 min. 29 s. \\ \hline
+	134 & 1 godz. 30 min. 27 s.  \\ \hline
+	178 & 5 godz. 11 min. 22 s. \\ \hline
+	202 & 9 godz. 42 min. 15 s. \\ \hline
+	213 & 13 godz. 04 min. 35 s. \\ \hline
 	\end{tabular}
-	\caption{Podsumowanie badań dla budownieczego i malarza poziomu 1.}
 	\label{fig:builder1Painter1Table}
 \end{table}
 
 
-Obecne zasoby sprzętowe i~czasowe sprawiły, że malarz poziomu 2 okazał się niepokonany w~walce z~budowniczym poziomu 0. Przy ponad 10 próbach ani razu nie był zmuszony do stworzenia kwadratu w~rozgrywkach trwających $\leq 220$ tur i~około 26 godzin.
-
-
+Obecne zasoby sprzętowe i~czasowe sprawiły, że algorytm pełniący rolę \emph{malarza}, z wartością zmiennej \emph{painterNestingLevel} $=2$, okazał się niepokonany w~walce z~zachłannym algorytmem budowniczego. Przy ponad $10$ próbach ani razu nie był zmuszony do stworzenia \emph{kwadratu} w~rozgrywkach trwających $\leq 220$ tur i~około 26 godzin.
 
 
 
 \section{Pomiary czasów potrzebnych na podjęcie decyzji}
-Nieodłącznym elementem analizy działania aplikacji jest badanie czasu w~jakim wykonuje ona swoje algorytmy. Nie inaczej jest w~przypadku \emph{Longest Free Word}. Najkrótrzy zbadany czas decyzji algorytmu wyniósł jedną tysięczną sekundy, najdłuższy natomiast około dwóch godzin. Czas potrzebny na decyzję jest tym dłuższy, im dłuższy jest stworzony do tej pory ciąg. Naturalnie więc, na początku rozgrywki algorytm będzie działał szybko, lecz w~raz z~rozwojem potyczki będzie zwalniał. Zależność tą można zaobserwować na wykresie \ref{fig:builder0painter1}. Widoczne odchylenia to prawdopodobnie efekt działania innego procesu działającego na tej samej maszynie.
+Nieodłącznym elementem analizy działania aplikacji jest badanie czasu w~jakim wykonuje ona swoje algorytmy. Nie inaczej jest w~przypadku \emph{Longest Free Word}. Najkrótrzy zbadany czas odpowiedzi algorytmu wyniósł jedną tysięczną sekundy, najdłuższy natomiast około dwóch godzin. Czas potrzebny na podjęcie decyzji jest tym dłuższy, im dłuższy jest stworzony do tej pory ciąg. Naturalnie więc, na początku rozgrywki algorytm będzie działał szybko, lecz w~raz z~rozwojem potyczki będzie zwalniał. Zależność tą można zaobserwować na wykresie \ref{fig:builder0painter1}. Widoczne odchylenia to prawdopodobnie efekt działania innego procesu działającego na tej samej maszynie.
 
 \begin{figure}[tbh]
     \centering
+    \caption{Liczba sekund jakiej potrzebował algorytm \emph{budowniczego} na podjęcie decyzji, przy poszczególnych długościach ciągu i konfiguracji: $\emph{setPower}=5$, $\emph{builderNestingLevel}=0$, $\emph{painterNestingLevel}=1$.}
     \includegraphics[width = 0.8\textwidth]{images/timeBuilder0Painter1}
-    \caption{Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: $0$, malarz: $1$.}
     \label{fig:builder0painter1}
 \end{figure}
 
-Warto zauważyć jak ogromne różnice w~wydajności istnieją pomiędzy poziomami zagnieżdżenia algorytmów. Przy zagnieżdżeniu ustawionym na 2, dla ciągu długości 100 wyliczenie odpowiedniej decyzji zajęło około 170 razy więcej czasu niż przy zagnieżdżeniu równym 1. Różnice zobrazowane zostały na wykresach \ref{fig:builder1painter1} i~\ref{fig:builder2painter1}.
+\newpage
+Warto zauważyć jak ogromne różnice w~wydajności pojawiają się, gdy wartości zmiennych sterujących rekurencją są różne. Algorytmowi pełniącemu rolę \emph{budowniczego} przy wartości zmiennej \emph{builderNestingLevel} równej $2$, dla ciągu długości $100$, podjęcie decyzji zajęło około $170$ razy więcej czasu, niż po ustawieniu wartości tej zmiennej na $1$. Wykresy \ref{fig:builder1painter1} i~\ref{fig:builder2painter1}, przedstawiają różnice w złożonościach czasowych obu rozgrywek.
 
 \begin{figure}[tbh]
     \centering
+    \caption{Liczba sekund jakiej potrzebował algorytm \emph{budowniczego} na podjęcie decyzji, przy poszczególnych długościach ciągu i konfiguracji: $\emph{setPower}=5$, $\emph{builderNestingLevel}=1$, $\emph{painterNestingLevel}=1$.}
     \includegraphics[width = 0.8\textwidth]{images/timeBuilder1Painter1}
-    \caption{Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: $1$, malarz: $1$.}
     \label{fig:builder1painter1}
 \end{figure}
 
 \begin{figure}[tbh]
     \centering
+    \caption{Liczba sekund jakiej potrzebował algorytm \emph{budowniczego} na podjęcie decyzji, przy poszczególnych długościach ciągu i konfiguracji: $\emph{setPower}=5$, $\emph{builderNestingLevel}=2$, $\emph{painterNestingLevel}=1$.}
     \includegraphics[width = 0.8\textwidth]{images/timeBuilder2Painter1}
-    \caption{Ilość sekund potrzebna na podjęcie decyzji jako budowniczy przy poszczególnych długościach ciągu. Budowniczy: $2$, malarz: $1$.}
     \label{fig:builder2painter1}
 \end{figure}
 
 
 
-Odrobinę inaczej wyglądają analogiczne wykresy dla malarza. Algorytm malarza z~zagnieżdżeniami symuluje dodawanie kolejnych symboli w~wyznaczonym indeksie, jednak jeżeli w~danym miejscu da się wstawić tylko jeden symbol, to przeprowadzi mniej symulacji, niż jeśli dałoby się tam wstawić pięć symboli. Dzięki tej zależności na wykresie można zauważyć, przy których ruchach malarz jest w~opałach, a~przy których ma dostępnych wiele opcji.
+Odrobinę inaczej wyglądają analogiczne wykresy przedstawiające złożoności algorytmów pełniących rolę \emph{malarza}. Algorytm korzystający z~rekurencji symuluje dodawanie kolejnych symboli na wyznaczonej pozycji, jeżeli jednak w~danym miejscu da się wstawić tylko jeden symbol, to algorytm przeprowadzi mniej symulacji, niż jeśli dałoby się tam wstawić pięć symboli. Dzięki tej zależności na wykresie można zauważyć, przy których ruchach \emph{malarz} jest bliski przegranej, a~przy których ma wiele dostępnych opcji. Wykres \ref{fig:painter1builder0} przedstawia czasy potrzebne algorytmowi pełniącemu rolę \emph{malarza} na podjęcie decyzji. Jak widać zachłanny algorytm działający jako \emph{budowniczy} cyklicznie redukuje liczbę opcji \emph{malarza}.
 
-Wykres \ref{fig:painter1builder0} przedstawia wzloty i~spadki czasu trwania algorytmu. Jak widać zachłanny algorytm budowniczego cyklicznie redukuje liczbę opcji malarza.
+
+
+Jeśli przeanalizujemy wykres \ref{fig:painter1builder2} zauważymy, że podczas rozgrywki z algorytmem \emph{budowniczego}, który używa rekurencji, krzywe są o~wiele bardziej spiczaste, co oznacza, że dla \emph{malarza} jest to trudna rozgrywka, która ostatecznie kończy się w~$82$ ruchu. Ponownie możemy porównać ze sobą czasy jakie były potrzebne na podjęcie decyzji dla algorytmu wykorzystującego jednopoziomową rekurencję na wykresie \ref{fig:painter1builder2}, z algorytmem wykorzystującym dwupoziomową rekurencję na wykresie \ref{fig:painter2builder0}. Wykonanie ruchu, dla ciągu długości $79$ pierwszemu algorytmowi zajęło $0.061$ sekundy, natomiast temu bardziej złożonemu $17.711$ sekund. Zatem w~tym konkretnym ruchu algorytm korzystający z rekurencji głębszej o~jedno wywołanie, decydował się około $290$ razy dłużej.
 
 \begin{figure}[tbh]
     \centering
+    \caption{Liczba sekund jakiej potrzebował algorytm \emph{malarza} na podjęcie decyzji, przy poszczególnych długościach ciągu i konfiguracji: $\emph{setPower}=5$, $\emph{builderNestingLevel}=0$, \emph{painterNestingLevel}~$=1$.}
     \includegraphics[width = 0.8\textwidth]{images/timePainter1Builder0}
-    \caption{Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: $0$, malarz: $1$.}
     \label{fig:painter1builder0}
 \end{figure}
 
-Jeśli przeanalizujemy wykres \ref{fig:painter1builder2} zauważymy, że podczas rozgrywki ze sprytniejszym algorytmem budowniczego, krzywe są o~wiele bardziej spiczaste, co oznacza, że jest to trudna rozgrywka dla malarza, która ostatecznie kończy się w~82 ruchu.
-
-Ponownie możemy porównać ze sobą czasy podejmowania decyzji dla algorytmu z~zagnieżdżeniem 1 poziomu na wykresie \ref{fig:painter1builder2}, oraz 2 poziomu na wykresie \ref{fig:painter2builder0}. Wykonanie ruchu, dla ciągu długości 79 pierwszemu algorytmowi zajęło 0.061 sekundy, natomiast temu bardziej złożonemu 17.711. Zatem w~tym konkretnym ruchu algorytm z~zagnieżdżeniem o~1 większym decydował się około $290$ razy dłużej.
-
 \begin{figure}[tbh]
     \centering
+    \caption{Liczba sekund jakiej potrzebował algorytm \emph{malarza} na podjęcie decyzji, przy poszczególnych długościach ciągu i konfiguracji: $\emph{setPower}=5$, $\emph{builderNestingLevel}=2$, \emph{painterNestingLevel}~$=1$.}
     \includegraphics[width = 0.8\textwidth]{images/timePainter1Builder2}
-    \caption{Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: $2$, malarz: $1$.}
     \label{fig:painter1builder2}
 \end{figure}
 
 \begin{figure}[tbh]
     \centering
+    \caption{Liczba sekund jakiej potrzebował algorytm \emph{malarza} na podjęcie decyzji, przy poszczególnych długościach ciągu i konfiguracji: $\emph{setPower}=5$, $\emph{builderNestingLevel}=0$, \emph{painterNestingLevel}~$=2$.}
     \includegraphics[width = 0.8\textwidth]{images/timePainter2Builder0}
-    \caption{Ilość sekund potrzebna na podjęcie decyzji jako malarz przy poszczególnych długościach ciągu. Budowniczy: $0$, malarz: $2$.}
     \label{fig:painter2builder0}
 \end{figure}
 
 
-\section{Porównanie zachowań algorytmu z~zagnieżdżeniami i~bez zagnieżdżeń}
-Jeśli przyjrzymy się dokładnie działaniu zachłannego algorytmu wyszukiwania indeksu, to bez trudu zauważymy, że w~początkowej fazie gry, kiedy malarz ma dużą swobodę w~wybieraniu elementów, indeks, który jest wybierany to w~przeważającej większości ostatni indeks ciągu. Spowodowane jest to tym, że indeksy $0$ oraz $n+1$, otoczone są elementami tylko z~lewej lub prawej strony, dzięki temu malarz ma na nich do wyboru większą gamę symboli. Na reszcie indeksów zazwyczaj dostępne jest tyle samo symboli, zwracany jest więc ostatni z~nich, dokładnie tak jak zostało to zaimplementowane. Taktyka tego typu została przeze mnie nazwana \emph{taktyką iteracyjną} i~nie jest zbyt emocjonująca. Jeśli nie mamy zbyt dużej puli symboli do wyboru, to po pewnym czasie następuje wyłamanie się z~tego stylu gry. Wyłamanie pojawia się zawsze w~momencie, gdy budowniczy znajduje indeks z~mniejszą ilością możliwości. 
 
-Przeprowadzone przeze mnie badania, przy mocy zbioru symboli równym 5, oraz poziomie malarza równym, 1 wykazały, że w~przeciągu kilku kroków od pierwszego znalezienia indeksu, pod którym dostępne są dwa symbole, pojawia się indeks pod którym dostępny jest tylko jeden symbol. Nie wykryłem natomiast korelacji, pomiędzy pierwszym wyłamaniem się z~\emph{taktyki iteracyjnej}, a~długością rozgrywki. 
+
+\section{Porównanie zachowań algorytmu z~zagnieżdżeniami i~bez zagnieżdżeń}
+Jeśli przyjrzymy się dokładnie działaniu zachłannego algorytmu wyszukiwania pozycji, to bez trudu zauważymy, że w~początkowej fazie gry, kiedy \emph{malarz} ma dużą swobodę w~wybieraniu elementów, pozycja, która jest wybierana to w~przeważającej większości ostatni indeks ciągu. Spowodowane jest to tym, że pozycje $0$ oraz $n+1$, otoczone są elementami tylko z~lewej lub prawej strony, dzięki temu \emph{malarz} ma na nich do wyboru większą gamę symboli. Na reszcie pozycji zazwyczaj dostępne jest tyle samo symboli, zwracany jest więc ostatni z~nich. Taktyka tego typu została przeze mnie nazwana \emph{taktyką iteracyjną} i~nie jest zbyt emocjonująca. Jeśli nie mamy zbyt dużej puli symboli do wyboru, to po pewnym czasie następuje wyłamanie się z~tego stylu gry. Wyłamanie pojawia się zawsze w~momencie, gdy algorytm pełniący rolę \emph{budowniczego} znajduje indeks z~mniejszą ilością możliwości. 
+
+Przeprowadzone przeze mnie badania, przy alfabecie pięcioelementowym, zmiennych \emph{painterNestingLevel} ustawionej na $1$, i \emph{builderNestingLevel} ustawionej na $0$, wykazały, że w~przeciągu kilku kroków od pierwszego znalezienia pozycji, pod którą dostępne są dwa symbole, pojawia się pozycja pod którą dostępny jest tylko jeden symbol. Nie wykryłem natomiast korelacji, pomiędzy pierwszym wyłamaniem się z~\emph{taktyki iteracyjnej}, a~długością rozgrywki. Wykres przedstawia $10$ rozgrywek, na którym opisane są powyższe zależności.
  
 \begin{figure}[tbh]
     \centering
+    \caption{Stosunek pierwszego wystąpienia indeksu z dwoma dostępnymi elementami, do pojawienia się indeksu z jednym dostępnym elementem i długości rozgrywki. Użyty został pięcioelementowy alfabet, rolę \emph{budowniczego} pełnił zachłanny algorytm, a~\emph{malarza} algorytm wykorzystujący jednopoziomową rekurencję.}
     \includegraphics[width = 0.8\textwidth]{images/builder0efficiency}
-    \caption{Stosunek pierwszego wystąpienia indeksu z dwoma dostępnymi elementami, do pojawienia się indeksu z jednym dostępnym elementem i długości rozgrywki.}
     \label{fig:builder0Efficiency}
 \end{figure}
 
-Ciężko jest dopatrzyć się podobnej cykliczności w~algorytmie z~zagnieżdżeniami. Algorytm ten skupia się raczej na grupie indeksów będących obok siebie. Wykres \ref{fig:buildersPickedIndexes} przedstawia rozkład wybieranych indeksów przez oba algorytmy. Rozgrywki nie trwały więcej niż 115 ruchów, na rysunku można zaobserwować, że najczęściej wybierane indeksy przez algorytm z~zagnieżdżeniami należały do zbioru $\leq 27$. Natomiast indeksy wybierane przez algorytm zachłanny, są w~miarę równomiernie rozłożone po całej szerokości wykresu. Ponadto, mimo wyłamania się z~wcześniej wspomnianej \emph{taktyki iteracyjnej}, algorytm zachłanny w~dalszym ciągu działa cyklicznie, wybierając indeksy po zero, jeden lub pięć razy.
+Ciężko jest dopatrzyć się podobnej cykliczności w~algorytmie wykorzystującym rekurencję. Algorytm ten skupia się raczej na grupie pozycji będących obok siebie. Wykres \ref{fig:buildersPickedIndexes} przedstawia rozkład wybieranych pozycji przez oba algorytmy. Rozgrywki nie trwały dłużej niż $115$ ruchów, na rysunku można zaobserwować, że najczęściej wybierane pozycje przez algorytm rekurencyjny należały do zbioru liczb $\leq 27$. Natomiast pozycje wybierane przez algorytm zachłanny, są w~miarę równomiernie rozłożone po całej szerokości wykresu. Ponadto, mimo wyłamania się z~wcześniej wspomnianej \emph{taktyki iteracyjnej}, algorytm zachłanny w~dalszym ciągu działa cyklicznie, wybierając pozycje po zero, jeden lub pięć razy.
 
 \begin{figure}[tbh]
     \centering
+    \caption{Porównanie rozkładu wybieranych pozycji przez algorytm \emph{budowniczego} używający jednopoziomowej rekurencji oraz algorytm \emph{budowniczego} działający zachłannie.}
     \includegraphics[width = 0.8\textwidth]{images/buildersPickedIndexes}
-    \caption{Porównanie rozkładu wybieranych indeksów przez budowniczego z zagnieżdżeniami oraz budowniczego zachłannego.}
     \label{fig:buildersPickedIndexes}
 \end{figure}
 
 % zakończenie
 \summary
-Twierdzenia Axela Thue na temat sekwencji symboli okazały się doskonałą bazą do dalszych rozważań. Wykorzystali je J. Grytczuk, P. Szafruga i~M. Zmarz, tworząc grę dla dwóch graczy wykorzystującą dotychczasowe koncepcje. Stworzona przez nich praca, wprowadziła nowe problemy, które mogą być rozwiązane drogą programistyczną. Podjąłem to wyzwanie podczas pisania pracy dyplomowej -- napisana przeze mnie aplikacja obsługuje logikę gry, wprowadza szereg funkcji ułatwiających badanie rozgrywek, a~co najważniejsze jest w~stanie zasymulować graczy ze sprecyzowanymi przez użytkownika poziomami inteligencji. Wprowadziłem ponad cztery rodzaje taktyk oraz sposób na modyfikację intensywności obliczeń, która skutkowała lepszymi rezultatami w~rozgrywce. Mimo to nie byłem w~stanie rzucić nowego światła na problem ilości symboli potrzebnej na dowolnie długą grę. Główną tego przyczyną jest brak zasobów sprzętowych, które pozwoliłyby na przeprowadzenie większej ilości obliczeń.
+Twierdzenia Axela Thue na temat sekwencji symboli okazały się doskonałą bazą do dalszych rozważań. Wykorzystali je J. Grytczuk, P. Szafruga i~M. Zmarz, tworząc grę dla dwóch graczy wykorzystującą dotychczasowe koncepcje. Podczas pisania pracy dyplomowej, postanowiłem podejść do ich pomysłu od strony programistycznej. Napisana przeze mnie aplikacja obsługuje logikę gry, wprowadza szereg funkcji ułatwiających analizę przeprowadzonych gier, a~co najważniejsze, za pomocą algorytmów jest w~stanie zasymulować rozgrywkę graczy, korzystając z wprowadzonych przeze mnie taktyk. Można dodatkowo modyfikować stworzone przeze mnie taktyki, przez zmienne konfiguracyjne, które sterują wykorzystywanym poziomem rekurencji. Ustawienie większego poziomu zagnieżdżenia skutkowało lepszymi rezultatami w~rozgrywce. Mimo to nie byłem w~stanie rzucić nowego światła na problem ilości symboli potrzebnej na dowolnie długą grę. Główną tego przyczyną jest brak zasobów sprzętowych, które pozwoliłyby na przeprowadzenie większej ilości obliczeń.
 
 % załączniki (opcjonalnie):
 \appendix

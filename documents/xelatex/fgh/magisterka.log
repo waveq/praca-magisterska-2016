@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2016.3.5)  5 JUN 2016 16:56
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2016.3.5)  5 JUN 2016 16:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -923,6 +923,18 @@ LaTeX Warning: Unused global option(s):
     [document].
 
 (./magisterka.aux)
+Runaway argument?
+{\contentsline {figure}{\numberline {3.7}{\ignorespaces Stosunek pier\ETC.
+! File ended while scanning use of \@writefile.
+<inserted text> 
+                \par 
+l.47 \begin{document}
+                     
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
 \openout1 = `magisterka.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
@@ -941,7 +953,7 @@ LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 47.
 LaTeX Font Info:    ... okay on input line 47.
 LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 47.
 LaTeX Font Info:    Try loading font information for T3+cmr on input line 47.
- (/usr/local/texlive/2015/texmf-dist/tex/latex/tipa/t3cmr.fd
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
 LaTeX Font Info:    ... okay on input line 47.
@@ -1013,6 +1025,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> EU1/Monaco(0)/bx/n on input line 47.
 \AtBeginShipoutBox=\box50
 Package hyperref Info: Link coloring ON on input line 47.
+
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -1051,64 +1064,64 @@ File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 
 ] [2
 
-] [3] (./magisterka.toc [4
-
-
-])
+] [3] (./magisterka.toc)
 \tf@toc=\write4
 \openout4 = `magisterka.toc'.
 
- [5]
+ [4
 
-LaTeX Warning: Citation `repetition' on page 6 undefined on input line 73.
 
-[6
+]
+
+LaTeX Warning: Citation `repetition' on page 5 undefined on input line 73.
+
+[5
 
 ]
 Rozdział 1.
-[7
+[6
 
 ]
 
-LaTeX Warning: Citation `nagell1977selected' on page 8 undefined on input line 
+LaTeX Warning: Citation `nagell1977selected' on page 7 undefined on input line 
 103.
 
 
-LaTeX Warning: Citation `prouhet' on page 8 undefined on input line 103.
+LaTeX Warning: Citation `prouhet' on page 7 undefined on input line 103.
 
-[8] [9] [10]
+[7] [8] [9]
 
-LaTeX Warning: Citation `carpi' on page 11 undefined on input line 181.
-
-
-LaTeX Warning: Citation `thueonline' on page 11 undefined on input line 184.
+LaTeX Warning: Citation `carpi' on page 10 undefined on input line 181.
 
 
-LaTeX Warning: Citation `thueonline2' on page 11 undefined on input line 186.
+LaTeX Warning: Citation `thueonline' on page 10 undefined on input line 184.
 
 
-LaTeX Warning: Citation `thueonline' on page 11 undefined on input line 188.
-
-[11]
-
-LaTeX Warning: Citation `thueonline' on page 12 undefined on input line 190.
+LaTeX Warning: Citation `thueonline2' on page 10 undefined on input line 186.
 
 
-LaTeX Warning: Citation `first' on page 12 undefined on input line 190.
+LaTeX Warning: Citation `thueonline' on page 10 undefined on input line 188.
+
+[10]
+
+LaTeX Warning: Citation `thueonline' on page 11 undefined on input line 190.
 
 
-LaTeX Warning: Citation `second' on page 12 undefined on input line 190.
+LaTeX Warning: Citation `first' on page 11 undefined on input line 190.
 
 
-LaTeX Warning: Citation `thueonline' on page 12 undefined on input line 194.
+LaTeX Warning: Citation `second' on page 11 undefined on input line 190.
 
-[12] [13]
+
+LaTeX Warning: Citation `thueonline' on page 11 undefined on input line 194.
+
+[11] [12]
 Rozdział 2.
 LaTeX Font Info:    Font shape `EU1/Monaco(0)/m/n' will be
 (Font)              scaled to size 9.0pt on input line 209.
-[14
+[13
 
-] [15] (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
+] [14] (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2014/09/06 1.5e listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
@@ -1116,124 +1129,64 @@ nput line 269.
 LaTeX Font Info:    Font shape `EU1/Monaco(0)/m/n' will be
 (Font)              scaled to size 8.2125pt on input line 269.
 
-[16] [17]
+[15] [16]
 File: images/squareFinding.png Graphic file (type QTm)
- <use  "images/squareFinding.png" > [18] [19]
+ <use  "images/squareFinding.png" > [17] [18]
 File: images/overlapFinding.png Graphic file (type QTm)
 
-<use  "images/overlapFinding.png" > [20]
+<use  "images/overlapFinding.png" > [19]
 Overfull \hbox (6.73615pt too wide) in paragraph at lines 367--368
 []\EU1/Georgia(0)/m/n/12 Plik konfiguracyjny nie jest wystarczającym środkiem k
 omunikacji z apli-
  []
 
-[21]
+[20]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [22]
+ [21]
 Overfull \hbox (11.41862pt too wide) in paragraph at lines 419--420
 \EU1/Georgia(0)/m/n/12 komputerowych graczy za pomocą zmiennych konfiguracyjnyc
 h. Jeśli zmien-
  []
 
-[23] [24] [25] [26] [27]
+[22] [23] [24] [25] [26]
 File: images/nestingPainter.png Graphic file (type QTm)
  <use  "images/nestingPainter.png" >
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [28]
-[29]
+ [27]
+[28]
 File: images/thueMobile.png Graphic file (type QTm)
- <use  "images/thueMobile.png" > [30] [31]
-Rozdział 3.
+ <use  "images/thueMobile.png" > [29] [30] (./magisterka.bbl [31
 
-LaTeX Warning: Citation `repetition' on page 32 undefined on input line 550.
+]) [32
 
-[32
-
-] [33] [34]
-File: images/timeBuilder0Painter1.png Graphic file (type QTm)
- <use  "images/timeBuilder0Painter1.png" > [35]
-File: images/timeBuilder1Painter1.png Graphic file (type QTm)
-
-<use  "images/timeBuilder1Painter1.png" >
-File: images/timeBuilder2Painter1.png Graphic file (type QTm)
-
-<use  "images/timeBuilder2Painter1.png" > [36]
-File: images/timePainter1Builder0.png Graphic file (type QTm)
-
-<use  "images/timePainter1Builder0.png" >
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [37]
-File: images/timePainter1Builder2.png Graphic file (type QTm)
-
-<use  "images/timePainter1Builder2.png" >
-File: images/timePainter2Builder0.png Graphic file (type QTm)
-
-<use  "images/timePainter2Builder0.png" > [38]
-Underfull \vbox (badness 2486) has occurred while \output is active []
-
-
-
-Package Fancyhdr Warning: \headheight is too small (15.0pt): 
- Make it at least 27.92035pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[39]
-File: images/builder0efficiency.png Graphic file (type QTm)
- <use  "images/builder0efficiency.png" >
-File: images/buildersPickedIndexes.png Graphic file (type QTm)
-
-<use  "images/buildersPickedIndexes.png" >
-Underfull \vbox (badness 3000) has occurred while \output is active []
-
- [40]
-[41]
-No file magisterka.bbl.
-[42
-
-] (./magisterka.lot)
+]
+(./magisterka.lot)
 \tf@lot=\write5
 \openout5 = `magisterka.lot'.
 
- [43
+ [33
 
-] (./magisterka.lof [44
+] (./magisterka.lof
+Runaway argument?
+{\numberline {3.1}{\ignorespaces Liczba sekund jakiej potrzebował al\ETC.
+! Paragraph ended before \contentsline was complete.
+<to be read again> 
+                   \par 
+l.9 ...ak or <return> to continue without it.}\par
+                                                   \let \reserved@d = *\def ...
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
 
-])
-\tf@lof=\write6
-\openout6 = `magisterka.lof'.
+! Missing { inserted.
+l.9 ...ut it.}\par \let \reserved@d = *\def \par }
+                                                  }{36}{figure.3.1}
+Where was the left brace? You said something like `\def\a}',
+which I'm going to interpret as `\def\a{}'.
 
- [45] (./magisterka.lol)
-\tf@lol=\write7
-\openout7 = `magisterka.lol'.
-
-
-[46
-
-] [47
-
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 727.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 727.
- (./magisterka.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 727.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 727.
-
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 727.
- ) 
-Here is how much of TeX's memory you used:
- 23628 strings out of 493706
- 431286 string characters out of 6145770
- 538002 words of memory out of 5000000
- 26698 multiletter control sequences out of 15000+600000
- 13128 words of font info for 92 fonts, out of 8000000 for 9000
- 1328 hyphenation exceptions out of 8191
- 53i,12n,72p,10400b,1187s stack positions out of 5000i,500n,10000p,200000b,80000s
-
-Output written on magisterka.pdf (47 pages).
+! Extra }, or forgotten \endgroup.
+l.9 ...t it.}\par \let \reserved@d = *\def \par }}
+                                                  {36}{figure.3.1}
+I've deleted a group-closing symbol because 
