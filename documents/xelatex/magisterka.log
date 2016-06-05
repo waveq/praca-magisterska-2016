@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2016.3.5)  5 JUN 2016 16:56
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2016.3.5)  5 JUN 2016 17:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1030,11 +1030,8 @@ LaTeX Info: Redefining \nameref on input line 47.
 \openout3 = `magisterka.out'.
 
 \c@lstlisting=\count162
-
-
-LaTeX Warning: Citation `rampersad2007overlap' undefined on input line 53.
-
 LaTeX Font Info:    Try loading font information for U+msa on input line 66.
+
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -1058,51 +1055,13 @@ File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 \tf@toc=\write4
 \openout4 = `magisterka.toc'.
 
- [5]
-
-LaTeX Warning: Citation `repetition' on page 6 undefined on input line 73.
-
-[6
+ [5] [6
 
 ]
 Rozdział 1.
 [7
 
-]
-
-LaTeX Warning: Citation `nagell1977selected' on page 8 undefined on input line 
-103.
-
-
-LaTeX Warning: Citation `prouhet' on page 8 undefined on input line 103.
-
-[8] [9] [10]
-
-LaTeX Warning: Citation `carpi' on page 11 undefined on input line 181.
-
-
-LaTeX Warning: Citation `thueonline' on page 11 undefined on input line 184.
-
-
-LaTeX Warning: Citation `thueonline2' on page 11 undefined on input line 186.
-
-
-LaTeX Warning: Citation `thueonline' on page 11 undefined on input line 188.
-
-[11]
-
-LaTeX Warning: Citation `thueonline' on page 12 undefined on input line 190.
-
-
-LaTeX Warning: Citation `first' on page 12 undefined on input line 190.
-
-
-LaTeX Warning: Citation `second' on page 12 undefined on input line 190.
-
-
-LaTeX Warning: Citation `thueonline' on page 12 undefined on input line 194.
-
-[12] [13]
+] [8] [9] [10] [11] [12] [13]
 Rozdział 2.
 LaTeX Font Info:    Font shape `EU1/Monaco(0)/m/n' will be
 (Font)              scaled to size 9.0pt on input line 209.
@@ -1121,21 +1080,10 @@ File: images/squareFinding.png Graphic file (type QTm)
  <use  "images/squareFinding.png" > [18] [19]
 File: images/overlapFinding.png Graphic file (type QTm)
 
-<use  "images/overlapFinding.png" > [20]
-Overfull \hbox (6.73615pt too wide) in paragraph at lines 367--368
-[]\EU1/Georgia(0)/m/n/12 Plik konfiguracyjny nie jest wystarczającym środkiem k
-omunikacji z apli-
- []
-
-[21]
+<use  "images/overlapFinding.png" > [20] [21]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [22]
-Overfull \hbox (11.41862pt too wide) in paragraph at lines 419--420
-\EU1/Georgia(0)/m/n/12 komputerowych graczy za pomocą zmiennych konfiguracyjnyc
-h. Jeśli zmien-
- []
-
 [23] [24] [25] [26] [27]
 File: images/nestingPainter.png Graphic file (type QTm)
  <use  "images/nestingPainter.png" >
@@ -1146,9 +1094,6 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: images/thueMobile.png Graphic file (type QTm)
  <use  "images/thueMobile.png" > [30] [31]
 Rozdział 3.
-
-LaTeX Warning: Citation `repetition' on page 32 undefined on input line 550.
-
 [32
 
 ] [33] [34]
@@ -1190,30 +1135,30 @@ File: images/buildersPickedIndexes.png Graphic file (type QTm)
 Underfull \vbox (badness 3000) has occurred while \output is active []
 
  [40]
-[41]
-No file magisterka.bbl.
-[42
+[41] (./magisterka.bbl [42
+
+]) [43
 
 ] (./magisterka.lot)
 \tf@lot=\write5
 \openout5 = `magisterka.lot'.
 
- [43
+ [44
 
-] (./magisterka.lof [44
+] (./magisterka.lof
+[45
 
 ])
 \tf@lof=\write6
 \openout6 = `magisterka.lof'.
 
- [45] (./magisterka.lol)
+ [46] (./magisterka.lol)
 \tf@lol=\write7
 \openout7 = `magisterka.lol'.
 
+ [47
 
-[46
-
-] [47
+] [48
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 727.
@@ -1221,19 +1166,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 727.
  (./magisterka.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 727.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 727.
-
-
-LaTeX Warning: There were undefined references.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 727.
  ) 
 Here is how much of TeX's memory you used:
- 23628 strings out of 493706
- 431286 string characters out of 6145770
- 538002 words of memory out of 5000000
+ 23630 strings out of 493706
+ 431316 string characters out of 6145770
+ 538257 words of memory out of 5000000
  26698 multiletter control sequences out of 15000+600000
  13128 words of font info for 92 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  53i,12n,72p,10400b,1187s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on magisterka.pdf (47 pages).
+Output written on magisterka.pdf (48 pages).

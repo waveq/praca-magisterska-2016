@@ -364,7 +364,7 @@ Działanie algorytmu ilustruje rysunek \ref{fig:overlapFinding}. Tutaj również
 \end{figure}
 
 \section{Komunikacja z~użytkownikiem}
-Plik konfiguracyjny nie jest wystarczającym środkiem komunikacji z~aplikacją. W~związku z~tym, po uruchomieniu programu mamy dostęp do konsoli, która służy do wyświetlania jak i~wprowadzania treści.
+Plik konfiguracyjny nie jest wystarczającym środkiem komunikacji z~ap\-likacją. W~związku z~tym, po uruchomieniu programu mamy dostęp do konsoli, która służy do wyświetlania jak i~wprowadzania treści.
 
 Po uruchomieniu aplikacji na ekranie wypisywane są najważniejsze op\-cje konfiguracyjne, takie jak poziom budowniczego, poziom malarza oraz lista dostępnych symboli. Jeśli uruchomiliśmy grę w~trybie \texttt{humanHuman}, to aplikacja w~pierwszej kolejności poprosi nas o~indeks. Po wpisaniu indeksu należącego do zbioru \mbox{$\{0, 1, \ldots,n\}$}, program zażąda podania symbolu, powinien on należeć do naszego alfabetu, czyli symbol musi należeć do zbioru \mbox{$\{0, 1, \ldots, setPower-1\}$}. W~momencie gdy podaliśmy prawidłowe wartości na ekran konsoli wyświetlany zostaje ciąg $S'$, który został utworzony poprzez dodanie do istniejącego ciągu odpowiedniego symbolu. Jeśli w~ciągu $S'$ pojawi się kwadrat, wyświetlony zostanie czas rozgrywki, ilość ruchów jaka została do tej pory wykonana oraz indeksy wraz z~symbolami, wspomnianego powtórzenia. Przykład rozgrywki przedstawia kod \ref{lst:gameExample}.
 
@@ -416,7 +416,7 @@ Jeśli uruchomimy rozgrywkę z~komputerem, obok wybranego indeksu lub symbolu po
 \noindent By ułatwić późniejszą analizę wszystkie informacje zawarte w~konsoli, zapisywane są do nowo utworzonego pliku w~katalogu \underline{output}.
 
 \section{Zachłanny algorytm wyszukiwania symbolu}
-Jak zostało wcześniej wspomniane można sterować rodzajami taktyk komputerowych graczy za pomocą zmiennych konfiguracyjnych. Jeśli zmienną \emph{painterNestingLevel} ustawimy na $0$, algorytm \emph{malarza} działał będzie zachłannie, wybierając opcje, która jest najatrakcyjniejsza w~danym momencie, nie zważając na to, co może wydarzyć się w~kolejnej turze. Zasada działania zachłannego algorytmu \emph{malarza} zapisana jest w metodzie \ref{lst:findRightColorGreedy}. Definicja metody mówi nam o trzech parametrach jakie są do niej przekazywane:
+Jak zostało wcześniej wspomniane można sterować rodzajami taktyk komputerowych graczy za pomocą zmiennych konfiguracyjnych. Jeżeli zmienną \emph{painterNestingLevel} ustawimy na $0$, algorytm \emph{malarza} działał będzie zachłannie, wybierając opcje, która jest najatrakcyjniejsza w~danym momencie, nie zważając na to, co może wydarzyć się w~kolejnej turze. Zasada działania zachłannego algorytmu \emph{malarza} zapisana jest w metodzie \ref{lst:findRightColorGreedy}. Definicja metody mówi nam o trzech parametrach jakie są do niej przekazywane:
 \begin{itemize}
 \item \texttt{sequence} -- utworzony wcześniej ciąg,
 \item \texttt{index} -- indeks wybrany przez budowniczoego,

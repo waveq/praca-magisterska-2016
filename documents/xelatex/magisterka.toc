@@ -20,7 +20,8 @@
 \contentsline {section}{\numberline {3.2}Pomiary czasów potrzebnych na podjęcie decyzji}{35}{section.3.2}
 \contentsline {section}{\numberline {3.3}Porównanie zachowań algorytmu z\nobreakspace {}zagnieżdżeniami i\nobreakspace {}bez zagnieżdżeń}{39}{section.3.3}
 \contentsline {chapter}{Zakończenie}{42}{chapter*.5}
-\contentsline {chapter}{Spis tabel}{43}{appendix*.6}
-\contentsline {chapter}{Spis rysunków}{44}{appendix*.7}
-\contentsline {chapter}{Spis kodów źródłowych}{46}{appendix*.8}
-\contentsline {chapter}{Oświadczenie}{47}{appendix*.9}
+\contentsline {chapter}{Bibliografia}{43}{appendix*.6}
+\contentsline {chapter}{Spis tabel}{44}{appendix*.7}
+\contentsline {chapter}{Spis rysunków}{45}{appendix*.8}
+\contentsline {chapter}{Spis kodów źródłowych}{47}{appendix*.9}
+\contentsline {chapter}{Oświadczenie}{48}{appendix*.10}
