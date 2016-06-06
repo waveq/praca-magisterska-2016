@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2016.3.5)  5 JUN 2016 19:50
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2016.3.5)  6 JUN 2016 20:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1099,11 +1099,7 @@ File: images/thueMobile.png Graphic file (type QTm)
 Rozdział 3.
 [32
 
-]
-Underfull \vbox (badness 2285) has occurred while \output is active []
-
- [33]
-[34]
+] [33] [34]
 File: images/timeBuilder0Painter1.png Graphic file (type QTm)
  <use  "images/timeBuilder0Painter1.png" > [35]
 File: images/timeBuilder1Painter1.png Graphic file (type QTm)
@@ -1173,16 +1169,12 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 725.
  (./magisterka.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 725.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 725.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 725.
  ) 
 Here is how much of TeX's memory you used:
  23630 strings out of 493706
  431316 string characters out of 6145770
- 537257 words of memory out of 5000000
+ 537262 words of memory out of 5000000
  26698 multiletter control sequences out of 15000+600000
  13128 words of font info for 92 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
