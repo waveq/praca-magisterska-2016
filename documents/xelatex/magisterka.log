@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2016.3.5)  7 JUN 2016 15:51
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2016.3.5)  7 JUN 2016 23:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1094,68 +1094,64 @@ Rozdział 3.
 [32
 
 ] [33] [34]
-File: images/timeBuilder0Painter1.png Graphic file (type QTm)
- <use  "images/timeBuilder0Painter1.png" > [35]
-File: images/timeBuilder1Painter1.png Graphic file (type QTm)
+File: images2/timeBuilder0Painter1.png Graphic file (type QTm)
+ <use  "images2/timeBuilder0Painter1.png" > [35]
+File: images2/timeBuilder1Painter1.png Graphic file (type QTm)
 
-<use  "images/timeBuilder1Painter1.png" >
-File: images/timeBuilder2Painter1.png Graphic file (type QTm)
+<use  "images2/timeBuilder1Painter1.png" >
+File: images2/timeBuilder2Painter1.png Graphic file (type QTm)
 
-<use  "images/timeBuilder2Painter1.png" > [36]
-File: images/timePainter1Builder0.png Graphic file (type QTm)
+<use  "images2/timeBuilder2Painter1.png" > [36]
+File: images2/timePainter1Builder0.png Graphic file (type QTm)
 
-<use  "images/timePainter1Builder0.png" >
-Underfull \vbox (badness 10000) has occurred while \output is active []
+<use  "images2/timePainter1Builder0.png" >
+File: images2/timePainter1Builder2.png Graphic file (type QTm)
 
- [37]
-File: images/timePainter1Builder2.png Graphic file (type QTm)
+<use  "images2/timePainter1Builder2.png" >
+File: images2/timePainter2Builder0.png Graphic file (type QTm)
 
-<use  "images/timePainter1Builder2.png" >
-File: images/timePainter2Builder0.png Graphic file (type QTm)
+<use  "images2/timePainter2Builder0.png" > [37] [38] [39]
+File: images2/builder0efficiency.png Graphic file (type QTm)
 
-<use  "images/timePainter2Builder0.png" > [38]
-Underfull \vbox (badness 2486) has occurred while \output is active []
+<use  "images2/builder0efficiency.png" >
+File: images2/buildersPickedIndexes.png Graphic file (type QTm)
 
+<use  "images2/buildersPickedIndexes.png" >
+Underfull \vbox (badness 2735) has occurred while \output is active []
 
+ [40
+
+]
 
 Package Fancyhdr Warning: \headheight is too small (15.0pt): 
  Make it at least 27.92035pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[39]
-File: images/builder0efficiency.png Graphic file (type QTm)
- <use  "images/builder0efficiency.png" >
-File: images/buildersPickedIndexes.png Graphic file (type QTm)
+[41] [42] (./magisterka.bbl [43
 
-<use  "images/buildersPickedIndexes.png" >
-Underfull \vbox (badness 3000) has occurred while \output is active []
-
- [40]
-[41] (./magisterka.bbl [42
-
-]) [43
+]) [44
 
 ] (./magisterka.lot)
 \tf@lot=\write5
 \openout5 = `magisterka.lot'.
 
- [44
+ [45
 
-] (./magisterka.lof
-[45
+]
+(./magisterka.lof [46
 
 ])
 \tf@lof=\write6
 \openout6 = `magisterka.lof'.
 
- [46] (./magisterka.lol)
+ [47] (./magisterka.lol)
 \tf@lol=\write7
 \openout7 = `magisterka.lol'.
 
- [47
+ [48
 
-] [48
+] [49
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 725.
@@ -1163,15 +1159,19 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 725.
  (./magisterka.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 725.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 725.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 725.
  ) 
 Here is how much of TeX's memory you used:
- 23630 strings out of 493706
- 431316 string characters out of 6145770
+ 23631 strings out of 493706
+ 431332 string characters out of 6145770
  537262 words of memory out of 5000000
  26698 multiletter control sequences out of 15000+600000
  13128 words of font info for 92 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  53i,12n,72p,10400b,1183s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on magisterka.pdf (48 pages).
+Output written on magisterka.pdf (49 pages).
