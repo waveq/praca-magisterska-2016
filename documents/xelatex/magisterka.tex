@@ -355,7 +355,7 @@ Działanie algorytmu ilustruje rysunek \ref{fig:overlapFinding}. Tutaj również
 \begin{figure}[tbh]
     \centering
     \caption{Działanie algorytmu szukającego \emph{nasunięć}.}
-    \includegraphics[width = 0.8\textwidth]{images/overlapFinding}
+    \includegraphics[width = \textwidth]{images/overlapFinding}
     \label{fig:overlapFinding}
 \end{figure}
 
@@ -436,7 +436,7 @@ int findRightColorGreedy(List<Integer> sequence, int index, int power) {
 		return -1;
 	}
 \end{lstlisting}
-
+\newpage
 \section{Zachłanny algorytm wyszukiwania indeksu}
 By można było przeprowadzić symulację gry należy wprowadzić również algorytm \emph{budowniczego}, starający się znaleźć najmniej atrakcyjny indeks dla \emph{malarza}. Zachłanny algorytm realizujący to zadanie znajduje się w metodzie \texttt{findRightIndexGreedy} (\ref{lst:findRightIndexGreedy}). Metoda jako parametry otrzymuje stworzony wcześniej ciąg oraz moc zbioru symboli. Zmienna \texttt{winner} ustawiona początkowo na $-1$, reprezentuje indeks, który zostanie zwrócony jako ten, pod którym jest najmniejsza dowolność wyboru symboli bez tworzenia powtórzeń. Metoda iteruje po każdym indeksie ciągu i~zapisuje do listy symbole, po których wstawieniu w~dane miejsce nie utworzy się \emph{kwadrat}/\emph{nasunięcie}. Następnie w~warunku \texttt{if} z~6 linii sprawdzane jest, czy aktualna lista symboli jest mniejsza lub równa niż ta zarejestrowana wcześniej. Jeśli tak, do zmiennej \texttt{winner} zapisany zostaje aktualny indeks.
 
@@ -532,7 +532,7 @@ Napisana została przeze mnie również druga wersja gry. Użytkownik nie korzys
 \begin{figure}[tbh]
     \centering
     \caption{\emph{Longest Free Word} z interfejsem graficznym.}
-    \includegraphics[width = 0.9\textwidth]{images/thueMobile}
+    \includegraphics[width = \textwidth]{images/thueMobile}
     \label{fig:thueMobile}
 \end{figure}
 
@@ -623,7 +623,7 @@ Nieodłącznym elementem analizy działania aplikacji jest badanie czasu w~jakim
 \begin{figure}[tbh]
     \centering
     \caption{Liczba sekund jakiej potrzebował algorytm \emph{budowniczego} na podjęcie decyzji, przy poszczególnych długościach ciągu i konfiguracji: $\emph{setPower}=5$, $\emph{builderNestingLevel}=0$, $\emph{painterNestingLevel}=1$.}
-    \includegraphics[width = 0.8\textwidth]{images2/timeBuilder0Painter1}
+    \includegraphics[width = \textwidth]{images2/timeBuilder0Painter1}
     \label{fig:builder0painter1}
 \end{figure}
 
@@ -633,43 +633,41 @@ Warto zauważyć jak ogromne różnice w~wydajności pojawiają się, gdy warto�
 \begin{figure}[tbh]
     \centering
     \caption{Liczba sekund jakiej potrzebował algorytm \emph{budowniczego} na podjęcie decyzji, przy poszczególnych długościach ciągu i konfiguracji: $\emph{setPower}=5$, $\emph{builderNestingLevel}=1$, $\emph{painterNestingLevel}=1$.}
-    \includegraphics[width = 0.8\textwidth]{images2/timeBuilder1Painter1}
+    \includegraphics[width = \textwidth]{images2/timeBuilder1Painter1}
     \label{fig:builder1painter1}
 \end{figure}
 
 \begin{figure}[tbh]
     \centering
     \caption{Liczba sekund jakiej potrzebował algorytm \emph{budowniczego} na podjęcie decyzji, przy poszczególnych długościach ciągu i konfiguracji: $\emph{setPower}=5$, $\emph{builderNestingLevel}=2$, $\emph{painterNestingLevel}=1$.}
-    \includegraphics[width = 0.8\textwidth]{images2/timeBuilder2Painter1}
+    \includegraphics[width = \textwidth]{images2/timeBuilder2Painter1}
     \label{fig:builder2painter1}
 \end{figure}
 
-
-
 Odrobinę inaczej wyglądają analogiczne wykresy przedstawiające złożoności algorytmów pełniących rolę \emph{malarza}. Algorytm korzystający z~rekurencji symuluje dodawanie kolejnych symboli na wyznaczonej pozycji, jeżeli jednak w~danym miejscu da się wstawić tylko jeden symbol, to algorytm przeprowadzi mniej symulacji, niż jeśli dałoby się tam wstawić pięć symboli. Dzięki tej zależności na wykresie można zauważyć, przy których ruchach \emph{malarz} jest bliski przegranej, a~przy których ma wiele dostępnych opcji. Wykres \ref{fig:painter1builder0} przedstawia czasy potrzebne algorytmowi pełniącemu rolę \emph{malarza} na podjęcie decyzji. Jak widać zachłanny algorytm działający jako \emph{budowniczy} cyklicznie redukuje liczbę opcji \emph{malarza}.
-
-
-
-Jeśli przeanalizujemy wykres \ref{fig:painter1builder2} zauważymy, że podczas rozgrywki z algorytmem \emph{budowniczego}, który używa rekurencji, krzywe są o~wiele bardziej spiczaste, co oznacza, że dla \emph{malarza} jest to trudna rozgrywka, która ostatecznie kończy się w~$82$ ruchu. Ponownie możemy porównać ze sobą czasy jakie były potrzebne na podjęcie decyzji dla algorytmu wykorzystującego jednopoziomową rekurencję na wykresie \ref{fig:painter1builder2}, z algorytmem wykorzystującym dwupoziomową rekurencję na wykresie \ref{fig:painter2builder0}. Wykonanie ruchu, dla ciągu długości $79$ pierwszemu algorytmowi zajęło $0.061$ sekundy, natomiast temu bardziej złożonemu $17.711$ sekund. Zatem w~tym konkretnym ruchu algorytm korzystający z rekurencji głębszej o~jedno wywołanie, decydował się około $290$ razy dłużej.
 
 \begin{figure}[tbh]
     \centering
     \caption{Liczba sekund jakiej potrzebował algorytm \emph{malarza} na podjęcie decyzji, przy poszczególnych długościach ciągu i konfiguracji: $\emph{setPower}=5$, $\emph{builderNestingLevel}=0$, \emph{painterNestingLevel}~$=1$.}
-    \includegraphics[width = 0.8\textwidth]{images2/timePainter1Builder0}
+    \includegraphics[width = \textwidth]{images2/timePainter1Builder0}
     \label{fig:painter1builder0}
 \end{figure}
+
+Jeśli przeanalizujemy wykres \ref{fig:painter1builder2} zauważymy, że podczas rozgrywki z algorytmem \emph{budowniczego}, który używa rekurencji, krzywe są o~wiele bardziej spiczaste, co oznacza, że dla \emph{malarza} jest to trudna rozgrywka, która ostatecznie kończy się w~$82$ ruchu. Ponownie możemy porównać ze sobą czasy jakie były potrzebne na podjęcie decyzji dla algorytmu wykorzystującego jednopoziomową rekurencję na wykresie \ref{fig:painter1builder2}, z algorytmem wykorzystującym dwupoziomową rekurencję na wykresie \ref{fig:painter2builder0}. Wykonanie ruchu, dla ciągu długości $79$ pierwszemu algorytmowi zajęło $0.061$ sekundy, natomiast temu bardziej złożonemu $17.711$ sekund. Zatem w~tym konkretnym ruchu algorytm korzystający z rekurencji głębszej o~jedno wywołanie, decydował się około $290$ razy dłużej.
+
+
 
 \begin{figure}[tbh]
     \centering
     \caption{Liczba sekund jakiej potrzebował algorytm \emph{malarza} na podjęcie decyzji, przy poszczególnych długościach ciągu i konfiguracji: $\emph{setPower}=5$, $\emph{builderNestingLevel}=2$, \emph{painterNestingLevel}~$=1$.}
-    \includegraphics[width = 0.8\textwidth]{images2/timePainter1Builder2}
+    \includegraphics[width = \textwidth]{images2/timePainter1Builder2}
     \label{fig:painter1builder2}
 \end{figure}
 
 \begin{figure}[tbh]
     \centering
     \caption{Liczba sekund jakiej potrzebował algorytm \emph{malarza} na podjęcie decyzji, przy poszczególnych długościach ciągu i konfiguracji: $\emph{setPower}=5$, $\emph{builderNestingLevel}=0$, \emph{painterNestingLevel}~$=2$.}
-    \includegraphics[width = 0.8\textwidth]{images2/timePainter2Builder0}
+    \includegraphics[width = \textwidth]{images2/timePainter2Builder0}
     \label{fig:painter2builder0}
 \end{figure}
 
@@ -684,7 +682,7 @@ Przeprowadzone przeze mnie badania, przy alfabecie pięcioelementowym, zmiennych
 \begin{figure}[tbh]
     \centering
     \caption{Stosunek pierwszego wystąpienia indeksu z dwoma dostępnymi elementami, do pojawienia się indeksu z jednym dostępnym elementem i długości rozgrywki. Użyty został pięcioelementowy alfabet, a rolę \emph{budowniczego} pełnił zachłanny algorytm, a~rolę \emph{malarza} algorytm wykorzystujący jednopoziomową rekurencję.}
-    \includegraphics[width = 0.8\textwidth]{images2/builder0efficiency}
+    \includegraphics[width = \textwidth]{images2/builder0efficiency}
     \label{fig:builder0Efficiency}
 \end{figure}
 
@@ -693,7 +691,7 @@ Ciężko jest dopatrzyć się podobnej cykliczności w~algorytmie wykorzystując
 \begin{figure}[tbh]
     \centering
     \caption{Porównanie rozkładu wybieranych pozycji przez algorytm \emph{budowniczego} używający jednopoziomowej rekurencji oraz algorytm \emph{budowniczego} działający zachłannie.}
-    \includegraphics[width = 0.8\textwidth]{images2/buildersPickedIndexes}
+    \includegraphics[width = \textwidth]{images2/buildersPickedIndexes}
     \label{fig:buildersPickedIndexes}
 \end{figure}
 
