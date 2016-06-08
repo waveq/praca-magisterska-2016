@@ -20,6 +20,11 @@
 \PolyglossiaSetup{polish}{indentfirst=true}
 \setmonofont[Scale=0.75]{Monaco}
 
+
+\hypersetup{%
+  colorlinks = true,
+  linkcolor  = black
+}
 % Opcjonalnie identyfikator dokumentu
 % drukowany tylko z włączoną opcją 'brudnopis':
 \wersja   {wersja wstępna [\ymdtoday]}
@@ -627,7 +632,6 @@ Nieodłącznym elementem analizy działania aplikacji jest badanie czasu w~jakim
     \label{fig:builder0painter1}
 \end{figure}
 
-\newpage
 Warto zauważyć jak ogromne różnice w~wydajności pojawiają się, gdy wartości zmiennych sterujących rekurencją są różne. Algorytmowi pełniącemu rolę \emph{budowniczego} przy wartości zmiennej \emph{builderNestingLevel} równej $2$, dla ciągu długości $100$ podjęcie decyzji zajęło około $170$ razy więcej czasu niż po ustawieniu wartości tej zmiennej na $1$. Wykresy \ref{fig:builder1painter1} i~\ref{fig:builder2painter1}, przedstawiają różnice w złożonościach czasowych obu rozgrywek.
 
 \begin{figure}[tbh]
