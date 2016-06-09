@@ -19,9 +19,9 @@
 \contentsline {section}{\numberline {3.1}Ilość symboli potrzebna na rozegranie partii}{32}{section.3.1}
 \contentsline {section}{\numberline {3.2}Pomiary czasów potrzebnych na podjęcie decyzji}{35}{section.3.2}
 \contentsline {section}{\numberline {3.3}Porównanie zachowań algorytmu z\nobreakspace {}zagnieżdżeniami i\nobreakspace {}bez zagnieżdżeń}{40}{section.3.3}
-\contentsline {chapter}{Zakończenie}{43}{chapter*.5}
-\contentsline {chapter}{Bibliografia}{44}{appendix*.6}
-\contentsline {chapter}{Spis tabel}{45}{appendix*.7}
-\contentsline {chapter}{Spis rysunków}{46}{appendix*.8}
-\contentsline {chapter}{Spis kodów źródłowych}{48}{appendix*.9}
-\contentsline {chapter}{Oświadczenie}{49}{appendix*.10}
+\contentsline {chapter}{Zakończenie}{43}{chapter*.22}
+\contentsline {chapter}{Bibliografia}{44}{appendix*.23}
+\contentsline {chapter}{Spis tabel}{45}{appendix*.24}
+\contentsline {chapter}{Spis rysunków}{46}{appendix*.25}
+\contentsline {chapter}{Spis kodów źródłowych}{48}{appendix*.26}
+\contentsline {chapter}{Oświadczenie}{49}{appendix*.27}

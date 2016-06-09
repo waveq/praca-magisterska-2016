@@ -2,6 +2,6 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Maksymalna ilość ruchów w stosunku do ilości dostępnych symboli.}}{33}{table.3.1}
-\contentsline {table}{\numberline {3.2}{\ignorespaces Podsumowanie badanych rozgrywek, przy konfiguracji: \emph {setPower}\nobreakspace {}$=5$, \emph {builderNestingLevel}\nobreakspace {}$=0$, \emph {painterNestingLevel}\nobreakspace {}$=1$.}}{34}{table.3.2}
-\contentsline {table}{\numberline {3.3}{\ignorespaces Podsumowanie badanych rozgrywek, przy konfiguracji: \emph {setPower}\nobreakspace {}$=5$, \emph {builderNestingLevel}\nobreakspace {}$=1$, \emph {painterNestingLevel}\nobreakspace {}$=1$.}}{35}{table.3.3}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Maksymalna ilość ruchów w stosunku do ilości dostępnych symboli.\relax }}{33}{table.caption.11}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Podsumowanie badanych rozgrywek, przy konfiguracji: \emph {setPower}\nobreakspace {}$=5$, \emph {builderNestingLevel}\nobreakspace {}$=0$, \emph {painterNestingLevel}\nobreakspace {}$=1$.\relax }}{34}{table.caption.12}
+\contentsline {table}{\numberline {3.3}{\ignorespaces Podsumowanie badanych rozgrywek, przy konfiguracji: \emph {setPower}\nobreakspace {}$=5$, \emph {builderNestingLevel}\nobreakspace {}$=1$, \emph {painterNestingLevel}\nobreakspace {}$=1$.\relax }}{35}{table.caption.13}
