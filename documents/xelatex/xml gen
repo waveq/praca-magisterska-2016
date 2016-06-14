@@ -1,0 +1,43 @@
+## Streszczenie
+
+Celem pracy było zaprogramowanie i analiza wyników gry opartej na twierdzeniach Axela Thue związanej z powtórzeniami oraz nasunięciami wewnątrz ciągu znaków. Głównymi funkcjonalnościami aplikacji jest rozgrywka między dwoma graczami oraz symulacja przeprowadzona przez konkurujące ze sobą algorytmy. 
+
+Powstały dwa warianty aplikacji. Pierwszy z nich napisany za pomocą silnika Unity3d, posiada interfejs graficzny, nie ma jednak innego zastosowania niż poprawianie własnych rekordów. Drugi jest napisany w języku Java, bez interfejsu graficznego, w zamian oferuje funkcjonalność dokonywania testów na serwerze zdalnym i zawiera wiele opcji konfiguracyjnych, między innymi ustawianie poziomu zagnieżdżenia rekurencji, którego używają algorytmy.
+
+Przeprowadzone testy wykazały, że algorytmy symulujące graczy działają prawidłowo i zwiększanie poziomu zagnieżdżenia wykorzystywanej przez nich rekurencji skutkuje lepiej podejmowanymi decyzjami. Na podstawie badań ustalona została maksymalna długość rozgrywki przy odpowiedniej taktyce dla rozgrywek zawierających określoną ilość symboli, z których tworzony jest ciąg.
+
+
+
+## Kluczowe
+
+Thue, Java, ciąg, programowanie, Unity3d
+
+
+
+## Spis treści
+Wprowadzenie 6
+1. Opis struktur pozwalających na stworzenie gry  7 
+1.1. Definicje 7 
+1.2. Thue-Morse word 8 
+1.3. Square-free word 10 
+1.4. Thue online 11 
+1.5. Komputerowa implementacja Online Thue Game 12
+2. Aplikacja Longest Free Word 14
+2.1. Plik konfiguracyjny 14
+2.2. Algorytm szukający powtórzeń wewnątrz ciągu 16
+2.3. Komunikacja z użytkownikiem 21
+2.4. Zachłanny algorytm wyszukiwania symbolu 23
+2.5. Zachłanny algorytm wyszukiwania indeksu 25
+2.6. Algorytm wyszukiwania symbolu wykorzystujący rekurencję 26
+2.7. Algorytm wyszukiwania indeksu wykorzystujący rekurencję 29
+2.8. Longest square free word z interfejsem graficznym 30
+3. Analiza symulowanych potyczek 32
+3.1. Ilość symboli potrzebna na rozegranie partii 32
+3.2. Pomiary czasów potrzebnych na podjęcie decyzji 35
+3.3. Porównanie zachowań algorytmu z zagnieżdżeniami i bez zagnieżdżeń 40
+Zakończenie 43 
+Bibliografia 44 
+Spis tabel 45
+Spis rysunków 46 
+Spis kodów źródłowych 48 
+Oświadczenie 49

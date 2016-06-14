@@ -157,7 +157,6 @@ return new Subsequence(left, i, subSeqSize);
 }
 return null;
 }
-1
 Kod 2.4: Metoda pomocnicza przy szukaniu nasunięć wewnątrz listy.
 Subsequence compareSubSeqOverlap(int subSeqSize, List<Integer> sequence) {
 List<Integer> left = new ArrayList<>();
