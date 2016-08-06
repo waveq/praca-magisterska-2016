@@ -1,0 +1,68 @@
+#> Poziom budowniczego ustawiono na: 3
+#> Poziom malarza ustawiono na: 2
+#> W grze dostępne są następujące liczby: 
+0
+1
+2
+3
+4
+5
+6
+ 0: { 0 }  1: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 0.039 s
+#> Komputer wybrał kolor: 5 	| Czas trwania obliczeń: 0.001 s
+ 0: { 0 }  1: { 5 }  2: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 0.147 s
+#> Komputer wybrał kolor: 2 	| Czas trwania obliczeń: 0.001 s
+ 0: { 0 }  1: { 2 }  2: { 5 }  3: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 0.351 s
+#> Komputer wybrał kolor: 4 	| Czas trwania obliczeń: 0.002 s
+ 0: { 0 }  1: { 4 }  2: { 2 }  3: { 5 }  4: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 2 	| Czas trwania obliczeń: 0.881 s
+#> Komputer wybrał kolor: 3 	| Czas trwania obliczeń: 0.003 s
+ 0: { 0 }  1: { 4 }  2: { 3 }  3: { 2 }  4: { 5 }  5: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 3 	| Czas trwania obliczeń: 1.774 s
+#> Komputer wybrał kolor: 1 	| Czas trwania obliczeń: 0.005 s
+ 0: { 0 }  1: { 4 }  2: { 3 }  3: { 1 }  4: { 2 }  5: { 5 }  6: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 3 	| Czas trwania obliczeń: 3.754 s
+#> Komputer wybrał kolor: 6 	| Czas trwania obliczeń: 0.009 s
+ 0: { 0 }  1: { 4 }  2: { 3 }  3: { 6 }  4: { 1 }  5: { 2 }  6: { 5 }  7: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 4 	| Czas trwania obliczeń: 7.199 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.013 s
+ 0: { 0 }  1: { 4 }  2: { 3 }  3: { 6 }  4: { 0 }  5: { 1 }  6: { 2 }  7: { 5 }  8: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 5 	| Czas trwania obliczeń: 13.951 s
+#> Komputer wybrał kolor: 5 	| Czas trwania obliczeń: 0.016 s
+ 0: { 0 }  1: { 4 }  2: { 3 }  3: { 6 }  4: { 0 }  5: { 5 }  6: { 1 }  7: { 2 }  8: { 5 }  9: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 5 	| Czas trwania obliczeń: 22.744 s
+#> Komputer wybrał kolor: 4 	| Czas trwania obliczeń: 0.024 s
+ 0: { 0 }  1: { 4 }  2: { 3 }  3: { 6 }  4: { 0 }  5: { 4 }  6: { 5 }  7: { 1 }  8: { 2 }  9: { 5 }  10: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 6 	| Czas trwania obliczeń: 37.931 s
+#> Komputer wybrał kolor: 6 	| Czas trwania obliczeń: 0.033 s
+ 0: { 0 }  1: { 4 }  2: { 3 }  3: { 6 }  4: { 0 }  5: { 4 }  6: { 6 }  7: { 5 }  8: { 1 }  9: { 2 }  10: { 5 }  11: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 6 	| Czas trwania obliczeń: 57.83 s
+#> Komputer wybrał kolor: 2 	| Czas trwania obliczeń: 0.048 s
+ 0: { 0 }  1: { 4 }  2: { 3 }  3: { 6 }  4: { 0 }  5: { 4 }  6: { 2 }  7: { 6 }  8: { 5 }  9: { 1 }  10: { 2 }  11: { 5 }  12: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 6 	| Czas trwania obliczeń: 95.094 s
+#> Komputer wybrał kolor: 5 	| Czas trwania obliczeń: 0.07 s
+ 0: { 0 }  1: { 4 }  2: { 3 }  3: { 6 }  4: { 0 }  5: { 4 }  6: { 5 }  7: { 2 }  8: { 6 }  9: { 5 }  10: { 1 }  11: { 2 }  12: { 5 }  13: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 6 	| Czas trwania obliczeń: 142.454 s
+#> Komputer wybrał kolor: 1 	| Czas trwania obliczeń: 0.101 s
+ 0: { 0 }  1: { 4 }  2: { 3 }  3: { 6 }  4: { 0 }  5: { 4 }  6: { 1 }  7: { 5 }  8: { 2 }  9: { 6 }  10: { 5 }  11: { 1 }  12: { 2 }  13: { 5 }  14: {   } 
+## =============================================================== ##
+#> Przekroczono limit czasu oczekiwania na decyzje komputera: 181.915 s
+ 0: { 0 }  1: { 4 }  2: { 3 }  3: { 6 }  4: { 0 }  5: { 4 }  6: { 1 }  7: { 5 }  8: { 2 }  9: { 6 }  10: { 5 }  11: { 1 }  12: { 2 }  13: { 5 }  14: {   } 
+## =============================================================== ##
+#> Rozrgrywka trwała 14 ruchów i 566.389 sekund.

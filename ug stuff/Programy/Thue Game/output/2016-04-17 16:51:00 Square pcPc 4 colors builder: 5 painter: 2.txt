@@ -1,0 +1,53 @@
+#> Poziom budowniczego ustawiono na: 5
+#> Poziom malarza ustawiono na: 2
+#> W grze dostępne są następujące liczby: 
+0
+1
+2
+3
+ 0: { 0 }  1: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 0.644 s
+#> Komputer wybrał kolor: 1 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 1 }  2: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 2.291 s
+#> Komputer wybrał kolor: 3 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 3 }  2: { 1 }  3: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 6.773 s
+#> Komputer wybrał kolor: 2 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 2 }  2: { 3 }  3: { 1 }  4: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 2 	| Czas trwania obliczeń: 16.46 s
+#> Komputer wybrał kolor: 1 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 2 }  2: { 1 }  3: { 3 }  4: { 1 }  5: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 2 	| Czas trwania obliczeń: 26.043 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 2 }  2: { 0 }  3: { 1 }  4: { 3 }  5: { 1 }  6: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 3 	| Czas trwania obliczeń: 42.063 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 2 }  2: { 0 }  3: { 0 }  4: { 1 }  5: { 3 }  6: { 1 }  7: {   } 
+## =============================================================== ##
+
+#> Znaleziono kwadrat:  
+ 2: { 0 }  <->  3: { 0 } 
+
+## =============================================================== ##
+
+#> Inne scenariusze kończącego ruchu:
+
+#> Dla liczby 1: 
+ 3: { 1 }  <->  4: { 1 } 
+
+#> Dla liczby 2: 
+ 0: { 0 }  1: { 2 }  <->  2: { 0 }  3: { 2 } 
+
+#> Dla liczby 3: 
+ 3: { 3 }  4: { 1 }  <->  5: { 3 }  6: { 1 } 
+
+## =============================================================== ##
+
+#> Rozrgrywka trwała 7 ruchów i 94.276 sekund.

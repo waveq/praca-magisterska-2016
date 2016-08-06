@@ -1,0 +1,20 @@
+#> Poziom budowniczego ustawiono na: 5
+#> Poziom malarza ustawiono na: 4
+#> W grze dostępne są następujące liczby: 
+0
+1
+2
+3
+4
+5
+6
+ 0: { 0 }  1: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 0 	| Czas trwania obliczeń: 82.421 s
+#> Komputer wybrał kolor: 2 	| Czas trwania obliczeń: 1.036 s
+ 0: { 2 }  1: { 0 }  2: {   } 
+## =============================================================== ##
+#> Przekroczono limit czasu oczekiwania na decyzje komputera: 191.75 s
+ 0: { 2 }  1: { 0 }  2: {   } 
+## =============================================================== ##
+#> Rozrgrywka trwała 2 ruchów i 275.207 sekund.

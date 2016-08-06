@@ -1,0 +1,73 @@
+#> Poziom budowniczego ustawiono na: 0
+#> Poziom malarza ustawiono na: 0
+#> W grze dostępne są następujące liczby: 
+0
+1
+2
+3
+4
+ 0: { 0 }  1: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 0.001 s
+#> Komputer wybrał kolor: 1 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 1 }  2: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 0.0 s
+#> Komputer wybrał kolor: 2 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 2 }  2: { 1 }  3: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 2 	| Czas trwania obliczeń: 0.0 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 2 }  2: { 0 }  3: { 1 }  4: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 3 	| Czas trwania obliczeń: 0.0 s
+#> Komputer wybrał kolor: 3 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 2 }  2: { 0 }  3: { 3 }  4: { 1 }  5: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 3 	| Czas trwania obliczeń: 0.0 s
+#> Komputer wybrał kolor: 1 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 2 }  2: { 0 }  3: { 1 }  4: { 3 }  5: { 1 }  6: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 3 	| Czas trwania obliczeń: 0.0 s
+#> Komputer wybrał kolor: 4 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 2 }  2: { 0 }  3: { 4 }  4: { 1 }  5: { 3 }  6: { 1 }  7: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 4 	| Czas trwania obliczeń: 0.0 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 2 }  2: { 0 }  3: { 4 }  4: { 0 }  5: { 1 }  6: { 3 }  7: { 1 }  8: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 5 	| Czas trwania obliczeń: 0.001 s
+#> Komputer wybrał kolor: 2 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 2 }  2: { 0 }  3: { 4 }  4: { 0 }  5: { 2 }  6: { 1 }  7: { 3 }  8: { 1 }  9: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 6 	| Czas trwania obliczeń: 0.0 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 2 }  2: { 0 }  3: { 4 }  4: { 0 }  5: { 2 }  6: { 0 }  7: { 1 }  8: { 3 }  9: { 1 }  10: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 7 	| Czas trwania obliczeń: 0.004 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 2 }  2: { 0 }  3: { 4 }  4: { 0 }  5: { 2 }  6: { 0 }  7: { 0 }  8: { 1 }  9: { 3 }  10: { 1 }  11: {   } 
+## =============================================================== ##
+
+#> Znaleziono kwadrat:  
+ 6: { 0 }  <->  7: { 0 } 
+
+## =============================================================== ##
+
+#> Inne scenariusze kończącego ruchu:
+
+#> Dla liczby 1: 
+ 7: { 1 }  <->  8: { 1 } 
+
+#> Dla liczby 2: 
+ 4: { 0 }  5: { 2 }  <->  6: { 0 }  7: { 2 } 
+
+#> Dla liczby 3: 
+ 7: { 3 }  8: { 1 }  <->  9: { 3 }  10: { 1 } 
+
+#> Dla liczby 4: 
+ 0: { 0 }  1: { 2 }  2: { 0 }  3: { 4 }  <->  4: { 0 }  5: { 2 }  6: { 0 }  7: { 4 } 
+
+## =============================================================== ##
+
+#> Rozrgrywka trwała 11 ruchów i 0.026 sekund.

@@ -1,0 +1,41 @@
+#> Poziom budowniczego ustawiono na: 6
+#> Poziom malarza ustawiono na: 6
+#> W grze dostępne są następujące liczby: 
+0
+1
+2
+ 0: { 0 }  1: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 0 	| Czas trwania obliczeń: 0.203 s
+#> Komputer wybrał kolor: 2 	| Czas trwania obliczeń: 0.102 s
+ 0: { 2 }  1: { 0 }  2: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 0.29 s
+#> Komputer wybrał kolor: 1 	| Czas trwania obliczeń: 0.064 s
+ 0: { 2 }  1: { 1 }  2: { 0 }  3: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 0.422 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.059 s
+ 0: { 2 }  1: { 0 }  2: { 1 }  3: { 0 }  4: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 0.366 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.0 s
+ 0: { 2 }  1: { 0 }  2: { 0 }  3: { 1 }  4: { 0 }  5: {   } 
+## =============================================================== ##
+
+#> Znaleziono kwadrat:  
+ 1: { 0 }  <->  2: { 0 } 
+
+## =============================================================== ##
+
+#> Inne scenariusze kończącego ruchu:
+
+#> Dla liczby 1: 
+ 1: { 1 }  2: { 0 }  <->  3: { 1 }  4: { 0 } 
+
+#> Dla liczby 2: 
+ 0: { 2 }  <->  1: { 2 } 
+
+## =============================================================== ##
+
+#> Rozrgrywka trwała 5 ruchów i 1.506 sekund.

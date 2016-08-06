@@ -1,0 +1,77 @@
+#> Poziom budowniczego ustawiono na: 2
+#> Poziom malarza ustawiono na: 1
+#> W grze dostępne są następujące liczby: 
+0
+1
+2
+ 0: { 0 }  1: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 0.0 s
+#> Komputer wybrał kolor: 2 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 2 }  2: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 0 	| Czas trwania obliczeń: 0.0 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 0 }  2: { 2 }  3: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 0.001 s
+#> Komputer wybrał kolor: 1 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 1 }  2: { 0 }  3: { 2 }  4: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 3 	| Czas trwania obliczeń: 0.003 s
+#> Komputer wybrał kolor: 2 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 1 }  2: { 0 }  3: { 2 }  4: { 2 }  5: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 3 	| Czas trwania obliczeń: 0.005 s
+#> Komputer wybrał kolor: 2 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 1 }  2: { 0 }  3: { 2 }  4: { 2 }  5: { 2 }  6: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 3 	| Czas trwania obliczeń: 0.01 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 1 }  2: { 0 }  3: { 0 }  4: { 2 }  5: { 2 }  6: { 2 }  7: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 3 	| Czas trwania obliczeń: 0.016 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 1 }  2: { 0 }  3: { 0 }  4: { 0 }  5: { 2 }  6: { 2 }  7: { 2 }  8: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 3 	| Czas trwania obliczeń: 0.02 s
+#> Komputer wybrał kolor: 2 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 1 }  2: { 0 }  3: { 2 }  4: { 0 }  5: { 0 }  6: { 2 }  7: { 2 }  8: { 2 }  9: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 5 	| Czas trwania obliczeń: 0.04 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 1 }  2: { 0 }  3: { 2 }  4: { 0 }  5: { 0 }  6: { 0 }  7: { 2 }  8: { 2 }  9: { 2 }  10: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 5 	| Czas trwania obliczeń: 0.061 s
+#> Komputer wybrał kolor: 1 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 1 }  2: { 0 }  3: { 2 }  4: { 0 }  5: { 1 }  6: { 0 }  7: { 0 }  8: { 2 }  9: { 2 }  10: { 2 }  11: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 7 	| Czas trwania obliczeń: 0.094 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 1 }  2: { 0 }  3: { 2 }  4: { 0 }  5: { 1 }  6: { 0 }  7: { 0 }  8: { 0 }  9: { 2 }  10: { 2 }  11: { 2 }  12: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 7 	| Czas trwania obliczeń: 0.144 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 1 }  2: { 0 }  3: { 2 }  4: { 0 }  5: { 1 }  6: { 0 }  7: { 0 }  8: { 0 }  9: { 0 }  10: { 2 }  11: { 2 }  12: { 2 }  13: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 7 	| Czas trwania obliczeń: 0.142 s
+#> Komputer wybrał kolor: 1 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 1 }  2: { 0 }  3: { 2 }  4: { 0 }  5: { 1 }  6: { 0 }  7: { 1 }  8: { 0 }  9: { 0 }  10: { 0 }  11: { 2 }  12: { 2 }  13: { 2 }  14: {   } 
+## =============================================================== ##
+
+#> Znaleziono nasunięcie:  
+ 4: { 0 }  5: { 1 }  6: { 0 }  <->  6: { 0 }  7: { 1 }  8: { 0 } 
+
+## =============================================================== ##
+
+#> Inne scenariusze kończącego ruchu:
+
+#> Dla liczby 0: 
+ 6: { 0 }  7: { 0 }  8: { 0 }  <->  8: { 0 }  9: { 0 }  10: { 0 } 
+
+#> Dla liczby 2: 
+ 0: { 0 }  1: { 1 }  2: { 0 }  3: { 2 }  4: { 0 }  <->  4: { 0 }  5: { 1 }  6: { 0 }  7: { 2 }  8: { 0 } 
+
+## =============================================================== ##
+
+#> Rozrgrywka trwała 14 ruchów i 0.538 sekund.

@@ -1,0 +1,100 @@
+#> Poziom budowniczego ustawiono na: 3
+#> Poziom malarza ustawiono na: 4
+#> W grze dostępne są następujące liczby: 
+0
+1
+2
+3
+4
+ 0: { 0 }  1: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 0 	| Czas trwania obliczeń: 0.01 s
+#> Komputer wybrał kolor: 1 	| Czas trwania obliczeń: 0.094 s
+ 0: { 1 }  1: { 0 }  2: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 0.029 s
+#> Komputer wybrał kolor: 2 	| Czas trwania obliczeń: 0.196 s
+ 0: { 1 }  1: { 2 }  2: { 0 }  3: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 2 	| Czas trwania obliczeń: 0.072 s
+#> Komputer wybrał kolor: 3 	| Czas trwania obliczeń: 0.443 s
+ 0: { 1 }  1: { 2 }  2: { 3 }  3: { 0 }  4: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 2 	| Czas trwania obliczeń: 0.133 s
+#> Komputer wybrał kolor: 4 	| Czas trwania obliczeń: 0.741 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 3 }  4: { 0 }  5: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 3 	| Czas trwania obliczeń: 0.289 s
+#> Komputer wybrał kolor: 1 	| Czas trwania obliczeń: 1.655 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 3 }  5: { 0 }  6: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 4 	| Czas trwania obliczeń: 0.525 s
+#> Komputer wybrał kolor: 2 	| Czas trwania obliczeń: 2.726 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 3 }  6: { 0 }  7: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 5 	| Czas trwania obliczeń: 0.891 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 3.033 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 0 }  6: { 3 }  7: { 0 }  8: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 5 	| Czas trwania obliczeń: 1.435 s
+#> Komputer wybrał kolor: 1 	| Czas trwania obliczeń: 2.01 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 1 }  6: { 0 }  7: { 3 }  8: { 0 }  9: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 6 	| Czas trwania obliczeń: 1.917 s
+#> Komputer wybrał kolor: 4 	| Czas trwania obliczeń: 3.445 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 1 }  6: { 4 }  7: { 0 }  8: { 3 }  9: { 0 }  10: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 7 	| Czas trwania obliczeń: 3.042 s
+#> Komputer wybrał kolor: 2 	| Czas trwania obliczeń: 9.371 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 1 }  6: { 4 }  7: { 2 }  8: { 0 }  9: { 3 }  10: { 0 }  11: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 8 	| Czas trwania obliczeń: 4.85 s
+#> Komputer wybrał kolor: 1 	| Czas trwania obliczeń: 13.806 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 1 }  6: { 4 }  7: { 2 }  8: { 1 }  9: { 0 }  10: { 3 }  11: { 0 }  12: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 9 	| Czas trwania obliczeń: 7.006 s
+#> Komputer wybrał kolor: 2 	| Czas trwania obliczeń: 9.104 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 1 }  6: { 4 }  7: { 2 }  8: { 1 }  9: { 2 }  10: { 0 }  11: { 3 }  12: { 0 }  13: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 10 	| Czas trwania obliczeń: 9.382 s
+#> Komputer wybrał kolor: 4 	| Czas trwania obliczeń: 15.292 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 1 }  6: { 4 }  7: { 2 }  8: { 1 }  9: { 2 }  10: { 4 }  11: { 0 }  12: { 3 }  13: { 0 }  14: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 10 	| Czas trwania obliczeń: 14.55 s
+#> Komputer wybrał kolor: 3 	| Czas trwania obliczeń: 39.732 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 1 }  6: { 4 }  7: { 2 }  8: { 1 }  9: { 2 }  10: { 3 }  11: { 4 }  12: { 0 }  13: { 3 }  14: { 0 }  15: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 10 	| Czas trwania obliczeń: 20.498 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 56.493 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 1 }  6: { 4 }  7: { 2 }  8: { 1 }  9: { 2 }  10: { 0 }  11: { 3 }  12: { 4 }  13: { 0 }  14: { 3 }  15: { 0 }  16: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 10 	| Czas trwania obliczeń: 28.319 s
+#> Komputer wybrał kolor: 3 	| Czas trwania obliczeń: 35.712 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 1 }  6: { 4 }  7: { 2 }  8: { 1 }  9: { 2 }  10: { 3 }  11: { 0 }  12: { 3 }  13: { 4 }  14: { 0 }  15: { 3 }  16: { 0 }  17: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 10 	| Czas trwania obliczeń: 36.209 s
+#> Komputer wybrał kolor: 4 	| Czas trwania obliczeń: 51.696 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 1 }  6: { 4 }  7: { 2 }  8: { 1 }  9: { 2 }  10: { 4 }  11: { 3 }  12: { 0 }  13: { 3 }  14: { 4 }  15: { 0 }  16: { 3 }  17: { 0 }  18: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 10 	| Czas trwania obliczeń: 52.1 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 135.294 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 1 }  6: { 4 }  7: { 2 }  8: { 1 }  9: { 2 }  10: { 0 }  11: { 4 }  12: { 3 }  13: { 0 }  14: { 3 }  15: { 4 }  16: { 0 }  17: { 3 }  18: { 0 }  19: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 10 	| Czas trwania obliczeń: 69.546 s
+#> Komputer wybrał kolor: 3 	| Czas trwania obliczeń: 168.251 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 1 }  6: { 4 }  7: { 2 }  8: { 1 }  9: { 2 }  10: { 3 }  11: { 0 }  12: { 4 }  13: { 3 }  14: { 0 }  15: { 3 }  16: { 4 }  17: { 0 }  18: { 3 }  19: { 0 }  20: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 10 	| Czas trwania obliczeń: 88.548 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 109.981 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 1 }  6: { 4 }  7: { 2 }  8: { 1 }  9: { 2 }  10: { 0 }  11: { 3 }  12: { 0 }  13: { 4 }  14: { 3 }  15: { 0 }  16: { 3 }  17: { 4 }  18: { 0 }  19: { 3 }  20: { 0 }  21: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 10 	| Czas trwania obliczeń: 107.802 s
+#> Komputer wybrał kolor: 4 	| Czas trwania obliczeń: 139.953 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 1 }  6: { 4 }  7: { 2 }  8: { 1 }  9: { 2 }  10: { 4 }  11: { 0 }  12: { 3 }  13: { 0 }  14: { 4 }  15: { 3 }  16: { 0 }  17: { 3 }  18: { 4 }  19: { 0 }  20: { 3 }  21: { 0 }  22: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 11 	| Czas trwania obliczeń: 140.832 s
+
+#> Przekroczono limit czasu oczekiwania na decyzje komputera: 349.828 s
+ 0: { 1 }  1: { 2 }  2: { 4 }  3: { 1 }  4: { 2 }  5: { 1 }  6: { 4 }  7: { 2 }  8: { 1 }  9: { 2 }  10: { 4 }  11: { 0 }  12: { 3 }  13: { 0 }  14: { 4 }  15: { 3 }  16: { 0 }  17: { 3 }  18: { 4 }  19: { 0 }  20: { 3 }  21: { 0 }  22: {   } 
+## =============================================================== ##
+#> Rozrgrywka trwała 22 ruchów i 1736.845 sekund.

@@ -415,6 +415,7 @@ int findRightColorGreedy(List<Integer> sequence, int index, int power) {
 		return -1;
 	}
 \end{lstlisting}
+
 \newpage
 \section{Zachłanny algorytm wyszukiwania indeksu}
 By można było przeprowadzić symulację gry należy wprowadzić również algorytm \emph{budowniczego}, starający się znaleźć najmniej atrakcyjny indeks dla \emph{malarza}. Zachłanny algorytm realizujący to zadanie znajduje się w metodzie \texttt{findRightIndexGreedy} (kod \ref{lst:findRightIndexGreedy}). Metoda jako parametry otrzymuje stworzony wcześniej ciąg oraz moc zbioru symboli. Zmienna \texttt{winner} ustawiona początkowo na $-1$, reprezentuje indeks, który zostanie zwrócony jako ten, pod którym jest najmniejsza dowolność wyboru symboli bez tworzenia powtórzeń. Metoda iteruje po każdym indeksie ciągu i~zapisuje do listy symbole, po których wstawieniu w~dane miejsce nie utworzy się \emph{kwadrat}/\emph{nasunięcie}. Następnie w~warunku \texttt{if} z~6 linii sprawdzane jest, czy aktualna lista symboli jest mniejsza lub równa niż ta zarejestrowana wcześniej. Jeśli tak, do zmiennej \texttt{winner} zapisany zostaje aktualny indeks.
@@ -433,7 +434,7 @@ int findRightIndexGreedy(List<Integer> sequence, int power) {
 	return winner;
 }
 \end{lstlisting}
-
+\clearpage
 \section{Algorytm wyszukiwania symbolu wykorzystujący rekurencję}
 Algorytm zachłanny nie jest wystarczająco sprytny żeby przeciwstawić się człowiekowi mającemu odrobinę doświadczenia w~\emph{Longest Free Word}. Wobec tego powstał algorytm nie działający zachłannie, lecz starający się przewidzieć jakie konsekwencje w~kolejnych turach może nieść ze sobą dany wybór.
 
@@ -524,8 +525,6 @@ Aplikacja została napisana na popularnym silniku do tworzenia gier -- \emph{Uni
 \chapter{Analiza symulowanych potyczek} 
 Dobrym sposobem by poznać aplikację jest jej przestestowanie. Jeszcze lepszym przeprowadzenie jej analizy oraz zobrazowanie wyników za pomocą wykresów i~tabel. Rozdział ten poświęcony jest badaniu działania aplikacji \emph{Longest Free Word}. Badania skupiają się na wariancie aplikacji opierającym się na tworzeniu ciągu bez \emph{kwadratów}, a~flaga \emph{randomization} ustawiona została na \texttt{true}. Wszystkie testy uruchomione były na zdalnym serwerze, stworzonym za pośrednictwem serwisu \emph{digitalocean.com}. Podzespoły maszyny to system operacyjny Ubuntu 15.10, procesor 2,6 Ghz Intel Core i7, pamięć ram 16 GB 1600 MHz DDR3 i~dysk SSD.
 
-
-
 \section{Ilość symboli potrzebna na rozegranie partii}
 Długość gry zależna jest od dwóch czynników. Ustawionego poziomu zagnieżdżenia i~ilości dostępnych symboli. Thue w~swoim twierdzeniu \cite{repetition} udowodnił, że jesteśmy w~stanie stworzyć nieskończenie długi ciąg bez \emph{kwadratów}, mając do dyspozycji alfabet składający się z $3$ symboli. Sytuacja zmienia się, gdy ciąg tworzony jest przez dwóch graczy, z~których jeden stara się utworzyć \emph{kwadrat}. Jeśli  rolę \emph{budowniczego} pełnił będzie zachłanny algorytm, a rolę \emph{malarza} przejmie algorytm wykorzystujący siedmiopoziomową rekurencję, to przy takim alfabecie rozgrywka i tak zawsze trwała będzie maksymalnie $5$ ruchów. 
 
@@ -579,17 +578,17 @@ Przy wartości zmiennej \emph{builderNestingLevel} równej $0$ i zmiennej \emph{
     	\caption{Podsumowanie badanych rozgrywek, przy konfiguracji: \emph{setPower}~$=5$, \emph{builderNestingLevel}~$=1$, \emph{painterNestingLevel}~$=1$.}
 	\begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|} \hline
 	Ilość ruchów & Czas trwania \\ \hline
-	30 & 1.2 s. \\ \hline	
-	42 & 5.1 s. \\ \hline
-	45 & 11 s. \\ \hline	
-	47 & 7.8 s. \\ \hline
-	73 & 1 min. 17 s. \\ \hline
-	104 & 9 min. 38 s. \\ \hline
-	114 & 29 min. 29 s. \\ \hline
-	134 & 1 godz. 30 min. 27 s.  \\ \hline
-	178 & 5 godz. 11 min. 22 s. \\ \hline
-	202 & 9 godz. 42 min. 15 s. \\ \hline
-	213 & 13 godz. 04 min. 35 s. \\ \hline
+	30 & 1.2 s \\ \hline	
+	42 & 5.1 s \\ \hline
+	45 & 11 s \\ \hline	
+	47 & 7.8 s \\ \hline
+	73 & 1 min. 17 s \\ \hline
+	104 & 9 min. 38 s \\ \hline
+	114 & 29 min. 29 s \\ \hline
+	134 & 1 godz. 30 min. 27 s  \\ \hline
+	178 & 5 godz. 11 min. 22 s \\ \hline
+	202 & 9 godz. 42 min. 15 s \\ \hline
+	213 & 13 godz. 04 min. 35 s \\ \hline
 	\end{tabular}
 	\label{fig:builder1Painter1Table}
 \end{table}

@@ -1,0 +1,21 @@
+#> Poziom budowniczego ustawiono na: 0
+#> Poziom malarza ustawiono na: 5
+#> W grze dostępne są następujące liczby: 
+0
+ 0: { 0 }  1: {   } 
+## =============================================================== ##
+#> Komputer wybrał indeks: 1 	| Czas trwania obliczeń: 0.001 s
+#> Komputer wybrał kolor: 0 	| Czas trwania obliczeń: 0.0 s
+ 0: { 0 }  1: { 0 }  2: {   } 
+## =============================================================== ##
+
+#> Znaleziono kwadrat:  
+ 0: { 0 }  <->  1: { 0 } 
+
+## =============================================================== ##
+
+#> Inne scenariusze kończącego ruchu:
+
+## =============================================================== ##
+
+#> Rozrgrywka trwała 2 ruchów i 0.003 sekund.
